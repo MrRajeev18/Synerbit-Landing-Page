@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products — Synerbit SaaS Ecosystem</title>
+    <meta name="description" content="Explore the Synerbit SaaS product ecosystem: PulsePM for simplified project management, GoalSync for shared goal accountability, and Busly for connected school transport safety." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      /* Products Page Specific Styles */
+      .products-page-body {
+        background-color: #000000;
+        color: #f1f5f9;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+      }
+
+      /* Fixed Navigation Bar */
+      .p-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 72px;
+        padding: 0 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(6, 7, 12, 0.85);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .p-nav-left {
+        display: flex;
+        align-items: center;
+        gap: 36px;
+      }
+
+      .p-nav-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #ffffff;
+      }
+
+      .p-nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .p-nav-link {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+        position: relative;
+      }
+
+      .p-nav-link:hover {
+        color: #ffffff;
+      }
+
+      .p-nav-link.active {
+        color: #38bdf8;
+        font-weight: 600;
+      }
+
+      .p-nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #38bdf8;
+        border-radius: 2px;
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+      }
+
+      /* Sticky Hero Section (Pitch Black Void with Luminous Moon Horizon) */
+      .p-hero-sticky-section {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        height: 100dvh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 80px 24px;
+        background: #000000;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .p-hero-center-content {
+        max-width: 900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(-10px);
+        position: relative;
+        z-index: 5;
+      }
+
+      .p-hero-title {
+        font-size: clamp(2.3rem, 4.4vw, 3.8rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        color: #ffffff;
+        line-height: 1.18;
+        max-width: 900px;
+        margin: 0 auto 16px auto;
+      }
+
+      .p-hero-sub {
+        font-size: clamp(1.0rem, 1.25vw, 1.18rem);
+        line-height: 1.65;
+        color: rgba(226, 232, 240, 0.72);
+        max-width: 660px;
+        margin: 0 auto 28px auto;
+      }
+
+      /* Overlapping Sheet Arena */
+      .p-overlap-arena {
+        position: relative;
+        z-index: 20;
+        margin-top: 0;
+        width: 100%;
+      }
+
+      .p-overlap-sheet {
+        position: relative;
+        width: 100%;
+        background: 
+          radial-gradient(ellipse at 80% 15%, rgba(56, 189, 248, 0.05) 0%, transparent 60%),
+          radial-gradient(ellipse at 20% 50%, rgba(129, 140, 248, 0.04) 0%, transparent 60%),
+          linear-gradient(180deg, #07090f 0%, #030407 100%);
+        border-radius: 40px 40px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.09);
+        box-shadow: 0 -25px 70px rgba(0, 0, 0, 0.96);
+        padding: 24px 0 0 0;
+      }
+
+      .sheet-handle {
+        width: 48px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.22);
+        border-radius: 9999px;
+        margin: 0 auto 24px auto;
+        flex-shrink: 0;
+      }
+
+      /* Sticky Controls Bar fixed on top below 72px header */
+      .p-sheet-sticky-bar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 72px;
+        z-index: 80;
+        width: 100%;
+        background: rgba(6, 7, 12, 0.88);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        transition: background 0.25s ease, border-color 0.25s ease;
+      }
+
+      .p-sheet-controls {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 16px 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .p-sheet-heading-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .p-sheet-pretitle {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        color: #38bdf8;
+        text-transform: uppercase;
+      }
+
+      .p-sheet-title {
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: -0.025em;
+      }
+
+      /* Filter Switcher */
+      .p-filter-bar {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px;
+        border-radius: 9999px;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        backdrop-filter: blur(16px);
+      }
+
+      .p-filter-btn {
+        background: none;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 9999px;
+        color: #94a3b8;
+        font-size: 0.84rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+
+      .p-filter-btn:hover {
+        color: #ffffff;
+      }
+
+      .p-filter-btn.active {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Product Matrix Showcase Container */
+      .p-grid-container {
+        max-width: 1360px;
+        margin: 0 auto;
+        padding: 40px 24px 80px 24px;
+        width: 100%;
+      }
+
+      .p-matrix-deck {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        width: 100%;
+        min-height: auto;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Base Matrix Card - Sized according to content */
+      .p-card {
+        flex: 1;
+        min-width: 0;
+        position: relative;
+        border-radius: 22px;
+        background: rgba(11, 15, 25, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+        overflow: hidden;
+        cursor: pointer;
+        padding: 24px 22px;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+        transition: flex 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                    border-color 0.3s ease, 
+                    box-shadow 0.35s ease,
+                    background 0.3s ease,
+                    padding 0.3s ease;
+      }
+
+      .p-card:hover,
+      .p-card.is-expanded {
+        flex: 2.2;
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(13, 18, 30, 0.95);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+        padding: 26px 28px;
+      }
+
+      .p-card.card-pulsepm { border-top: 3px solid #38bdf8; }
+      .p-card.card-pulsepm:hover,
+      .p-card.card-pulsepm.is-expanded {
+        border-color: rgba(56, 189, 248, 0.45);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(56, 189, 248, 0.12);
+      }
+
+      .p-card.card-goalsync { border-top: 3px solid #34d399; }
+      .p-card.card-goalsync:hover,
+      .p-card.card-goalsync.is-expanded {
+        border-color: rgba(52, 211, 153, 0.45);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(52, 211, 153, 0.12);
+      }
+
+      .p-card.card-busly { border-top: 3px solid #fbbf24; }
+      .p-card.card-busly:hover,
+      .p-card.card-busly.is-expanded {
+        border-color: rgba(251, 191, 36, 0.45);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(251, 191, 36, 0.12);
+      }
+
+      /* Subtle Faint Background Watermark */
+      .p-ghost-watermark {
+        position: absolute;
+        right: -10px;
+        bottom: -20px;
+        font-family: var(--font-display, 'Space Grotesk', sans-serif);
+        font-size: clamp(5rem, 8vw, 7.5rem);
+        font-weight: 900;
+        letter-spacing: -0.06em;
+        line-height: 1;
+        color: rgba(255, 255, 255, 0.015);
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+      }
+
+      /* Sculpted Product Icons */
+      .p-product-icon-wrap {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        position: relative;
+        flex-shrink: 0;
+      }
+      .p-product-icon-wrap.cyan {
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.08) 100%);
+        border: 1px solid rgba(56, 189, 248, 0.35);
+        color: #38bdf8;
+      }
+      .p-product-icon-wrap.emerald {
+        background: linear-gradient(135deg, rgba(52, 211, 153, 0.22) 0%, rgba(16, 185, 129, 0.08) 100%);
+        border: 1px solid rgba(52, 211, 153, 0.35);
+        color: #34d399;
+      }
+      .p-product-icon-wrap.amber {
+        background: linear-gradient(135deg, rgba(251, 191, 36, 0.22) 0%, rgba(217, 119, 6, 0.08) 100%);
+        border: 1px solid rgba(251, 191, 36, 0.35);
+        color: #fbbf24;
+      }
+      .p-product-icon-wrap svg {
+        width: 24px;
+        height: 24px;
+        stroke-width: 1.8;
+      }
+
+      .p-product-icon-glow {
+        position: absolute;
+        inset: 2px;
+        border-radius: 14px;
+        filter: blur(10px);
+        opacity: 0.35;
+        z-index: -1;
+      }
+      .p-product-icon-glow.cyan { background: #38bdf8; }
+      .p-product-icon-glow.emerald { background: #34d399; }
+      .p-product-icon-glow.amber { background: #fbbf24; }
+
+      /* =========================================
+         1. COMPACT STATE VIEW (Zero Clutter)
+         ========================================= */
+      .p-card-compact {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        gap: 14px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .p-card:hover .p-card-compact,
+      .p-card.is-expanded .p-card-compact {
+        display: none;
+      }
+
+      .p-compact-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2px;
+      }
+
+      .p-compact-arrow-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #94a3b8;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .p-card:hover .p-compact-arrow-btn {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        transform: rotate(45deg);
+      }
+
+      .p-compact-middle {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .p-compact-title {
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: -0.025em;
+        line-height: 1.15;
+        margin-bottom: 0;
+      }
+
+      .p-compact-desc {
+        font-size: 0.86rem;
+        color: #94a3b8;
+        line-height: 1.5;
+        margin-bottom: 0;
+      }
+
+      .p-compact-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        margin-top: 4px;
+      }
+
+      .p-status-pill {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 6px;
+      }
+      .p-status-pill.cyan { background: rgba(56, 189, 248, 0.12); color: #38bdf8; }
+      .p-status-pill.emerald { background: rgba(52, 211, 153, 0.12); color: #34d399; }
+      .p-status-pill.amber { background: rgba(251, 191, 36, 0.12); color: #fbbf24; }
+
+      .p-compact-hint {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.72rem;
+        color: #64748b;
+        transition: color 0.25s ease, transform 0.25s ease;
+      }
+      .p-card:hover .p-compact-hint {
+        color: #38bdf8;
+        transform: translateX(2px);
+      }
+
+      /* =========================================
+         2. EXPANDED STATE VIEW (Spacious & Clean)
+         ========================================= */
+      .p-card-expanded {
+        display: none;
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        animation: revealDrawer 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .p-card:hover .p-card-expanded,
+      .p-card.is-expanded .p-card-expanded {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      @keyframes revealDrawer {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .p-expanded-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .p-expanded-brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .p-expanded-title-group {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .p-expanded-title-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .p-expanded-title {
+        font-size: 1.85rem;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+      }
+
+      .p-expanded-theme-text {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.72rem;
+        color: #94a3b8;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .p-expanded-arrow-active {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        font-family: var(--font-mono, monospace);
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .p-expanded-arrow-active span.arrow {
+        font-size: 0.95rem;
+        transform: rotate(45deg);
+        display: inline-block;
+      }
+
+      .p-expanded-body {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .p-body-text {
+        font-size: 1.05rem;
+        color: #cbd5e1;
+        line-height: 1.7;
+        max-width: 820px;
+      }
+
+      /* Multiple Action Buttons Container */
+      .p-actions-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin-top: 8px;
+      }
+
+      /* Action Button Variants */
+      .p-btn-clean {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 22px;
+        border-radius: 9999px;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 600;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        width: fit-content;
+      }
+      .p-btn-clean.cyan {
+        background: #0284c7;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+      }
+      .p-btn-clean.cyan:hover {
+        background: #0369a1;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(2, 132, 199, 0.55);
+      }
+      .p-btn-clean.emerald {
+        background: #059669;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4);
+      }
+      .p-btn-clean.emerald:hover {
+        background: #047857;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(5, 150, 105, 0.55);
+      }
+      .p-btn-clean.amber {
+        background: #d97706;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 14px rgba(217, 119, 6, 0.4);
+      }
+      .p-btn-clean.amber:hover {
+        background: #b45309;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(217, 119, 6, 0.55);
+      }
+      .p-btn-clean.violet {
+        background: #7c3aed;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+      }
+      .p-btn-clean.violet:hover {
+        background: #6d28d9;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(124, 58, 237, 0.55);
+      }
+      .p-btn-clean.rose {
+        background: #e11d48;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 14px rgba(225, 29, 72, 0.4);
+      }
+      .p-btn-clean.rose:hover {
+        background: #be123c;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(225, 29, 72, 0.55);
+      }
+      .p-btn-clean.blue {
+        background: #2563eb;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+      }
+      .p-btn-clean.blue:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(37, 99, 235, 0.55);
+      }
+
+      /* Feature Points List (Clean & Compact) */
+      .p-points-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 6px 0 2px 0;
+        padding: 0;
+        list-style: none;
+      }
+      .p-points-list.compact {
+        gap: 6px;
+        margin: 4px 0 2px 0;
+      }
+      .p-point-item {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 0.86rem;
+        color: #cbd5e1;
+        line-height: 1.45;
+      }
+      .p-points-list.compact .p-point-item {
+        font-size: 0.8rem;
+        color: #94a3b8;
+        line-height: 1.35;
+      }
+      .p-point-bullet {
+        font-size: 0.75rem;
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .p-point-bullet.cyan { color: #38bdf8; }
+      .p-point-bullet.emerald { color: #34d399; }
+      .p-point-bullet.amber { color: #fbbf24; }
+
+      /* Glass Outline Button */
+      .p-btn-glass {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        border-radius: 9999px;
+        text-decoration: none;
+        font-size: 0.86rem;
+        font-weight: 500;
+        color: #f1f5f9;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        backdrop-filter: blur(8px);
+        transition: all 0.25s ease;
+      }
+      .p-btn-glass:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.32);
+        color: #ffffff;
+        transform: translateY(-1px);
+      }
+
+      /* Disabled / Coming Soon Action Button */
+      .p-btn-disabled {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        border-radius: 9999px;
+        font-size: 0.86rem;
+        font-weight: 500;
+        color: #94a3b8;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: default;
+        user-select: none;
+        width: fit-content;
+      }
+      .p-btn-disabled .p-btn-lock-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #64748b;
+        display: inline-block;
+      }
+
+      /* Ghost Link Button */
+      .p-btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 16px;
+        border-radius: 9999px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #94a3b8;
+        background: transparent;
+        border: 1px solid transparent;
+        transition: all 0.25s ease;
+      }
+      .p-btn-ghost:hover {
+        color: #38bdf8;
+        background: rgba(56, 189, 248, 0.08);
+      }
+
+      /* Incubation Banner */
+      .p-incubation-banner {
+        max-width: 1280px;
+        margin: 0 auto 90px auto;
+        padding: 0 24px;
+        width: 100%;
+      }
+
+      .p-incubation-card {
+        padding: 48px 56px;
+        border-radius: 28px;
+        background: 
+          radial-gradient(ellipse at 80% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+          linear-gradient(180deg, rgba(17, 24, 39, 0.6) 0%, rgba(10, 15, 26, 0.8) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+      }
+
+      .p-incubation-left h3 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+
+      .p-incubation-left p {
+        font-size: 0.95rem;
+        color: #94a3b8;
+        max-width: 600px;
+        line-height: 1.6;
+      }
+
+      .p-incubation-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 30px;
+        border-radius: 9999px;
+        background: #ffffff;
+        color: #030712;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        flex-shrink: 0;
+        transition: all 0.25s ease;
+      }
+
+      .p-incubation-btn:hover {
+        background: #f1f5f9;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+      }
+
+      /* =========================================
+         Comprehensive Mobile & Tablet Responsive
+         ========================================= */
+
+      /* 1. Tablet Landscape (<= 1024px) */
+      @media (max-width: 1024px) {
+        .p-navbar {
+          padding: 0 32px;
+        }
+        .p-sheet-controls {
+          padding: 16px 32px;
+        }
+        .p-matrix-deck {
+          min-height: auto;
+        }
+      }
+
+      /* 2. Tablet Portrait & Small Desktop (<= 960px) */
+      @media (max-width: 960px) {
+        .p-navbar {
+          padding: 0 20px;
+          height: 66px;
+        }
+        .p-nav-left {
+          gap: 20px;
+        }
+        .p-nav-menu {
+          gap: 18px;
+        }
+        .p-nav-link {
+          font-size: 0.84rem;
+        }
+        .btn-nav-glass {
+          padding: 8px 16px;
+          font-size: 0.8rem;
+        }
+
+        .p-sheet-sticky-bar {
+          top: 66px;
+        }
+        .p-sheet-controls {
+          padding: 14px 20px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 14px;
+        }
+        .p-sheet-title {
+          font-size: 1.35rem;
+        }
+        .p-filter-bar {
+          display: flex;
+          width: 100%;
+          gap: 6px;
+          padding: 4px;
+          overflow-x: auto;
+          scrollbar-width: none;
+          -webkit-overflow-scrolling: touch;
+          justify-content: flex-start;
+        }
+        .p-filter-bar::-webkit-scrollbar {
+          display: none;
+        }
+        .p-filter-btn {
+          padding: 7px 15px;
+          font-size: 0.78rem;
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+
+        .p-grid-container {
+          padding: 24px 20px 60px 20px;
+        }
+        .p-matrix-deck {
+          flex-direction: column;
+          min-height: auto;
+          gap: 18px;
+        }
+        .p-card {
+          flex: none;
+          width: 100%;
+          padding: 24px 20px;
+          border-radius: 22px;
+        }
+        .p-card.is-expanded {
+          padding: 26px 22px;
+        }
+        .p-card .p-card-compact {
+          display: flex;
+        }
+        .p-card.is-expanded .p-card-compact {
+          display: none;
+        }
+        .p-card .p-card-expanded {
+          display: none;
+        }
+        .p-card.is-expanded .p-card-expanded {
+          display: flex;
+        }
+
+        .p-incubation-card {
+          padding: 34px 26px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 22px;
+        }
+      }
+
+      /* 3. Mobile Devices (<= 640px) */
+      @media (max-width: 640px) {
+        .p-navbar {
+          padding: 0 16px;
+          height: 60px;
+        }
+        .p-nav-left {
+          gap: 12px;
+        }
+        .brand-name {
+          font-size: 1.05rem;
+        }
+        .brand-logo-mark {
+          width: 30px;
+          height: 30px;
+          font-size: 0.95rem;
+        }
+        .p-nav-menu {
+          display: none; /* Keep mobile header clean and spacious */
+        }
+        .btn-nav-glass {
+          padding: 7px 13px;
+          font-size: 0.76rem;
+        }
+
+        .p-hero-sticky-section {
+          padding: 60px 16px 36px 16px;
+          min-height: 100svh;
+        }
+        .p-hero-title {
+          font-size: clamp(1.75rem, 7.2vw, 2.2rem);
+          line-height: 1.2;
+          margin-bottom: 12px;
+        }
+        .p-hero-sub {
+          font-size: 0.92rem;
+          line-height: 1.55;
+          margin-bottom: 22px;
+          padding: 0 4px;
+        }
+        .creative-pulse-badge {
+          font-size: 0.68rem;
+          padding: 5px 12px;
+          margin-bottom: 16px;
+        }
+        .scroll-down-indicator {
+          font-size: 0.68rem;
+          padding: 7px 15px;
+        }
+
+        .p-overlap-sheet {
+          border-radius: 24px 24px 0 0;
+        }
+        .p-sheet-sticky-bar {
+          top: 60px;
+        }
+        .p-sheet-controls {
+          padding: 12px 16px;
+        }
+        .p-sheet-title {
+          font-size: 1.2rem;
+        }
+        .p-sheet-pretitle {
+          font-size: 0.65rem;
+        }
+
+        .p-grid-container {
+          padding: 18px 14px 48px 14px;
+        }
+        .p-card {
+          padding: 20px 16px;
+          border-radius: 20px;
+        }
+        .p-card.is-expanded {
+          padding: 22px 16px;
+        }
+
+        /* Compact View Mobile Fitting */
+        .p-compact-top {
+          margin-bottom: 14px;
+        }
+        .p-product-icon-wrap {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+        }
+        .p-product-icon-wrap svg {
+          width: 22px;
+          height: 22px;
+        }
+        .p-compact-arrow-btn {
+          width: 32px;
+          height: 32px;
+          font-size: 0.85rem;
+        }
+        .p-compact-title {
+          font-size: 1.45rem;
+          margin-bottom: 6px;
+        }
+        .p-theme-pill {
+          font-size: 0.68rem;
+          padding: 3px 9px;
+          margin-bottom: 10px;
+        }
+        .p-compact-desc {
+          font-size: 0.84rem;
+          line-height: 1.5;
+          margin-bottom: 16px;
+        }
+        .p-compact-bottom {
+          padding-top: 14px;
+        }
+
+        /* Expanded View Mobile Fitting */
+        .p-expanded-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+          padding-bottom: 14px;
+        }
+        .p-expanded-brand {
+          width: 100%;
+          justify-content: flex-start;
+          gap: 14px;
+        }
+        .p-expanded-title {
+          font-size: 1.5rem;
+        }
+        .p-expanded-theme-text {
+          font-size: 0.68rem;
+        }
+        .p-expanded-arrow-active {
+          padding: 4px 12px;
+          font-size: 0.66rem;
+        }
+
+        .p-body-text {
+          font-size: 0.92rem;
+          line-height: 1.6;
+        }
+        .p-actions-row {
+          flex-direction: column;
+          width: 100%;
+          gap: 10px;
+        }
+        .p-btn-clean,
+        .p-btn-glass,
+        .p-btn-ghost {
+          width: 100%;
+          justify-content: center;
+          padding: 12px 18px;
+          font-size: 0.85rem;
+        }
+
+        
+
+        /* Comparison Table on Mobile */
+        .p-matrix-section {
+          padding: 20px 14px 48px 14px;
+        }
+        .p-matrix-title {
+          font-size: 1.35rem;
+        }
+        .p-matrix-sub {
+          font-size: 0.85rem;
+          margin-bottom: 22px;
+        }
+        .p-table th,
+        .p-table td {
+          padding: 12px 14px;
+          font-size: 0.78rem;
+          white-space: nowrap;
+        }
+
+        /* Incubation Banner on Mobile */
+        .p-incubation-banner {
+          padding: 0 14px;
+          margin-bottom: 48px;
+        }
+        .p-incubation-card {
+          padding: 24px 18px;
+          border-radius: 20px;
+          gap: 18px;
+        }
+        .p-incubation-left h3 {
+          font-size: 1.25rem;
+        }
+        .p-incubation-left p {
+          font-size: 0.85rem;
+          line-height: 1.5;
+        }
+        .p-incubation-btn {
+          width: 100%;
+          justify-content: center;
+          font-size: 0.85rem;
+          padding: 11px 20px;
+        }
+
+        /* Footer on Mobile */
+        .legal-page-footer {
+          padding: 28px 16px;
+        }
+        .legal-page-footer > div {
+          flex-direction: column !important;
+          text-align: center;
+          gap: 14px !important;
+        }
+        .legal-page-footer a {
+          margin: 0 8px !important;
+          display: inline-block;
+          font-size: 0.8rem;
+        }
+      }
+
+      /* 4. Compact Smartphones (<= 380px) */
+      @media (max-width: 380px) {
+        .p-card {
+          padding: 18px 14px;
+        }
+        .p-card.is-expanded {
+          padding: 20px 14px;
+        }
+        .p-compact-title,
+        .p-expanded-title {
+          font-size: 1.35rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="products-page-body">
+    <!-- Fixed Glass Header -->
+    <header class="p-navbar">
+      <div class="p-nav-left">
+        <a href="/" class="p-nav-brand">
+          <div class="brand-logo-container">
+            <div class="brand-logo-mark">
+              <span>S</span>
+            </div>
+          </div>
+          <span class="brand-name">Synerbit</span>
+        </a>
+
+        <nav class="p-nav-menu">
+          <a href="/" class="p-nav-link">Home</a>
+          <a href="/products.html" class="p-nav-link active">Products</a>
+          <a href="/#idea-stage" class="p-nav-link">Collab</a>
+          <a href="/#about-stage" class="p-nav-link">About</a>
+        </nav>
+      </div>
+
+      <div>
+        <a href="mailto:contact@synerbit.in" class="btn-nav-glass">Get in Touch</a>
+      </div>
+    </header>
+
+    <!-- Sticky Hero Section with Luminous Lightning Half Moon Arc -->
+    <section class="p-hero-sticky-section">
+      <!-- Subtle Luminous White Horizon Edge spanning screen from left to right -->
+      <div class="hero-horizon-edge-wrapper">
+        <svg class="horizon-arc-svg" viewBox="0 0 1440 240" fill="none" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="horizonGlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+              <stop offset="25%" stop-color="#ffffff" stop-opacity="0.18" />
+              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.55" />
+              <stop offset="75%" stop-color="#ffffff" stop-opacity="0.18" />
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+            </linearGradient>
+            <radialGradient id="horizonCoreBloom" cx="50%" cy="40%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08" />
+              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.02" />
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+            <filter id="whiteGlow" x="-20%" y="-100%" width="140%" height="300%">
+              <feGaussianBlur stdDeviation="8" result="blur1" />
+              <feGaussianBlur stdDeviation="24" result="blur2" />
+              <feMerge>
+                <feMergeNode in="blur2" />
+                <feMergeNode in="blur1" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          
+          <!-- Soft, faint ambient glow under curvature -->
+          <ellipse cx="720" cy="110" rx="680" ry="90" fill="url(#horizonCoreBloom)" />
+          
+          <!-- Subtle wide aura line with gentle low intensity -->
+          <path d="M 0 170 Q 720 50 1440 170" stroke="rgba(255, 255, 255, 0.14)" stroke-width="4" stroke-linecap="round" filter="url(#whiteGlow)" />
+          
+          <!-- Clean, refined low-intensity white crest edge -->
+          <path d="M 0 170 Q 720 50 1440 170" stroke="url(#horizonGlowGrad)" stroke-width="1.4" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <div class="p-hero-center-content">
+        <div class="creative-pulse-badge">
+          <span class="pulse-dot"></span>
+          <span>THE SYNERBIT ECOSYSTEM</span>
+        </div>
+
+        <h1 class="p-hero-title">
+          Software Built for Velocity,<br />
+          <span class="gradient-glow-text">Clarity, and Scale</span>
+        </h1>
+
+        <p class="p-hero-sub">
+          Explore our connected suite of purpose-built SaaS platforms designed to simplify complex workflows for teams, communities, and modern operations.
+        </p>
+
+        <div class="scroll-down-indicator" id="p-scroll-down-btn" style="cursor: pointer;">
+          <span class="scroll-arrow">↓</span>
+          <span>SCROLL TO EXPLORE PRODUCTS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overlapping Sheet Arena -->
+    <section class="p-overlap-arena" id="p-overlap-arena">
+      <div class="p-overlap-sheet">
+        <div class="sheet-handle"></div>
+
+        <!-- Sticky Controls Bar below fixed 72px navbar -->
+        <div class="p-sheet-sticky-bar">
+          <div class="p-sheet-controls">
+            <div class="p-sheet-heading-wrap">
+              <span class="p-sheet-pretitle">PORTFOLIO DIRECTORY</span>
+              <h2 class="p-sheet-title">Core Ecosystem Products</h2>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="p-filter-bar">
+              <button type="button" class="p-filter-btn active" data-filter="all">All Products (3)</button>
+              <button type="button" class="p-filter-btn" data-filter="active">Active Production (1)</button>
+              <button type="button" class="p-filter-btn" data-filter="upcoming">Upcoming &amp; Beta (2)</button>
+            </div>
+          </div>
+        </div>
+
+    <!-- Product Showcase Matrix Cards -->
+    <main class="p-grid-container">
+      <div class="p-matrix-deck" id="productsMatrixDeck">
+        <!-- Products rendered dynamically by JavaScript with only Icon, Name, Status, Description, and Action Buttons -->
+      </div> <!-- /.p-matrix-deck -->
+    </main>
+
+    <!-- Co-Creation Incubation Banner -->
+    <section class="p-incubation-banner">
+      <div class="p-incubation-card">
+        <div class="p-incubation-left">
+          <h3>Have a SaaS Concept You Want Built?</h3>
+          <p>
+            Through our incubation lab, we partner with forward-thinking founders and operators to engineer, co-create, and scale category-defining digital platforms.
+          </p>
+        </div>
+        <div>
+          <a href="/#idea-stage" class="p-incubation-btn">
+            <span>Explore Collab &amp; Incubation</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="legal-page-footer">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+        <div>
+          <span>Synerbit OPC Private Limited &bull; Product Ecosystem</span>
+        </div>
+        <div>
+          <a href="/" style="color: #38bdf8; text-decoration: none; margin-right: 18px;">Home</a>
+          <a href="/products.html" style="color: #ffffff; text-decoration: none; margin-right: 18px; font-weight: 600;">Products</a>
+          <a href="/#idea-stage" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Collab</a>
+          <a href="/privacy.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Privacy Policy</a>
+          <a href="/terms.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Terms &amp; Conditions</a>
+          <a href="/cookies.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Cookie Policy</a>
+          <a href="mailto:contact@synerbit.in" style="color: #94a3b8; text-decoration: none;">Contact</a>
+        </div>
+        <div>
+          <span>&copy; 2026 Synerbit. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+      </div> <!-- /.p-overlap-sheet -->
+    </section> <!-- /.p-overlap-arena -->
+
+
+    <!-- Interactive Scripts -->
+    <script>
+      // =========================================
+      // Synerbit Products Catalog
+      // Strictly: Icon, Name, Status, Description, Action Buttons
+      // =========================================
+      const ICON_PRESETS = {
+        pulse: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>`,
+        sync: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="12" r="6"></circle><circle cx="15" cy="12" r="6"></circle></svg>`,
+        fleet: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="3" x2="12" y2="7"></line><line x1="12" y1="17" x2="12" y2="21"></line><line x1="3" y1="12" x2="7" y2="12"></line><line x1="17" y1="12" x2="21" y2="12"></line><circle cx="12" cy="12" r="2.5" fill="currentColor"></circle></svg>`
+      };
+
+      const PRODUCTS = [
+        {
+          id: "pulsepm",
+          name: "PulsePM",
+          websiteUrl: "https://www.pulsepm.in",
+          iconKey: "pulse",
+          color: "cyan",
+          status: "Live Production",
+          description: "Sub-millisecond agile sprint flow built for engineering velocity without ticket bloat. Strips away Jira overhead with real-time board lifecycles and edge websocket sync.",
+          points: [
+            "Available on official website (app.pulsepm.in)",
+            "Available on Android app with instant push alerts",
+            "Real-time task boards & team chat in one workspace"
+          ],
+          actionButtons: [
+            { label: "Explore PulsePM", url: "https://www.pulsepm.in", variant: "primary" }
+          ],
+          category: "active"
+        },
+        {
+          id: "goalsync",
+          name: "GoalSync",
+          iconKey: "sync",
+          color: "emerald",
+          status: "Private Beta",
+          description: "Replaces solitary habit checklists with cooperative squads where daily check-ins and shared streaks build unstoppable consistency.",
+          actionButtons: [
+            { label: "Coming Soon", url: "#", variant: "disabled" }
+          ],
+          category: "upcoming"
+        },
+        {
+          id: "busly",
+          name: "Busly",
+          iconKey: "fleet",
+          color: "amber",
+          status: "In Engineering",
+          description: "Live vehicle telemetry and real-time student geofence safety alerts for modern schools. Bridges school administrators, bus drivers, and parents with live GPS breadcrumbs.",
+          actionButtons: [
+            { label: "Coming Soon", url: "#", variant: "disabled" }
+          ],
+          category: "upcoming"
+        }
+      ];
+
+      function escapeHtml(str) {
+        if (!str) return "";
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      // =========================================
+      // Render Products Matrix Deck
+      // Strictly: Icon, Name, Status, Description, Action Buttons
+      // =========================================
+      function renderProductsDeck(selectedId) {
+        const deck = document.getElementById("productsMatrixDeck");
+        if (!deck) return;
+
+        let activeId = selectedId || PRODUCTS[0].id;
+
+        deck.innerHTML = PRODUCTS.map(prod => {
+          const isExpanded = prod.id === activeId;
+          const iconMarkup = ICON_PRESETS[prod.iconKey] || ICON_PRESETS.pulse;
+
+          const pointsMarkup = (prod.points && prod.points.length > 0)
+            ? `<ul class="p-points-list">
+                ${prod.points.map(pt => `
+                  <li class="p-point-item">
+                    <span class="p-point-bullet ${prod.color}">✦</span>
+                    <span>${escapeHtml(pt)}</span>
+                  </li>
+                `).join("")}
+              </ul>`
+            : "";
+
+          const compactPointsMarkup = (prod.points && prod.points.length > 0)
+            ? `<ul class="p-points-list compact">
+                ${prod.points.map(pt => `
+                  <li class="p-point-item">
+                    <span class="p-point-bullet ${prod.color}">✦</span>
+                    <span>${escapeHtml(pt)}</span>
+                  </li>
+                `).join("")}
+              </ul>`
+            : "";
+
+          const buttonsMarkup = (prod.actionButtons || []).map(btn => {
+            const label = escapeHtml(btn.label);
+            const url = escapeHtml(btn.url || "#");
+            const isExternal = url.startsWith("http");
+            const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+            if (btn.variant === "disabled") {
+              return `<span class="p-btn-disabled">
+                <span class="p-btn-lock-dot"></span>
+                <span>${label}</span>
+              </span>`;
+            } else if (btn.variant === "primary") {
+              return `<a href="${url}" ${targetAttr} class="p-btn-clean ${prod.color}">
+                <span>${label}</span>
+                <span>→</span>
+              </a>`;
+            } else if (btn.variant === "ghost") {
+              return `<a href="${url}" ${targetAttr} class="p-btn-ghost">
+                <span>${label}</span>
+                <span>↗</span>
+              </a>`;
+            } else {
+              return `<a href="${url}" ${targetAttr} class="p-btn-glass">
+                <span>${label}</span>
+                <span>↗</span>
+              </a>`;
+            }
+          }).join("");
+
+          return `
+            <article class="p-card card-${prod.id} ${isExpanded ? 'is-expanded' : ''}" data-category="${prod.category}" data-id="${prod.id}">
+              <span class="p-ghost-watermark">${escapeHtml(prod.name.toUpperCase().slice(0, 5))}</span>
+
+              <!-- COMPACT STATE (Clean & Minimal) -->
+              <div class="p-card-compact">
+                <div class="p-compact-top">
+                  <div class="p-product-icon-wrap ${prod.color}">
+                    <div class="p-product-icon-glow ${prod.color}"></div>
+                    ${iconMarkup}
+                  </div>
+                  ${prod.websiteUrl ? `
+                    <a href="${prod.websiteUrl}" target="_blank" rel="noopener noreferrer" class="p-compact-arrow-btn" title="Visit ${escapeHtml(prod.name)} (pulsepm.in)" onclick="event.stopPropagation()">
+                      <span>↗</span>
+                    </a>
+                  ` : `
+                    <div class="p-compact-arrow-btn" title="Click to expand">
+                      <span>↗</span>
+                    </div>
+                  `}
+                </div>
+
+                <div class="p-compact-middle">
+                  <h3 class="p-compact-title">
+                    ${prod.websiteUrl ? `<a href="${prod.websiteUrl}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" onclick="event.stopPropagation()">${escapeHtml(prod.name)}</a>` : escapeHtml(prod.name)}
+                  </h3>
+                  <span class="p-status-pill ${prod.color}">${escapeHtml(prod.status)}</span>
+                  <p class="p-compact-desc">${escapeHtml(prod.description)}</p>
+                  ${compactPointsMarkup}
+                </div>
+
+                <div class="p-compact-bottom">
+                  <span class="p-compact-hint">Hover or tap to explore →</span>
+                </div>
+              </div>
+
+              <!-- EXPANDED STATE (Spacious & Clean) -->
+              <div class="p-card-expanded">
+                <div class="p-expanded-header">
+                  <div class="p-expanded-brand">
+                    <div class="p-product-icon-wrap ${prod.color}">
+                      <div class="p-product-icon-glow ${prod.color}"></div>
+                      ${iconMarkup}
+                    </div>
+                    <div class="p-expanded-title-group">
+                      <div class="p-expanded-title-row">
+                        <h2 class="p-expanded-title">
+                          ${prod.websiteUrl ? `<a href="${prod.websiteUrl}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">${escapeHtml(prod.name)}</a>` : escapeHtml(prod.name)}
+                        </h2>
+                        <span class="p-status-pill ${prod.color}">${escapeHtml(prod.status)}</span>
+                        ${prod.websiteUrl ? `<a href="${prod.websiteUrl}" target="_blank" rel="noopener noreferrer" class="p-status-pill ${prod.color}" style="text-decoration: none; display: inline-flex; align-items: center; gap: 3px;" title="Visit pulsepm.in">pulsepm.in ↗</a>` : ''}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-expanded-arrow-active" title="Click to collapse">
+                    <span>Active</span>
+                    <span class="arrow">↗</span>
+                  </div>
+                </div>
+
+                <div class="p-expanded-body">
+                  <p class="p-body-text">${escapeHtml(prod.description)}</p>
+                  ${pointsMarkup}
+
+                  <div class="p-actions-row">
+                    ${buttonsMarkup}
+                  </div>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        bindCardInteractions();
+      }
+
+      // =========================================
+      // Card Expand & Interaction Listeners
+      // =========================================
+      function bindCardInteractions() {
+        const cards = document.querySelectorAll(".p-card");
+
+        cards.forEach(card => {
+          // Desktop hover: smoothly expand hovered card and collapse siblings
+          card.addEventListener("mouseenter", () => {
+            if (window.innerWidth > 960) {
+              cards.forEach(c => c.classList.remove("is-expanded"));
+              card.classList.add("is-expanded");
+            }
+          });
+
+          // Click / Tap support for touch screens and mobile devices
+          card.addEventListener("click", (e) => {
+            if (e.target.closest("a")) return;
+            const isCurrentlyExpanded = card.classList.contains("is-expanded");
+            const isMobile = window.innerWidth <= 960;
+
+            // On mobile, tapping header of already expanded card collapses it
+            if (isMobile && isCurrentlyExpanded && e.target.closest(".p-expanded-header, .p-expanded-arrow-active")) {
+              card.classList.remove("is-expanded");
+              return;
+            }
+
+            cards.forEach(c => c.classList.remove("is-expanded"));
+            card.classList.add("is-expanded");
+          });
+
+          // Explicit arrow button tap interaction
+          const trigger = card.querySelector(".p-compact-arrow-btn, .p-expand-trigger");
+          if (trigger) {
+            trigger.addEventListener("click", (e) => {
+              e.stopPropagation();
+              cards.forEach(c => c.classList.remove("is-expanded"));
+              card.classList.add("is-expanded");
+            });
+          }
+        });
+      }
+
+      // =========================================
+      // Filter Buttons Logic
+      // =========================================
+      const filterBtns = document.querySelectorAll(".p-filter-btn");
+      filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const filter = btn.getAttribute("data-filter");
+          const cards = document.querySelectorAll(".p-card");
+          let firstMatch = null;
+
+          cards.forEach(card => {
+            const category = card.getAttribute("data-category");
+            if (filter === "all" || category === filter) {
+              card.style.display = "flex";
+              if (!firstMatch) firstMatch = card;
+            } else {
+              card.style.display = "none";
+              card.classList.remove("is-expanded");
+            }
+          });
+
+          if (firstMatch) {
+            firstMatch.classList.add("is-expanded");
+          }
+        });
+      });
+
+      // Smooth scroll click from hero indicator down into sticky bar below header
+      const scrollBtn = document.getElementById("p-scroll-down-btn");
+      const stickyBar = document.querySelector(".p-sheet-sticky-bar");
+      if (scrollBtn && stickyBar) {
+        scrollBtn.addEventListener("click", () => {
+          const rect = stickyBar.getBoundingClientRect();
+          window.scrollTo({ top: window.scrollY + rect.top - 72, behavior: "smooth" });
+        });
+      }
+
+      // Parallax fade for sticky hero content on scroll (matching homepage experience)
+      const heroContent = document.querySelector(".p-hero-center-content");
+      window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        const windowH = window.innerHeight;
+        if (heroContent) {
+          const heroFadeProgress = Math.min(Math.max((scrollY - windowH * 0.08) / (windowH * 0.65), 0), 1);
+          heroContent.style.opacity = (1 - heroFadeProgress * 0.95).toString();
+          heroContent.style.transform = `translateY(${scrollY * 0.15 - 10}px) scale(${1 - heroFadeProgress * 0.05})`;
+        }
+      }, { passive: true });
+
+      // Initial Render on Page Load
+      renderProductsDeck();
+    </script>
+  </body>
+</html>

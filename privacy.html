@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — Synerbit OPC Private Limited</title>
+    <meta name="description" content="Official Privacy Policy for Synerbit OPC Private Limited. Learn how we collect, use, and protect your information when using our corporate website." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      /* Standalone Legal Page Layout Styles */
+      .legal-page-body {
+        background-color: #06070c;
+        color: #f1f5f9;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .legal-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 72px;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(6, 7, 12, 0.82);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .legal-nav-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .legal-nav-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #ffffff;
+      }
+
+      .legal-nav-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #e2e8f0;
+        font-size: 0.84rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.25s ease;
+      }
+
+      .legal-nav-back:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        transform: translateX(-2px);
+      }
+
+      .legal-hero-section {
+        position: relative;
+        padding: 140px 24px 60px 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .legal-hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 14px;
+        border-radius: 9999px;
+        background: rgba(56, 189, 248, 0.08);
+        border: 1px solid rgba(56, 189, 248, 0.25);
+        color: #38bdf8;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .legal-hero-title {
+        font-size: clamp(2.4rem, 4vw, 3.4rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: #ffffff;
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+
+      .legal-hero-entity {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #94a3b8;
+        margin-bottom: 24px;
+      }
+
+      .legal-meta-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 24px;
+        padding: 16px 24px;
+        border-radius: 16px;
+        background: rgba(15, 23, 42, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        font-size: 0.85rem;
+        color: #94a3b8;
+      }
+
+      .legal-meta-item strong {
+        color: #f1f5f9;
+        font-weight: 600;
+      }
+
+      .legal-container-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px 100px 24px;
+        width: 100%;
+        flex: 1;
+      }
+
+      /* Sticky Sidebar Table of Contents */
+      .legal-toc-sidebar {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        padding-right: 12px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+      }
+
+      .legal-toc-title {
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #64748b;
+        margin-bottom: 14px;
+      }
+
+      .legal-toc-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .legal-toc-link {
+        font-size: 0.82rem;
+        color: #94a3b8;
+        text-decoration: none;
+        padding: 6px 12px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        line-height: 1.4;
+      }
+
+      .legal-toc-link:hover, .legal-toc-link.active {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .legal-toc-link.active {
+        color: #38bdf8;
+        font-weight: 600;
+        border-left: 2px solid #38bdf8;
+        border-radius: 0 8px 8px 0;
+      }
+
+      /* Legal Content Body */
+      .legal-article-content {
+        min-width: 0;
+      }
+
+      .legal-section-card {
+        padding: 32px 36px;
+        border-radius: 20px;
+        background: rgba(13, 17, 26, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        margin-bottom: 28px;
+        transition: border-color 0.3s ease;
+      }
+
+      .legal-section-card:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .legal-section-heading {
+        font-size: 1.35rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        scroll-margin-top: 100px;
+      }
+
+      .legal-section-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: rgba(56, 189, 248, 0.1);
+        color: #38bdf8;
+        font-size: 0.85rem;
+        font-weight: 700;
+        font-family: var(--font-mono, monospace);
+        flex-shrink: 0;
+      }
+
+      .legal-subheading {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #e2e8f0;
+        margin: 22px 0 10px 0;
+      }
+
+      .legal-paragraph {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: rgba(226, 232, 240, 0.78);
+        margin-bottom: 16px;
+      }
+
+      .legal-list {
+        margin: 12px 0 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .legal-list li {
+        font-size: 0.93rem;
+        line-height: 1.6;
+        color: rgba(226, 232, 240, 0.82);
+      }
+
+      .legal-callout-warning {
+        padding: 18px 22px;
+        border-radius: 12px;
+        background: rgba(245, 158, 11, 0.08);
+        border: 1px solid rgba(245, 158, 11, 0.25);
+        color: #fde68a;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 20px 0;
+      }
+
+      .legal-callout-info {
+        padding: 20px 24px;
+        border-radius: 14px;
+        background: rgba(56, 189, 248, 0.06);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        color: #bae6fd;
+        font-size: 0.92rem;
+        line-height: 1.65;
+        margin: 24px 0;
+      }
+
+      .legal-contact-box {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .legal-contact-card {
+        padding: 16px 20px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .legal-contact-card .label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #64748b;
+        margin-bottom: 6px;
+      }
+
+      .legal-contact-card .val {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #ffffff;
+      }
+
+      .legal-contact-card .val a {
+        color: #38bdf8;
+        text-decoration: none;
+      }
+
+      .legal-contact-card .val a:hover {
+        text-decoration: underline;
+      }
+
+      .legal-page-footer {
+        background: #040508;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 40px 24px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #64748b;
+      }
+
+      @media (max-width: 900px) {
+        .legal-navbar {
+          padding: 0 20px;
+        }
+        .legal-container-layout {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .legal-toc-sidebar {
+          display: none;
+        }
+        .legal-section-card {
+          padding: 24px 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="legal-page-body">
+    <!-- Fixed Navigation Bar -->
+    <header class="legal-navbar">
+      <div class="legal-nav-left">
+        <a href="/" class="legal-nav-brand">
+          <div class="brand-logo-container">
+            <div class="brand-logo-mark">
+              <span>S</span>
+            </div>
+          </div>
+          <span class="brand-name">Synerbit</span>
+        </a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="/products.html" class="legal-nav-back">Products</a>
+        <a href="/" class="legal-nav-back">
+          <span>← Back to Home</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Header / Hero Section -->
+    <section class="legal-hero-section">
+      <div class="legal-hero-badge">Corporate Legal &amp; Compliance</div>
+      <h1 class="legal-hero-title">Privacy Policy</h1>
+      <div class="legal-hero-entity">Synerbit OPC Private Limited</div>
+
+      <div class="legal-meta-bar">
+        <div class="legal-meta-item">
+          <strong>Entity:</strong> Synerbit OPC Private Limited
+        </div>
+        <div class="legal-meta-item">
+          <strong>Last Updated:</strong> 6 October 2026
+        </div>
+        <div class="legal-meta-item">
+          <strong>Scope:</strong> Corporate Website (synerbit.in)
+        </div>
+        <div class="legal-meta-item">
+          <strong>Jurisdiction:</strong> Laws of India
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Grid Layout -->
+    <main class="legal-container-layout">
+      <!-- Sticky Sidebar Table of Contents -->
+      <aside class="legal-toc-sidebar" aria-label="Table of Contents">
+        <div class="legal-toc-title">Sections</div>
+        <nav class="legal-toc-nav">
+          <a href="#section-1" class="legal-toc-link">1. Introduction</a>
+          <a href="#section-2" class="legal-toc-link">2. Information We Collect</a>
+          <a href="#section-3" class="legal-toc-link">3. How We Use Information</a>
+          <a href="#section-4" class="legal-toc-link">4. Product Ideas &amp; Submissions</a>
+          <a href="#section-5" class="legal-toc-link">5. Cookies &amp; Technologies</a>
+          <a href="#section-6" class="legal-toc-link">6. Third-Party Services</a>
+          <a href="#section-7" class="legal-toc-link">7. Sharing &amp; Disclosure</a>
+          <a href="#section-8" class="legal-toc-link">8. Data Security</a>
+          <a href="#section-9" class="legal-toc-link">9. Data Retention</a>
+          <a href="#section-10" class="legal-toc-link">10. Your Rights</a>
+          <a href="#section-11" class="legal-toc-link">11. Withdrawal of Consent</a>
+          <a href="#section-12" class="legal-toc-link">12. Children's Privacy</a>
+          <a href="#section-13" class="legal-toc-link">13. External Links</a>
+          <a href="#section-14" class="legal-toc-link">14. International Transfers</a>
+          <a href="#section-15" class="legal-toc-link">15. Contact Us</a>
+          <a href="#section-16" class="legal-toc-link">16. Grievance Redressal</a>
+          <a href="#section-17" class="legal-toc-link">17. Changes to Policy</a>
+          <a href="#section-18" class="legal-toc-link">18. Governing Law</a>
+        </nav>
+      </aside>
+
+      <!-- Full Article Content -->
+      <article class="legal-article-content">
+        <!-- 1. Introduction -->
+        <section class="legal-section-card" id="section-1">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">01</span>
+            Introduction
+          </h2>
+          <p class="legal-paragraph">
+            Synerbit OPC Private Limited ("Synerbit", "we", "us", or "our") respects your privacy and is committed to handling personal information responsibly. This Privacy Policy explains how we collect, use, disclose, retain, and protect information when you visit or interact with the Synerbit corporate website (the "Website").
+          </p>
+          <p class="legal-paragraph">
+            This policy applies specifically to the Synerbit corporate Website. Individual products and services operated by Synerbit may have separate privacy policies and terms applicable to those products.
+          </p>
+        </section>
+
+        <!-- 2. Information We Collect -->
+        <section class="legal-section-card" id="section-2">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">02</span>
+            Information We Collect
+          </h2>
+          
+          <h3 class="legal-subheading">2.1 Information You Voluntarily Provide</h3>
+          <p class="legal-paragraph">
+            If you contact us by email or otherwise voluntarily provide information, we may receive:
+          </p>
+          <ul class="legal-list">
+            <li>Name</li>
+            <li>Email address</li>
+            <li>Company or organization name</li>
+            <li>Information contained in your message</li>
+            <li>Product or business ideas you choose to share</li>
+            <li>Other information you voluntarily provide</li>
+          </ul>
+
+          <div class="legal-callout-warning">
+            <strong>Security Notice:</strong> Please do not send passwords, payment-card information, government identification numbers, confidential credentials, or other highly sensitive information through the Website or ordinary email unless specifically requested through an appropriate secure channel.
+          </div>
+
+          <h3 class="legal-subheading">2.2 Automatically Collected Technical Information</h3>
+          <p class="legal-paragraph">
+            Depending on the hosting, security, CDN, analytics, or other technical services enabled on the Website, certain technical information may be processed automatically, including:
+          </p>
+          <ul class="legal-list">
+            <li>IP address</li>
+            <li>Browser type and version</li>
+            <li>Device type</li>
+            <li>Operating system</li>
+            <li>Approximate location derived from technical information</li>
+            <li>Pages visited and access times</li>
+            <li>Referring website</li>
+            <li>Basic website usage information</li>
+            <li>Security and diagnostic information</li>
+          </ul>
+          <p class="legal-paragraph">
+            The actual information collected depends on the Website's technical configuration and the third-party services in use.
+          </p>
+        </section>
+
+        <!-- 3. How We Use Information -->
+        <section class="legal-section-card" id="section-3">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">03</span>
+            How We Use Information
+          </h2>
+          <p class="legal-paragraph">
+            We may use information for the following purposes:
+          </p>
+          <ul class="legal-list">
+            <li>Responding to inquiries and communications</li>
+            <li>Reviewing product or business ideas voluntarily submitted to us</li>
+            <li>Communicating with people who contact us</li>
+            <li>Understanding and improving the Website</li>
+            <li>Maintaining Website security</li>
+            <li>Detecting and preventing abuse, fraud, or unauthorized activity</li>
+            <li>Troubleshooting technical problems</li>
+            <li>Complying with applicable legal obligations</li>
+            <li>Protecting our rights, property, and users</li>
+          </ul>
+        </section>
+
+        <!-- 4. Product Ideas and Other Submissions -->
+        <section class="legal-section-card" id="section-4">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">04</span>
+            Product Ideas and Other Submissions
+          </h2>
+          <p class="legal-paragraph">
+            If you voluntarily submit a product idea, business idea, suggestion, feedback, or other material to Synerbit, we may review the submission for business, product, or development purposes and may contact you regarding it.
+          </p>
+          <p class="legal-paragraph">
+            Submission of an idea does not automatically create a confidentiality agreement, partnership, employment relationship, investment relationship, or other contractual relationship.
+          </p>
+          <p class="legal-paragraph">
+            You should not submit information that you are not authorized to disclose.
+          </p>
+          <div class="legal-callout-info">
+            <strong>Important Clarification:</strong> This Privacy Policy does not constitute a Non-Disclosure Agreement (NDA). If you require confidential treatment for an idea or other information, contact Synerbit regarding a separate confidentiality arrangement before making the disclosure.
+          </div>
+        </section>
+
+        <!-- 5. Cookies and Similar Technologies -->
+        <section class="legal-section-card" id="section-5">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">05</span>
+            Cookies and Similar Technologies
+          </h2>
+          <p class="legal-paragraph">
+            The Website may use cookies or similar technologies where necessary for website functionality, security, analytics, performance, or preferences:
+          </p>
+          <ul class="legal-list">
+            <li>Enable essential website functionality</li>
+            <li>Maintain security</li>
+            <li>Understand website usage</li>
+            <li>Improve Website performance</li>
+            <li>Remember certain preferences</li>
+          </ul>
+          <p class="legal-paragraph">
+            Where required by applicable law, we will obtain appropriate consent before using non-essential cookies or similar technologies. You can manage or restrict cookies through your browser settings. Disabling certain cookies may affect Website functionality.
+          </p>
+        </section>
+
+        <!-- 6. Third-Party Services -->
+        <section class="legal-section-card" id="section-6">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">06</span>
+            Third-Party Services
+          </h2>
+          <p class="legal-paragraph">
+            We may use third-party service providers to host, secure, operate, maintain, analyze, or improve the Website. These may include hosting providers, content delivery networks, security providers, analytics providers, email or communication providers, and other infrastructure providers.
+          </p>
+          <p class="legal-paragraph">
+            Such providers may process information on our behalf as necessary to provide their services. The actual providers used by the Website may change over time.
+          </p>
+        </section>
+
+        <!-- 7. Information Sharing and Disclosure -->
+        <section class="legal-section-card" id="section-7">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">07</span>
+            Information Sharing and Disclosure
+          </h2>
+          <p class="legal-paragraph">
+            <strong>We do not sell your personal information.</strong>
+          </p>
+          <p class="legal-paragraph">
+            We may disclose information where reasonably necessary to:
+          </p>
+          <ul class="legal-list">
+            <li>Service providers supporting Website operation, infrastructure, security, analytics, or communications</li>
+            <li>Comply with applicable law, regulation, legal process, court order, or lawful governmental request</li>
+            <li>Detect, prevent, investigate, or address fraud, security issues, illegal activity, or threats to rights, property, or safety</li>
+            <li>Support a merger, acquisition, restructuring, financing, sale of assets, or similar corporate transaction, subject to applicable law</li>
+          </ul>
+        </section>
+
+        <!-- 8. Data Security -->
+        <section class="legal-section-card" id="section-8">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">08</span>
+            Data Security
+          </h2>
+          <p class="legal-paragraph">
+            We take reasonable technical and organizational measures designed to protect information against unauthorized access, alteration, disclosure, loss, misuse, or destruction.
+          </p>
+          <p class="legal-paragraph">
+            However, no website, internet transmission, or electronic storage system can be guaranteed to be completely secure. Accordingly, we cannot guarantee absolute security.
+          </p>
+        </section>
+
+        <!-- 9. Data Retention -->
+        <section class="legal-section-card" id="section-9">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">09</span>
+            Data Retention
+          </h2>
+          <p class="legal-paragraph">
+            We retain information only for as long as reasonably necessary for the purposes described in this Privacy Policy, including responding to communications, maintaining business records, security and fraud prevention, resolving disputes, complying with legal obligations, and enforcing agreements or protecting our rights.
+          </p>
+          <p class="legal-paragraph">
+            When information is no longer required, we may delete, anonymize, or otherwise dispose of it in accordance with applicable law and our operational requirements.
+          </p>
+        </section>
+
+        <!-- 10. Your Rights -->
+        <section class="legal-section-card" id="section-10">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">10</span>
+            Your Rights
+          </h2>
+          <p class="legal-paragraph">
+            Subject to applicable law, you may have rights regarding your personal data, which may include:
+          </p>
+          <ul class="legal-list">
+            <li>Obtaining information about processing of your personal data</li>
+            <li>Requesting access to certain personal data</li>
+            <li>Requesting correction of inaccurate personal data</li>
+            <li>Requesting deletion or erasure where applicable</li>
+            <li>Withdrawing consent where processing is based on consent</li>
+            <li>Raising a grievance regarding our handling of personal data</li>
+            <li>Exercising other rights available under applicable law</li>
+          </ul>
+          <p class="legal-paragraph">
+            To exercise an applicable right, contact us using the details provided in Section 15.
+          </p>
+        </section>
+
+        <!-- 11. Withdrawal of Consent -->
+        <section class="legal-section-card" id="section-11">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">11</span>
+            Withdrawal of Consent
+          </h2>
+          <p class="legal-paragraph">
+            Where we process personal data based on your consent, you may withdraw that consent in accordance with applicable law. Withdrawal will not affect processing that occurred before withdrawal or processing otherwise permitted or required by law.
+          </p>
+        </section>
+
+        <!-- 12. Children's Privacy -->
+        <section class="legal-section-card" id="section-12">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">12</span>
+            Children's Privacy
+          </h2>
+          <p class="legal-paragraph">
+            The Website is primarily a corporate and informational website. We do not knowingly solicit personal information from children through the Website.
+          </p>
+          <p class="legal-paragraph">
+            If you believe a child has provided personal information to us without appropriate authorization, please contact us so that we can review the matter and take appropriate action. Individual Synerbit products may have separate age requirements and privacy practices.
+          </p>
+        </section>
+
+        <!-- 13. External Links -->
+        <section class="legal-section-card" id="section-13">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">13</span>
+            External Links
+          </h2>
+          <p class="legal-paragraph">
+            The Website may contain links to third-party websites, applications, social-media platforms, or other services. We are not responsible for the privacy practices, security, content, or policies of third-party services. We encourage you to review their privacy policies before providing personal information.
+          </p>
+        </section>
+
+        <!-- 14. International Data Transfers -->
+        <section class="legal-section-card" id="section-14">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">14</span>
+            International Data Transfers
+          </h2>
+          <p class="legal-paragraph">
+            Some service providers used by Synerbit may process information on servers located outside India. Where personal information is transferred or processed across jurisdictions, we will take steps required by applicable law.
+          </p>
+        </section>
+
+        <!-- 15. Contact Us -->
+        <section class="legal-section-card" id="section-15">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">15</span>
+            Contact Us
+          </h2>
+          <p class="legal-paragraph">
+            If you have questions, concerns, requests, or complaints regarding this Privacy Policy or our handling of personal information, contact us:
+          </p>
+          <div class="legal-contact-box">
+            <div class="legal-contact-card">
+              <div class="label">Legal Entity</div>
+              <div class="val">Synerbit OPC Private Limited</div>
+            </div>
+            <div class="legal-contact-card">
+              <div class="label">General Privacy Inquiries</div>
+              <div class="val"><a href="mailto:legal@synerbit.in">legal@synerbit.in</a></div>
+            </div>
+            <div class="legal-contact-card">
+              <div class="label">Corporate Domain</div>
+              <div class="val"><a href="https://synerbit.in" target="_blank" rel="noopener noreferrer">synerbit.in</a></div>
+            </div>
+            <div class="legal-contact-card">
+              <div class="label">Data Protection Officer</div>
+              <div class="val"><a href="mailto:legal@synerbit.in">legal@synerbit.in</a></div>
+            </div>
+            <div class="legal-contact-card">
+              <div class="label">Registered Office</div>
+              <div class="val" style="color: #f1f5f9; font-size: 0.88rem; line-height: 1.5;">A606 PNTC, PNTC, Times Of India Press Road, Manekbag, Ahmedabad – 380015, Gujarat, India.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 16. Grievance Redressal -->
+        <section class="legal-section-card" id="section-16">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">16</span>
+            Grievance Redressal
+          </h2>
+          <p class="legal-paragraph">
+            If you have a concern regarding the processing of your personal information, please contact us first at <a href="mailto:legal@synerbit.in" style="color: #38bdf8; text-decoration: none;">legal@synerbit.in</a>. Please include sufficient information to help us understand and investigate your concern.
+          </p>
+          <p class="legal-paragraph">
+            Where applicable, you may have the right to escalate a grievance to the relevant regulatory authority or Data Protection Board in accordance with applicable law.
+          </p>
+        </section>
+
+        <!-- 17. Changes to This Privacy Policy -->
+        <section class="legal-section-card" id="section-17">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">17</span>
+            Changes to This Privacy Policy
+          </h2>
+          <p class="legal-paragraph">
+            We may update this Privacy Policy from time to time to reflect changes to the Website, our business practices, technology, applicable laws or regulations, or third-party services.
+          </p>
+          <p class="legal-paragraph">
+            When we make changes, we will update the 'Last Updated' date at the top of this Privacy Policy. Where required by law, we will provide additional notice regarding material changes.
+          </p>
+        </section>
+
+        <!-- 18. Governing Law -->
+        <section class="legal-section-card" id="section-18">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">18</span>
+            Governing Law
+          </h2>
+          <p class="legal-paragraph">
+            This Privacy Policy is governed by the laws applicable in India, subject to any mandatory rights or protections that apply to you under applicable law.
+          </p>
+        </section>
+
+        <!-- Important Implementation Note -->
+        <div class="legal-callout-info" style="border-left: 4px solid #38bdf8;">
+          <h4 style="color: #ffffff; font-size: 0.95rem; font-weight: 600; margin-bottom: 8px;">Important Implementation Note</h4>
+          <p style="margin-bottom: 8px;">
+            This Privacy Policy should accurately reflect the Website's actual technical configuration. Before publishing, verify whether the Website uses analytics, cookies, tracking pixels, social-media embeds, forms, email services, CDN/security services, or other third-party tools. Remove or modify provisions that do not match actual practices.
+          </p>
+          <p style="color: rgba(226, 232, 240, 0.7); font-size: 0.86rem; margin-bottom: 0;">
+            This document is a practical draft and is not a substitute for legal advice. Consider having the final policy reviewed by an Indian privacy/corporate lawyer, particularly before launching products that process account, payment, student, parent, driver, or real-time location information.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="legal-page-footer">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+        <div>
+          <span>Synerbit OPC Private Limited &bull; Privacy Policy</span>
+        </div>
+        <div>
+          <a href="/" style="color: #38bdf8; text-decoration: none; margin-right: 18px;">Home</a>
+          <a href="/terms.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Terms &amp; Conditions</a>
+          <a href="/cookies.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Cookie Policy</a>
+          <a href="/products.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Products</a>
+          <a href="/#idea-stage" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Co-Creation</a>
+          <a href="mailto:legal@synerbit.in" style="color: #94a3b8; text-decoration: none;">Contact Legal</a>
+        </div>
+        <div>
+          <span>&copy; 2026 Synerbit. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ScrollSpy Script for Table of Contents -->
+    <script>
+      const tocLinks = document.querySelectorAll('.legal-toc-link');
+      const sections = document.querySelectorAll('.legal-section-card');
+
+      window.addEventListener('scroll', () => {
+        let currentId = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 140;
+          if (window.scrollY >= sectionTop) {
+            currentId = section.getAttribute('id');
+          }
+        });
+
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentId}`) {
+            link.classList.add('active');
+          }
+        });
+      }, { passive: true });
+    </script>
+  </body>
+</html>

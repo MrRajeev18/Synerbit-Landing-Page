@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms &amp; Conditions — Synerbit OPC Private Limited</title>
+    <meta name="description" content="Official Terms &amp; Conditions for Synerbit OPC Private Limited governing the access and use of the corporate website." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      /* Standalone Legal Page Layout Styles */
+      .legal-page-body {
+        background-color: #06070c;
+        color: #f1f5f9;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .legal-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 72px;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(6, 7, 12, 0.82);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .legal-nav-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .legal-nav-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #ffffff;
+      }
+
+      .legal-nav-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #e2e8f0;
+        font-size: 0.84rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.25s ease;
+      }
+
+      .legal-nav-back:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        transform: translateX(-2px);
+      }
+
+      .legal-hero-section {
+        position: relative;
+        padding: 140px 24px 60px 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .legal-hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 14px;
+        border-radius: 9999px;
+        background: rgba(56, 189, 248, 0.08);
+        border: 1px solid rgba(56, 189, 248, 0.25);
+        color: #38bdf8;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .legal-hero-title {
+        font-size: clamp(2.4rem, 4vw, 3.4rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: #ffffff;
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+
+      .legal-hero-entity {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #94a3b8;
+        margin-bottom: 24px;
+      }
+
+      .legal-meta-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 24px;
+        padding: 16px 24px;
+        border-radius: 16px;
+        background: rgba(15, 23, 42, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        font-size: 0.85rem;
+        color: #94a3b8;
+      }
+
+      .legal-meta-item strong {
+        color: #f1f5f9;
+        font-weight: 600;
+      }
+
+      .legal-container-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px 100px 24px;
+        width: 100%;
+        flex: 1;
+      }
+
+      /* Sticky Sidebar Table of Contents */
+      .legal-toc-sidebar {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        padding-right: 12px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+      }
+
+      .legal-toc-title {
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #64748b;
+        margin-bottom: 14px;
+      }
+
+      .legal-toc-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .legal-toc-link {
+        font-size: 0.81rem;
+        color: #94a3b8;
+        text-decoration: none;
+        padding: 5px 12px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        line-height: 1.35;
+      }
+
+      .legal-toc-link:hover, .legal-toc-link.active {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .legal-toc-link.active {
+        color: #38bdf8;
+        font-weight: 600;
+        border-left: 2px solid #38bdf8;
+        border-radius: 0 8px 8px 0;
+      }
+
+      /* Legal Content Body */
+      .legal-article-content {
+        min-width: 0;
+      }
+
+      .legal-section-card {
+        padding: 32px 36px;
+        border-radius: 20px;
+        background: rgba(13, 17, 26, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        margin-bottom: 28px;
+        transition: border-color 0.3s ease;
+      }
+
+      .legal-section-card:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .legal-section-heading {
+        font-size: 1.35rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        scroll-margin-top: 100px;
+      }
+
+      .legal-section-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: rgba(56, 189, 248, 0.1);
+        color: #38bdf8;
+        font-size: 0.85rem;
+        font-weight: 700;
+        font-family: var(--font-mono, monospace);
+        flex-shrink: 0;
+      }
+
+      .legal-paragraph {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: rgba(226, 232, 240, 0.78);
+        margin-bottom: 16px;
+      }
+
+      .legal-list {
+        margin: 12px 0 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .legal-list li {
+        font-size: 0.93rem;
+        line-height: 1.6;
+        color: rgba(226, 232, 240, 0.82);
+      }
+
+      .legal-callout-warning {
+        padding: 18px 22px;
+        border-radius: 12px;
+        background: rgba(245, 158, 11, 0.08);
+        border: 1px solid rgba(245, 158, 11, 0.25);
+        color: #fde68a;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 20px 0;
+      }
+
+      .legal-callout-info {
+        padding: 20px 24px;
+        border-radius: 14px;
+        background: rgba(56, 189, 248, 0.06);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        color: #bae6fd;
+        font-size: 0.92rem;
+        line-height: 1.65;
+        margin: 24px 0;
+      }
+
+      .legal-contact-box {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .legal-contact-card {
+        padding: 16px 20px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .legal-contact-card .label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #64748b;
+        margin-bottom: 6px;
+      }
+
+      .legal-contact-card .val {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #ffffff;
+      }
+
+      .legal-contact-card .val a {
+        color: #38bdf8;
+        text-decoration: none;
+      }
+
+      .legal-contact-card .val a:hover {
+        text-decoration: underline;
+      }
+
+      .legal-page-footer {
+        background: #040508;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 40px 24px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #64748b;
+      }
+
+      @media (max-width: 900px) {
+        .legal-navbar {
+          padding: 0 20px;
+        }
+        .legal-container-layout {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .legal-toc-sidebar {
+          display: none;
+        }
+        .legal-section-card {
+          padding: 24px 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="legal-page-body">
+    <!-- Fixed Navigation Bar -->
+    <header class="legal-navbar">
+      <div class="legal-nav-left">
+        <a href="/" class="legal-nav-brand">
+          <div class="brand-logo-container">
+            <div class="brand-logo-mark">
+              <span>S</span>
+            </div>
+          </div>
+          <span class="brand-name">Synerbit</span>
+        </a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="/products.html" class="legal-nav-back">Products</a>
+        <a href="/" class="legal-nav-back">
+          <span>← Back to Home</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Header / Hero Section -->
+    <section class="legal-hero-section">
+      <div class="legal-hero-badge">Corporate Legal &amp; Compliance</div>
+      <h1 class="legal-hero-title">Terms &amp; Conditions</h1>
+      <div class="legal-hero-entity">Synerbit OPC Private Limited</div>
+
+      <div class="legal-meta-bar">
+        <div class="legal-meta-item">
+          <strong>Entity:</strong> Synerbit OPC Private Limited
+        </div>
+        <div class="legal-meta-item">
+          <strong>Last Updated:</strong> 6 October 2026
+        </div>
+        <div class="legal-meta-item">
+          <strong>Scope:</strong> Corporate Website (synerbit.in)
+        </div>
+        <div class="legal-meta-item">
+          <strong>Governing Law:</strong> Laws of India
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Grid Layout -->
+    <main class="legal-container-layout">
+      <!-- Sticky Sidebar Table of Contents -->
+      <aside class="legal-toc-sidebar" aria-label="Table of Contents">
+        <div class="legal-toc-title">Sections</div>
+        <nav class="legal-toc-nav">
+          <a href="#section-1" class="legal-toc-link">1. Introduction</a>
+          <a href="#section-2" class="legal-toc-link">2. About Synerbit</a>
+          <a href="#section-3" class="legal-toc-link">3. Use of the Website</a>
+          <a href="#section-4" class="legal-toc-link">4. Website Content</a>
+          <a href="#section-5" class="legal-toc-link">5. Future Products</a>
+          <a href="#section-6" class="legal-toc-link">6. Intellectual Property</a>
+          <a href="#section-7" class="legal-toc-link">7. Trademarks</a>
+          <a href="#section-8" class="legal-toc-link">8. Product &amp; Service Info</a>
+          <a href="#section-9" class="legal-toc-link">9. Third-Party Links</a>
+          <a href="#section-10" class="legal-toc-link">10. User Submissions &amp; Ideas</a>
+          <a href="#section-11" class="legal-toc-link">11. No Professional Advice</a>
+          <a href="#section-12" class="legal-toc-link">12. Availability</a>
+          <a href="#section-13" class="legal-toc-link">13. Warranty Disclaimer</a>
+          <a href="#section-14" class="legal-toc-link">14. Liability Limitation</a>
+          <a href="#section-15" class="legal-toc-link">15. Indemnification</a>
+          <a href="#section-16" class="legal-toc-link">16. Privacy</a>
+          <a href="#section-17" class="legal-toc-link">17. Changes to Terms</a>
+          <a href="#section-18" class="legal-toc-link">18. Termination</a>
+          <a href="#section-19" class="legal-toc-link">19. Governing Law</a>
+          <a href="#section-20" class="legal-toc-link">20. Jurisdiction</a>
+          <a href="#section-21" class="legal-toc-link">21. Severability</a>
+          <a href="#section-22" class="legal-toc-link">22. Entire Agreement</a>
+          <a href="#section-23" class="legal-toc-link">23. Contact Us</a>
+        </nav>
+      </aside>
+
+      <!-- Full Article Content -->
+      <article class="legal-article-content">
+        <!-- 1. Introduction -->
+        <section class="legal-section-card" id="section-1">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">01</span>
+            Introduction
+          </h2>
+          <p class="legal-paragraph">
+            Welcome to the website of Synerbit OPC Private Limited ("Synerbit", "we", "us", or "our"). These Terms &amp; Conditions ("Terms") govern your access to and use of the Synerbit corporate website (the "Website").
+          </p>
+          <p class="legal-paragraph">
+            By accessing or using the Website, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree with these Terms, please do not use the Website.
+          </p>
+        </section>
+
+        <!-- 2. About Synerbit -->
+        <section class="legal-section-card" id="section-2">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">02</span>
+            About Synerbit
+          </h2>
+          <p class="legal-paragraph">
+            Synerbit OPC Private Limited is a technology company focused on developing, launching, and operating SaaS products, digital platforms, applications, and related technology solutions.
+          </p>
+          <p class="legal-paragraph">
+            The Website provides information about Synerbit, its vision, products, services, projects, and future initiatives.
+          </p>
+          <p class="legal-paragraph">
+            Individual Synerbit products may have their own Terms of Service, End User License Agreements, Privacy Policies, Refund Policies, or other terms. Those terms will apply when you use the relevant product or service.
+          </p>
+        </section>
+
+        <!-- 3. Use of the Website -->
+        <section class="legal-section-card" id="section-3">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">03</span>
+            Use of the Website
+          </h2>
+          <p class="legal-paragraph">
+            You may use the Website for lawful purposes and for obtaining information about Synerbit and its products.
+          </p>
+          <p class="legal-paragraph">You agree not to:</p>
+          <ul class="legal-list">
+            <li>Use the Website for any unlawful or fraudulent purpose.</li>
+            <li>Attempt to gain unauthorized access to the Website or its systems.</li>
+            <li>Interfere with the Website's operation or security.</li>
+            <li>Introduce viruses, malware, malicious code, or other harmful material.</li>
+            <li>Scrape, copy, reproduce, or systematically extract Website content without authorization.</li>
+            <li>Misrepresent your identity or relationship with Synerbit.</li>
+            <li>Use the Website to infringe the rights of Synerbit or any third party.</li>
+            <li>Attempt to bypass or interfere with security measures.</li>
+            <li>Use automated systems in a manner that places unreasonable load on the Website.</li>
+          </ul>
+          <p class="legal-paragraph">
+            We reserve the right to restrict or terminate access to the Website where we reasonably believe these Terms have been violated.
+          </p>
+        </section>
+
+        <!-- 4. Website Content -->
+        <section class="legal-section-card" id="section-4">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">04</span>
+            Website Content
+          </h2>
+          <p class="legal-paragraph">
+            The content available on the Website may include company information, product descriptions, product images and demonstrations, text, graphics, animations, videos, logos, trademarks, product roadmaps or future concepts, and other informational material.
+          </p>
+          <p class="legal-paragraph">
+            We make reasonable efforts to keep information on the Website accurate and current. However, we do not guarantee that all information will always be complete, accurate, current, or error-free.
+          </p>
+          <p class="legal-paragraph">
+            Product features, availability, pricing, specifications, launch dates, and other information may change without notice.
+          </p>
+        </section>
+
+        <!-- 5. Future Products and Announcements -->
+        <section class="legal-section-card" id="section-5">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">05</span>
+            Future Products and Announcements
+          </h2>
+          <p class="legal-paragraph">
+            Synerbit may display information about products, concepts, features, services, or initiatives that are currently under development or planned for the future.
+          </p>
+          <p class="legal-paragraph">
+            Such information is provided for informational purposes only and does not constitute a guarantee that a product, feature, service, or initiative will be launched or made available.
+          </p>
+          <p class="legal-paragraph">
+            We reserve the right to modify, delay, discontinue, or cancel any planned product or feature at our discretion.
+          </p>
+        </section>
+
+        <!-- 6. Intellectual Property -->
+        <section class="legal-section-card" id="section-6">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">06</span>
+            Intellectual Property
+          </h2>
+          <p class="legal-paragraph">
+            Unless otherwise stated, all intellectual property appearing on the Website is owned by or licensed to Synerbit. This may include the Synerbit name and branding, logos, product names, website design, graphics, illustrations, animations, text, images, videos, software, source code, product concepts, and related materials.
+          </p>
+          <p class="legal-paragraph">
+            You may view and access Website content for personal and legitimate informational purposes.
+          </p>
+          <p class="legal-paragraph">
+            You may not reproduce, modify, distribute, publish, sell, license, publicly display, or commercially exploit Website content without prior written permission from Synerbit, except where permitted by applicable law.
+          </p>
+        </section>
+
+        <!-- 7. Trademarks -->
+        <section class="legal-section-card" id="section-7">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">07</span>
+            Trademarks
+          </h2>
+          <p class="legal-paragraph">
+            Synerbit, its logos, product names, product logos, slogans, and associated branding may constitute trademarks or other intellectual property of Synerbit or their respective owners.
+          </p>
+          <p class="legal-paragraph">
+            You may not use Synerbit trademarks or branding in a manner that suggests an unauthorized association, sponsorship, endorsement, or partnership.
+          </p>
+        </section>
+
+        <!-- 8. Product and Service Information -->
+        <section class="legal-section-card" id="section-8">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">08</span>
+            Product and Service Information
+          </h2>
+          <p class="legal-paragraph">
+            Information about Synerbit products displayed on the Website is provided for general informational purposes.
+          </p>
+          <p class="legal-paragraph">
+            The actual features, functionality, availability, pricing, eligibility, technical requirements, and terms of individual products may differ.
+          </p>
+          <p class="legal-paragraph">
+            Before using a Synerbit product or service, you should review the terms and policies applicable to that specific product.
+          </p>
+        </section>
+
+        <!-- 9. Third-Party Links -->
+        <section class="legal-section-card" id="section-9">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">09</span>
+            Third-Party Links
+          </h2>
+          <p class="legal-paragraph">
+            The Website may contain links to third-party websites, platforms, applications, social-media pages, or other external resources.
+          </p>
+          <p class="legal-paragraph">
+            These links are provided for convenience and informational purposes. Synerbit does not control or necessarily endorse third-party websites or services and is not responsible for their content, availability, security, privacy practices, terms, or any loss or damage resulting from their use.
+          </p>
+        </section>
+
+        <!-- 10. User Communications and Idea Submissions -->
+        <section class="legal-section-card" id="section-10">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">10</span>
+            User Communications and Idea Submissions
+          </h2>
+          <p class="legal-paragraph">
+            The Website may provide an opportunity to contact Synerbit or voluntarily submit ideas for SaaS products, digital platforms, or other technology solutions.
+          </p>
+          <p class="legal-paragraph">
+            By submitting information to us, you represent that you have the right to submit the information and that your submission does not knowingly violate the rights of another person or organization or contain unlawful, malicious, or harmful material.
+          </p>
+          <p class="legal-paragraph">
+            Submitting an idea does not automatically create a partnership, employment relationship, investment agreement, joint venture, agency relationship, or other contractual relationship with Synerbit.
+          </p>
+          <div class="legal-callout-info">
+            <strong>Confidentiality Notice:</strong> Unless separately agreed in writing, submission of an idea through the Website or by email does not create an obligation for Synerbit to keep the idea confidential. If you require confidential treatment, contact Synerbit regarding a separate confidentiality agreement before disclosure.
+          </div>
+        </section>
+
+        <!-- 11. No Professional Advice -->
+        <section class="legal-section-card" id="section-11">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">11</span>
+            No Professional Advice
+          </h2>
+          <p class="legal-paragraph">
+            Information provided on the Website is for general informational purposes only. Nothing on the Website constitutes legal, financial, investment, business, professional consulting, or individualized technical advice.
+          </p>
+        </section>
+
+        <!-- 12. Availability of the Website -->
+        <section class="legal-section-card" id="section-12">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">12</span>
+            Availability of the Website
+          </h2>
+          <p class="legal-paragraph">
+            We aim to keep the Website available and functioning properly, but we do not guarantee that it will always be available, uninterrupted, error-free, free from viruses or other harmful components, or operate with the same features or functionality at all times.
+          </p>
+          <p class="legal-paragraph">
+            We may temporarily suspend, modify, or discontinue all or part of the Website for maintenance, upgrades, security, operational reasons, or other purposes.
+          </p>
+        </section>
+
+        <!-- 13. Disclaimer of Warranties -->
+        <section class="legal-section-card" id="section-13">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">13</span>
+            Disclaimer of Warranties
+          </h2>
+          <p class="legal-paragraph">
+            To the maximum extent permitted by applicable law, the Website and its content are provided on an "as is" and "as available" basis.
+          </p>
+          <p class="legal-paragraph">
+            Synerbit makes no warranties, express or implied, regarding the Website, including warranties relating to accuracy, reliability, availability, fitness for a particular purpose, non-infringement, or suitability for a particular use.
+          </p>
+          <p class="legal-paragraph">
+            Nothing in these Terms excludes any warranty or legal right that cannot lawfully be excluded.
+          </p>
+        </section>
+
+        <!-- 14. Limitation of Liability -->
+        <section class="legal-section-card" id="section-14">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">14</span>
+            Limitation of Liability
+          </h2>
+          <p class="legal-paragraph">
+            To the maximum extent permitted by applicable law, Synerbit and its directors, officers, employees, affiliates, contractors, and service providers shall not be liable for indirect, incidental, special, consequential, or punitive damages arising from or related to your use of, or inability to use, the Website.
+          </p>
+          <p class="legal-paragraph">
+            This may include loss of data, revenue, profits, business opportunities, goodwill, or business interruption.
+          </p>
+          <p class="legal-paragraph">
+            Nothing in these Terms limits or excludes liability that cannot legally be limited or excluded under applicable law.
+          </p>
+        </section>
+
+        <!-- 15. Indemnification -->
+        <section class="legal-section-card" id="section-15">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">15</span>
+            Indemnification
+          </h2>
+          <p class="legal-paragraph">
+            To the extent permitted by applicable law, you agree to indemnify and hold harmless Synerbit OPC Private Limited, its directors, officers, employees, affiliates, contractors, and representatives from claims, losses, liabilities, damages, costs, and expenses arising from your violation of these Terms, unlawful use of the Website, violation of another person's rights, or misuse of Website content or services.
+          </p>
+        </section>
+
+        <!-- 16. Privacy -->
+        <section class="legal-section-card" id="section-16">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">16</span>
+            Privacy
+          </h2>
+          <p class="legal-paragraph">
+            Your use of the Website is also subject to our <a href="/privacy.html" style="color: #38bdf8; text-decoration: underline;">Privacy Policy</a>, which explains how information may be collected, used, stored, and protected. You should read the Privacy Policy together with these Terms.
+          </p>
+        </section>
+
+        <!-- 17. Changes to These Terms -->
+        <section class="legal-section-card" id="section-17">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">17</span>
+            Changes to These Terms
+          </h2>
+          <p class="legal-paragraph">
+            Synerbit may modify these Terms from time to time. Updated Terms will be posted on this page with a revised 'Last Updated' date. Your continued use of the Website after changes are posted may constitute acceptance of the updated Terms, to the extent permitted by applicable law.
+          </p>
+        </section>
+
+        <!-- 18. Termination or Restriction of Access -->
+        <section class="legal-section-card" id="section-18">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">18</span>
+            Termination or Restriction of Access
+          </h2>
+          <p class="legal-paragraph">
+            We may restrict, suspend, or terminate access to the Website where necessary, including if these Terms have been violated, the Website is being misused, security is at risk, fraudulent or unlawful activity is occurring, or restriction is necessary to protect Synerbit or third parties.
+          </p>
+        </section>
+
+        <!-- 19. Governing Law -->
+        <section class="legal-section-card" id="section-19">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">19</span>
+            Governing Law
+          </h2>
+          <p class="legal-paragraph">
+            These Terms shall be governed by and interpreted in accordance with the laws of India, subject to applicable mandatory legal rights.
+          </p>
+        </section>
+
+        <!-- 20. Jurisdiction -->
+        <section class="legal-section-card" id="section-20">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">20</span>
+            Jurisdiction
+          </h2>
+          <p class="legal-paragraph">
+            Subject to applicable law, disputes arising in connection with these Terms or your use of the Website shall be subject to the jurisdiction of the courts having appropriate jurisdiction over Ahmedabad, Gujarat, India.
+          </p>
+        </section>
+
+        <!-- 21. Severability -->
+        <section class="legal-section-card" id="section-21">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">21</span>
+            Severability
+          </h2>
+          <p class="legal-paragraph">
+            If any provision of these Terms is determined to be invalid, unlawful, or unenforceable, that provision shall be modified or removed to the minimum extent necessary, and the remaining provisions shall continue to remain in effect.
+          </p>
+        </section>
+
+        <!-- 22. Entire Agreement -->
+        <section class="legal-section-card" id="section-22">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">22</span>
+            Entire Agreement
+          </h2>
+          <p class="legal-paragraph">
+            These Terms, together with the Privacy Policy and any other policies expressly referenced on the Website, constitute the agreement governing your use of the corporate Website, except where separate written terms apply.
+          </p>
+        </section>
+
+        <!-- 23. Contact Us -->
+        <section class="legal-section-card" id="section-23">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">23</span>
+            Contact Us
+          </h2>
+          <p class="legal-paragraph">
+            If you have questions regarding these Terms, please contact us:
+          </p>
+          <div class="legal-contact-box">
+            <div class="legal-contact-card">
+              <div class="label">Legal Entity</div>
+              <div class="val">Synerbit OPC Private Limited</div>
+            </div>
+            <div class="legal-contact-card">
+              <div class="label">Legal Inquiries</div>
+              <div class="val"><a href="mailto:legal@synerbit.in">legal@synerbit.in</a></div>
+            </div>
+            <div class="legal-contact-card">
+              <div class="label">Corporate Domain</div>
+              <div class="val"><a href="https://synerbit.in" target="_blank" rel="noopener noreferrer">synerbit.in</a></div>
+            </div>
+            <div class="legal-contact-card">
+              <div class="label">Registered Office</div>
+              <div class="val" style="color: #f1f5f9; font-size: 0.88rem; line-height: 1.5;">A606 PNTC, PNTC, Times Of India Press Road, Manekbag, Ahmedabad – 380015, Gujarat, India.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Important Implementation Note -->
+        <div class="legal-callout-info" style="border-left: 4px solid #38bdf8;">
+          <h4 style="color: #ffffff; font-size: 0.95rem; font-weight: 600; margin-bottom: 8px;">Important Implementation Note</h4>
+          <p style="margin-bottom: 8px;">
+            Before publishing, replace the registered office and jurisdiction placeholders and ensure that the Terms accurately reflect the Website's actual features and technical setup. Individual Synerbit products should have separate product-specific terms where appropriate.
+          </p>
+          <p style="color: rgba(226, 232, 240, 0.7); font-size: 0.86rem; margin-bottom: 0;">
+            This document is a practical website draft and is not a substitute for legal advice. Consider having the final Terms reviewed by an Indian lawyer before publication.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="legal-page-footer">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+        <div>
+          <span>Synerbit OPC Private Limited &bull; Terms &amp; Conditions</span>
+        </div>
+        <div>
+          <a href="/" style="color: #38bdf8; text-decoration: none; margin-right: 18px;">Home</a>
+          <a href="/privacy.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Privacy Policy</a>
+          <a href="/cookies.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Cookie Policy</a>
+          <a href="/products.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Products</a>
+          <a href="/#idea-stage" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Co-Creation</a>
+          <a href="mailto:legal@synerbit.in" style="color: #94a3b8; text-decoration: none;">Contact Legal</a>
+        </div>
+        <div>
+          <span>&copy; 2026 Synerbit. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ScrollSpy Script for Table of Contents -->
+    <script>
+      const tocLinks = document.querySelectorAll('.legal-toc-link');
+      const sections = document.querySelectorAll('.legal-section-card');
+
+      window.addEventListener('scroll', () => {
+        let currentId = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 140;
+          if (window.scrollY >= sectionTop) {
+            currentId = section.getAttribute('id');
+          }
+        });
+
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentId}`) {
+            link.classList.add('active');
+          }
+        });
+      }, { passive: true });
+    </script>
+  </body>
+</html>

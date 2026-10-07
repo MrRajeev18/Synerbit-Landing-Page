@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Policy — SYNERBIT (OPC) PRIVATE LIMITED</title>
+    <meta name="description" content="Official Cookie Policy for SYNERBIT (OPC) PRIVATE LIMITED explaining how we use cookies and Google Analytics on synerbit.in." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      /* Standalone Legal Page Layout Styles */
+      .legal-page-body {
+        background-color: #06070c;
+        color: #f1f5f9;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .legal-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 72px;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(6, 7, 12, 0.82);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .legal-nav-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .legal-nav-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #ffffff;
+      }
+
+      .legal-nav-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #e2e8f0;
+        font-size: 0.84rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.25s ease;
+      }
+
+      .legal-nav-back:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        transform: translateX(-2px);
+      }
+
+      .legal-hero-section {
+        position: relative;
+        padding: 140px 24px 60px 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .legal-hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 14px;
+        border-radius: 9999px;
+        background: rgba(56, 189, 248, 0.08);
+        border: 1px solid rgba(56, 189, 248, 0.25);
+        color: #38bdf8;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .legal-hero-title {
+        font-size: clamp(2.4rem, 4vw, 3.4rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: #ffffff;
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+
+      .legal-hero-entity {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #94a3b8;
+        margin-bottom: 24px;
+      }
+
+      .legal-meta-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 24px;
+        padding: 16px 24px;
+        border-radius: 16px;
+        background: rgba(15, 23, 42, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        font-size: 0.85rem;
+        color: #94a3b8;
+      }
+
+      .legal-meta-item strong {
+        color: #f1f5f9;
+        font-weight: 600;
+      }
+
+      .legal-container-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px 100px 24px;
+        width: 100%;
+        flex: 1;
+      }
+
+      /* Sticky Sidebar Table of Contents */
+      .legal-toc-sidebar {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        padding-right: 12px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+      }
+
+      .legal-toc-title {
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #64748b;
+        margin-bottom: 14px;
+      }
+
+      .legal-toc-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .legal-toc-link {
+        font-size: 0.81rem;
+        color: #94a3b8;
+        text-decoration: none;
+        padding: 5px 12px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        line-height: 1.35;
+      }
+
+      .legal-toc-link:hover, .legal-toc-link.active {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .legal-toc-link.active {
+        color: #38bdf8;
+        font-weight: 600;
+        border-left: 2px solid #38bdf8;
+        border-radius: 0 8px 8px 0;
+      }
+
+      /* Legal Content Body */
+      .legal-article-content {
+        min-width: 0;
+      }
+
+      .legal-section-card {
+        padding: 32px 36px;
+        border-radius: 20px;
+        background: rgba(13, 17, 26, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        margin-bottom: 28px;
+        transition: border-color 0.3s ease;
+      }
+
+      .legal-section-card:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .legal-section-heading {
+        font-size: 1.35rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        scroll-margin-top: 100px;
+      }
+
+      .legal-section-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: rgba(56, 189, 248, 0.1);
+        color: #38bdf8;
+        font-size: 0.85rem;
+        font-weight: 700;
+        font-family: var(--font-mono, monospace);
+        flex-shrink: 0;
+      }
+
+      .legal-paragraph {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: rgba(226, 232, 240, 0.78);
+        margin-bottom: 16px;
+      }
+
+      .legal-list {
+        margin: 12px 0 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .legal-list li {
+        font-size: 0.93rem;
+        line-height: 1.6;
+        color: rgba(226, 232, 240, 0.82);
+      }
+
+      /* Cookie Table Styling */
+      .legal-cookie-table-container {
+        overflow-x: auto;
+        margin: 20px 0;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(15, 23, 42, 0.4);
+      }
+
+      .legal-cookie-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 0.9rem;
+      }
+
+      .legal-cookie-table th {
+        padding: 14px 18px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #38bdf8;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .legal-cookie-table td {
+        padding: 16px 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        color: rgba(226, 232, 240, 0.82);
+        vertical-align: top;
+      }
+
+      .legal-cookie-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .cookie-name-tag {
+        display: inline-block;
+        padding: 3px 8px;
+        border-radius: 6px;
+        background: rgba(56, 189, 248, 0.1);
+        color: #7dd3fc;
+        font-family: var(--font-mono, monospace);
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .cookie-type-badge {
+        display: inline-block;
+        padding: 3px 8px;
+        border-radius: 9999px;
+        background: rgba(16, 185, 129, 0.12);
+        color: #34d399;
+        border: 1px solid rgba(16, 185, 129, 0.25);
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .legal-contact-box {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .legal-contact-card {
+        padding: 16px 20px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .legal-contact-card .label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #64748b;
+        margin-bottom: 6px;
+      }
+
+      .legal-contact-card .val {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #ffffff;
+      }
+
+      .legal-contact-card .val a {
+        color: #38bdf8;
+        text-decoration: none;
+      }
+
+      .legal-contact-card .val a:hover {
+        text-decoration: underline;
+      }
+
+      .legal-page-footer {
+        background: #040508;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 40px 24px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #64748b;
+      }
+
+      @media (max-width: 900px) {
+        .legal-navbar {
+          padding: 0 20px;
+        }
+        .legal-container-layout {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .legal-toc-sidebar {
+          display: none;
+        }
+        .legal-section-card {
+          padding: 24px 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="legal-page-body">
+    <!-- Fixed Navigation Bar -->
+    <header class="legal-navbar">
+      <div class="legal-nav-left">
+        <a href="/" class="legal-nav-brand">
+          <div class="brand-logo-container">
+            <div class="brand-logo-mark">
+              <span>S</span>
+            </div>
+          </div>
+          <span class="brand-name">Synerbit</span>
+        </a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="/products.html" class="legal-nav-back">Products</a>
+        <a href="/" class="legal-nav-back">
+          <span>← Back to Home</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Header / Hero Section -->
+    <section class="legal-hero-section">
+      <div class="legal-hero-badge">Corporate Legal &amp; Compliance</div>
+      <h1 class="legal-hero-title">Cookie Policy</h1>
+      <div class="legal-hero-entity">SYNERBIT (OPC) PRIVATE LIMITED</div>
+
+      <div class="legal-meta-bar">
+        <div class="legal-meta-item">
+          <strong>Entity:</strong> SYNERBIT (OPC) PRIVATE LIMITED
+        </div>
+        <div class="legal-meta-item">
+          <strong>Website:</strong> synerbit.in
+        </div>
+        <div class="legal-meta-item">
+          <strong>Last Updated:</strong> 6 October 2026
+        </div>
+        <div class="legal-meta-item">
+          <strong>Coverage:</strong> Cookies &amp; Tracking Technologies
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Grid Layout -->
+    <main class="legal-container-layout">
+      <!-- Sticky Sidebar Table of Contents -->
+      <aside class="legal-toc-sidebar" aria-label="Table of Contents">
+        <div class="legal-toc-title">Sections</div>
+        <nav class="legal-toc-nav">
+          <a href="#section-1" class="legal-toc-link">1. Introduction</a>
+          <a href="#section-2" class="legal-toc-link">2. What Are Cookies?</a>
+          <a href="#section-3" class="legal-toc-link">3. Why Synerbit Uses Cookies</a>
+          <a href="#section-4" class="legal-toc-link">4. Google Analytics</a>
+          <a href="#section-5" class="legal-toc-link">5. Google Analytics Cookies</a>
+          <a href="#section-6" class="legal-toc-link">6. Information Collected</a>
+          <a href="#section-7" class="legal-toc-link">7. Consent and Analytics</a>
+          <a href="#section-8" class="legal-toc-link">8. Essential Technologies</a>
+          <a href="#section-9" class="legal-toc-link">9. Third-Party Services</a>
+          <a href="#section-10" class="legal-toc-link">10. Managing Cookies</a>
+          <a href="#section-11" class="legal-toc-link">11. Analytics Opt-Out</a>
+          <a href="#section-12" class="legal-toc-link">12. No Sale of Information</a>
+          <a href="#section-13" class="legal-toc-link">13. Privacy Policy Relation</a>
+          <a href="#section-14" class="legal-toc-link">14. Changes to Policy</a>
+          <a href="#section-15" class="legal-toc-link">15. Contact Us</a>
+        </nav>
+      </aside>
+
+      <!-- Full Article Content -->
+      <article class="legal-article-content">
+        <!-- 1. Introduction -->
+        <section class="legal-section-card" id="section-1">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">01</span>
+            Introduction
+          </h2>
+          <p class="legal-paragraph">
+            This Cookie Policy explains how SYNERBIT (OPC) PRIVATE LIMITED (“Synerbit”, “we”, “us”, or “our”) uses cookies and similar technologies on our corporate website, synerbit.in (the “Website”). This Policy should be read together with our <a href="/privacy.html" style="color: #38bdf8; text-decoration: underline;">Privacy Policy</a> and <a href="/terms.html" style="color: #38bdf8; text-decoration: underline;">Terms &amp; Conditions</a>.
+          </p>
+        </section>
+
+        <!-- 2. What Are Cookies? -->
+        <section class="legal-section-card" id="section-2">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">02</span>
+            What Are Cookies?
+          </h2>
+          <p class="legal-paragraph">
+            Cookies are small text files placed on your device when you visit a website. They help websites operate, remember information, understand how visitors use the website, and improve website performance and user experience.
+          </p>
+        </section>
+
+        <!-- 3. Why Synerbit Uses Cookies -->
+        <section class="legal-section-card" id="section-3">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">03</span>
+            Why Synerbit Uses Cookies
+          </h2>
+          <p class="legal-paragraph">
+            Synerbit uses cookies and similar technologies primarily to understand how visitors interact with the Website and to measure website traffic and performance:
+          </p>
+          <ul class="legal-list">
+            <li>Understand website traffic and visitor activity.</li>
+            <li>Measure website usage and engagement.</li>
+            <li>Understand general trends in how visitors use the Website.</li>
+            <li>Improve the Website and its content based on usage information.</li>
+          </ul>
+        </section>
+
+        <!-- 4. Google Analytics -->
+        <section class="legal-section-card" id="section-4">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">04</span>
+            Google Analytics
+          </h2>
+          <p class="legal-paragraph">
+            We use Google Analytics 4 (“Google Analytics”), a web analytics service provided by Google, to understand how visitors use our Website. Google Analytics may use first-party cookies and similar technologies to distinguish users and maintain session information.
+          </p>
+        </section>
+
+        <!-- 5. Google Analytics Cookies -->
+        <section class="legal-section-card" id="section-5">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">05</span>
+            Google Analytics Cookies
+          </h2>
+          <div class="legal-cookie-table-container">
+            <table class="legal-cookie-table">
+              <thead>
+                <tr>
+                  <th>Cookie</th>
+                  <th>Purpose</th>
+                  <th>Typical Default Duration</th>
+                  <th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="cookie-name-tag">_ga</span></td>
+                  <td>Used to distinguish users and help measure website usage.</td>
+                  <td>Up to 2 years</td>
+                  <td><span class="cookie-type-badge">Analytics</span></td>
+                </tr>
+                <tr>
+                  <td><span class="cookie-name-tag">_ga_&lt;container-id&gt;</span></td>
+                  <td>Used to persist session state for Google Analytics.</td>
+                  <td>Up to 2 years</td>
+                  <td><span class="cookie-type-badge">Analytics</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="legal-paragraph" style="font-size: 0.88rem; color: #94a3b8; margin-top: 12px;">
+            <em>Note: Actual cookie duration may be reduced by browser restrictions or other technical factors.</em>
+          </p>
+        </section>
+
+        <!-- 6. Information Collected Through Google Analytics -->
+        <section class="legal-section-card" id="section-6">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">06</span>
+            Information Collected Through Google Analytics
+          </h2>
+          <p class="legal-paragraph">
+            Depending on the configuration of Google Analytics and applicable consent settings, analytics may collect information such as the number of users, session statistics, approximate location, and browser or device information. Analytics information is used to understand Website usage and improve our online presence.
+          </p>
+        </section>
+
+        <!-- 7. Consent and Analytics Cookies -->
+        <section class="legal-section-card" id="section-7">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">07</span>
+            Consent and Analytics Cookies
+          </h2>
+          <p class="legal-paragraph">
+            Where required by applicable law, we will seek appropriate consent before using non-essential analytics cookies. Our Website may use a cookie consent mechanism that allows visitors to accept or reject analytics cookies.
+          </p>
+          <p class="legal-paragraph">
+            Where Google Consent Mode is implemented, Google tags can adjust their behavior according to the visitor’s consent choices. The <code style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace;">analytics_storage</code> setting controls whether analytics cookies may be stored.
+          </p>
+        </section>
+
+        <!-- 8. Essential Technologies -->
+        <section class="legal-section-card" id="section-8">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">08</span>
+            Essential Technologies
+          </h2>
+          <p class="legal-paragraph">
+            The Website may use technologies that are necessary for basic website operation, security, or delivery of requested functionality. Such technologies are not used for advertising purposes unless specifically stated in this Policy.
+          </p>
+        </section>
+
+        <!-- 9. Third-Party Services -->
+        <section class="legal-section-card" id="section-9">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">09</span>
+            Third-Party Services
+          </h2>
+          <p class="legal-paragraph">
+            Google Analytics is a third-party analytics service. Information collected through Google Analytics may be processed by Google in accordance with Google's applicable policies and terms.
+          </p>
+          <p class="legal-paragraph">
+            If we add other third-party services that use cookies or similar tracking technologies—such as advertising platforms, embedded media, social media tools, reCAPTCHA, or other analytics services—we may update this Cookie Policy to describe the relevant technologies.
+          </p>
+        </section>
+
+        <!-- 10. Managing Cookies -->
+        <section class="legal-section-card" id="section-10">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">10</span>
+            Managing Cookies
+          </h2>
+          <p class="legal-paragraph">
+            You can control or delete cookies through your browser settings. Most browsers allow you to block cookies, delete existing cookies, or receive a notification before cookies are stored. Disabling cookies may affect certain website functionality.
+          </p>
+        </section>
+
+        <!-- 11. Google Analytics Opt-Out -->
+        <section class="legal-section-card" id="section-11">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">11</span>
+            Google Analytics Opt-Out
+          </h2>
+          <p class="legal-paragraph">
+            You may use available Google tools or browser settings to limit or opt out of certain Google Analytics measurement technologies. Availability and functionality of opt-out mechanisms may change over time.
+          </p>
+        </section>
+
+        <!-- 12. No Sale of Personal Information -->
+        <section class="legal-section-card" id="section-12">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">12</span>
+            No Sale of Personal Information
+          </h2>
+          <p class="legal-paragraph">
+            <strong>Synerbit does not sell personal information collected through cookies for monetary consideration.</strong> Analytics information is used for website measurement, improvement, security, and related business purposes.
+          </p>
+        </section>
+
+        <!-- 13. Relationship With Our Privacy Policy -->
+        <section class="legal-section-card" id="section-13">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">13</span>
+            Relationship With Our Privacy Policy
+          </h2>
+          <p class="legal-paragraph">
+            This Cookie Policy forms part of our broader privacy practices. Our <a href="/privacy.html" style="color: #38bdf8; text-decoration: underline;">Privacy Policy</a> explains how Synerbit handles personal information and other information that may be collected through the Website.
+          </p>
+        </section>
+
+        <!-- 14. Changes to This Cookie Policy -->
+        <section class="legal-section-card" id="section-14">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">14</span>
+            Changes to This Cookie Policy
+          </h2>
+          <p class="legal-paragraph">
+            We may update this Cookie Policy from time to time to reflect changes in our Website, analytics configuration, technologies, legal requirements, or business practices. The “Last Updated” date indicates when it was most recently revised.
+          </p>
+        </section>
+
+        <!-- 15. Contact Us -->
+        <section class="legal-section-card" id="section-15">
+          <h2 class="legal-section-heading">
+            <span class="legal-section-num">15</span>
+            Contact Us
+          </h2>
+          <p class="legal-paragraph">
+            If you have questions or concerns about this Cookie Policy or our use of cookies, please contact us:
+          </p>
+          <div class="legal-contact-box">
+            <div class="legal-contact-card">
+              <div class="label">Legal Entity</div>
+              <div class="val">SYNERBIT (OPC) PRIVATE LIMITED</div>
+            </div>
+            <div class="legal-contact-card">
+              <div class="label">Legal &amp; Privacy Contact</div>
+              <div class="val"><a href="mailto:legal@synerbit.in">legal@synerbit.in</a></div>
+            </div>
+            <div class="legal-contact-card">
+              <div class="label">Corporate Domain</div>
+              <div class="val"><a href="https://synerbit.in" target="_blank" rel="noopener noreferrer">synerbit.in</a></div>
+            </div>
+            <div class="legal-contact-card">
+              <div class="label">Registered Office</div>
+              <div class="val" style="color: #f1f5f9; font-size: 0.88rem; line-height: 1.5;">A606 PNTC, PNTC, Times Of India Press Road, Manekbag, Ahmadabad City, Ahmedabad – 380015, Gujarat, India.</div>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="legal-page-footer">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+        <div>
+          <span>SYNERBIT (OPC) PRIVATE LIMITED &bull; Cookie Policy</span>
+        </div>
+        <div>
+          <a href="/" style="color: #38bdf8; text-decoration: none; margin-right: 18px;">Home</a>
+          <a href="/privacy.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Privacy Policy</a>
+          <a href="/terms.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Terms &amp; Conditions</a>
+          <a href="/products.html" style="color: #94a3b8; text-decoration: none; margin-right: 18px;">Products</a>
+          <a href="mailto:legal@synerbit.in" style="color: #94a3b8; text-decoration: none;">Contact Legal</a>
+        </div>
+        <div>
+          <span>&copy; 2026 Synerbit. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ScrollSpy Script for Table of Contents -->
+    <script>
+      const tocLinks = document.querySelectorAll('.legal-toc-link');
+      const sections = document.querySelectorAll('.legal-section-card');
+
+      window.addEventListener('scroll', () => {
+        let currentId = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 140;
+          if (window.scrollY >= sectionTop) {
+            currentId = section.getAttribute('id');
+          }
+        });
+
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentId}`) {
+            link.classList.add('active');
+          }
+        });
+      }, { passive: true });
+    </script>
+  </body>
+</html>

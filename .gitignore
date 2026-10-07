@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+.chrome-tmp/
+*.log
+.env
+.env.local

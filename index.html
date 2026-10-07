@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synerbit — A Company Building an Ecosystem of Software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
+  <script>
+    // Enforce starting at the very top (Hero Section) on open or refresh
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  </script>
+</head>
+<body class="synerbit-body">
+
+  <div class="site-container">
+    <!-- Navbar -->
+    <header class="navbar theme-hero">
+      <div class="nav-brand">
+        <div class="brand-logo-container">
+          <div class="brand-logo-mark">
+            <span>S</span>
+          </div>
+        </div>
+        <span class="brand-name">Synerbit</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#about-stage" class="nav-link-smooth" data-stage="0">About</a>
+        <a href="#about-stage" class="nav-link-smooth" data-stage="1">Vision</a>
+        <a href="#about-stage" class="nav-link-smooth" data-stage="2">Mission</a>
+        <a href="#about-stage" class="nav-link-smooth" data-stage="3">Values</a>
+        <a href="#about-stage" class="nav-link-smooth" data-stage="4">Goal</a>
+        <a href="/products.html" class="nav-link-smooth-product">Products</a>
+        <a href="#idea-stage" class="nav-link-smooth-idea">Collab</a>
+      </nav>
+
+      <div class="nav-buttons">
+        <a href="#contact" class="btn-nav-glass">Get in Touch</a>
+      </div>
+    </header>
+
+    <!-- Sticky Hero Section with Luminous Lightning Half Moon Arc -->
+    <section class="hero-sticky-section">
+      <!-- Subtle Luminous White Horizon Edge spanning screen from left to right -->
+      <div class="hero-horizon-edge-wrapper">
+        <svg class="horizon-arc-svg" viewBox="0 0 1440 240" fill="none" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="horizonGlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+              <stop offset="25%" stop-color="#ffffff" stop-opacity="0.18" />
+              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.55" />
+              <stop offset="75%" stop-color="#ffffff" stop-opacity="0.18" />
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+            </linearGradient>
+            <radialGradient id="horizonCoreBloom" cx="50%" cy="40%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08" />
+              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.02" />
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+            <filter id="whiteGlow" x="-20%" y="-100%" width="140%" height="300%">
+              <feGaussianBlur stdDeviation="8" result="blur1" />
+              <feGaussianBlur stdDeviation="24" result="blur2" />
+              <feMerge>
+                <feMergeNode in="blur2" />
+                <feMergeNode in="blur1" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          
+          <!-- Soft, faint ambient glow under curvature -->
+          <ellipse cx="720" cy="110" rx="680" ry="90" fill="url(#horizonCoreBloom)" />
+          
+          <!-- Subtle wide aura line with gentle low intensity -->
+          <path d="M 0 170 Q 720 50 1440 170" stroke="rgba(255, 255, 255, 0.14)" stroke-width="4" stroke-linecap="round" filter="url(#whiteGlow)" />
+          
+          <!-- Clean, refined low-intensity white crest edge -->
+          <path d="M 0 170 Q 720 50 1440 170" stroke="url(#horizonGlowGrad)" stroke-width="1.4" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <div class="hero-center-content">
+        <div class="creative-pulse-badge">
+          <span class="pulse-dot"></span>
+          <span>SYNERBIT</span>
+        </div>
+
+        <h1 class="hero-single-statement">
+          A Company Building an<br />
+          <span class="gradient-glow-text">Ecosystem of Software</span>
+        </h1>
+
+        <div class="scroll-down-indicator">
+          <span class="scroll-arrow">↓</span>
+          <span>SCROLL TO EXPLORE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Multi-Stage Scroll Arena (5 Stages) -->
+    <section class="about-overlap-arena" id="about-stage">
+      <div class="overlap-sheet">
+        <div class="sheet-handle"></div>
+
+        <div class="arena-pinned-viewport">
+          
+          <!-- Left Column: Story Cards Stack -->
+          <div class="arena-left-content">
+            <!-- Stage Indicators / Pills -->
+            <div class="stage-nav-pill">
+              <button class="stage-indicator active" data-stage="0">01. ABOUT</button>
+              <button class="stage-indicator" data-stage="1">02. VISION</button>
+              <button class="stage-indicator" data-stage="2">03. MISSION</button>
+              <button class="stage-indicator" data-stage="3">04. VALUES</button>
+              <button class="stage-indicator" data-stage="4">05. GOAL</button>
+            </div>
+
+            <!-- Story Cards Stack -->
+            <div class="story-cards-stack">
+              <!-- Stage 1: About Synerbit -->
+              <div class="story-card active" id="card-stage-0">
+                <h2 class="story-headline">
+                  <span class="lux-highlight">More than a product. A company building products<span class="accent-dot">.</span></span>
+                </h2>
+                <p class="story-paragraph">
+                  <strong class="text-white">Synerbit OPC Private Limited</strong> is a technology company focused on building and launching SaaS products that solve real-world problems. Each product has its own purpose, while sharing the same foundation of simplicity, innovation and continuous improvement.
+                </p>
+              </div>
+
+              <!-- Stage 2: Vision -->
+              <div class="story-card" id="card-stage-1">
+                <h2 class="story-headline">
+                  <span class="lux-highlight">To build a technology ecosystem that makes everyday work and life simpler<span class="accent-dot">.</span></span>
+                </h2>
+                <p class="story-paragraph">
+                  We envision Synerbit as a company that continuously explores new ideas, transforms them into useful digital products and creates lasting value for users and businesses.
+                </p>
+              </div>
+
+              <!-- Stage 3: Mission -->
+              <div class="story-card" id="card-stage-2">
+                <h2 class="story-headline">
+                  <span class="lux-highlight">Think. Build. Learn. Evolve<span class="accent-dot">.</span></span>
+                </h2>
+                <div class="mission-points-list">
+                  <div class="mission-item">
+                    <span class="mission-keyword">Think</span>
+                    <span class="mission-dash">—</span>
+                    <span class="mission-desc">Discover problems worth solving.</span>
+                  </div>
+                  <div class="mission-item">
+                    <span class="mission-keyword">Build</span>
+                    <span class="mission-dash">—</span>
+                    <span class="mission-desc">Create simple and purposeful products.</span>
+                  </div>
+                  <div class="mission-item">
+                    <span class="mission-keyword">Learn</span>
+                    <span class="mission-dash">—</span>
+                    <span class="mission-desc">Listen to users and learn from every experience.</span>
+                  </div>
+                  <div class="mission-item">
+                    <span class="mission-keyword">Evolve</span>
+                    <span class="mission-dash">—</span>
+                    <span class="mission-desc">Continuously improve products and explore what comes next.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stage 4: Our Values -->
+              <div class="story-card" id="card-stage-3">
+                <h2 class="story-headline">
+                  <span class="lux-highlight">What We Believe<span class="accent-dot">.</span></span>
+                </h2>
+                <div class="values-grid-list">
+                  <div class="value-item">
+                    <span class="value-title">Simplicity</span>
+                    <span class="value-desc">Make technology easier to understand and use.</span>
+                  </div>
+                  <div class="value-item">
+                    <span class="value-title">Innovation</span>
+                    <span class="value-desc">Explore new ideas and better ways of solving problems.</span>
+                  </div>
+                  <div class="value-item">
+                    <span class="value-title">User First</span>
+                    <span class="value-desc">Build around real user needs and feedback.</span>
+                  </div>
+                  <div class="value-item">
+                    <span class="value-title">Continuous Growth</span>
+                    <span class="value-desc">Learn, improve and evolve with every product.</span>
+                  </div>
+                  <div class="value-item">
+                    <span class="value-title">Build for the Long Term</span>
+                    <span class="value-desc">Create products and systems designed to grow.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stage 5: Goal -->
+              <div class="story-card" id="card-stage-4">
+                <div class="goal-highlight-card">
+                  <div class="quote-mark">“</div>
+                  <div class="goal-card-body">
+                    <span class="goal-label">OUR GOAL</span>
+                    <p class="goal-quote">To build simple, innovative, and scalable SaaS products that solve real-world problems and grow into a connected technology ecosystem.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: 3D Revolving Bulb with Revolving 3D Titles Orbit -->
+          <div class="arena-right-3d">
+            <div id="bulb-canvas-container" class="bulb-canvas-container"></div>
+          </div>
+
+        </div>
+
+        <!-- Sheet Footer -->
+        <div class="sheet-bottom-bar">
+          <span class="arena-scroll-hint">CONTINUE SCROLLING FOR PRODUCTS ↓</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Ecosystem Overlap Arena (PulsePM, GoalSync, Busly) -->
+    <section class="products-overlap-arena" id="products-stage">
+      <div class="overlap-sheet products-sheet">
+        <div class="sheet-handle"></div>
+
+        <div class="arena-pinned-viewport products-pinned-viewport">
+          
+          <!-- Top Product Navigation Bar -->
+          <div class="products-top-nav">
+            <div class="product-section-label">
+              <span class="pulse-dot"></span>
+              <span>Product by Synerbit</span>
+            </div>
+
+            <div class="product-nav-pills">
+              <button class="product-indicator active" data-product="0">
+                <span class="pill-num">01</span> PulsePM
+              </button>
+              <button class="product-indicator" data-product="1">
+                <span class="pill-num">02</span> GoalSync
+              </button>
+              <button class="product-indicator" data-product="2">
+                <span class="pill-num">03</span> Busly
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Showcase Interactive Canvas & Content Area -->
+          <div class="products-interactive-stage">
+            
+            <!-- 3D Mobile Phone Interactive Viewport (Glides Left/Right & Flips 360°) -->
+            <div id="product-mobile-canvas-container" class="product-mobile-canvas-container"></div>
+
+            <!-- Product Cards Stack (Beside the Mobile) -->
+            <div class="product-cards-container">
+              
+              <!-- 1. PulsePM (Left Side) -->
+              <div class="product-card card-left active" id="product-card-0">
+                <div class="product-badge badge-pulsepm">Web + Mobile</div>
+                <h2 class="product-title title-pulsepm"><a href="https://www.pulsepm.in" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">PulsePM</a></h2>
+                <h3 class="product-tagline">Project management, simplified.</h3>
+                <p class="product-desc">
+                  Plan projects, manage tasks, collaborate with your team and keep work moving—from anywhere.
+                </p>
+                
+                <div class="product-features-list">
+                  <div class="p-feature-item">
+                    <span class="p-feature-bullet cyan">✦</span>
+                    <span>Sprint planning & visual task workflows</span>
+                  </div>
+                  <div class="p-feature-item">
+                    <span class="p-feature-bullet cyan">✦</span>
+                    <span>Real-time team sync & workspace analytics</span>
+                  </div>
+                  <div class="p-feature-item">
+                    <span class="p-feature-bullet cyan">✦</span>
+                    <span>Seamless cloud sync across web & native mobile</span>
+                  </div>
+                </div>
+
+                <div class="product-action-row">
+                  <a href="https://www.pulsepm.in" target="_blank" rel="noopener noreferrer" class="product-cta-btn cta-pulsepm" title="Visit PulsePM (https://www.pulsepm.in)">
+                    <span>Explore PulsePM</span>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- 2. GoalSync (Right Side) -->
+              <div class="product-card card-right" id="product-card-1">
+                <div class="product-badge badge-goalsync">Shared Goals • Progress • Accountability</div>
+                <h2 class="product-title title-goalsync">GoalSync</h2>
+                <h3 class="product-tagline">Goals are better together.</h3>
+                <p class="product-desc">
+                  Create shared goals with friends, track progress, compare achievements and stay motivated through friendly competition.
+                </p>
+
+                <div class="product-features-list">
+                  <div class="p-feature-item">
+                    <span class="p-feature-bullet emerald">✦</span>
+                    <span>Shared habit tracking & streak milestones</span>
+                  </div>
+                  <div class="p-feature-item">
+                    <span class="p-feature-bullet emerald">✦</span>
+                    <span>Social friend leaderboards & weekly sprints</span>
+                  </div>
+                  <div class="p-feature-item">
+                    <span class="p-feature-bullet emerald">✦</span>
+                    <span>Peer accountability & milestone celebrations</span>
+                  </div>
+                </div>
+
+                <div class="product-action-row">
+                  <span class="product-cta-btn cta-goalsync disabled">
+                    <span>Coming Soon</span>
+                    <span class="arrow">→</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- 3. Busly (Left Side) -->
+              <div class="product-card card-left" id="product-card-2">
+                <div class="product-badge badge-busly">Schools • Drivers • Parents</div>
+                <h2 class="product-title title-busly">Busly</h2>
+                <h3 class="product-tagline">School transport, connected.</h3>
+                <p class="product-desc">
+                  Connect schools, drivers and parents with real-time school bus tracking, route visibility and journey updates.
+                </p>
+
+                <div class="product-features-list">
+                  <div class="p-feature-item">
+                    <span class="p-feature-bullet amber">✦</span>
+                    <span>Live GPS bus tracking & route map visibility</span>
+                  </div>
+                  <div class="p-feature-item">
+                    <span class="p-feature-bullet amber">✦</span>
+                    <span>Automated arrival alerts & smart ETA calculation</span>
+                  </div>
+                  <div class="p-feature-item">
+                    <span class="p-feature-bullet amber">✦</span>
+                    <span>Verified safety checks between schools & drivers</span>
+                  </div>
+                </div>
+
+                <div class="product-action-row">
+                  <span class="product-cta-btn cta-busly disabled">
+                    <span>Coming Soon</span>
+                    <span class="arrow">→</span>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Sheet Bottom Bar -->
+        <div class="sheet-bottom-bar">
+          <span class="arena-scroll-hint">CONTINUE SCROLLING FOR IDEA &amp; COLLABORATION ↓</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Idea & Innovation Showcase ("Have an Idea? Let's Build It.") -->
+    <section class="idea-overlap-arena" id="idea-stage">
+      <div class="overlap-sheet idea-sheet">
+        <div class="sheet-handle"></div>
+
+        <div class="idea-grid-backdrop" aria-hidden="true"></div>
+
+        <div class="idea-center-container">
+          <div class="idea-minimal-card">
+            
+            <div class="idea-eyebrow-container">
+              <span class="idea-eyebrow-label">Co-Creation &amp; Incubation</span>
+            </div>
+
+            <h2 class="idea-headline">
+              Have an Idea? <span class="idea-highlight">Let’s Build It Together<span class="accent-dot">.</span></span>
+            </h2>
+
+            <p class="idea-desc-minimal">
+              We collaborate with founders and teams to turn high-conviction concepts into scalable SaaS products. If you’ve identified a real-world problem worth solving, let’s explore it together.
+            </p>
+
+            <div class="idea-pillars-row">
+              <div class="idea-pillar-item">
+                <span class="idea-pillar-index">01</span>
+                <span class="idea-pillar-title">Architecture</span>
+                <span class="idea-pillar-text">Product scope &amp; technical validation</span>
+              </div>
+              <div class="idea-pillar-divider"></div>
+              <div class="idea-pillar-item">
+                <span class="idea-pillar-index">02</span>
+                <span class="idea-pillar-title">Engineering</span>
+                <span class="idea-pillar-text">Production-ready, scalable development</span>
+              </div>
+              <div class="idea-pillar-divider"></div>
+              <div class="idea-pillar-item">
+                <span class="idea-pillar-index">03</span>
+                <span class="idea-pillar-title">Co-Ownership</span>
+                <span class="idea-pillar-text">Aligned incentives &amp; long-term scale</span>
+              </div>
+            </div>
+
+            <div class="idea-action-row">
+              <a 
+                href="mailto:rajeev@synerbit.in?subject=Product%20Idea%20Proposal%20-%20Synerbit&body=Hi%20Rajeev%2C%0A%0AI%20have%20an%20idea%20for%20a%20SaaS%20product%20or%20digital%20platform%20that%20I%20would%20like%20to%20explore%20with%20Synerbit%3A%0A%0A%E2%80%A2%20Idea%20Overview%3A%20%0A%E2%80%A2%20Target%20Users%20%2F%20Market%3A%20%0A%E2%80%A2%20Core%20Problem%20Solved%3A%20%0A%0ALooking%20forward%20to%20your%20thoughts.%0A%0ABest%20regards%2C%0A"
+                class="idea-cta-btn"
+                id="btn-share-idea"
+              >
+                <span>Share Your Idea</span>
+                <svg class="idea-btn-arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. Global Comprehensive Footer (Standard Flow) -->
+    <footer class="site-footer-arena" id="site-footer">
+      <div class="footer-inner-wrapper">
+        <!-- Main 4-Column Grid -->
+        <div class="footer-grid">
+          <!-- Col 1: Brand & Social Media Links -->
+          <div class="footer-col col-brand">
+            <div class="nav-brand footer-brand-header">
+              <div class="brand-logo-container">
+                <div class="brand-logo-mark">
+                  <span>S</span>
+                </div>
+              </div>
+              <span class="brand-name">Synerbit</span>
+            </div>
+
+            <p class="footer-brand-desc">
+              Building simple, innovative, and scalable SaaS products that solve real-world problems and empower connected human potential.
+            </p>
+
+            <div class="footer-social-section">
+              <span class="footer-social-label">OFFICIAL SOCIAL CHANNELS</span>
+              <div class="footer-social-links">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/company/synerbit" target="_blank" rel="noopener noreferrer" class="social-btn social-linkedin" aria-label="Synerbit LinkedIn Company Page" title="LinkedIn">
+                  <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.67 1.67 0 1 0 0-3.34 1.67 1.67 0 0 0 0 3.34m1.39 9.74v-8.37H5.07v8.37z"/>
+                  </svg>
+                  <span class="social-name">LinkedIn</span>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/synerbit" target="_blank" rel="noopener noreferrer" class="social-btn social-instagram" aria-label="Synerbit Instagram Official Page" title="Instagram">
+                  <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                  <span class="social-name">Instagram</span>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/synerbit" target="_blank" rel="noopener noreferrer" class="social-btn social-facebook" aria-label="Synerbit Facebook Page" title="Facebook">
+                  <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                  </svg>
+                  <span class="social-name">Facebook</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Col 2: Products -->
+          <div class="footer-col">
+            <h4 class="footer-col-title">PRODUCTS</h4>
+            <ul class="footer-links-list">
+              <li><a href="https://www.pulsepm.in" target="_blank" rel="noopener noreferrer" class="footer-link footer-link-product">PulsePM <span class="footer-badge-pill cyan">Live ↗</span></a></li>
+              <li><a href="#products-stage" class="footer-link footer-link-product" data-product="1">GoalSync <span class="footer-badge-pill emerald">Soon</span></a></li>
+              <li><a href="#products-stage" class="footer-link footer-link-product" data-product="2">Busly <span class="footer-badge-pill amber">Soon</span></a></li>
+              <li><a href="/products.html" class="footer-link">Product Ecosystem <span class="footer-badge-pill cyan">Showcase ↗</span></a></li>
+              <li><a href="mailto:beta@synerbit.com" class="footer-link">Early Beta Access</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Company -->
+          <div class="footer-col">
+            <h4 class="footer-col-title">COMPANY</h4>
+            <ul class="footer-links-list">
+              <li><a href="#about-stage" class="footer-link footer-link-stage" data-stage="0">About Synerbit</a></li>
+              <li><a href="#about-stage" class="footer-link footer-link-stage" data-stage="1">Our Vision</a></li>
+              <li><a href="#about-stage" class="footer-link footer-link-stage" data-stage="2">Our Mission</a></li>
+              <li><a href="#about-stage" class="footer-link footer-link-stage" data-stage="3">Values &amp; Beliefs</a></li>
+              <li><a href="#about-stage" class="footer-link footer-link-stage" data-stage="4">Ecosystem Goal</a></li>
+              <li><a href="#idea-stage" class="footer-link footer-link-idea">Have an Idea? <span class="footer-badge-pill amber">Let’s Build</span></a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Legal & Policies -->
+          <div class="footer-col">
+            <h4 class="footer-col-title">LEGAL &amp; POLICIES</h4>
+            <ul class="footer-links-list">
+              <li>
+                <a href="/privacy.html" class="footer-link-btn" id="footer-privacy-link">
+                  <span>Privacy Policy</span>
+                  <span class="doc-icon">↗</span>
+                </a>
+              </li>
+              <li>
+                <a href="/terms.html" class="footer-link-btn" id="footer-terms-link">
+                  <span>Terms &amp; Conditions</span>
+                  <span class="doc-icon">↗</span>
+                </a>
+              </li>
+              <li>
+                <a href="/cookies.html" class="footer-link-btn" id="footer-cookies-link">
+                  <span>Cookie Policy</span>
+                  <span class="doc-icon">↗</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <!-- Bottom Copyright Row -->
+        <div class="footer-bottom-bar">
+          <div class="footer-bottom-left">
+            <span class="status-indicator"></span>
+            <span class="footer-company-legal">Synerbit OPC Private Limited</span>
+            <span class="footer-copyright-sep">•</span>
+            <span class="footer-copyright-year">&copy; 2026 All rights reserved.</span>
+          </div>
+
+          <div class="footer-bottom-right">
+            <a href="/privacy.html" class="footer-mini-link">Privacy</a>
+            <span class="footer-dot-sep">·</span>
+            <a href="/terms.html" class="footer-mini-link">Terms</a>
+            <span class="footer-dot-sep">·</span>
+            <a href="/cookies.html" class="footer-mini-link">Cookies</a>
+            <span class="footer-dot-sep">·</span>
+            <a href="mailto:legal@synerbit.in" class="footer-mini-link">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Interactive Legal Modal Dialog for Privacy, Terms & Cookie Policy -->
+  <div class="legal-modal-backdrop" id="legal-modal" aria-hidden="true">
+    <div class="legal-modal-card" role="dialog" aria-modal="true">
+      <div class="legal-modal-header">
+        <div class="legal-header-meta">
+          <span class="legal-badge">LEGAL COMPLIANCE</span>
+          <h3 class="legal-modal-title" id="legal-modal-title">Privacy Policy</h3>
+          <span class="legal-update-date">Effective: October 2026</span>
+        </div>
+        <button type="button" class="btn-legal-close" id="btn-close-legal" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="legal-modal-tabs">
+        <button type="button" class="legal-tab active" data-target="privacy">Privacy Policy</button>
+        <button type="button" class="legal-tab" data-target="terms">Terms &amp; Conditions</button>
+        <button type="button" class="legal-tab" data-target="cookies">Cookie Policy</button>
+      </div>
+
+      <div class="legal-modal-body" id="legal-modal-body">
+        <!-- Content injected dynamically via main.js -->
+      </div>
+
+      <div class="legal-modal-footer">
+        <div class="legal-contact-note">
+          Questions regarding legal terms? Contact <a href="mailto:legal@synerbit.in">legal@synerbit.in</a>
+        </div>
+        <button type="button" class="btn-legal-dismiss" id="btn-dismiss-legal">Close Document</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
