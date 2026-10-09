@@ -1,5 +1,9 @@
+import { inject } from '@vercel/analytics';
 import { createBulbScene } from './bulbScene.js';
 import { createProductMobileScene } from './productMobileScene.js';
+
+// Initialize Vercel Web Analytics
+inject();
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize 3D Glowing Bulb Scene
