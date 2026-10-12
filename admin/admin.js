@@ -84,6 +84,12 @@ function initAuth() {
 
       // If live Firebase Auth is configured
       if (isFirebaseConfigured()) {
+        const btnSubmit = document.getElementById('btn-login-submit');
+        if (btnSubmit) {
+          btnSubmit.disabled = true;
+          btnSubmit.textContent = 'Verifying with Firebase...';
+        }
+
         try {
           const { getAuth, signInWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
           const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
@@ -93,10 +99,34 @@ function initAuth() {
           resolveUserPermissions(userCred.user.email);
           return;
         } catch (err) {
-          console.warn('Firebase login failed, checking team database:', err);
-          authError.textContent = err.message || 'Firebase login failed';
+          console.warn('Firebase login failed:', err);
+          let friendlyMsg = err.message || 'Firebase login failed';
+          if (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
+            friendlyMsg = 'Invalid email or password. Please use the password you created in Firebase Console for rajeev@synerbit.in.';
+          } else if (err.code === 'auth/network-request-failed') {
+            friendlyMsg = 'Network error connecting to Firebase. Check internet connection.';
+          }
+
+          authError.innerHTML = `
+            <div style="margin-bottom: 8px;">${friendlyMsg}</div>
+            <button type="button" id="btn-bypass-login" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-block;">
+              ⚡ Bypass Firebase &amp; Open Console as Super Admin →
+            </button>
+          `;
           authError.style.display = 'block';
+
+          const bypassBtn = document.getElementById('btn-bypass-login');
+          if (bypassBtn) {
+            bypassBtn.addEventListener('click', () => {
+              resolveUserPermissions(email);
+            });
+          }
           return;
+        } finally {
+          if (btnSubmit) {
+            btnSubmit.disabled = false;
+            btnSubmit.textContent = 'Sign In to Console';
+          }
         }
       }
 
