@@ -1187,6 +1187,8 @@
         <nav class="p-nav-menu">
           <a href="/" class="p-nav-link">Home</a>
           <a href="/products.html" class="p-nav-link active">Products</a>
+          <a href="/jobs.html" class="p-nav-link">Careers</a>
+          <a href="/submit-idea.html" class="p-nav-link">Submit Idea</a>
           <a href="/#idea-stage" class="p-nav-link">Collab</a>
           <a href="/#about-stage" class="p-nav-link">About</a>
         </nav>
@@ -1331,7 +1333,8 @@
 
 
     <!-- Interactive Scripts -->
-    <script>
+    <script type="module">
+      import { getProducts } from '/src/firebase.js';
       // =========================================
       // Synerbit Products Catalog
       // Strictly: Icon, Name, Status, Description, Action Buttons
@@ -1634,6 +1637,46 @@
 
       // Initial Render on Page Load
       renderProductsDeck();
+
+      // Dynamically sync products from Firebase / Admin updates
+      getProducts().then(remoteProducts => {
+        if (remoteProducts && remoteProducts.length > 0) {
+          remoteProducts.forEach(rp => {
+            const existing = PRODUCTS.find(p => p.id === rp.id || p.name.toLowerCase() === rp.name.toLowerCase());
+            if (existing) {
+              existing.name = rp.name;
+              existing.description = rp.description;
+              if (rp.status) existing.status = rp.status;
+              if (rp.statusColor) existing.color = rp.statusColor;
+              if (rp.url) {
+                existing.websiteUrl = rp.url;
+                if (existing.actionButtons && existing.actionButtons[0]) {
+                  existing.actionButtons[0].url = rp.url;
+                }
+              }
+            } else {
+              PRODUCTS.push({
+                id: rp.id,
+                name: rp.name,
+                websiteUrl: rp.url || '#',
+                iconKey: 'pulse',
+                color: rp.statusColor || 'cyan',
+                status: rp.status || 'Live Production',
+                description: rp.description || '',
+                actionButtons: rp.url && rp.url !== '#' ? [
+                  { label: `Explore ${rp.name}`, url: rp.url, variant: 'primary' }
+                ] : [
+                  { label: 'Coming Soon', url: '#', variant: 'disabled' }
+                ],
+                category: rp.status === 'Live' ? 'active' : 'upcoming'
+              });
+            }
+          });
+          renderProductsDeck();
+        }
+      }).catch(err => {
+        console.warn('Could not load remote products:', err);
+      });
     </script>
   </body>
 </html>
