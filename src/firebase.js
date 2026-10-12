@@ -9,7 +9,7 @@
 // Replace these values with your actual Firebase project settings from Firebase Console:
 // (Project Settings > General > Your apps > Web app)
 export const firebaseConfig = {
-  apiKey: "AIzaSyDCoBbSW08D1oCTEyezMd8OOGPadcZDO6Y",
+  apiKey: "AIzaSyDCoBbSW08D1oCTCyezMd8OOGPadcZDO6Y",
   authDomain: "synerbit-ecosystem.firebaseapp.com",
   projectId: "synerbit-ecosystem",
   storageBucket: "synerbit-ecosystem.firebasestorage.app",
