@@ -9,12 +9,13 @@
 // Replace these values with your actual Firebase project settings from Firebase Console:
 // (Project Settings > General > Your apps > Web app)
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyDCoBbSW08D1oCTEyezMd8OOGPadcZDO6Y",
   authDomain: "synerbit-ecosystem.firebaseapp.com",
   projectId: "synerbit-ecosystem",
-  storageBucket: "synerbit-ecosystem.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  storageBucket: "synerbit-ecosystem.firebasestorage.app",
+  messagingSenderId: "242148657242",
+  appId: "1:242148657242:web:068059b2cffaa02e2ab063",
+  measurementId: "G-BJGWMMQV91"
 };
 
 // Check if live Firebase is configured
