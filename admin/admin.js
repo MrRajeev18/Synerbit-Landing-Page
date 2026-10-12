@@ -67,75 +67,106 @@ const VIEW_META = {
    ========================================================================== */
 
 function initAuth() {
-  // Check stored session
+  // Bind Logout Listener Unconditionally
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', handleSignOut);
+  }
+  window.handleAdminSignOut = handleSignOut;
+
+  // Handle Login Form Submit
+  if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value.trim();
+
+      authError.style.display = 'none';
+
+      // If live Firebase Auth is configured
+      if (isFirebaseConfigured()) {
+        try {
+          const { getAuth, signInWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
+          const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+          const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+          const auth = getAuth(app);
+          const userCred = await signInWithEmailAndPassword(auth, email, password);
+          resolveUserPermissions(userCred.user.email);
+          return;
+        } catch (err) {
+          console.warn('Firebase login failed, checking team database:', err);
+          authError.textContent = err.message || 'Firebase login failed';
+          authError.style.display = 'block';
+          return;
+        }
+      }
+
+      // Authenticate against team store
+      resolveUserPermissions(email);
+    });
+  }
+
+  // Quick Demo Access buttons
+  const demoSuperBtn = document.getElementById('btn-demo-superadmin');
+  if (demoSuperBtn) {
+    demoSuperBtn.addEventListener('click', () => {
+      resolveUserPermissions('rajeev@synerbit.in');
+    });
+  }
+
+  const demoRecruiterBtn = document.getElementById('btn-demo-recruiter');
+  if (demoRecruiterBtn) {
+    demoRecruiterBtn.addEventListener('click', () => {
+      const recruiterUser = {
+        id: 'demo-recruiter',
+        name: 'Priya (Recruiter)',
+        email: 'recruiter@synerbit.in',
+        role: 'Recruiter',
+        isSuperAdmin: false,
+        permissions: {
+          products: false,
+          jobs: true,
+          applications: true,
+          ideas: false,
+          contacts: false,
+          team: false
+        }
+      };
+      loginUser(recruiterUser);
+    });
+  }
+
+  // Check stored session on startup
   const storedSession = sessionStorage.getItem('synerbit_admin_session');
   if (storedSession) {
     try {
       currentUser = JSON.parse(storedSession);
       enterAdminApp();
-      return;
     } catch (e) {
       sessionStorage.removeItem('synerbit_admin_session');
     }
   }
+}
 
-  // Handle Login Form Submit
-  loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('login-email').value.trim();
-    const password = document.getElementById('login-password').value.trim();
+async function handleSignOut() {
+  sessionStorage.removeItem('synerbit_admin_session');
+  currentUser = null;
 
-    authError.style.display = 'none';
-
-    // If live Firebase Auth is configured
-    if (isFirebaseConfigured()) {
-      try {
-        const { getAuth, signInWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
-        const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
-        const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const userCred = await signInWithEmailAndPassword(auth, email, password);
-        resolveUserPermissions(userCred.user.email);
-        return;
-      } catch (err) {
-        console.warn('Firebase login failed, checking team database:', err);
-      }
+  if (isFirebaseConfigured()) {
+    try {
+      const { getAuth, signOut } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
+      const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+      const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      await signOut(auth);
+    } catch (err) {
+      console.warn('Firebase sign out error:', err);
     }
+  }
 
-    // Authenticate against team store
-    resolveUserPermissions(email);
-  });
-
-  // Quick Demo Access buttons
-  document.getElementById('btn-demo-superadmin').addEventListener('click', () => {
-    resolveUserPermissions('rajeev@synerbit.in');
-  });
-
-  document.getElementById('btn-demo-recruiter').addEventListener('click', () => {
-    const recruiterUser = {
-      id: 'demo-recruiter',
-      name: 'Priya (Recruiter)',
-      email: 'recruiter@synerbit.in',
-      role: 'Recruiter',
-      isSuperAdmin: false,
-      permissions: {
-        products: false,
-        jobs: true,
-        applications: true,
-        ideas: false,
-        contacts: false,
-        team: false
-      }
-    };
-    loginUser(recruiterUser);
-  });
-
-  logoutBtn.addEventListener('click', () => {
-    sessionStorage.removeItem('synerbit_admin_session');
-    currentUser = null;
-    adminApp.style.display = 'none';
-    authScreen.style.display = 'flex';
-  });
+  adminApp.style.display = 'none';
+  authScreen.style.display = 'flex';
+  if (loginForm) loginForm.reset();
+  if (authError) authError.style.display = 'none';
 }
 
 function resolveUserPermissions(email) {
