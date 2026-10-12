@@ -602,19 +602,26 @@ window.viewIdea = (id) => {
   const body = document.getElementById('view-idea-body');
   body.innerHTML = `
     <h4 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 4px;">${escapeHtml(idea.conceptName)}</h4>
-    <div style="color: #38bdf8; font-size: 0.88rem; margin-bottom: 16px;">Founder: ${escapeHtml(idea.founderName)} &bull; <a href="mailto:${idea.founderEmail}" style="color: #38bdf8;">${escapeHtml(idea.founderEmail)}</a></div>
+    <div style="color: #38bdf8; font-size: 0.88rem; margin-bottom: 16px;">
+      Founder: ${escapeHtml(idea.founderName)} &bull; <a href="mailto:${idea.founderEmail}" style="color: #38bdf8;">${escapeHtml(idea.founderEmail)}</a>
+      ${idea.background ? `<div style="font-size: 0.8rem; color: #94a3b8; margin-top: 2px;">Background: ${escapeHtml(idea.background)}</div>` : ''}
+    </div>
     
-    <p><strong>Stage:</strong> <span class="badge amber">${idea.stage}</span></p>
-    <p style="margin-top: 10px;"><strong>Elevator Pitch:</strong><br />${escapeHtml(idea.elevatorPitch)}</p>
+    <div style="display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;">
+      <span class="badge amber">Stage: ${escapeHtml(idea.stage || 'Concept')}</span>
+      ${idea.productType ? `<span class="badge cyan">Type: ${escapeHtml(idea.productType)}</span>` : ''}
+      <span class="badge emerald">Terms Agreed: ✓</span>
+    </div>
+
     <p style="margin-top: 10px;"><strong>Core Problem:</strong><br />${escapeHtml(idea.problem)}</p>
     <p style="margin-top: 10px;"><strong>Proposed Solution:</strong><br />${escapeHtml(idea.solution)}</p>
-    <p style="margin-top: 10px;"><strong>Target Audience:</strong><br />${escapeHtml(idea.targetAudience)}</p>
-    <p style="margin-top: 10px;"><strong>Collaboration Model:</strong><br />${escapeHtml(idea.collaborationType)}</p>
-
+    ${idea.targetAudience ? `<p style="margin-top: 10px;"><strong>Target Audience / Users:</strong><br />${escapeHtml(idea.targetAudience)}</p>` : ''}
+    ${idea.successReason ? `<p style="margin-top: 10px;"><strong>Why it could succeed (Potential):</strong><br />${escapeHtml(idea.successReason)}</p>` : ''}
+    ${idea.additionalContext ? `<p style="margin-top: 10px;"><strong>Additional Context / Links:</strong><br />${escapeHtml(idea.additionalContext)}</p>` : ''}
     ${idea.deckUrl ? `<p style="margin-top: 14px;"><strong>Deck / Prototype:</strong> <a href="${idea.deckUrl}" target="_blank" style="color: #38bdf8;">${escapeHtml(idea.deckUrl)} ↗</a></p>` : ''}
     
     <div style="margin-top: 24px;">
-      <a href="mailto:${idea.founderEmail}?subject=Re:%20Synerbit%20Incubation%20-%20${encodeURIComponent(idea.conceptName)}" class="btn-primary-action" style="display: inline-block; text-decoration: none;">Reply to Founder via Email ✉️</a>
+      <a href="mailto:${idea.founderEmail}?subject=Re:%20Synerbit%20Incubation%20Proposal%20-%20${encodeURIComponent(idea.conceptName)}" class="btn-primary-action" style="display: inline-block; text-decoration: none;">Reply to Founder via Email ✉️</a>
     </div>
   `;
   openModal('modal-view-idea');

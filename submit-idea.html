@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Submit SaaS Concept — Synerbit Incubation Lab</title>
+    <title>Submit an Idea — Synerbit Incubation Lab</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,9 +30,78 @@
         overflow-x: hidden;
       }
 
+      /* Fixed Navigation Bar */
+      .p-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 72px;
+        padding: 0 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(6, 7, 12, 0.85);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .p-nav-left {
+        display: flex;
+        align-items: center;
+        gap: 36px;
+      }
+
+      .p-nav-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #ffffff;
+      }
+
+      .p-nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .p-nav-link {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+        position: relative;
+      }
+
+      .p-nav-link:hover {
+        color: #ffffff;
+      }
+
+      .p-nav-link.active {
+        color: #38bdf8;
+        font-weight: 600;
+      }
+
+      .p-nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #38bdf8;
+        border-radius: 2px;
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+      }
+
+      /* Hero Section */
       .idea-hero {
-        padding: 130px 24px 50px;
-        max-width: 900px;
+        padding: 130px 24px 40px;
+        max-width: 860px;
         margin: 0 auto;
         text-align: center;
       }
@@ -42,98 +111,202 @@
         align-items: center;
         gap: 8px;
         padding: 6px 16px;
-        border-radius: 999px;
+        border-radius: 9999px;
         background: rgba(16, 185, 129, 0.1);
         border: 1px solid rgba(16, 185, 129, 0.25);
         color: #34d399;
-        font-size: 0.82rem;
+        font-size: 0.78rem;
         font-weight: 600;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
       }
 
       .idea-hero-title {
-        font-size: clamp(2.3rem, 5vw, 3.8rem);
+        font-size: clamp(2.4rem, 4.5vw, 3.8rem);
         font-weight: 800;
+        letter-spacing: -0.035em;
         line-height: 1.15;
-        letter-spacing: -0.03em;
-        margin-bottom: 20px;
-        background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        margin-bottom: 16px;
+        color: #ffffff;
       }
 
       .idea-hero-desc {
-        font-size: 1.15rem;
-        line-height: 1.7;
+        font-size: clamp(1rem, 1.2vw, 1.15rem);
+        line-height: 1.65;
         color: #94a3b8;
-        max-width: 700px;
+        max-width: 660px;
         margin: 0 auto;
       }
 
-      /* Form Container */
-      .form-container {
-        max-width: 820px;
+      /* Multi-Step Card Container */
+      .wizard-container {
+        max-width: 780px;
         width: 100%;
         margin: 0 auto 100px;
         padding: 0 24px;
       }
 
-      .idea-card {
-        background: rgba(15, 23, 42, 0.65);
+      .wizard-card {
+        background: rgba(15, 23, 42, 0.7);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 24px;
         padding: 44px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(16px);
+        position: relative;
       }
 
       @media (max-width: 640px) {
-        .idea-card {
+        .wizard-card {
           padding: 24px;
         }
       }
 
-      .form-section-title {
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: #ffffff;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
+      /* Step Progress Bar & Indicators */
+      .stepper-header {
+        margin-bottom: 36px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding-bottom: 10px;
+        padding-bottom: 24px;
       }
 
-      .form-section-num {
-        display: inline-flex;
+      .stepper-status-row {
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: rgba(56, 189, 248, 0.15);
-        color: #38bdf8;
-        font-size: 0.8rem;
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 700;
+        margin-bottom: 14px;
       }
 
+      .stepper-counter {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #38bdf8;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .stepper-progress-track {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 9999px;
+        overflow: hidden;
+        margin-bottom: 24px;
+      }
+
+      .stepper-progress-fill {
+        height: 100%;
+        width: 33.33%;
+        background: linear-gradient(90deg, #38bdf8 0%, #10b981 100%);
+        border-radius: 9999px;
+        transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+      }
+
+      .step-pills-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .step-pill {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .step-pill.active {
+        background: rgba(56, 189, 248, 0.1);
+        border-color: rgba(56, 189, 248, 0.35);
+      }
+
+      .step-pill.completed {
+        background: rgba(16, 185, 129, 0.08);
+        border-color: rgba(16, 185, 129, 0.3);
+      }
+
+      .step-pill-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #64748b;
+      }
+
+      .step-pill.active .step-pill-num {
+        color: #38bdf8;
+      }
+
+      .step-pill.completed .step-pill-num {
+        color: #34d399;
+      }
+
+      .step-pill-label {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #94a3b8;
+      }
+
+      .step-pill.active .step-pill-label {
+        color: #ffffff;
+      }
+
+      .step-pill.completed .step-pill-label {
+        color: #e2e8f0;
+      }
+
+      /* Step Content Frames */
+      .step-frame {
+        display: none;
+        animation: fadeIn 0.35s ease;
+      }
+
+      .step-frame.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .step-heading {
+        margin-bottom: 24px;
+      }
+
+      .step-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.02em;
+        margin-bottom: 6px;
+      }
+
+      .step-subtitle {
+        font-size: 0.92rem;
+        color: #94a3b8;
+      }
+
+      /* Form Fields */
       .form-group {
         margin-bottom: 22px;
       }
 
       .form-label {
         display: block;
-        font-size: 0.85rem;
+        font-size: 0.88rem;
         font-weight: 600;
-        color: #cbd5e1;
+        color: #e2e8f0;
         margin-bottom: 8px;
-        letter-spacing: 0.02em;
+        letter-spacing: 0.01em;
       }
 
-      .form-input, .form-textarea, .form-select {
+      .form-input, .form-textarea {
         width: 100%;
         background: rgba(10, 15, 29, 0.85);
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -146,194 +319,382 @@
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
       }
 
-      .form-input:focus, .form-textarea:focus, .form-select:focus {
+      .form-input:focus, .form-textarea:focus {
         border-color: #38bdf8;
         box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
       }
 
-      .form-select option {
-        background: #0b0f19;
+      .form-input::placeholder, .form-textarea::placeholder {
+        color: rgba(148, 163, 184, 0.55);
+      }
+
+      /* Terms / Notice Callout Box */
+      .terms-notice-box {
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 20px;
+        margin-top: 28px;
+        margin-bottom: 22px;
+      }
+
+      .terms-notice-title {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 6px;
+      }
+
+      .terms-notice-text {
+        font-size: 0.82rem;
+        color: #94a3b8;
+        line-height: 1.55;
+      }
+
+      .terms-notice-text a {
+        color: #38bdf8;
+        text-decoration: underline;
+      }
+
+      .checkbox-agree-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-top: 14px;
+        cursor: pointer;
+      }
+
+      .checkbox-agree-row input[type="checkbox"] {
+        margin-top: 3px;
+        width: 17px;
+        height: 17px;
+        accent-color: #38bdf8;
+        cursor: pointer;
+      }
+
+      .checkbox-agree-text {
+        font-size: 0.85rem;
+        color: #cbd5e1;
+        line-height: 1.5;
+      }
+
+      /* Navigation Buttons */
+      .wizard-actions-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .btn-wizard-back {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: #cbd5e1;
+        font-weight: 600;
+        font-size: 0.92rem;
+        padding: 12px 24px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-wizard-back:hover {
+        background: rgba(255, 255, 255, 0.05);
         color: #ffffff;
       }
 
-      .btn-submit-idea {
-        width: 100%;
+      .btn-wizard-next {
+        background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 0.95rem;
+        padding: 13px 28px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        margin-left: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-wizard-next:hover {
+        opacity: 0.95;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(56, 189, 248, 0.35);
+      }
+
+      .btn-wizard-submit {
         background: linear-gradient(135deg, #10b981 0%, #0284c7 100%);
         color: #ffffff;
         font-weight: 700;
-        font-size: 1.05rem;
-        padding: 16px;
-        border-radius: 14px;
+        font-size: 1rem;
+        padding: 14px 32px;
+        border-radius: 12px;
         border: none;
         cursor: pointer;
-        transition: all 0.3s ease;
-        margin-top: 24px;
-        display: flex;
+        transition: all 0.25s ease;
+        margin-left: auto;
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
+        gap: 8px;
       }
 
-      .btn-submit-idea:hover {
+      .btn-wizard-submit:hover {
         opacity: 0.95;
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
       }
 
-      .toast-success {
+      /* Success Screen */
+      .success-frame {
         display: none;
-        padding: 24px;
-        background: rgba(16, 185, 129, 0.15);
-        border: 1px solid rgba(16, 185, 129, 0.4);
-        border-radius: 16px;
-        color: #34d399;
-        margin-bottom: 28px;
         text-align: center;
+        padding: 40px 20px;
+      }
+
+      .success-check-icon {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        background: rgba(16, 185, 129, 0.15);
+        border: 2px solid rgba(16, 185, 129, 0.4);
+        color: #34d399;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: 24px;
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.25);
+      }
+
+      @media (max-width: 768px) {
+        .p-navbar {
+          padding: 0 20px;
+          height: 64px;
+        }
+        .p-nav-menu {
+          display: none;
+        }
+        .step-pills-row {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body class="idea-page-body">
-    <!-- Navbar -->
-    <header class="navbar theme-hero">
-      <div class="nav-brand">
-        <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+    <!-- Fixed Navigation Bar -->
+    <header class="p-navbar">
+      <div class="p-nav-left">
+        <a href="/" class="p-nav-brand">
           <div class="brand-logo-container">
             <img src="/logo.png" alt="Synerbit Logo" class="brand-logo-img" />
           </div>
           <span class="brand-name">Synerbit</span>
         </a>
+
+        <nav class="p-nav-menu">
+          <a href="/" class="p-nav-link">Home</a>
+          <a href="/products.html" class="p-nav-link">Products</a>
+          <a href="/jobs.html" class="p-nav-link">Careers</a>
+          <a href="/submit-idea.html" class="p-nav-link active">Submit Idea</a>
+          <a href="/#idea-stage" class="p-nav-link">Collab</a>
+          <a href="/#about-stage" class="p-nav-link">About</a>
+        </nav>
       </div>
 
-      <nav class="nav-menu">
-        <a href="/#about-stage" class="nav-link-smooth">About</a>
-        <a href="/products.html" class="nav-link-smooth-product">Products</a>
-        <a href="/jobs.html" class="nav-link-smooth">Careers</a>
-        <a href="/submit-idea.html" class="nav-link-smooth" style="color: #38bdf8; font-weight: 600;">Submit Idea</a>
-        <a href="/#idea-stage" class="nav-link-smooth-idea">Collab</a>
-      </nav>
-
-      <div class="nav-buttons">
+      <div>
         <a href="mailto:contact@synerbit.in" class="btn-nav-glass">Get in Touch</a>
       </div>
     </header>
 
     <!-- Hero -->
     <section class="idea-hero">
-      <div class="idea-badge">Co-Creation &amp; Incubation</div>
-      <h1 class="idea-hero-title">Pitch Your SaaS Concept</h1>
+      <div class="idea-badge">✦ Product Submission &amp; Incubation</div>
+      <h1 class="idea-hero-title">Submit an Idea</h1>
       <p class="idea-hero-desc">
-        Have a category-defining software concept? Partner with Synerbit to transform raw architecture into production-ready, scaled platforms with aligned incentives.
+        We partner with forward-thinking operators and founders to evaluate, co-create, and engineer high-impact SaaS platforms.
       </p>
     </section>
 
-    <!-- Form Section -->
-    <main class="form-container">
-      <div class="idea-card">
-        <div class="toast-success" id="idea-success-alert">
-          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Proposal Received!</h3>
-          <p style="font-size: 0.95rem; color: #a7f3d0; line-height: 1.5;">
-            Thank you for sharing your concept with Synerbit. Our founding engineering lab will evaluate your submission and reach out within 3 business days.
-          </p>
+    <!-- Multi-Step Form Container -->
+    <main class="wizard-container">
+      <div class="wizard-card">
+        
+        <!-- STEPPER HEADER -->
+        <div class="stepper-header" id="wizard-stepper-header">
+          <div class="stepper-status-row">
+            <span class="stepper-counter" id="step-counter-text">Step 1 of 3</span>
+            <span style="font-size: 0.8rem; color: #64748b; font-family: 'JetBrains Mono', monospace;">Synerbit Lab</span>
+          </div>
+
+          <div class="stepper-progress-track">
+            <div class="stepper-progress-fill" id="stepper-progress-bar"></div>
+          </div>
+
+          <div class="step-pills-row">
+            <div class="step-pill active" id="pill-step-1">
+              <span class="step-pill-num">01</span>
+              <span class="step-pill-label">About you</span>
+            </div>
+            <div class="step-pill" id="pill-step-2">
+              <span class="step-pill-num">02</span>
+              <span class="step-pill-label">Your idea</span>
+            </div>
+            <div class="step-pill" id="pill-step-3">
+              <span class="step-pill-num">03</span>
+              <span class="step-pill-label">Potential</span>
+            </div>
+          </div>
         </div>
 
-        <form id="saas-idea-form">
-          <!-- Step 1: Founder Information -->
-          <div class="form-section-title">
-            <span class="form-section-num">1</span>
-            <span>Founder &amp; Proposer Details</span>
-          </div>
+        <form id="idea-wizard-form">
+          <!-- =========================================
+               STEP 1: ABOUT YOU
+               ========================================= -->
+          <div class="step-frame active" id="frame-step-1">
+            <div class="step-heading">
+              <h2 class="step-title">01 — About you</h2>
+              <p class="step-subtitle">Help us understand who is bringing the idea.</p>
+            </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
             <div class="form-group">
-              <label class="form-label">Your Name *</label>
-              <input type="text" class="form-input" id="founder-name" required placeholder="e.g. John Doe" />
+              <label class="form-label">Full name *</label>
+              <input type="text" class="form-input" id="field-fullname" required placeholder="Your full name" />
             </div>
-            <div class="form-group">
-              <label class="form-label">Email Address *</label>
-              <input type="email" class="form-input" id="founder-email" required placeholder="you@domain.com" />
-            </div>
-          </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
             <div class="form-group">
-              <label class="form-label">LinkedIn / Twitter / Portfolio Profile</label>
-              <input type="url" class="form-input" id="founder-link" placeholder="https://linkedin.com/in/..." />
+              <label class="form-label">Email address *</label>
+              <input type="email" class="form-input" id="field-email" required placeholder="you@example.com" />
             </div>
-            <div class="form-group">
-              <label class="form-label">Phone / WhatsApp Number</label>
-              <input type="tel" class="form-input" id="founder-phone" placeholder="+91 ..." />
-            </div>
-          </div>
 
-          <!-- Step 2: Concept Architecture -->
-          <div class="form-section-title" style="margin-top: 24px;">
-            <span class="form-section-num">2</span>
-            <span>SaaS Concept &amp; Architecture</span>
-          </div>
-
-          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 18px;">
             <div class="form-group">
-              <label class="form-label">Product / Concept Name *</label>
-              <input type="text" class="form-input" id="idea-name" required placeholder="e.g. Omniscale Analytics" />
+              <label class="form-label">Professional background (optional)</label>
+              <input type="text" class="form-input" id="field-background" placeholder="Student, founder, professional..." />
             </div>
-            <div class="form-group">
-              <label class="form-label">Current Stage *</label>
-              <select class="form-select" id="idea-stage" required>
-                <option value="Idea Phase">Idea Phase (Raw Concept)</option>
-                <option value="Wireframes / Design">Wireframes / Design Ready</option>
-                <option value="Prototype in Progress">Prototype in Progress</option>
-                <option value="MVP / Early Live">MVP / Early Live Product</option>
-              </select>
+
+            <div class="wizard-actions-row">
+              <button type="button" class="btn-wizard-next" id="btn-goto-step-2">
+                <span>Continue: Your idea</span>
+                <span>→</span>
+              </button>
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label">One-Line Elevator Pitch *</label>
-            <input type="text" class="form-input" id="idea-elevator" required placeholder="A clear sentence summarizing what you build and for whom" />
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">The Core Problem &amp; Pain Point *</label>
-            <textarea class="form-textarea" id="idea-problem" rows="3" required placeholder="What specific problem or operational friction does this solve? Why does existing software fall short?"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Proposed Solution &amp; Key Features *</label>
-            <textarea class="form-textarea" id="idea-solution" rows="3" required placeholder="Describe the core workflow, user journey, and high-impact capabilities..."></textarea>
-          </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
-            <div class="form-group">
-              <label class="form-label">Target Audience &amp; Ideal Customers *</label>
-              <input type="text" class="form-input" id="idea-audience" required placeholder="e.g. B2B Sales Teams, Logistics Fleet Operators" />
+          <!-- =========================================
+               STEP 2: YOUR IDEA
+               ========================================= -->
+          <div class="step-frame" id="frame-step-2">
+            <div class="step-heading">
+              <h2 class="step-title">02 — Your idea</h2>
+              <p class="step-subtitle">Help us understand the core concept and execution.</p>
             </div>
+
             <div class="form-group">
-              <label class="form-label">Deck / Figma / Demo Link (Optional)</label>
-              <input type="url" class="form-input" id="idea-deck" placeholder="https://notion.so/... or Figma / Drive URL" />
+              <label class="form-label">What is your product idea called? *</label>
+              <input type="text" class="form-input" id="field-idea-name" required placeholder="A working title is enough" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">What type of product is it? *</label>
+              <input type="text" class="form-input" id="field-product-type" required placeholder="SaaS, AI, mobile app, web platform..." />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">What problem does it solve? *</label>
+              <textarea class="form-textarea" id="field-problem" rows="3" required placeholder="Describe the problem and who experiences it"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">How would your product solve it? *</label>
+              <textarea class="form-textarea" id="field-solution" rows="3" required placeholder="Explain the solution in your own words"></textarea>
+            </div>
+
+            <div class="wizard-actions-row">
+              <button type="button" class="btn-wizard-back" id="btn-backto-step-1">
+                <span>← Back</span>
+              </button>
+              <button type="button" class="btn-wizard-next" id="btn-goto-step-3">
+                <span>Continue: Potential</span>
+                <span>→</span>
+              </button>
             </div>
           </div>
 
-          <!-- Step 3: Collaboration Goals -->
-          <div class="form-section-title" style="margin-top: 24px;">
-            <span class="form-section-num">3</span>
-            <span>How Can Synerbit Partner With You?</span>
-          </div>
+          <!-- =========================================
+               STEP 3: POTENTIAL
+               ========================================= -->
+          <div class="step-frame" id="frame-step-3">
+            <div class="step-heading">
+              <h2 class="step-title">03 — Potential</h2>
+              <p class="step-subtitle">Target audience, market opportunity, and readiness.</p>
+            </div>
 
-          <div class="form-group">
-            <label class="form-label">What are you looking for from Synerbit? *</label>
-            <select class="form-select" id="idea-collab-type" required>
-              <option value="Co-Creation & Technical Incubation">Full Co-Creation (Design, Full-Stack Build & Infrastructure)</option>
-              <option value="Engineering & Architecture Partner">Engineering Execution & Systems Architecture</option>
-              <option value="Product Strategy & Go-To-Market">Product Strategy & Scaling Partnership</option>
-              <option value="General Exploration">Open to Exploring Alignment</option>
-            </select>
-          </div>
+            <div class="form-group">
+              <label class="form-label">Who would use this product?</label>
+              <input type="text" class="form-input" id="field-audience" placeholder="Target customers or users" />
+            </div>
 
-          <button type="submit" class="btn-submit-idea" id="btn-submit-idea-action">
-            <span>Submit Concept for Review</span>
-            <span>→</span>
-          </button>
+            <div class="form-group">
+              <label class="form-label">How far along is your idea?</label>
+              <input type="text" class="form-input" id="field-stage" placeholder="Concept, research, prototype, existing product" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Why could this become a successful product?</label>
+              <textarea class="form-textarea" id="field-success-reason" rows="3" placeholder="Market opportunity, benefits, or revenue model"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Anything else we should know? (optional)</label>
+              <input type="text" class="form-input" id="field-additional" placeholder="Relevant links or additional context" />
+            </div>
+
+            <!-- Before Submitting Terms & Privacy Consent -->
+            <div class="terms-notice-box">
+              <div class="terms-notice-title">Before submitting</div>
+              <p class="terms-notice-text">
+                Read our <a href="/privacy.html" target="_blank">Privacy Policy</a> and <a href="/terms.html" target="_blank">Terms &amp; Conditions</a> governing unsolicited idea submissions. We respect intellectual property and maintain strict confidentiality standards across our incubation pipeline.
+              </p>
+
+              <label class="checkbox-agree-row">
+                <input type="checkbox" id="check-terms-agree" required />
+                <span class="checkbox-agree-text">
+                  I confirm that I have read and agree to the terms governing idea submissions and consent to the processing of my details. *
+                </span>
+              </label>
+            </div>
+
+            <div class="wizard-actions-row">
+              <button type="button" class="btn-wizard-back" id="btn-backto-step-2">
+                <span>← Back</span>
+              </button>
+              <button type="submit" class="btn-wizard-submit" id="btn-submit-wizard">
+                <span>Submit Idea Proposal</span>
+                <span>🚀</span>
+              </button>
+            </div>
+          </div>
         </form>
+
+        <!-- SUCCESS SCREEN -->
+        <div class="success-frame" id="wizard-success-frame">
+          <div class="success-check-icon">✓</div>
+          <h2 style="font-size: 1.8rem; font-weight: 800; color: #ffffff; margin-bottom: 10px;">Idea Proposal Received!</h2>
+          <p style="color: #94a3b8; font-size: 1.05rem; max-width: 540px; margin: 0 auto 32px; line-height: 1.6;">
+            Thank you for sharing your concept with the Synerbit Incubation Lab. Our product engineering team evaluates every submission and will get back to you within 3 business days.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 16px;">
+            <a href="/" class="btn-wizard-back" style="text-decoration: none;">Return to Home</a>
+            <button type="button" class="btn-wizard-next" id="btn-submit-another" style="margin-left: 0;">Submit Another Idea</button>
+          </div>
+        </div>
+
       </div>
     </main>
 
@@ -342,7 +703,7 @@
       <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
         <div style="display: flex; align-items: center; gap: 12px;">
           <img src="/logo.png" alt="Synerbit" style="width: 28px; height: 28px; object-fit: contain;" />
-          <span style="font-size: 0.95rem; font-weight: 700; color: #cbd5e1;">Synerbit OPC Private Limited &bull; Incubation</span>
+          <span style="font-size: 0.95rem; font-weight: 700; color: #cbd5e1;">Synerbit OPC Private Limited &bull; Incubation Lab</span>
         </div>
         <div style="display: flex; gap: 20px; font-size: 0.88rem;">
           <a href="/" style="color: #94a3b8; text-decoration: none;">Home</a>
@@ -354,49 +715,169 @@
       </div>
     </footer>
 
-    <!-- Script: Handle Idea Submission -->
+    <!-- Script: Three-Step Wizard Controller & Firebase Integration -->
     <script type="module">
       import { submitIdea } from '/src/firebase.js';
 
-      const form = document.getElementById('saas-idea-form');
-      const submitBtn = document.getElementById('btn-submit-idea-action');
-      const successAlert = document.getElementById('idea-success-alert');
+      let currentStep = 1;
 
-      form.addEventListener('submit', async (e) => {
+      const counterText = document.getElementById('step-counter-text');
+      const progressBar = document.getElementById('stepper-progress-bar');
+      const stepperHeader = document.getElementById('wizard-stepper-header');
+      const wizardForm = document.getElementById('idea-wizard-form');
+      const successFrame = document.getElementById('wizard-success-frame');
+
+      // Pills
+      const pill1 = document.getElementById('pill-step-1');
+      const pill2 = document.getElementById('pill-step-2');
+      const pill3 = document.getElementById('pill-step-3');
+
+      // Frames
+      const frame1 = document.getElementById('frame-step-1');
+      const frame2 = document.getElementById('frame-step-2');
+      const frame3 = document.getElementById('frame-step-3');
+
+      // Buttons
+      const btnGoStep2 = document.getElementById('btn-goto-step-2');
+      const btnBackStep1 = document.getElementById('btn-backto-step-1');
+      const btnGoStep3 = document.getElementById('btn-goto-step-3');
+      const btnBackStep2 = document.getElementById('btn-backto-step-2');
+      const btnSubmit = document.getElementById('btn-submit-wizard');
+      const btnSubmitAnother = document.getElementById('btn-submit-another');
+
+      function updateStepView(step) {
+        currentStep = step;
+        counterText.textContent = `Step ${step} of 3`;
+
+        // Update progress track
+        if (step === 1) progressBar.style.width = '33.33%';
+        if (step === 2) progressBar.style.width = '66.66%';
+        if (step === 3) progressBar.style.width = '100%';
+
+        // Update pills
+        pill1.className = `step-pill ${step === 1 ? 'active' : (step > 1 ? 'completed' : '')}`;
+        pill2.className = `step-pill ${step === 2 ? 'active' : (step > 2 ? 'completed' : '')}`;
+        pill3.className = `step-pill ${step === 3 ? 'active' : ''}`;
+
+        // Update frames
+        frame1.classList.toggle('active', step === 1);
+        frame2.classList.toggle('active', step === 2);
+        frame3.classList.toggle('active', step === 3);
+
+        window.scrollTo({ top: document.querySelector('.wizard-card').offsetTop - 90, behavior: 'smooth' });
+      }
+
+      // Step 1 Validation & Next
+      btnGoStep2.addEventListener('click', () => {
+        const name = document.getElementById('field-fullname').value.trim();
+        const email = document.getElementById('field-email').value.trim();
+
+        if (!name) {
+          alert('Please enter your full name.');
+          document.getElementById('field-fullname').focus();
+          return;
+        }
+
+        if (!email || !email.includes('@')) {
+          alert('Please enter a valid email address.');
+          document.getElementById('field-email').focus();
+          return;
+        }
+
+        updateStepView(2);
+      });
+
+      // Step 2 Back & Next
+      btnBackStep1.addEventListener('click', () => updateStepView(1));
+
+      btnGoStep3.addEventListener('click', () => {
+        const ideaName = document.getElementById('field-idea-name').value.trim();
+        const type = document.getElementById('field-product-type').value.trim();
+        const problem = document.getElementById('field-problem').value.trim();
+        const solution = document.getElementById('field-solution').value.trim();
+
+        if (!ideaName) {
+          alert('Please enter what your product idea is called.');
+          document.getElementById('field-idea-name').focus();
+          return;
+        }
+
+        if (!type) {
+          alert('Please describe what type of product it is.');
+          document.getElementById('field-product-type').focus();
+          return;
+        }
+
+        if (!problem) {
+          alert('Please describe the problem your product solves.');
+          document.getElementById('field-problem').focus();
+          return;
+        }
+
+        if (!solution) {
+          alert('Please explain how your product solves the problem.');
+          document.getElementById('field-solution').focus();
+          return;
+        }
+
+        updateStepView(3);
+      });
+
+      // Step 3 Back
+      btnBackStep2.addEventListener('click', () => updateStepView(2));
+
+      // Form Submission
+      wizardForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Submitting Concept...</span>';
+        const agreeTerms = document.getElementById('check-terms-agree').checked;
+        if (!agreeTerms) {
+          alert('Please acknowledge and agree to the submission terms before submitting.');
+          return;
+        }
 
-        const ideaData = {
-          founderName: document.getElementById('founder-name').value.trim(),
-          founderEmail: document.getElementById('founder-email').value.trim(),
-          founderLink: document.getElementById('founder-link').value.trim(),
-          founderPhone: document.getElementById('founder-phone').value.trim(),
-          conceptName: document.getElementById('idea-name').value.trim(),
-          stage: document.getElementById('idea-stage').value,
-          elevatorPitch: document.getElementById('idea-elevator').value.trim(),
-          problem: document.getElementById('idea-problem').value.trim(),
-          solution: document.getElementById('idea-solution').value.trim(),
-          targetAudience: document.getElementById('idea-audience').value.trim(),
-          deckUrl: document.getElementById('idea-deck').value.trim(),
-          collaborationType: document.getElementById('idea-collab-type').value
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = '<span>Submitting Proposal...</span>';
+
+        const payload = {
+          founderName: document.getElementById('field-fullname').value.trim(),
+          founderEmail: document.getElementById('field-email').value.trim(),
+          background: document.getElementById('field-background').value.trim(),
+          conceptName: document.getElementById('field-idea-name').value.trim(),
+          productType: document.getElementById('field-product-type').value.trim(),
+          problem: document.getElementById('field-problem').value.trim(),
+          solution: document.getElementById('field-solution').value.trim(),
+          targetAudience: document.getElementById('field-audience').value.trim(),
+          stage: document.getElementById('field-stage').value.trim() || 'Concept',
+          successReason: document.getElementById('field-success-reason').value.trim(),
+          additionalContext: document.getElementById('field-additional').value.trim(),
+          agreedToTerms: true
         };
 
         try {
-          const res = await submitIdea(ideaData);
+          const res = await submitIdea(payload);
           if (res.success) {
-            successAlert.style.display = 'block';
-            form.reset();
-            window.scrollTo({ top: successAlert.offsetTop - 100, behavior: 'smooth' });
+            wizardForm.style.display = 'none';
+            stepperHeader.style.display = 'none';
+            successFrame.style.display = 'block';
+            window.scrollTo({ top: document.querySelector('.wizard-card').offsetTop - 90, behavior: 'smooth' });
           }
         } catch (err) {
-          console.error('Failed to submit idea:', err);
-          alert('Could not submit proposal. Please try again or reach out to rajeev@synerbit.in.');
+          console.error('Submission failed:', err);
+          alert('Could not submit proposal. Please check your connection or contact rajeev@synerbit.in.');
         } finally {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = '<span>Submit Concept for Review</span> <span>→</span>';
+          btnSubmit.disabled = false;
+          btnSubmit.innerHTML = '<span>Submit Idea Proposal</span> <span>🚀</span>';
         }
+      });
+
+      // Reset to submit another
+      btnSubmitAnother.addEventListener('click', () => {
+        wizardForm.reset();
+        wizardForm.style.display = 'block';
+        stepperHeader.style.display = 'block';
+        successFrame.style.display = 'none';
+        updateStepView(1);
       });
     </script>
   </body>
