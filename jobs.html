@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="/src/style.css" />
     <style>
       .jobs-page-body {
-        background-color: #030712;
+        background-color: #000000;
         color: #f1f5f9;
         min-height: 100vh;
         display: flex;
@@ -30,62 +30,331 @@
         overflow-x: hidden;
       }
 
-      .jobs-hero {
-        padding: 130px 24px 60px;
-        max-width: 1200px;
-        margin: 0 auto;
-        text-align: center;
+      /* Fixed Navigation Bar */
+      .p-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 72px;
+        padding: 0 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(6, 7, 12, 0.85);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .p-nav-left {
+        display: flex;
+        align-items: center;
+        gap: 36px;
+      }
+
+      .p-nav-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #ffffff;
+      }
+
+      .p-nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .p-nav-link {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
         position: relative;
       }
 
-      .jobs-badge {
+      .p-nav-link:hover {
+        color: #ffffff;
+      }
+
+      .p-nav-link.active {
+        color: #38bdf8;
+        font-weight: 600;
+      }
+
+      .p-nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #38bdf8;
+        border-radius: 2px;
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+      }
+
+      /* Sticky Hero Section (Pitch Black Void with Luminous Moon Horizon) */
+      .p-hero-sticky-section {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        height: 100dvh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 80px 24px;
+        background: #000000;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .hero-horizon-edge-wrapper {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 220px;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 2;
+      }
+
+      .horizon-arc-svg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .p-hero-center-content {
+        max-width: 900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(-10px);
+        position: relative;
+        z-index: 5;
+      }
+
+      .creative-pulse-badge {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         padding: 6px 16px;
-        border-radius: 999px;
-        background: rgba(56, 189, 248, 0.1);
-        border: 1px solid rgba(56, 189, 248, 0.25);
+        border-radius: 9999px;
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         color: #38bdf8;
-        font-size: 0.82rem;
+        font-size: 0.75rem;
         font-weight: 600;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
         margin-bottom: 24px;
       }
 
-      .jobs-hero-title {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 800;
-        line-height: 1.15;
-        letter-spacing: -0.03em;
-        margin-bottom: 20px;
-        background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+      .pulse-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #38bdf8;
+        box-shadow: 0 0 8px #38bdf8;
+        animation: pulseAnimation 2s infinite;
+      }
+
+      @keyframes pulseAnimation {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.85); }
+      }
+
+      .p-hero-title {
+        font-size: clamp(2.3rem, 4.4vw, 3.8rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        color: #ffffff;
+        line-height: 1.18;
+        max-width: 900px;
+        margin: 0 auto 16px auto;
+      }
+
+      .gradient-glow-text {
+        background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
-      .jobs-hero-desc {
-        font-size: 1.15rem;
-        line-height: 1.7;
-        color: #94a3b8;
-        max-width: 680px;
-        margin: 0 auto 40px;
+      .p-hero-sub {
+        font-size: clamp(1.0rem, 1.25vw, 1.18rem);
+        line-height: 1.65;
+        color: rgba(226, 232, 240, 0.72);
+        max-width: 660px;
+        margin: 0 auto 28px auto;
       }
 
-      /* Perks Grid */
-      .perks-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 20px;
+      .scroll-down-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        color: #94a3b8;
+        text-transform: uppercase;
+        padding: 8px 18px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.25s ease;
+      }
+
+      .scroll-down-indicator:hover {
+        color: #ffffff;
+        border-color: rgba(56, 189, 248, 0.4);
+        background: rgba(56, 189, 248, 0.08);
+      }
+
+      .scroll-arrow {
+        animation: bounceDown 2s infinite;
+      }
+
+      @keyframes bounceDown {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(4px); }
+        60% { transform: translateY(2px); }
+      }
+
+      /* Overlapping Sheet Arena */
+      .p-overlap-arena {
+        position: relative;
+        z-index: 20;
+        margin-top: 0;
+        width: 100%;
+      }
+
+      .p-overlap-sheet {
+        position: relative;
+        width: 100%;
+        background: 
+          radial-gradient(ellipse at 80% 15%, rgba(56, 189, 248, 0.05) 0%, transparent 60%),
+          radial-gradient(ellipse at 20% 50%, rgba(129, 140, 248, 0.04) 0%, transparent 60%),
+          linear-gradient(180deg, #07090f 0%, #030407 100%);
+        border-radius: 40px 40px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.09);
+        box-shadow: 0 -25px 70px rgba(0, 0, 0, 0.96);
+        padding: 24px 0 0 0;
+      }
+
+      .sheet-handle {
+        width: 48px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.22);
+        border-radius: 9999px;
+        margin: 0 auto 24px auto;
+        flex-shrink: 0;
+      }
+
+      /* Sticky Controls Bar fixed on top below 72px header */
+      .p-sheet-sticky-bar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 72px;
+        z-index: 30;
+        background: rgba(7, 9, 15, 0.92);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        margin-bottom: 40px;
+      }
+
+      .p-sheet-controls {
         max-width: 1200px;
-        margin: 0 auto 80px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .p-sheet-heading-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .p-sheet-pretitle {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #38bdf8;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 600;
+      }
+
+      .p-sheet-title {
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: -0.02em;
+      }
+
+      /* Filter Tabs */
+      .p-filter-bar {
+        display: flex;
+        gap: 8px;
+        background: rgba(15, 23, 42, 0.6);
+        padding: 4px;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .p-filter-btn {
+        background: transparent;
+        border: none;
+        color: #94a3b8;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .p-filter-btn:hover {
+        color: #ffffff;
+      }
+
+      .p-filter-btn.active {
+        background: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
+        font-weight: 600;
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+      }
+
+      /* Culture & Perks Grid inside Sheet */
+      .jobs-perks-section {
+        max-width: 1200px;
+        margin: 0 auto 60px;
         padding: 0 24px;
       }
 
+      .perks-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
       .perk-card {
-        background: rgba(15, 23, 42, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.07);
         border-radius: 16px;
         padding: 24px;
         transition: transform 0.3s ease, border-color 0.3s ease;
@@ -93,56 +362,33 @@
 
       .perk-card:hover {
         transform: translateY(-3px);
-        border-color: rgba(56, 189, 248, 0.4);
+        border-color: rgba(56, 189, 248, 0.3);
       }
 
       .perk-icon {
-        font-size: 1.6rem;
-        margin-bottom: 14px;
+        font-size: 1.5rem;
+        margin-bottom: 12px;
         display: inline-block;
       }
 
       .perk-title {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         font-weight: 700;
-        color: #f8fafc;
-        margin-bottom: 8px;
+        color: #ffffff;
+        margin-bottom: 6px;
       }
 
       .perk-text {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         color: #94a3b8;
         line-height: 1.6;
       }
 
-      /* Job Listings Section */
-      .jobs-section {
-        max-width: 1100px;
+      /* Job Directory Cards */
+      .jobs-directory-container {
+        max-width: 1200px;
         margin: 0 auto 100px;
         padding: 0 24px;
-        width: 100%;
-      }
-
-      .section-heading-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-bottom: 32px;
-        flex-wrap: wrap;
-        gap: 16px;
-      }
-
-      .section-title {
-        font-size: 2rem;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        color: #ffffff;
-      }
-
-      .openings-count {
-        color: #38bdf8;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.9rem;
       }
 
       .jobs-list {
@@ -152,19 +398,20 @@
       }
 
       .job-item-card {
-        background: rgba(15, 23, 42, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.09);
-        border-radius: 16px;
+        background: rgba(15, 23, 42, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
         padding: 28px;
         transition: all 0.3s ease;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 18px;
       }
 
       .job-item-card:hover {
         border-color: rgba(56, 189, 248, 0.35);
-        background: rgba(15, 23, 42, 0.9);
+        background: rgba(15, 23, 42, 0.85);
+        transform: translateY(-2px);
       }
 
       .job-header-flex {
@@ -192,7 +439,7 @@
         display: inline-flex;
         align-items: center;
         padding: 4px 12px;
-        border-radius: 999px;
+        border-radius: 9999px;
         font-size: 0.78rem;
         font-weight: 500;
         background: rgba(255, 255, 255, 0.05);
@@ -254,7 +501,7 @@
         font-weight: 600;
         font-size: 0.92rem;
         padding: 10px 24px;
-        border-radius: 999px;
+        border-radius: 9999px;
         border: none;
         cursor: pointer;
         transition: all 0.25s ease;
@@ -273,7 +520,7 @@
       .modal-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.82);
         backdrop-filter: blur(8px);
         z-index: 1000;
         display: none;
@@ -321,7 +568,7 @@
 
       .form-label {
         display: block;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         font-weight: 600;
         color: #cbd5e1;
         margin-bottom: 8px;
@@ -391,75 +638,189 @@
         font-size: 0.95rem;
         text-align: center;
       }
+
+      @media (max-width: 768px) {
+        .p-navbar {
+          padding: 0 20px;
+          height: 64px;
+        }
+        .p-nav-menu {
+          display: none;
+        }
+        .p-overlap-sheet {
+          border-radius: 24px 24px 0 0;
+        }
+        .p-sheet-sticky-bar {
+          top: 64px;
+        }
+        .p-sheet-controls {
+          padding: 12px 16px;
+        }
+        .p-sheet-title {
+          font-size: 1.2rem;
+        }
+      }
     </style>
   </head>
   <body class="jobs-page-body">
-    <!-- Navbar -->
-    <header class="navbar theme-hero">
-      <div class="nav-brand">
-        <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+    <!-- Fixed Navigation Bar -->
+    <header class="p-navbar">
+      <div class="p-nav-left">
+        <a href="/" class="p-nav-brand">
           <div class="brand-logo-container">
             <img src="/logo.png" alt="Synerbit Logo" class="brand-logo-img" />
           </div>
           <span class="brand-name">Synerbit</span>
         </a>
+
+        <nav class="p-nav-menu">
+          <a href="/" class="p-nav-link">Home</a>
+          <a href="/products.html" class="p-nav-link">Products</a>
+          <a href="/jobs.html" class="p-nav-link active">Careers</a>
+          <a href="/submit-idea.html" class="p-nav-link">Submit Idea</a>
+          <a href="/#idea-stage" class="p-nav-link">Collab</a>
+          <a href="/#about-stage" class="p-nav-link">About</a>
+        </nav>
       </div>
 
-      <nav class="nav-menu">
-        <a href="/#about-stage" class="nav-link-smooth">About</a>
-        <a href="/products.html" class="nav-link-smooth-product">Products</a>
-        <a href="/jobs.html" class="nav-link-smooth" style="color: #38bdf8; font-weight: 600;">Careers</a>
-        <a href="/submit-idea.html" class="nav-link-smooth">Submit Idea</a>
-        <a href="/#idea-stage" class="nav-link-smooth-idea">Collab</a>
-      </nav>
-
-      <div class="nav-buttons">
+      <div>
         <a href="mailto:contact@synerbit.in" class="btn-nav-glass">Get in Touch</a>
       </div>
     </header>
 
-    <!-- Hero -->
-    <section class="jobs-hero">
-      <div class="jobs-badge">Careers &amp; Opportunities</div>
-      <h1 class="jobs-hero-title">Shape the Future of Software at Synerbit</h1>
-      <p class="jobs-hero-desc">
-        We are building an ecosystem of high-impact SaaS platforms. Work with high-velocity autonomy, direct product co-ownership, and world-class craft.
-      </p>
-    </section>
+    <!-- Sticky Hero Section with Luminous Lightning Half Moon Arc -->
+    <section class="p-hero-sticky-section">
+      <!-- Subtle Luminous White Horizon Edge spanning screen from left to right -->
+      <div class="hero-horizon-edge-wrapper">
+        <svg class="horizon-arc-svg" viewBox="0 0 1440 240" fill="none" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="horizonGlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+              <stop offset="25%" stop-color="#ffffff" stop-opacity="0.35" />
+              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.95" />
+              <stop offset="75%" stop-color="#ffffff" stop-opacity="0.35" />
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+            </linearGradient>
 
-    <!-- Perks / Why Join -->
-    <section class="perks-grid">
-      <div class="perk-card">
-        <span class="perk-icon">⚡</span>
-        <h3 class="perk-title">High-Velocity Autonomy</h3>
-        <p class="perk-text">No bureaucratic layers or unnecessary status meetings. We empower creators to design, ship, and iterate rapidly.</p>
-      </div>
-      <div class="perk-card">
-        <span class="perk-icon">🚀</span>
-        <h3 class="perk-title">Incubation &amp; Co-Ownership</h3>
-        <p class="perk-text">Work across multiple category-defining platforms with upside incentives aligned to the products you build.</p>
-      </div>
-      <div class="perk-card">
-        <span class="perk-icon">🌐</span>
-        <h3 class="perk-title">Remote-First Flexibility</h3>
-        <p class="perk-text">Work where you do your best thinking. We prioritize deep focus, clear async documentation, and outcomes over seat time.</p>
-      </div>
-    </section>
+            <radialGradient id="horizonCoreBloom" cx="50%" cy="100%" r="50%">
+              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25" />
+              <stop offset="60%" stop-color="#38bdf8" stop-opacity="0.06" />
+              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+            </radialGradient>
 
-    <!-- Job Openings Section -->
-    <section class="jobs-section">
-      <div class="section-heading-row">
-        <div>
-          <h2 class="section-title">Open Positions</h2>
-          <p style="color: #64748b; font-size: 0.95rem; margin-top: 4px;">Explore active opportunities across Engineering, Product, and Design.</p>
+            <filter id="whiteGlow" x="-20%" y="-100%" width="140%" height="300%">
+              <feGaussianBlur stdDeviation="6" result="blur1" />
+              <feGaussianBlur stdDeviation="24" result="blur2" />
+              <feMerge>
+                <feMergeNode in="blur2" />
+                <feMergeNode in="blur1" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Soft, faint ambient glow under curvature -->
+          <ellipse cx="720" cy="110" rx="680" ry="90" fill="url(#horizonCoreBloom)" />
+
+          <!-- Subtle wide aura line with gentle low intensity -->
+          <path d="M 0 170 Q 720 50 1440 170" stroke="rgba(255, 255, 255, 0.14)" stroke-width="4" stroke-linecap="round" filter="url(#whiteGlow)" />
+
+          <!-- Clean, refined low-intensity white crest edge -->
+          <path d="M 0 170 Q 720 50 1440 170" stroke="url(#horizonGlowGrad)" stroke-width="1.4" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <div class="p-hero-center-content">
+        <div class="creative-pulse-badge">
+          <span class="pulse-dot"></span>
+          <span>THE SYNERBIT TALENT LAB</span>
         </div>
-        <div class="openings-count" id="openings-count-badge">Loading openings...</div>
-      </div>
 
-      <div class="jobs-list" id="jobs-container">
-        <!-- Rendered dynamically from Firebase / Local Store -->
+        <h1 class="p-hero-title">
+          Build Category-Defining Software,<br />
+          <span class="gradient-glow-text">Co-Own the Ecosystem</span>
+        </h1>
+
+        <p class="p-hero-sub">
+          Join an agile collective of product engineers and designers building next-generation SaaS platforms with deep autonomy, high velocity, and shared upside.
+        </p>
+
+        <div class="scroll-down-indicator" id="p-scroll-down-btn" style="cursor: pointer;">
+          <span class="scroll-arrow">↓</span>
+          <span>SCROLL TO EXPLORE OPENINGS</span>
+        </div>
       </div>
     </section>
+
+    <!-- Overlapping Sheet Arena -->
+    <section class="p-overlap-arena" id="p-overlap-arena">
+      <div class="p-overlap-sheet">
+        <div class="sheet-handle"></div>
+
+        <!-- Sticky Controls Bar below fixed 72px navbar -->
+        <div class="p-sheet-sticky-bar">
+          <div class="p-sheet-controls">
+            <div class="p-sheet-heading-wrap">
+              <span class="p-sheet-pretitle">CAREERS &amp; CULTURE</span>
+              <h2 class="p-sheet-title">Active Opportunities</h2>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="p-filter-bar">
+              <button type="button" class="p-filter-btn active" data-filter="all">All Roles</button>
+              <button type="button" class="p-filter-btn" data-filter="Engineering">Engineering</button>
+              <button type="button" class="p-filter-btn" data-filter="Design">Design</button>
+              <button type="button" class="p-filter-btn" data-filter="Product">Product</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Culture & Pillars Section -->
+        <div class="jobs-perks-section">
+          <div class="perks-grid">
+            <div class="perk-card">
+              <span class="perk-icon">⚡</span>
+              <h3 class="perk-title">High-Velocity Autonomy</h3>
+              <p class="perk-text">No bureaucratic layers or unnecessary status meetings. We empower creators to design, ship, and iterate rapidly.</p>
+            </div>
+            <div class="perk-card">
+              <span class="perk-icon">🚀</span>
+              <h3 class="perk-title">Incubation &amp; Co-Ownership</h3>
+              <p class="perk-text">Work across multiple category-defining platforms with upside incentives aligned directly to the products you build.</p>
+            </div>
+            <div class="perk-card">
+              <span class="perk-icon">🌐</span>
+              <h3 class="perk-title">Remote-First Flexibility</h3>
+              <p class="perk-text">Work where you do your best thinking. We prioritize deep focus, clear async documentation, and outcomes over seat time.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job Directory Cards -->
+        <main class="jobs-directory-container">
+          <div class="jobs-list" id="jobs-container">
+            <!-- Rendered dynamically from Firebase / Local Store -->
+          </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="legal-page-footer" style="margin-top: auto; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 40px 24px; background: transparent;">
+          <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img src="/logo.png" alt="Synerbit" style="width: 28px; height: 28px; object-fit: contain;" />
+              <span style="font-size: 0.95rem; font-weight: 700; color: #cbd5e1;">Synerbit OPC Private Limited &bull; Careers</span>
+            </div>
+            <div style="display: flex; gap: 20px; font-size: 0.88rem;">
+              <a href="/" style="color: #94a3b8; text-decoration: none;">Home</a>
+              <a href="/products.html" style="color: #94a3b8; text-decoration: none;">Products</a>
+              <a href="/submit-idea.html" style="color: #94a3b8; text-decoration: none;">Submit Idea</a>
+              <a href="/privacy.html" style="color: #94a3b8; text-decoration: none;">Privacy</a>
+              <a href="/terms.html" style="color: #94a3b8; text-decoration: none;">Terms</a>
+            </div>
+          </div>
+        </footer>
+      </div> <!-- /.p-overlap-sheet -->
+    </section> <!-- /.p-overlap-arena -->
 
     <!-- Application Modal -->
     <div class="modal-backdrop" id="application-modal">
@@ -521,29 +882,11 @@
       </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="legal-page-footer" style="margin-top: auto; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 40px 24px; background: #030712;">
-      <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <img src="/logo.png" alt="Synerbit" style="width: 28px; height: 28px; object-fit: contain;" />
-          <span style="font-size: 0.95rem; font-weight: 700; color: #cbd5e1;">Synerbit OPC Private Limited &bull; Careers</span>
-        </div>
-        <div style="display: flex; gap: 20px; font-size: 0.88rem;">
-          <a href="/" style="color: #94a3b8; text-decoration: none;">Home</a>
-          <a href="/products.html" style="color: #94a3b8; text-decoration: none;">Products</a>
-          <a href="/submit-idea.html" style="color: #94a3b8; text-decoration: none;">Submit Idea</a>
-          <a href="/privacy.html" style="color: #94a3b8; text-decoration: none;">Privacy</a>
-          <a href="/terms.html" style="color: #94a3b8; text-decoration: none;">Terms</a>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Script: Load Jobs and Handle Application Submission -->
+    <!-- Script: Load Jobs, Filtering, Parallax, and Application Submission -->
     <script type="module">
       import { getJobs, submitJobApplication } from '/src/firebase.js';
 
       const jobsContainer = document.getElementById('jobs-container');
-      const countBadge = document.getElementById('openings-count-badge');
       const modal = document.getElementById('application-modal');
       const modalTitle = document.getElementById('modal-job-title');
       const hiddenJobId = document.getElementById('app-job-id');
@@ -554,6 +897,9 @@
       const fileText = document.getElementById('file-chosen-text');
       const successMsg = document.getElementById('app-success-msg');
       const submitBtn = document.getElementById('btn-submit-application');
+      const filterBtns = document.querySelectorAll('.p-filter-btn');
+
+      let allJobs = [];
 
       // Update file input preview
       fileInput.addEventListener('change', () => {
@@ -564,66 +910,86 @@
         }
       });
 
+      // Filter handling
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.dataset.filter;
+          renderJobsList(filter);
+        });
+      });
+
+      function renderJobsList(filter = 'all') {
+        const filtered = filter === 'all'
+          ? allJobs
+          : allJobs.filter(j => j.department && j.department.toLowerCase().includes(filter.toLowerCase()));
+
+        if (filtered.length === 0) {
+          jobsContainer.innerHTML = `
+            <div style="text-align: center; padding: 60px; background: rgba(15,23,42,0.4); border-radius: 16px; border: 1px dashed rgba(255,255,255,0.1);">
+              <p style="color: #94a3b8; font-size: 1.05rem;">No open roles found in this category right now. Reach out directly at <a href="mailto:contact@synerbit.in" style="color: #38bdf8;">contact@synerbit.in</a>.</p>
+            </div>
+          `;
+          return;
+        }
+
+        jobsContainer.innerHTML = filtered.map(job => `
+          <div class="job-item-card" data-job-id="${job.id}">
+            <div class="job-header-flex">
+              <div>
+                <h3 class="job-role-title">${job.title}</h3>
+                <div class="job-pills-row">
+                  <span class="pill dept">${job.department}</span>
+                  <span class="pill">${job.location}</span>
+                  <span class="pill type">${job.type || 'Full-Time'}</span>
+                  <span class="pill">${job.experience || 'Experienced'}</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="job-desc-text">${job.description}</p>
+
+            ${job.requirements && job.requirements.length ? `
+              <div>
+                <div style="font-size: 0.82rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Key Qualifications:</div>
+                <ul class="job-req-list">
+                  ${job.requirements.map(req => `<li>${req}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+
+            <div class="job-action-footer">
+              <button class="btn-apply-job" data-apply-id="${job.id}" data-apply-title="${job.title}">
+                <span>Apply for this Role</span>
+                <span>→</span>
+              </button>
+            </div>
+          </div>
+        `).join('');
+
+        // Bind apply button clicks
+        document.querySelectorAll('.btn-apply-job').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const jobId = btn.dataset.applyId;
+            const title = btn.dataset.applyTitle;
+            openModal(jobId, title);
+          });
+        });
+      }
+
       // Load active jobs
       async function loadJobs() {
         try {
-          const jobs = await getJobs();
-          countBadge.textContent = `${jobs.length} Active Positions`;
-
-          if (jobs.length === 0) {
-            jobsContainer.innerHTML = `
-              <div style="text-align: center; padding: 60px; background: rgba(15,23,42,0.4); border-radius: 16px; border: 1px dashed rgba(255,255,255,0.1);">
-                <p style="color: #94a3b8; font-size: 1.05rem;">No open roles at the moment. Feel free to reach out directly at <a href="mailto:contact@synerbit.in" style="color: #38bdf8;">contact@synerbit.in</a>.</p>
-              </div>
-            `;
-            return;
-          }
-
-          jobsContainer.innerHTML = jobs.map(job => `
-            <div class="job-item-card" data-job-id="${job.id}">
-              <div class="job-header-flex">
-                <div>
-                  <h3 class="job-role-title">${job.title}</h3>
-                  <div class="job-pills-row">
-                    <span class="pill dept">${job.department}</span>
-                    <span class="pill">${job.location}</span>
-                    <span class="pill type">${job.type || 'Full-Time'}</span>
-                    <span class="pill">${job.experience || 'Experienced'}</span>
-                  </div>
-                </div>
-              </div>
-
-              <p class="job-desc-text">${job.description}</p>
-
-              ${job.requirements && job.requirements.length ? `
-                <div>
-                  <div style="font-size: 0.82rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Key Qualifications:</div>
-                  <ul class="job-req-list">
-                    ${job.requirements.map(req => `<li>${req}</li>`).join('')}
-                  </ul>
-                </div>
-              ` : ''}
-
-              <div class="job-action-footer">
-                <button class="btn-apply-job" data-apply-id="${job.id}" data-apply-title="${job.title}">
-                  <span>Apply for this Role</span>
-                  <span>→</span>
-                </button>
-              </div>
-            </div>
-          `).join('');
-
-          // Bind apply button clicks
-          document.querySelectorAll('.btn-apply-job').forEach(btn => {
-            btn.addEventListener('click', () => {
-              const jobId = btn.dataset.applyId;
-              const title = btn.dataset.applyTitle;
-              openModal(jobId, title);
-            });
-          });
+          allJobs = await getJobs();
+          renderJobsList('all');
         } catch (err) {
           console.error('Failed to load jobs:', err);
-          countBadge.textContent = 'Error loading positions';
+          jobsContainer.innerHTML = `
+            <div style="text-align: center; padding: 60px; color: #f87171;">
+              Failed to load positions. Please refresh or email us directly.
+            </div>
+          `;
         }
       }
 
@@ -686,6 +1052,28 @@
           submitBtn.textContent = 'Submit Application';
         }
       });
+
+      // Smooth scroll click from hero indicator down into sticky bar below header
+      const scrollBtn = document.getElementById("p-scroll-down-btn");
+      const stickyBar = document.querySelector(".p-sheet-sticky-bar");
+      if (scrollBtn && stickyBar) {
+        scrollBtn.addEventListener("click", () => {
+          const rect = stickyBar.getBoundingClientRect();
+          window.scrollTo({ top: window.scrollY + rect.top - 72, behavior: "smooth" });
+        });
+      }
+
+      // Parallax fade for sticky hero content on scroll (matching products and homepage experience)
+      const heroContent = document.querySelector(".p-hero-center-content");
+      window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        const windowH = window.innerHeight;
+        if (heroContent) {
+          const heroFadeProgress = Math.min(Math.max((scrollY - windowH * 0.08) / (windowH * 0.65), 0), 1);
+          heroContent.style.opacity = (1 - heroFadeProgress * 0.95).toString();
+          heroContent.style.transform = `translateY(${scrollY * 0.15 - 10}px) scale(${1 - heroFadeProgress * 0.05})`;
+        }
+      }, { passive: true });
 
       // Initial load
       loadJobs();
