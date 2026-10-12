@@ -1620,6 +1620,14 @@ body {
   transform: translateY(-2px);
 }
 
+.social-twitter:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
 .footer-col-title {
   font-size: 0.72rem;
   font-weight: 700;
