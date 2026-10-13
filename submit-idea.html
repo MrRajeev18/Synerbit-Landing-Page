@@ -98,92 +98,103 @@
         box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
       }
 
-      /* Hero Section */
-      .idea-hero {
-        padding: 130px 24px 40px;
-        max-width: 860px;
+      /* 2-Column Split Layout */
+      .idea-split-container {
+        flex: 1;
+        width: 100%;
+        max-width: 1260px;
         margin: 0 auto;
-        text-align: center;
+        padding: 110px 32px 80px;
+        box-sizing: border-box;
+      }
+
+      .idea-split-layout {
+        display: grid;
+        grid-template-columns: 420px minmax(0, 1fr);
+        gap: 40px;
+        align-items: start;
+      }
+
+      /* Fixed / Sticky Left Progress & Intro Panel */
+      .idea-left-panel {
+        position: sticky;
+        top: 96px;
+        background: rgba(15, 23, 42, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 36px 30px;
+        backdrop-filter: blur(24px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+      }
+
+      .left-hero-intro {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       .idea-badge {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 6px 16px;
+        padding: 5px 14px;
         border-radius: 9999px;
         background: rgba(16, 185, 129, 0.1);
         border: 1px solid rgba(16, 185, 129, 0.25);
         color: #34d399;
-        font-size: 0.78rem;
+        font-size: 0.74rem;
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        margin-bottom: 20px;
+        margin-bottom: 14px;
       }
 
       .idea-hero-title {
-        font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+        font-size: 2.15rem;
         font-weight: 800;
-        letter-spacing: -0.035em;
+        letter-spacing: -0.03em;
         line-height: 1.15;
-        margin-bottom: 16px;
+        margin-bottom: 10px;
         color: #ffffff;
       }
 
       .idea-hero-desc {
-        font-size: clamp(1rem, 1.2vw, 1.15rem);
-        line-height: 1.65;
+        font-size: 0.9rem;
+        line-height: 1.6;
         color: #94a3b8;
-        max-width: 660px;
-        margin: 0 auto;
       }
 
-      /* Multi-Step Card Container */
-      .wizard-container {
-        max-width: 780px;
-        width: 100%;
-        margin: 0 auto 100px;
-        padding: 0 24px;
-      }
-
-      .wizard-card {
-        background: rgba(15, 23, 42, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 24px;
-        padding: 44px;
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
-        backdrop-filter: blur(16px);
-        position: relative;
-      }
-
-      @media (max-width: 640px) {
-        .wizard-card {
-          padding: 24px;
-        }
-      }
-
-      /* Step Progress Bar & Indicators */
+      /* Step Progress Bar & Indicators in Left Panel */
       .stepper-header {
-        margin-bottom: 36px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding-bottom: 24px;
+        margin-bottom: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 22px;
       }
 
       .stepper-status-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
       }
 
       .stepper-counter {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         font-weight: 700;
         color: #38bdf8;
         text-transform: uppercase;
         letter-spacing: 0.06em;
+      }
+
+      .stepper-percent {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #94a3b8;
       }
 
       .stepper-progress-track {
@@ -192,7 +203,7 @@
         background: rgba(255, 255, 255, 0.06);
         border-radius: 9999px;
         overflow: hidden;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
       }
 
       .stepper-progress-fill {
@@ -204,36 +215,68 @@
         box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
       }
 
-      .step-pills-row {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
+      .vertical-steps-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
       }
 
       .step-pill {
         display: flex;
-        flex-direction: column;
-        gap: 4px;
-        padding: 10px 14px;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 16px;
         background: rgba(255, 255, 255, 0.02);
         border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 12px;
-        transition: all 0.3s ease;
+        border-radius: 14px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        cursor: default;
       }
 
       .step-pill.active {
         background: rgba(56, 189, 248, 0.1);
         border-color: rgba(56, 189, 248, 0.35);
+        box-shadow: 0 4px 18px rgba(56, 189, 248, 0.12);
       }
 
       .step-pill.completed {
         background: rgba(16, 185, 129, 0.08);
         border-color: rgba(16, 185, 129, 0.3);
+        cursor: pointer;
+      }
+
+      .step-pill.completed:hover {
+        background: rgba(16, 185, 129, 0.14);
+        transform: translateX(2px);
+      }
+
+      .step-pill-indicator {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+
+      .step-pill.active .step-pill-indicator {
+        background: rgba(56, 189, 248, 0.22);
+        border-color: #38bdf8;
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
+      }
+
+      .step-pill.completed .step-pill-indicator {
+        background: rgba(16, 185, 129, 0.22);
+        border-color: #10b981;
       }
 
       .step-pill-num {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.72rem;
+        font-size: 0.8rem;
         font-weight: 700;
         color: #64748b;
       }
@@ -242,14 +285,32 @@
         color: #38bdf8;
       }
 
-      .step-pill.completed .step-pill-num {
+      .step-pill-check {
+        display: none;
+        font-size: 0.95rem;
+        font-weight: 800;
         color: #34d399;
       }
 
+      .step-pill.completed .step-pill-num {
+        display: none;
+      }
+
+      .step-pill.completed .step-pill-check {
+        display: inline-block;
+      }
+
+      .step-pill-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
       .step-pill-label {
-        font-size: 0.82rem;
-        font-weight: 600;
+        font-size: 0.9rem;
+        font-weight: 700;
         color: #94a3b8;
+        transition: color 0.2s ease;
       }
 
       .step-pill.active .step-pill-label {
@@ -258,6 +319,136 @@
 
       .step-pill.completed .step-pill-label {
         color: #e2e8f0;
+      }
+
+      .step-pill-desc {
+        font-size: 0.74rem;
+        color: #64748b;
+        line-height: 1.3;
+      }
+
+      .step-pill.active .step-pill-desc {
+        color: #7dd3fc;
+      }
+
+      .step-connector-line {
+        width: 2px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        margin-left: 32px;
+      }
+
+      .left-trust-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 14px 16px;
+      }
+
+      .trust-card-icon {
+        font-size: 1.25rem;
+        line-height: 1;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      .trust-card-title {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #e2e8f0;
+        margin-bottom: 2px;
+      }
+
+      .trust-card-desc {
+        font-size: 0.74rem;
+        color: #64748b;
+        line-height: 1.45;
+      }
+
+      /* Right Form Panel & Wizard Card */
+      .idea-right-panel {
+        width: 100%;
+      }
+
+      .wizard-card {
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        padding: 44px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(16px);
+        position: relative;
+        min-height: 520px;
+      }
+
+      @media (max-width: 1024px) {
+        .idea-split-layout {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .idea-left-panel {
+          position: static;
+          padding: 28px 24px;
+        }
+
+        .vertical-steps-list {
+          flex-direction: row;
+          gap: 8px;
+        }
+
+        .step-connector-line {
+          display: none;
+        }
+
+        .step-pill {
+          flex: 1;
+          padding: 10px 12px;
+        }
+
+        .step-pill-desc {
+          display: none;
+        }
+
+        .left-trust-card {
+          display: none;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .idea-split-container {
+          padding: 88px 16px 60px;
+        }
+
+        .idea-left-panel {
+          padding: 20px 16px;
+        }
+
+        .idea-hero-title {
+          font-size: 1.75rem;
+        }
+
+        .wizard-card {
+          padding: 24px 18px;
+        }
+
+        .step-pill {
+          padding: 8px 10px;
+          gap: 8px;
+        }
+
+        .step-pill-indicator {
+          width: 28px;
+          height: 28px;
+          border-radius: 8px;
+        }
+
+        .step-pill-label {
+          font-size: 0.78rem;
+        }
       }
 
       /* Step Content Frames */
@@ -513,47 +704,86 @@
       </div>
     </header>
 
-    <!-- Hero -->
-    <section class="idea-hero">
-      <div class="idea-badge">✦ Product Submission &amp; Incubation</div>
-      <h1 class="idea-hero-title">Submit an Idea</h1>
-      <p class="idea-hero-desc">
-        We partner with forward-thinking operators and founders to evaluate, co-create, and engineer high-impact SaaS platforms.
-      </p>
-    </section>
+    <!-- Split Layout Main Container -->
+    <main class="idea-split-container">
+      <div class="idea-split-layout">
 
-    <!-- Multi-Step Form Container -->
-    <main class="wizard-container">
-      <div class="wizard-card">
+        <!-- Left Sticky Panel: Title, Description & Vertical Stepper -->
+        <aside class="idea-left-panel">
+          <div class="left-hero-intro">
+            <div class="idea-badge">✦ Product Submission &amp; Incubation</div>
+            <h1 class="idea-hero-title">Submit an Idea</h1>
+            <p class="idea-hero-desc">
+              We partner with forward-thinking operators and founders to evaluate, co-create, and engineer high-impact SaaS platforms.
+            </p>
+          </div>
+
+          <!-- STEPPER / PROGRESS HEADER -->
+          <div class="stepper-header" id="wizard-stepper-header">
+            <div class="stepper-status-row">
+              <span class="stepper-counter" id="step-counter-text">Step 1 of 3</span>
+              <span class="stepper-percent" id="step-percent-text">33% Completed</span>
+            </div>
+
+            <div class="stepper-progress-track">
+              <div class="stepper-progress-fill" id="stepper-progress-bar"></div>
+            </div>
+
+            <div class="vertical-steps-list">
+              <div class="step-pill active" id="pill-step-1" data-step="1" title="Click to view Step 1">
+                <div class="step-pill-indicator">
+                  <span class="step-pill-num">01</span>
+                  <span class="step-pill-check">✓</span>
+                </div>
+                <div class="step-pill-content">
+                  <span class="step-pill-label">About you</span>
+                  <span class="step-pill-desc">Contact info &amp; background</span>
+                </div>
+              </div>
+
+              <div class="step-connector-line"></div>
+
+              <div class="step-pill" id="pill-step-2" data-step="2" title="Step 2: Your idea">
+                <div class="step-pill-indicator">
+                  <span class="step-pill-num">02</span>
+                  <span class="step-pill-check">✓</span>
+                </div>
+                <div class="step-pill-content">
+                  <span class="step-pill-label">Your idea</span>
+                  <span class="step-pill-desc">Problem, solution &amp; format</span>
+                </div>
+              </div>
+
+              <div class="step-connector-line"></div>
+
+              <div class="step-pill" id="pill-step-3" data-step="3" title="Step 3: Potential">
+                <div class="step-pill-indicator">
+                  <span class="step-pill-num">03</span>
+                  <span class="step-pill-check">✓</span>
+                </div>
+                <div class="step-pill-content">
+                  <span class="step-pill-label">Potential</span>
+                  <span class="step-pill-desc">Target audience &amp; agreement</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust / Confidentiality Notice -->
+          <div class="left-trust-card">
+            <div class="trust-card-icon">🔒</div>
+            <div>
+              <div class="trust-card-title">Confidentiality Guarantee</div>
+              <div class="trust-card-desc">Your intellectual property is protected under our mutual incubation standard. All submissions are treated in strict confidence.</div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Panel: Multi-Step Form & Confirmation -->
+        <section class="idea-right-panel">
+          <div class="wizard-card">
         
-        <!-- STEPPER HEADER -->
-        <div class="stepper-header" id="wizard-stepper-header">
-          <div class="stepper-status-row">
-            <span class="stepper-counter" id="step-counter-text">Step 1 of 3</span>
-            <span style="font-size: 0.8rem; color: #64748b; font-family: 'JetBrains Mono', monospace;">Synerbit Lab</span>
-          </div>
-
-          <div class="stepper-progress-track">
-            <div class="stepper-progress-fill" id="stepper-progress-bar"></div>
-          </div>
-
-          <div class="step-pills-row">
-            <div class="step-pill active" id="pill-step-1">
-              <span class="step-pill-num">01</span>
-              <span class="step-pill-label">About you</span>
-            </div>
-            <div class="step-pill" id="pill-step-2">
-              <span class="step-pill-num">02</span>
-              <span class="step-pill-label">Your idea</span>
-            </div>
-            <div class="step-pill" id="pill-step-3">
-              <span class="step-pill-num">03</span>
-              <span class="step-pill-label">Potential</span>
-            </div>
-          </div>
-        </div>
-
-        <form id="idea-wizard-form">
+            <form id="idea-wizard-form">
           <!-- =========================================
                STEP 1: ABOUT YOU
                ========================================= -->
@@ -696,7 +926,10 @@
         </div>
 
       </div>
-    </main>
+    </section>
+
+  </div>
+</main>
 
     <!-- Footer -->
     <footer class="legal-page-footer" style="margin-top: auto; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 40px 24px; background: #030712;">
@@ -745,9 +978,16 @@
       const btnSubmit = document.getElementById('btn-submit-wizard');
       const btnSubmitAnother = document.getElementById('btn-submit-another');
 
+      const percentText = document.getElementById('step-percent-text');
+
       function updateStepView(step) {
         currentStep = step;
         counterText.textContent = `Step ${step} of 3`;
+
+        if (percentText) {
+          const percents = { 1: '33% Completed', 2: '66% Completed', 3: '100% Completed' };
+          percentText.textContent = percents[step] || '';
+        }
 
         // Update progress track
         if (step === 1) progressBar.style.width = '33.33%';
@@ -764,8 +1004,23 @@
         frame2.classList.toggle('active', step === 2);
         frame3.classList.toggle('active', step === 3);
 
-        window.scrollTo({ top: document.querySelector('.wizard-card').offsetTop - 90, behavior: 'smooth' });
+        const targetCard = document.querySelector('.idea-right-panel') || document.querySelector('.wizard-card');
+        if (targetCard) {
+          const y = targetCard.getBoundingClientRect().top + window.pageYOffset - 90;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        }
       }
+
+      // Allow navigating back to already completed steps by clicking step pills
+      [pill1, pill2, pill3].forEach((pill, idx) => {
+        if (!pill) return;
+        pill.addEventListener('click', () => {
+          const targetStep = idx + 1;
+          if (targetStep < currentStep) {
+            updateStepView(targetStep);
+          }
+        });
+      });
 
       // Step 1 Validation & Next
       btnGoStep2.addEventListener('click', () => {
