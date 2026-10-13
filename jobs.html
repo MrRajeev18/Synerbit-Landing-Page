@@ -201,228 +201,265 @@
       }
 
       /* =========================================
-         SPLIT SHOWCASE: Left & Right Portion Layout
+         2-COLUMN LAYOUT: Left Filter Sidebar & Right Full Open Job Cards
          ========================================= */
       .j-split-showcase {
         display: grid;
-        grid-template-columns: 320px 1fr;
-        gap: 20px;
+        grid-template-columns: 290px 1fr;
+        gap: 28px;
         align-items: start;
         width: 100%;
       }
 
-      /* Left Portion: Column of Small Job Cards */
+      /* Left Portion: Filter Sidebar */
       .j-col-left {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 92px;
+      }
+
+      .j-filter-sidebar {
+        background: rgba(15, 23, 42, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 18px;
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        padding: 20px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 20px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
       }
 
-      .j-left-card-list {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .j-mini-card {
-        position: relative;
-        border-radius: 14px;
-        background: rgba(15, 23, 42, 0.55);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        padding: 12px 14px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        cursor: pointer;
-        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        user-select: none;
-      }
-
-      .j-mini-card:hover {
-        background: rgba(15, 23, 42, 0.85);
-        border-color: rgba(255, 255, 255, 0.2);
-        transform: translateX(3px);
-      }
-
-      .j-mini-card.is-active {
-        background: rgba(15, 23, 42, 0.95);
-        transform: translateX(5px);
-      }
-
-      .j-mini-card.cyan.is-active,
-      .j-mini-card.cyan:hover {
-        border-color: rgba(56, 189, 248, 0.5);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.15);
-      }
-
-      .j-mini-card.violet.is-active,
-      .j-mini-card.violet:hover {
-        border-color: rgba(168, 85, 247, 0.5);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.15);
-      }
-
-      .j-mini-card.amber.is-active,
-      .j-mini-card.amber:hover {
-        border-color: rgba(251, 191, 36, 0.5);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(251, 191, 36, 0.15);
-      }
-
-      .j-mini-card.emerald.is-active,
-      .j-mini-card.emerald:hover {
-        border-color: rgba(52, 211, 153, 0.5);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(52, 211, 153, 0.15);
-      }
-
-      .j-mini-icon-wrap {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-      .j-mini-icon-wrap.cyan {
-        background: linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(14, 165, 233, 0.1) 100%);
-        border: 1px solid rgba(56, 189, 248, 0.35);
-        color: #38bdf8;
-      }
-      .j-mini-icon-wrap.violet {
-        background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(124, 58, 237, 0.1) 100%);
-        border: 1px solid rgba(168, 85, 247, 0.35);
-        color: #c084fc;
-      }
-      .j-mini-icon-wrap.amber {
-        background: linear-gradient(135deg, rgba(251, 191, 36, 0.25) 0%, rgba(217, 119, 6, 0.1) 100%);
-        border: 1px solid rgba(251, 191, 36, 0.35);
-        color: #fbbf24;
-      }
-      .j-mini-icon-wrap.emerald {
-        background: linear-gradient(135deg, rgba(52, 211, 153, 0.25) 0%, rgba(16, 185, 129, 0.1) 100%);
-        border: 1px solid rgba(52, 211, 153, 0.35);
-        color: #34d399;
-      }
-      .j-mini-icon-wrap svg {
-        width: 18px;
-        height: 18px;
-        stroke-width: 1.8;
-      }
-
-      .j-mini-info {
-        flex: 1;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-
-      .j-mini-title-row {
+      .j-filter-top-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      }
+
+      .j-filter-main-title {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        letter-spacing: -0.01em;
+      }
+
+      .j-filter-reset-btn {
+        background: none;
+        border: none;
+        color: #38bdf8;
+        font-size: 0.72rem;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 3px 8px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+      }
+      .j-filter-reset-btn:hover {
+        background: rgba(56, 189, 248, 0.12);
+        color: #7dd3fc;
+      }
+
+      .j-filter-section {
+        display: flex;
+        flex-direction: column;
         gap: 6px;
       }
 
-      .j-mini-title {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: #ffffff;
-        margin: 0;
-        letter-spacing: -0.015em;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .j-mini-status-pill {
+      .j-filter-sec-title {
         font-family: var(--font-mono, monospace);
-        font-size: 0.60rem;
-        font-weight: 600;
-        padding: 2px 6px;
-        border-radius: 4px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        letter-spacing: 0.03em;
-        flex-shrink: 0;
-      }
-      .j-mini-status-pill.cyan { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
-      .j-mini-status-pill.violet { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
-      .j-mini-status-pill.amber { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
-      .j-mini-status-pill.emerald { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
-
-      .j-mini-tagline {
-        font-size: 0.70rem;
         color: #94a3b8;
-        margin: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
 
-      .j-mini-arrow {
-        color: #64748b;
-        font-size: 0.80rem;
-        transition: transform 0.25s ease, color 0.25s ease;
+      .j-filter-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
       }
-      .j-mini-card:hover .j-mini-arrow,
-      .j-mini-card.is-active .j-mini-arrow {
+
+      .j-filter-item-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 7px 11px;
+        border-radius: 8px;
+        background: transparent;
+        border: 1px solid transparent;
+        color: #94a3b8;
+        font-size: 0.78rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        text-align: left;
+      }
+
+      .j-filter-item-btn:hover {
+        background: rgba(255, 255, 255, 0.04);
         color: #ffffff;
-        transform: translateX(2px);
       }
 
-      /* Right Portion: Expanded Job Showcase */
-      .j-col-right {
-        position: relative;
+      .j-filter-item-btn.is-active {
+        background: rgba(56, 189, 248, 0.12);
+        border-color: rgba(56, 189, 248, 0.35);
+        color: #38bdf8;
+        font-weight: 600;
+      }
+
+      .j-filter-item-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         min-width: 0;
       }
 
-      .j-expanded-card {
-        position: sticky;
-        top: 135px;
-        background: rgba(15, 23, 42, 0.68);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        backdrop-filter: blur(28px);
-        -webkit-backdrop-filter: blur(28px);
-        padding: 22px 24px 18px 24px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+      .j-filter-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .j-filter-dot.all { background: #64748b; }
+      .j-filter-dot.cyan { background: #38bdf8; box-shadow: 0 0 6px rgba(56, 189, 248, 0.6); }
+      .j-filter-dot.violet { background: #a855f7; box-shadow: 0 0 6px rgba(168, 85, 247, 0.6); }
+      .j-filter-dot.amber { background: #f59e0b; box-shadow: 0 0 6px rgba(245, 158, 11, 0.6); }
+      .j-filter-dot.emerald { background: #10b981; box-shadow: 0 0 6px rgba(16, 185, 129, 0.6); }
+
+      .j-filter-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .j-filter-count-badge {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.66rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        transition: all 0.2s ease;
+      }
+
+      .j-filter-item-btn.is-active .j-filter-count-badge {
+        background: rgba(56, 189, 248, 0.22);
+        color: #38bdf8;
+        font-weight: 600;
+      }
+
+      /* Right Portion: Open Jobs List */
+      .j-col-right {
         display: flex;
         flex-direction: column;
-        gap: 14px;
-        transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.3s ease;
+        gap: 18px;
+        min-width: 0;
+      }
+
+      .j-listing-top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 2px 4px 6px 4px;
+      }
+
+      .j-results-info {
+        font-size: 0.82rem;
+        color: #94a3b8;
+      }
+      .j-results-info strong {
+        color: #ffffff;
+      }
+
+      .j-search-box {
         position: relative;
+        max-width: 260px;
+        width: 100%;
+      }
+
+      .j-search-input {
+        width: 100%;
+        background: rgba(15, 23, 42, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 8px;
+        padding: 7px 12px 7px 32px;
+        font-size: 0.78rem;
+        color: #ffffff;
+        outline: none;
+        transition: border-color 0.2s ease;
+      }
+      .j-search-input:focus {
+        border-color: rgba(56, 189, 248, 0.4);
+      }
+
+      .j-search-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 14px;
+        height: 14px;
+        color: #64748b;
+        pointer-events: none;
+      }
+
+      /* Full Open Job Card (All info open) */
+      .j-job-card {
+        position: relative;
+        background: rgba(15, 23, 42, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 18px;
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        padding: 24px 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         overflow: hidden;
       }
 
-      .j-expanded-card.cyan {
-        border-top: 3px solid #38bdf8;
-        border-color: rgba(56, 189, 248, 0.35);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.12);
-      }
-      .j-expanded-card.violet {
-        border-top: 3px solid #a855f7;
-        border-color: rgba(168, 85, 247, 0.35);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168, 85, 247, 0.12);
-      }
-      .j-expanded-card.amber {
-        border-top: 3px solid #fbbf24;
-        border-color: rgba(251, 191, 36, 0.35);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(251, 191, 36, 0.12);
-      }
-      .j-expanded-card.emerald {
-        border-top: 3px solid #34d399;
-        border-color: rgba(52, 211, 153, 0.35);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(52, 211, 153, 0.12);
+      .j-job-card:hover {
+        border-color: rgba(255, 255, 255, 0.18);
+        transform: translateY(-2px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
       }
 
-      /* Subtle Faint Background Watermark */
-      .j-ghost-watermark {
+      .j-job-card.cyan {
+        border-top: 3px solid #38bdf8;
+      }
+      .j-job-card.violet {
+        border-top: 3px solid #a855f7;
+      }
+      .j-job-card.amber {
+        border-top: 3px solid #fbbf24;
+      }
+      .j-job-card.emerald {
+        border-top: 3px solid #34d399;
+      }
+
+      /* Background Ghost Watermark */
+      .j-card-watermark {
         position: absolute;
-        right: -10px;
-        bottom: -20px;
+        right: -8px;
+        bottom: -15px;
         font-family: var(--font-display, 'Space Grotesk', sans-serif);
-        font-size: clamp(4rem, 6vw, 5.5rem);
+        font-size: clamp(3.5rem, 5vw, 5rem);
         font-weight: 900;
         letter-spacing: -0.06em;
         line-height: 1;
@@ -432,138 +469,128 @@
         z-index: 0;
       }
 
-      .j-expanded-header {
+      .j-card-header {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        gap: 14px;
+        gap: 16px;
         flex-wrap: wrap;
         position: relative;
         z-index: 2;
       }
 
-      .j-expanded-brand {
+      .j-card-title-group {
         display: flex;
         align-items: center;
         gap: 12px;
       }
 
-      .j-icon-wrap {
-        width: 38px;
-        height: 38px;
+      .j-icon-badge {
+        width: 40px;
+        height: 40px;
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
       }
-      .j-icon-wrap.cyan {
+      .j-icon-badge.cyan {
         background: linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.08) 100%);
         border: 1px solid rgba(56, 189, 248, 0.35);
         color: #38bdf8;
       }
-      .j-icon-wrap.violet {
+      .j-icon-badge.violet {
         background: linear-gradient(135deg, rgba(168, 85, 247, 0.22) 0%, rgba(124, 58, 237, 0.08) 100%);
         border: 1px solid rgba(168, 85, 247, 0.35);
         color: #c084fc;
       }
-      .j-icon-wrap.amber {
+      .j-icon-badge.amber {
         background: linear-gradient(135deg, rgba(251, 191, 36, 0.22) 0%, rgba(217, 119, 6, 0.08) 100%);
         border: 1px solid rgba(251, 191, 36, 0.35);
         color: #fbbf24;
       }
-      .j-icon-wrap.emerald {
+      .j-icon-badge.emerald {
         background: linear-gradient(135deg, rgba(52, 211, 153, 0.22) 0%, rgba(16, 185, 129, 0.08) 100%);
         border: 1px solid rgba(52, 211, 153, 0.35);
         color: #34d399;
       }
-      .j-icon-wrap svg {
-        width: 19px;
-        height: 19px;
-        stroke-width: 1.8;
+      .j-icon-badge svg {
+        width: 20px;
+        height: 20px;
       }
 
-      .j-expanded-title {
-        font-size: 1.35rem;
+      .j-card-role-title {
+        font-size: 1.30rem;
         font-weight: 800;
         color: #ffffff;
-        margin: 0;
+        margin: 0 0 2px 0;
         letter-spacing: -0.02em;
-        line-height: 1.2;
+        line-height: 1.25;
       }
 
-      .j-expanded-tagline {
+      .j-card-meta-line {
         font-family: var(--font-mono, monospace);
         font-size: 0.72rem;
         color: #94a3b8;
-        margin-top: 2px;
-        letter-spacing: 0.02em;
+        display: flex;
+        align-items: center;
+        gap: 6px;
       }
 
-      .j-pills-group {
+      .j-card-badges-row {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 5px;
-        justify-content: flex-end;
+        gap: 6px;
       }
 
-      .j-plat-pill {
+      .j-pill {
         display: inline-flex;
         align-items: center;
-        gap: 4px;
-        padding: 2px 7px;
-        border-radius: 5px;
+        gap: 5px;
+        padding: 3px 9px;
+        border-radius: 6px;
         font-family: var(--font-mono, monospace);
-        font-size: 0.62rem;
+        font-size: 0.65rem;
         font-weight: 600;
         letter-spacing: 0.02em;
         background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.09);
         color: #cbd5e1;
       }
 
-      .j-plat-dot {
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        display: inline-block;
-      }
+      .j-pill.dept.cyan { background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.3); color: #38bdf8; }
+      .j-pill.dept.violet { background: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.3); color: #c084fc; }
+      .j-pill.dept.amber { background: rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.3); color: #fbbf24; }
+      .j-pill.dept.emerald { background: rgba(52, 211, 153, 0.1); border-color: rgba(52, 211, 153, 0.3); color: #34d399; }
 
-      .j-plat-pill.cyan .j-plat-dot { background: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.6); }
-      .j-plat-pill.cyan { border-color: rgba(56, 189, 248, 0.25); background: rgba(56, 189, 248, 0.09); color: #38bdf8; }
+      .j-pill.type.full-time { background: rgba(56, 189, 248, 0.09); border-color: rgba(56, 189, 248, 0.25); color: #7dd3fc; }
+      .j-pill.type.part-time { background: rgba(168, 85, 247, 0.09); border-color: rgba(168, 85, 247, 0.25); color: #d8b4fe; }
+      .j-pill.type.internship { background: rgba(52, 211, 153, 0.09); border-color: rgba(52, 211, 153, 0.25); color: #6ee7b7; }
+      .j-pill.type.live-project { background: rgba(251, 191, 36, 0.09); border-color: rgba(251, 191, 36, 0.25); color: #fde68a; }
 
-      .j-plat-pill.violet .j-plat-dot { background: #a855f7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
-      .j-plat-pill.violet { border-color: rgba(168, 85, 247, 0.25); background: rgba(168, 85, 247, 0.09); color: #c084fc; }
-
-      .j-plat-pill.amber .j-plat-dot { background: #f59e0b; box-shadow: 0 0 8px rgba(245, 158, 11, 0.6); }
-      .j-plat-pill.amber { border-color: rgba(251, 191, 36, 0.25); background: rgba(251, 191, 36, 0.09); color: #fbbf24; }
-
-      .j-plat-pill.emerald .j-plat-dot { background: #10b981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
-      .j-plat-pill.emerald { border-color: rgba(52, 211, 153, 0.25); background: rgba(52, 211, 153, 0.09); color: #34d399; }
-
-      .j-expanded-desc {
-        font-size: 0.84rem;
-        line-height: 1.55;
+      .j-card-desc {
+        font-size: 0.86rem;
+        line-height: 1.6;
         color: #cbd5e1;
         margin: 0;
         position: relative;
         z-index: 2;
       }
 
-      .j-expanded-points-box {
+      .j-card-points-box {
         background: rgba(11, 15, 25, 0.55);
         border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 10px;
-        padding: 12px 14px;
+        border-radius: 12px;
+        padding: 14px 16px;
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 8px;
         position: relative;
         z-index: 2;
       }
 
-      .j-points-title {
+      .j-card-points-title {
         font-family: var(--font-mono, monospace);
         font-size: 0.65rem;
         font-weight: 700;
@@ -572,45 +599,59 @@
         color: #94a3b8;
       }
 
-      .j-points-list {
+      .j-card-points-list {
         display: flex;
         flex-direction: column;
-        gap: 5px;
-        margin: 2px 0 0 0;
+        gap: 6px;
+        margin: 0;
         padding: 0;
         list-style: none;
       }
 
-      .j-point-item {
+      .j-card-point-item {
         display: flex;
         align-items: flex-start;
-        gap: 7px;
-        font-size: 0.76rem;
+        gap: 8px;
+        font-size: 0.78rem;
         color: #cbd5e1;
-        line-height: 1.36;
+        line-height: 1.4;
       }
 
-      .j-point-bullet {
-        font-size: 0.65rem;
+      .j-card-point-bullet {
+        font-size: 0.68rem;
         flex-shrink: 0;
-        display: inline-flex;
-        align-items: center;
         margin-top: 1px;
       }
-      .j-point-bullet.cyan { color: #38bdf8; }
-      .j-point-bullet.violet { color: #c084fc; }
-      .j-point-bullet.amber { color: #fbbf24; }
-      .j-point-bullet.emerald { color: #34d399; }
+      .j-card-point-bullet.cyan { color: #38bdf8; }
+      .j-card-point-bullet.violet { color: #c084fc; }
+      .j-card-point-bullet.amber { color: #fbbf24; }
+      .j-card-point-bullet.emerald { color: #34d399; }
 
-      .j-expanded-actions-footer {
+      .j-card-footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
         padding-top: 14px;
-        margin-top: 2px;
+        margin-top: 4px;
+        flex-wrap: wrap;
+        gap: 12px;
         position: relative;
         z-index: 2;
+      }
+
+      .j-card-perks-note {
+        font-size: 0.74rem;
+        color: #64748b;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .j-card-footer-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
 
       .j-btn-clean {
@@ -951,31 +992,57 @@
             <h1 class="p-sheet-title">Open Jobs &amp; Opportunities</h1>
           </div>
 
-          <!-- Filter Tabs -->
-          <div class="p-filter-bar">
-            <button type="button" class="p-filter-btn active" data-filter="all">All Roles</button>
-            <button type="button" class="p-filter-btn" data-filter="Engineering">Engineering</button>
-            <button type="button" class="p-filter-btn" data-filter="Design">Design</button>
-            <button type="button" class="p-filter-btn" data-filter="Product">Product</button>
-            <button type="button" class="p-filter-btn" data-filter="Internship">Internships</button>
+          <div class="j-search-box">
+            <svg class="j-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <input type="text" id="jobsSearchInput" class="j-search-input" placeholder="Search roles or skills..." />
           </div>
         </div>
       </header>
 
-      <!-- 2-Column Split Showcase -->
+      <!-- 2-Column Split Showcase: Left Sidebar Filters & Right Open Cards -->
       <main class="j-grid-container">
         <div class="j-split-showcase" id="jobsSplitShowcase">
-          <!-- Left Column: Compact Job List Cards -->
-          <div class="j-col-left">
-            <div class="j-left-card-list" id="jobsLeftList">
-              <!-- Rendered dynamically -->
-            </div>
-          </div>
+          <!-- Left Column: Department & Type Filter Sidebar -->
+          <aside class="j-col-left">
+            <div class="j-filter-sidebar">
+              <div class="j-filter-top-header">
+                <span class="j-filter-main-title">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+                  <span>Filter Roles</span>
+                </span>
+                <button type="button" class="j-filter-reset-btn" id="btnResetFilters" style="display: none;">Reset All</button>
+              </div>
 
-          <!-- Right Column: Sticky Expanded Showcase Card -->
+              <!-- Section 1: Departments (Dynamic from Firebase, includes custom names added in Admin panel) -->
+              <div class="j-filter-section">
+                <div class="j-filter-sec-title">
+                  <span>Departments</span>
+                </div>
+                <div class="j-filter-list" id="deptFilterList">
+                  <!-- Dynamically populated from jobs data -->
+                </div>
+              </div>
+
+              <!-- Section 2: Employment Types -->
+              <div class="j-filter-section">
+                <div class="j-filter-sec-title">
+                  <span>Employment Type</span>
+                </div>
+                <div class="j-filter-list" id="typeFilterList">
+                  <!-- Dynamically populated (All, Full-Time, Part-Time, Internship, Live Project, etc.) -->
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Right Column: Full Open Job Cards Listing -->
           <div class="j-col-right">
-            <div class="j-expanded-card cyan" id="jobsExpandedCard">
-              <!-- Rendered dynamically -->
+            <div class="j-listing-top-bar">
+              <div class="j-results-info" id="jobsResultsInfo">Loading positions...</div>
+            </div>
+
+            <div class="j-jobs-full-list" id="jobsFullList" style="display: flex; flex-direction: column; gap: 20px;">
+              <!-- Dynamically populated with full open job cards -->
             </div>
           </div>
         </div>
@@ -1186,13 +1253,19 @@
       </div>
     </div>
 
-    <!-- Script: Load Jobs, 2-Column Split Showcase, Filtering, and Application Submission -->
+    <!-- Script: Load Jobs, Dynamic Sidebar Filters (Department & Types), Search, and Application Submission -->
     <script type="module">
       import { getJobs, submitJobApplication } from '/src/firebase.js';
       import '/src/contactModal.js';
 
-      const leftListEl = document.getElementById('jobsLeftList');
-      const expandedCardEl = document.getElementById('jobsExpandedCard');
+      const deptFilterListEl = document.getElementById('deptFilterList');
+      const typeFilterListEl = document.getElementById('typeFilterList');
+      const jobsResultsInfoEl = document.getElementById('jobsResultsInfo');
+      const jobsFullListEl = document.getElementById('jobsFullList');
+      const jobsSearchInput = document.getElementById('jobsSearchInput');
+      const btnResetFilters = document.getElementById('btnResetFilters');
+      const btnGeneralApp = document.getElementById('btn-open-general-app');
+
       const modal = document.getElementById('application-modal');
       const modalTitle = document.getElementById('modal-job-title');
       const hiddenJobId = document.getElementById('app-job-id');
@@ -1203,236 +1276,344 @@
       const fileText = document.getElementById('file-chosen-text');
       const successMsg = document.getElementById('app-success-msg');
       const submitBtn = document.getElementById('btn-submit-application');
-      const filterBtns = document.querySelectorAll('.p-filter-btn');
-      const btnGeneralApp = document.getElementById('btn-open-general-app');
 
       let allJobs = [];
-      let currentFilter = 'all';
-      let selectedJobId = null;
+      let activeDept = 'all';
+      let activeType = 'all';
+      let searchQuery = '';
 
-      // Department meta configurations (color, icons, watermarks)
-      function getDeptMeta(department = '', type = '') {
-        const d = (department || '').toLowerCase();
-        const t = (type || '').toLowerCase();
+      const COLOR_PALETTE = ['cyan', 'violet', 'amber', 'emerald'];
 
-        if (t.includes('intern') || d.includes('intern')) {
-          return {
-            color: 'emerald',
-            watermark: 'INTERN',
-            iconSvg: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5" /></svg>`
-          };
-        }
-        if (d.includes('design') || d.includes('creative') || d.includes('ui') || d.includes('ux')) {
-          return {
-            color: 'violet',
-            watermark: 'DESIGN',
-            iconSvg: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>`
-          };
-        }
-        if (d.includes('product') || d.includes('growth') || d.includes('operations')) {
-          return {
-            color: 'amber',
-            watermark: 'PRODUCT',
-            iconSvg: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`
-          };
-        }
-        // Default: Engineering
-        return {
-          color: 'cyan',
-          watermark: 'DEV',
-          iconSvg: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`
-        };
+      // Assign theme color to standard and custom departments dynamically
+      function getDeptColor(deptName = '') {
+        const d = (deptName || '').toLowerCase();
+        if (d.includes('eng') || d.includes('tech') || d.includes('dev') || d.includes('soft')) return 'cyan';
+        if (d.includes('design') || d.includes('ui') || d.includes('ux') || d.includes('creative') || d.includes('art')) return 'violet';
+        if (d.includes('prod') || d.includes('growth') || d.includes('operat') || d.includes('scale')) return 'amber';
+        if (d.includes('intern') || d.includes('data') || d.includes('ai') || d.includes('res')) return 'emerald';
+
+        // Deterministic palette hash for any custom department added in Admin panel
+        let hash = 0;
+        for (let i = 0; i < deptName.length; i++) hash = (hash << 5) - hash + deptName.charCodeAt(i);
+        return COLOR_PALETTE[Math.abs(hash) % COLOR_PALETTE.length];
       }
 
-      // Update file input preview
-      fileInput.addEventListener('change', () => {
-        if (fileInput.files.length > 0) {
-          fileText.innerHTML = `<span style="color: #38bdf8; font-weight: 600;">Selected:</span> ${fileInput.files[0].name}`;
-        } else {
-          fileText.textContent = 'Click to choose or drop your resume (PDF/DOCX)';
+      function getTypeColor(type = '') {
+        const t = (type || '').toLowerCase();
+        if (t.includes('intern')) return 'emerald';
+        if (t.includes('live') || t.includes('project')) return 'amber';
+        if (t.includes('part')) return 'violet';
+        return 'cyan'; // Full-Time or default
+      }
+
+      function getTypeClass(type = '') {
+        const t = (type || '').toLowerCase();
+        if (t.includes('intern')) return 'internship';
+        if (t.includes('live') || t.includes('project')) return 'live-project';
+        if (t.includes('part')) return 'part-time';
+        return 'full-time';
+      }
+
+      function getDeptWatermark(deptName = '') {
+        const cleaned = (deptName || '').replace(/[^a-zA-Z]/g, '').toUpperCase();
+        return cleaned.length > 8 ? cleaned.substring(0, 8) : cleaned || 'ROLE';
+      }
+
+      function getDeptIconSvg(color) {
+        if (color === 'cyan') {
+          return `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`;
         }
-      });
+        if (color === 'violet') {
+          return `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>`;
+        }
+        if (color === 'amber') {
+          return `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`;
+        }
+        return `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5" /></svg>`;
+      }
 
-      // Filter handling
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          currentFilter = btn.dataset.filter;
-          renderJobsDeck(currentFilter);
+      // Render Dynamic Left Sidebar Filters
+      function renderSidebarFilters() {
+        if (!deptFilterListEl || !typeFilterListEl) return;
+
+        // 1. Extract Unique Departments & Counts (reflecting any custom names from Admin panel)
+        const deptCounts = {};
+        allJobs.forEach(job => {
+          const dept = (job.department || '').trim();
+          if (dept) {
+            deptCounts[dept] = (deptCounts[dept] || 0) + 1;
+          }
         });
-      });
+        const departments = Object.keys(deptCounts).sort();
 
-      // Render Expanded Right Showcase Card
-      function renderExpandedJobCard(jobId) {
-        const job = allJobs.find(j => j.id === jobId);
-        if (!job || !expandedCardEl) return;
-
-        const meta = getDeptMeta(job.department, job.type);
-
-        expandedCardEl.className = `j-expanded-card ${meta.color}`;
-        expandedCardEl.innerHTML = `
-          <div class="j-ghost-watermark">${meta.watermark}</div>
-
-          <div class="j-expanded-header">
-            <div class="j-expanded-brand">
-              <div class="j-icon-wrap ${meta.color}">
-                ${meta.iconSvg}
-              </div>
-              <div>
-                <h2 class="j-expanded-title">${job.title}</h2>
-                <div class="j-expanded-tagline">${job.department} · ${job.experience || 'Experienced'}</div>
-              </div>
-            </div>
-
-            <div class="j-pills-group">
-              <span class="j-plat-pill ${meta.color}">
-                <span class="j-plat-dot"></span>
-                <span>${job.department}</span>
-              </span>
-              <span class="j-plat-pill">
-                <span class="j-plat-dot"></span>
-                <span>${job.location || 'Remote'}</span>
-              </span>
-              <span class="j-plat-pill">
-                <span class="j-plat-dot"></span>
-                <span>${job.type || 'Full-Time'}</span>
-              </span>
-            </div>
-          </div>
-
-          <p class="j-expanded-desc">${job.description || ''}</p>
-
-          ${job.requirements && job.requirements.length ? `
-            <div class="j-expanded-points-box">
-              <div class="j-points-title">KEY QUALIFICATIONS &amp; RESPONSIBILITIES</div>
-              <ul class="j-points-list">
-                ${job.requirements.map(req => `
-                  <li class="j-point-item">
-                    <span class="j-point-bullet ${meta.color}">▷</span>
-                    <span>${req}</span>
-                  </li>
-                `).join('')}
-              </ul>
-            </div>
-          ` : ''}
-
-          <div class="j-expanded-actions-footer">
-            <button type="button" class="j-btn-clean ${meta.color}" id="btn-apply-expanded">
-              <span>Apply for this Role</span>
-              <span>→</span>
-            </button>
-            <a href="mailto:contact@synerbit.in?subject=Application%20for%20${encodeURIComponent(job.title)}" class="j-btn-ghost">
-              <span>Questions? Email Us ↗</span>
-            </a>
-          </div>
+        let deptHtml = `
+          <button type="button" class="j-filter-item-btn ${activeDept === 'all' ? 'is-active' : ''}" data-filter-dept="all">
+            <span class="j-filter-item-label">
+              <span class="j-filter-dot all"></span>
+              <span class="j-filter-text">All Departments</span>
+            </span>
+            <span class="j-filter-count-badge">${allJobs.length}</span>
+          </button>
         `;
 
-        // Wire apply button inside expanded card
-        const applyBtn = document.getElementById('btn-apply-expanded');
-        if (applyBtn) {
-          applyBtn.addEventListener('click', () => {
-            openModal(job.id, job.title);
+        departments.forEach(dept => {
+          const color = getDeptColor(dept);
+          const count = deptCounts[dept];
+          const isActive = activeDept.toLowerCase() === dept.toLowerCase();
+          deptHtml += `
+            <button type="button" class="j-filter-item-btn ${isActive ? 'is-active' : ''}" data-filter-dept="${dept}">
+              <span class="j-filter-item-label">
+                <span class="j-filter-dot ${color}"></span>
+                <span class="j-filter-text" title="${dept}">${dept}</span>
+              </span>
+              <span class="j-filter-count-badge">${count}</span>
+            </button>
+          `;
+        });
+        deptFilterListEl.innerHTML = deptHtml;
+
+        // 2. Extract Unique Employment Types & Counts
+        const standardTypes = ['Full-Time', 'Part-Time', 'Internship', 'Live Project'];
+        const typeCounts = {};
+        allJobs.forEach(job => {
+          const t = (job.type || 'Full-Time').trim();
+          typeCounts[t] = (typeCounts[t] || 0) + 1;
+        });
+
+        // Merge standard types with any custom types found in allJobs
+        const allTypesSet = new Set([...standardTypes, ...Object.keys(typeCounts)]);
+        const typesList = Array.from(allTypesSet);
+
+        let typeHtml = `
+          <button type="button" class="j-filter-item-btn ${activeType === 'all' ? 'is-active' : ''}" data-filter-type="all">
+            <span class="j-filter-item-label">
+              <span class="j-filter-dot all"></span>
+              <span class="j-filter-text">All Types</span>
+            </span>
+            <span class="j-filter-count-badge">${allJobs.length}</span>
+          </button>
+        `;
+
+        typesList.forEach(t => {
+          const color = getTypeColor(t);
+          const count = typeCounts[t] || 0;
+          const isActive = activeType.toLowerCase() === t.toLowerCase();
+          typeHtml += `
+            <button type="button" class="j-filter-item-btn ${isActive ? 'is-active' : ''}" data-filter-type="${t}">
+              <span class="j-filter-item-label">
+                <span class="j-filter-dot ${color}"></span>
+                <span class="j-filter-text">${t}</span>
+              </span>
+              <span class="j-filter-count-badge">${count}</span>
+            </button>
+          `;
+        });
+        typeFilterListEl.innerHTML = typeHtml;
+
+        // Bind clicks on Department Filter Items
+        deptFilterListEl.querySelectorAll('[data-filter-dept]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            activeDept = btn.dataset.filterDept;
+            renderSidebarFilters();
+            renderJobsList();
           });
+        });
+
+        // Bind clicks on Type Filter Items
+        typeFilterListEl.querySelectorAll('[data-filter-type]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            activeType = btn.dataset.filterType;
+            renderSidebarFilters();
+            renderJobsList();
+          });
+        });
+
+        // Show / Hide Reset Button
+        const hasActiveFilter = activeDept !== 'all' || activeType !== 'all' || searchQuery.length > 0;
+        if (btnResetFilters) {
+          btnResetFilters.style.display = hasActiveFilter ? 'inline-block' : 'none';
         }
       }
 
-      // Render the Full Deck (Left Column + Right Column)
-      function renderJobsDeck(filter = 'all') {
-        const filtered = filter === 'all'
-          ? allJobs
-          : allJobs.filter(j => 
-              (j.department && j.department.toLowerCase().includes(filter.toLowerCase())) ||
-              (j.type && j.type.toLowerCase().includes(filter.toLowerCase()))
-            );
+      // Render the Right Column Full Open Job Cards Listing
+      function renderJobsList() {
+        if (!jobsFullListEl) return;
 
+        const filtered = allJobs.filter(job => {
+          // Department match
+          const matchDept = activeDept === 'all' || 
+            (job.department && job.department.toLowerCase() === activeDept.toLowerCase());
+
+          // Employment type match
+          const matchType = activeType === 'all' || 
+            (job.type && job.type.toLowerCase() === activeType.toLowerCase());
+
+          // Search query match (title, department, location, description, or requirements)
+          let matchSearch = true;
+          if (searchQuery) {
+            const query = searchQuery.toLowerCase();
+            const title = (job.title || '').toLowerCase();
+            const desc = (job.description || '').toLowerCase();
+            const dept = (job.department || '').toLowerCase();
+            const loc = (job.location || '').toLowerCase();
+            const reqs = Array.isArray(job.requirements) ? job.requirements.join(' ').toLowerCase() : '';
+            matchSearch = title.includes(query) || desc.includes(query) || dept.includes(query) || loc.includes(query) || reqs.includes(query);
+          }
+
+          return matchDept && matchType && matchSearch;
+        });
+
+        // Update results counter
+        if (jobsResultsInfoEl) {
+          let summary = `Showing <strong>${filtered.length}</strong> open ${filtered.length === 1 ? 'position' : 'positions'}`;
+          const filtersApplied = [];
+          if (activeDept !== 'all') filtersApplied.push(activeDept);
+          if (activeType !== 'all') filtersApplied.push(activeType);
+          if (searchQuery) filtersApplied.push(`"${searchQuery}"`);
+          if (filtersApplied.length > 0) {
+            summary += ` for <span style="color: #38bdf8; font-weight: 600;">${filtersApplied.join(' · ')}</span>`;
+          }
+          jobsResultsInfoEl.innerHTML = summary;
+        }
+
+        // Empty state
         if (filtered.length === 0) {
-          leftListEl.innerHTML = `
-            <div style="text-align: center; padding: 40px 20px; background: rgba(15,23,42,0.4); border-radius: 14px; border: 1px dashed rgba(255,255,255,0.1);">
-              <p style="color: #94a3b8; font-size: 0.88rem; margin: 0;">No active openings in this category.</p>
+          jobsFullListEl.innerHTML = `
+            <div style="text-align: center; padding: 60px 24px; background: rgba(15, 23, 42, 0.45); border-radius: 18px; border: 1px dashed rgba(255, 255, 255, 0.12);">
+              <div style="font-size: 2rem; margin-bottom: 12px;">🔍</div>
+              <h3 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 8px;">No Open Positions Found</h3>
+              <p style="color: #94a3b8; font-size: 0.85rem; max-width: 480px; margin: 0 auto 20px auto; line-height: 1.5;">
+                We couldn't find any positions matching your selected department, employment type, or keyword search.
+              </p>
+              <button type="button" class="j-btn-clean cyan" id="btn-clear-empty-filter">
+                <span>Reset All Filters</span>
+              </button>
             </div>
           `;
-          if (expandedCardEl) {
-            expandedCardEl.className = 'j-expanded-card cyan';
-            expandedCardEl.innerHTML = `
-              <div style="text-align: center; padding: 60px 20px;">
-                <h3 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 8px;">Explore Open Opportunities</h3>
-                <p style="color: #94a3b8; font-size: 0.85rem; max-width: 440px; margin: 0 auto 20px auto;">
-                  Select another department filter above, or submit an open application below to join our talent network.
-                </p>
-                <button type="button" class="j-btn-clean cyan" id="btn-empty-general-app">
-                  <span>Submit Open Application →</span>
-                </button>
-              </div>
-            `;
-            const emptyBtn = document.getElementById('btn-empty-general-app');
-            if (emptyBtn) {
-              emptyBtn.addEventListener('click', () => openModal('general-role', 'General Application'));
-            }
+
+          const clearBtn = document.getElementById('btn-clear-empty-filter');
+          if (clearBtn) {
+            clearBtn.addEventListener('click', resetAllFilters);
           }
           return;
         }
 
-        // Check if selectedJobId is in filtered list, else select first
-        if (!selectedJobId || !filtered.some(j => j.id === selectedJobId)) {
-          selectedJobId = filtered[0].id;
-        }
+        // Render full open job cards
+        jobsFullListEl.innerHTML = filtered.map(job => {
+          const deptColor = getDeptColor(job.department);
+          const typeClass = getTypeClass(job.type);
+          const watermark = getDeptWatermark(job.department);
+          const iconSvg = getDeptIconSvg(deptColor);
 
-        // Render left column cards
-        leftListEl.innerHTML = filtered.map(job => {
-          const meta = getDeptMeta(job.department, job.type);
-          const isActive = job.id === selectedJobId;
           return `
-            <div class="j-mini-card ${meta.color} ${isActive ? 'is-active' : ''}" data-job-id="${job.id}">
-              <div class="j-mini-icon-wrap ${meta.color}">
-                ${meta.iconSvg}
-              </div>
-              <div class="j-mini-info">
-                <div class="j-mini-title-row">
-                  <h3 class="j-mini-title">${job.title}</h3>
-                  <span class="j-mini-status-pill ${meta.color}">${job.department}</span>
+            <article class="j-job-card ${deptColor}" data-job-id="${job.id}">
+              <div class="j-card-watermark">${watermark}</div>
+
+              <!-- Top Row: Role Title, Metadata & Badges -->
+              <div class="j-card-header">
+                <div class="j-card-title-group">
+                  <div class="j-icon-badge ${deptColor}">
+                    ${iconSvg}
+                  </div>
+                  <div>
+                    <h2 class="j-card-role-title">${job.title}</h2>
+                    <div class="j-card-meta-line">
+                      <span>${job.department}</span>
+                      <span>•</span>
+                      <span>${job.location || 'Remote'}</span>
+                      <span>•</span>
+                      <span>${job.experience || 'Experienced'}</span>
+                    </div>
+                  </div>
                 </div>
-                <p class="j-mini-tagline">${job.location || 'Remote'} · ${job.type || 'Full-Time'} · ${job.experience || 'Exp'}</p>
+
+                <div class="j-card-badges-row">
+                  <span class="j-pill dept ${deptColor}">
+                    <span class="j-filter-dot ${deptColor}"></span>
+                    <span>${job.department}</span>
+                  </span>
+                  <span class="j-pill type ${typeClass}">
+                    <span>${job.type || 'Full-Time'}</span>
+                  </span>
+                  <span class="j-pill">
+                    <span>${job.location || 'Remote'}</span>
+                  </span>
+                  <span class="j-pill">
+                    <span>${job.experience || 'Exp'}</span>
+                  </span>
+                </div>
               </div>
-              <span class="j-mini-arrow">→</span>
-            </div>
+
+              <!-- Full Description Open -->
+              <p class="j-card-desc">${job.description || ''}</p>
+
+              <!-- Key Qualifications & Responsibilities -->
+              ${job.requirements && job.requirements.length ? `
+                <div class="j-card-points-box">
+                  <div class="j-card-points-title">KEY QUALIFICATIONS &amp; RESPONSIBILITIES</div>
+                  <ul class="j-card-points-list">
+                    ${job.requirements.map(req => `
+                      <li class="j-card-point-item">
+                        <span class="j-card-point-bullet ${deptColor}">▷</span>
+                        <span>${req}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+
+              <!-- Action Footer -->
+              <div class="j-card-footer">
+                <div class="j-card-perks-note">
+                  <span>⚡</span>
+                  <span>High-velocity autonomy · Remote-first · Co-ownership upside</span>
+                </div>
+
+                <div class="j-card-footer-actions">
+                  <a href="mailto:contact@synerbit.in?subject=Question%20about%20${encodeURIComponent(job.title)}" class="j-btn-ghost">
+                    <span>Questions? ↗</span>
+                  </a>
+                  <button type="button" class="j-btn-clean ${deptColor} btn-apply-trigger" data-apply-id="${job.id}" data-apply-title="${job.title}">
+                    <span>Apply for this Role</span>
+                    <span>→</span>
+                  </button>
+                </div>
+              </div>
+            </article>
           `;
         }).join('');
 
-        // Render expanded right showcase card
-        renderExpandedJobCard(selectedJobId);
-
-        // Bind interactions on mini cards (mouseenter & click)
-        const miniCards = leftListEl.querySelectorAll('.j-mini-card');
-        miniCards.forEach(card => {
-          const id = card.dataset.jobId;
-
-          const activate = () => {
-            if (selectedJobId === id) return;
-            selectedJobId = id;
-            miniCards.forEach(c => c.classList.remove('is-active'));
-            card.classList.add('is-active');
-            renderExpandedJobCard(id);
-          };
-
-          card.addEventListener('mouseenter', activate);
-          card.addEventListener('click', activate);
+        // Wire apply buttons on cards
+        jobsFullListEl.querySelectorAll('.btn-apply-trigger').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const jobId = btn.dataset.applyId;
+            const title = btn.dataset.applyTitle;
+            openModal(jobId, title);
+          });
         });
       }
 
-      // Load active jobs from Firebase
-      async function loadJobs() {
-        try {
-          allJobs = await getJobs();
-          renderJobsDeck(currentFilter);
-        } catch (err) {
-          console.error('Failed to load jobs:', err);
-          leftListEl.innerHTML = `
-            <div style="text-align: center; padding: 40px; color: #f87171;">
-              Failed to load positions. Please refresh or email us directly.
-            </div>
-          `;
-        }
+      function resetAllFilters() {
+        activeDept = 'all';
+        activeType = 'all';
+        searchQuery = '';
+        if (jobsSearchInput) jobsSearchInput.value = '';
+        renderSidebarFilters();
+        renderJobsList();
+      }
+
+      // Reset Button in Filter Header
+      if (btnResetFilters) {
+        btnResetFilters.addEventListener('click', resetAllFilters);
+      }
+
+      // Search input live filtering
+      if (jobsSearchInput) {
+        jobsSearchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value.trim();
+          renderSidebarFilters();
+          renderJobsList();
+        });
       }
 
       // General Application Trigger
@@ -1442,6 +1623,25 @@
         });
       }
 
+      // Load active jobs from Firebase
+      async function loadJobs() {
+        try {
+          allJobs = await getJobs();
+          renderSidebarFilters();
+          renderJobsList();
+        } catch (err) {
+          console.error('Failed to load jobs:', err);
+          if (jobsFullListEl) {
+            jobsFullListEl.innerHTML = `
+              <div style="text-align: center; padding: 40px; color: #f87171;">
+                Failed to load positions. Please refresh or email us directly at <a href="mailto:contact@synerbit.in" style="color: #38bdf8;">contact@synerbit.in</a>.
+              </div>
+            `;
+          }
+        }
+      }
+
+      // Modal helpers
       function openModal(jobId, jobTitle) {
         hiddenJobId.value = jobId;
         hiddenJobTitle.value = jobTitle;
@@ -1459,6 +1659,15 @@
       closeBtn.addEventListener('click', closeModal);
       modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
+      });
+
+      // Update file input preview
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 0) {
+          fileText.innerHTML = `<span style="color: #38bdf8; font-weight: 600;">Selected:</span> ${fileInput.files[0].name}`;
+        } else {
+          fileText.textContent = 'Click to choose or drop your resume (PDF/DOCX)';
+        }
       });
 
       // Handle form submission
