@@ -519,7 +519,7 @@ export function createProductMobileScene(containerId) {
       sCtx.fillRect(0, 0, 1024, 1000);
 
       renderStatusBar(sCtx);
-      renderDynamicIsland(sCtx, 'GoalSync • Streak 🔥 14d');
+      renderDynamicIsland(sCtx, 'Habitpot • Streak 🔥 14d');
 
       sCtx.fillStyle = '#6ee7b7';
       sCtx.font = '600 32px Plus Jakarta Sans, sans-serif';
@@ -528,7 +528,7 @@ export function createProductMobileScene(containerId) {
 
       sCtx.fillStyle = '#ffffff';
       sCtx.font = 'bold 74px Plus Jakarta Sans, sans-serif';
-      sCtx.fillText('GoalSync', 80, 345);
+      sCtx.fillText('Habitpot', 80, 345);
 
       drawRoundedRect(sCtx, 80, 410, 864, 400, 36, 'rgba(6, 30, 20, 0.85)', 'rgba(16, 185, 129, 0.35)', 3);
 

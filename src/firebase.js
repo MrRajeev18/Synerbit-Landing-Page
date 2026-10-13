@@ -49,7 +49,7 @@ const DEFAULT_PRODUCTS = [
   },
   {
     id: "prod-goalsync",
-    name: "GoalSync",
+    name: "Habitpot",
     tagline: "Outcome-Driven OKR & Execution Operating System",
     description: "Align cross-functional priorities, bridge strategic intent to daily execution, and eliminate status meeting bloat.",
     category: "Strategic Management",
