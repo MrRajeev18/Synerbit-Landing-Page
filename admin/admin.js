@@ -370,9 +370,10 @@ document.getElementById('btn-open-create-product').addEventListener('click', () 
   openModal('modal-product');
 });
 
-document.getElementById('product-form').addEventListener('submit', (e) => {
+document.getElementById('product-form').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const id = document.getElementById('prod-id').value || `prod-${Date.now()}`;
+  const idInput = document.getElementById('prod-id').value.trim();
+  const id = idInput || `prod-${Date.now()}`;
   const product = {
     id,
     name: document.getElementById('prod-name').value.trim(),
@@ -395,6 +396,19 @@ document.getElementById('product-form').addEventListener('submit', (e) => {
   setLocal('products', currentProducts);
   closeModal('modal-product');
   renderProductsTable();
+
+  // If live Firebase is configured, persist to Firestore collection
+  if (isFirebaseConfigured()) {
+    try {
+      const { getFirestore, doc, setDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+      const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+      const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      await setDoc(doc(db, "products", id), product, { merge: true });
+    } catch (err) {
+      console.warn("Could not sync product to Firestore:", err);
+    }
+  }
 });
 
 window.editProduct = (id) => {
@@ -412,11 +426,23 @@ window.editProduct = (id) => {
   openModal('modal-product');
 };
 
-window.deleteProduct = (id) => {
+window.deleteProduct = async (id) => {
   if (!confirm('Are you sure you want to delete this product?')) return;
   currentProducts = currentProducts.filter(p => p.id !== id);
   setLocal('products', currentProducts);
   renderProductsTable();
+
+  if (isFirebaseConfigured()) {
+    try {
+      const { getFirestore, doc, deleteDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+      const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+      const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      await deleteDoc(doc(db, "products", id));
+    } catch (err) {
+      console.warn("Could not delete product from Firestore:", err);
+    }
+  }
 };
 
 /* ==========================================================================
@@ -452,9 +478,10 @@ document.getElementById('btn-open-create-job').addEventListener('click', () => {
   openModal('modal-job');
 });
 
-document.getElementById('job-form').addEventListener('submit', (e) => {
+document.getElementById('job-form').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const id = document.getElementById('job-id-input').value || `job-${Date.now()}`;
+  const idInput = document.getElementById('job-id-input').value.trim();
+  const id = idInput || `job-${Date.now()}`;
   const reqs = document.getElementById('job-reqs-input').value
     .split('\n')
     .map(s => s.trim())
@@ -483,6 +510,18 @@ document.getElementById('job-form').addEventListener('submit', (e) => {
   setLocal('jobs', currentJobs);
   closeModal('modal-job');
   renderJobsTable();
+
+  if (isFirebaseConfigured()) {
+    try {
+      const { getFirestore, doc, setDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+      const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+      const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      await setDoc(doc(db, "jobs", id), job, { merge: true });
+    } catch (err) {
+      console.warn("Could not sync job to Firestore:", err);
+    }
+  }
 });
 
 window.editJob = (id) => {
@@ -501,11 +540,23 @@ window.editJob = (id) => {
   openModal('modal-job');
 };
 
-window.deleteJob = (id) => {
+window.deleteJob = async (id) => {
   if (!confirm('Are you sure you want to delete this job posting?')) return;
   currentJobs = currentJobs.filter(j => j.id !== id);
   setLocal('jobs', currentJobs);
   renderJobsTable();
+
+  if (isFirebaseConfigured()) {
+    try {
+      const { getFirestore, doc, deleteDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+      const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+      const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      await deleteDoc(doc(db, "jobs", id));
+    } catch (err) {
+      console.warn("Could not delete job from Firestore:", err);
+    }
+  }
 };
 
 /* ==========================================================================
