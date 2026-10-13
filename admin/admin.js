@@ -432,9 +432,9 @@ window.editProduct = (id) => {
   document.getElementById('prod-category').value = p.category || '';
   document.getElementById('prod-status').value = p.status || 'Live';
   document.getElementById('prod-color').value = p.statusColor || 'cyan';
-  document.getElementById('prod-url').value = p.url || '';
-  document.getElementById('prod-android-url').value = p.androidUrl || '';
-  document.getElementById('prod-ios-url').value = p.iosUrl || '';
+  document.getElementById('prod-url').value = (p.url && p.url !== '#') ? p.url : '';
+  document.getElementById('prod-android-url').value = (p.androidUrl && p.androidUrl !== '#') ? p.androidUrl : '';
+  document.getElementById('prod-ios-url').value = (p.iosUrl && p.iosUrl !== '#') ? p.iosUrl : '';
   document.getElementById('prod-desc').value = p.description || '';
   document.getElementById('product-modal-title').textContent = 'Edit Product';
   openModal('modal-product');
