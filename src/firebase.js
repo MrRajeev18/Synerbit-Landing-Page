@@ -266,10 +266,17 @@ export async function submitJobApplication(applicationData, resumeFile) {
 
   const payload = {
     ...applicationData,
+    jobId: applicationData.jobId || "general",
+    jobTitle: applicationData.jobTitle || "General Application",
+    applicantName: applicationData.applicantName || applicationData.name || "Candidate",
+    applicantEmail: applicationData.applicantEmail || applicationData.email || "",
+    applicantPhone: applicationData.applicantPhone || applicationData.phone || "",
+    portfolioUrl: applicationData.portfolioUrl || applicationData.link || "",
+    notes: applicationData.notes || applicationData.note || "",
     resumeUrl: resumeUrl,
     resumeFileName: resumeFile ? resumeFile.name : (applicationData.resumeFileName || "No File"),
-    status: "New",
-    submittedAt: new Date().toISOString()
+    status: applicationData.status || "New",
+    submittedAt: applicationData.submittedAt || new Date().toISOString()
   };
 
   if (isFirebaseConfigured()) {
@@ -279,6 +286,13 @@ export async function submitJobApplication(applicationData, resumeFile) {
       const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
       const db = getFirestore(app);
       const docRef = await addDoc(collection(db, "job_applications"), payload);
+      
+      // Keep local store in sync immediately
+      const list = getLocal("applications", []);
+      const newEntry = { id: docRef.id, ...payload };
+      list.unshift(newEntry);
+      setLocal("applications", list);
+
       return { success: true, id: docRef.id };
     } catch (err) {
       console.warn("Live Firebase addDoc failed, writing locally:", err);
@@ -299,8 +313,8 @@ export async function submitJobApplication(applicationData, resumeFile) {
 export async function submitIdea(ideaData) {
   const payload = {
     ...ideaData,
-    status: "New",
-    submittedAt: new Date().toISOString()
+    status: ideaData.status || "New",
+    submittedAt: ideaData.submittedAt || new Date().toISOString()
   };
 
   if (isFirebaseConfigured()) {
@@ -310,6 +324,12 @@ export async function submitIdea(ideaData) {
       const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
       const db = getFirestore(app);
       const docRef = await addDoc(collection(db, "idea_submissions"), payload);
+
+      const list = getLocal("ideas", []);
+      const newEntry = { id: docRef.id, ...payload };
+      list.unshift(newEntry);
+      setLocal("ideas", list);
+
       return { success: true, id: docRef.id };
     } catch (err) {
       console.warn("Live Firebase submitIdea failed, saving locally:", err);
@@ -330,8 +350,8 @@ export async function submitIdea(ideaData) {
 export async function submitContactMessage(contactData) {
   const payload = {
     ...contactData,
-    status: "Unread",
-    submittedAt: new Date().toISOString()
+    status: contactData.status || "Unread",
+    submittedAt: contactData.submittedAt || new Date().toISOString()
   };
 
   if (isFirebaseConfigured()) {
@@ -341,6 +361,12 @@ export async function submitContactMessage(contactData) {
       const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
       const db = getFirestore(app);
       const docRef = await addDoc(collection(db, "contact_messages"), payload);
+
+      const list = getLocal("contacts", []);
+      const newEntry = { id: docRef.id, ...payload };
+      list.unshift(newEntry);
+      setLocal("contacts", list);
+
       return { success: true, id: docRef.id };
     } catch (err) {
       console.warn("Live Firebase submitContactMessage failed, saving locally:", err);

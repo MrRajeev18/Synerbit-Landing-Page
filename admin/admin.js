@@ -124,6 +124,27 @@ function initAuth() {
       sessionStorage.removeItem('synerbit_admin_session');
     }
   }
+
+  // Monitor Firebase Auth state change for token renewal and live reconnect
+  if (isFirebaseConfigured()) {
+    import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js").then(({ getAuth, onAuthStateChanged }) => {
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js").then(({ initializeApp, getApps }) => {
+        const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        onAuthStateChanged(auth, async (fbUser) => {
+          if (fbUser) {
+            console.log("Firebase Auth active user confirmed:", fbUser.email);
+            if (!currentUser) {
+              resolveUserPermissions(fbUser.email);
+            } else if (adminApp.style.display !== 'none') {
+              // Re-sync data now that auth state is officially verified in browser
+              loadAllData();
+            }
+          }
+        });
+      });
+    }).catch(err => console.warn("Firebase Auth listener setup warning:", err));
+  }
 }
 
 async function handleSignOut() {
@@ -251,48 +272,102 @@ function switchTab(tabId) {
    DATA LOADING & RENDERING
    ========================================================================== */
 
-async function loadAllData() {
-  currentProducts = getLocal('products', []);
-  currentJobs = getLocal('jobs', []);
-  currentApplications = getLocal('applications', []);
-  currentIdeas = getLocal('ideas', []);
-  currentContacts = getLocal('contacts', []);
-  currentTeam = getLocal('team', []);
-
-  // Live Firebase sync if configured
-  if (isFirebaseConfigured()) {
-    try {
-      const { getFirestore, collection, getDocs } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-      const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
-      const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      const [pSnap, jSnap, aSnap, iSnap] = await Promise.all([
-        getDocs(collection(db, "products")),
-        getDocs(collection(db, "jobs")),
-        getDocs(collection(db, "job_applications")),
-        getDocs(collection(db, "idea_submissions"))
-      ]);
-
-      if (!pSnap.empty) currentProducts = pSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-      if (!jSnap.empty) currentJobs = jSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-      if (!aSnap.empty) currentApplications = aSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-      if (!iSnap.empty) currentIdeas = iSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-    } catch (err) {
-      console.warn("Live Firebase fetch error in Admin Console:", err);
-    }
+function formatDateTime(val) {
+  if (!val) return 'Recent';
+  if (typeof val?.toDate === 'function') {
+    return val.toDate().toLocaleDateString();
   }
+  const d = new Date(val);
+  return isNaN(d.getTime()) ? 'Recent' : d.toLocaleDateString();
+}
 
-  // Update KPI counters
-  document.getElementById('kpi-products-count').textContent = currentProducts.length;
-  document.getElementById('kpi-jobs-count').textContent = currentJobs.length;
-  document.getElementById('kpi-apps-count').textContent = currentApplications.length;
-  document.getElementById('kpi-ideas-count').textContent = currentIdeas.length;
+let realtimeUnsubscribes = [];
 
-  document.getElementById('badge-applications-count').textContent = currentApplications.length;
-  document.getElementById('badge-ideas-count').textContent = currentIdeas.length;
+function setupRealtimeListeners(db) {
+  realtimeUnsubscribes.forEach(unsub => {
+    try { if (typeof unsub === 'function') unsub(); } catch (_) {}
+  });
+  realtimeUnsubscribes = [];
 
-  // Render lists
+  import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js").then(({ collection, onSnapshot }) => {
+    // 1. Applications Listener
+    try {
+      const unsubApps = onSnapshot(collection(db, "job_applications"), (snapshot) => {
+        if (!snapshot.empty) {
+          const liveApps = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+          liveApps.sort((a, b) => {
+            const dateA = new Date(a.submittedAt || a.createdAt || 0).getTime();
+            const dateB = new Date(b.submittedAt || b.createdAt || 0).getTime();
+            return dateB - dateA;
+          });
+          currentApplications = liveApps;
+          setLocal('applications', liveApps);
+          updateAllUIPanels();
+        }
+      }, err => console.warn("Live applications listener note:", err));
+      realtimeUnsubscribes.push(unsubApps);
+    } catch (_) {}
+
+    // 2. Ideas Listener
+    try {
+      const unsubIdeas = onSnapshot(collection(db, "idea_submissions"), (snapshot) => {
+        if (!snapshot.empty) {
+          const liveIdeas = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+          liveIdeas.sort((a, b) => {
+            const dateA = new Date(a.submittedAt || a.createdAt || 0).getTime();
+            const dateB = new Date(b.submittedAt || b.createdAt || 0).getTime();
+            return dateB - dateA;
+          });
+          currentIdeas = liveIdeas;
+          setLocal('ideas', liveIdeas);
+          updateAllUIPanels();
+        }
+      }, err => console.warn("Live ideas listener note:", err));
+      realtimeUnsubscribes.push(unsubIdeas);
+    } catch (_) {}
+
+    // 3. Jobs Listener
+    try {
+      const unsubJobs = onSnapshot(collection(db, "jobs"), (snapshot) => {
+        if (!snapshot.empty) {
+          currentJobs = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+          setLocal('jobs', currentJobs);
+          updateAllUIPanels();
+        }
+      }, err => console.warn("Live jobs listener note:", err));
+      realtimeUnsubscribes.push(unsubJobs);
+    } catch (_) {}
+
+    // 4. Products Listener
+    try {
+      const unsubProds = onSnapshot(collection(db, "products"), (snapshot) => {
+        if (!snapshot.empty) {
+          currentProducts = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+          setLocal('products', currentProducts);
+          updateAllUIPanels();
+        }
+      }, err => console.warn("Live products listener note:", err));
+      realtimeUnsubscribes.push(unsubProds);
+    } catch (_) {}
+  }).catch(err => console.warn("Could not setup realtime Firestore listeners:", err));
+}
+
+function updateAllUIPanels() {
+  const kpiProducts = document.getElementById('kpi-products-count');
+  const kpiJobs = document.getElementById('kpi-jobs-count');
+  const kpiApps = document.getElementById('kpi-apps-count');
+  const kpiIdeas = document.getElementById('kpi-ideas-count');
+  const badgeApps = document.getElementById('badge-applications-count');
+  const badgeIdeas = document.getElementById('badge-ideas-count');
+
+  if (kpiProducts) kpiProducts.textContent = currentProducts.length;
+  if (kpiJobs) kpiJobs.textContent = currentJobs.length;
+  if (kpiApps) kpiApps.textContent = currentApplications.length;
+  if (kpiIdeas) kpiIdeas.textContent = currentIdeas.length;
+
+  if (badgeApps) badgeApps.textContent = currentApplications.length;
+  if (badgeIdeas) badgeIdeas.textContent = currentIdeas.length;
+
   renderDashboardActivity();
   renderProductsTable();
   renderJobsTable();
@@ -302,36 +377,197 @@ async function loadAllData() {
   renderTeamTable();
 }
 
+async function loadAllData() {
+  // Load local cache immediately to prevent blank flash
+  currentProducts = getLocal('products', []);
+  currentJobs = getLocal('jobs', []);
+  currentApplications = getLocal('applications', []);
+  currentIdeas = getLocal('ideas', []);
+  currentContacts = getLocal('contacts', []);
+  currentTeam = getLocal('team', []);
+
+  updateAllUIPanels();
+
+  // Live Firebase sync if configured
+  if (isFirebaseConfigured()) {
+    const statusText = document.getElementById('firestore-sync-status-text');
+    if (statusText) statusText.textContent = 'Firestore: Syncing...';
+
+    try {
+      const { getFirestore, collection, getDocs } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+      const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+      const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // 1. Fetch Job Applications (Check both 'job_applications' & 'applications')
+      try {
+        const appMap = new Map();
+        try {
+          const snap1 = await getDocs(collection(db, "job_applications"));
+          snap1.forEach(d => appMap.set(d.id, { id: d.id, ...d.data() }));
+        } catch (e1) {
+          console.warn("Could not query 'job_applications':", e1);
+        }
+
+        try {
+          const snap2 = await getDocs(collection(db, "applications"));
+          snap2.forEach(d => {
+            if (!appMap.has(d.id)) appMap.set(d.id, { id: d.id, ...d.data() });
+          });
+        } catch (_) {}
+
+        if (appMap.size > 0) {
+          currentApplications = Array.from(appMap.values());
+          currentApplications.sort((a, b) => {
+            const dateA = new Date(a.submittedAt || a.createdAt || 0).getTime();
+            const dateB = new Date(b.submittedAt || b.createdAt || 0).getTime();
+            return dateB - dateA;
+          });
+          setLocal('applications', currentApplications);
+        }
+      } catch (err) {
+        console.warn("Application inbox sync issue:", err);
+      }
+
+      // 2. Fetch Jobs (Career Positions)
+      try {
+        const jSnap = await getDocs(collection(db, "jobs"));
+        if (!jSnap.empty) {
+          currentJobs = jSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+          setLocal('jobs', currentJobs);
+        }
+      } catch (err) {
+        console.warn("Job positions sync issue:", err);
+      }
+
+      // 3. Fetch Products
+      try {
+        const pSnap = await getDocs(collection(db, "products"));
+        if (!pSnap.empty) {
+          currentProducts = pSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+          setLocal('products', currentProducts);
+        }
+      } catch (err) {
+        console.warn("Products sync issue:", err);
+      }
+
+      // 4. Fetch SaaS Ideas
+      try {
+        const ideaMap = new Map();
+        try {
+          const iSnap1 = await getDocs(collection(db, "idea_submissions"));
+          iSnap1.forEach(d => ideaMap.set(d.id, { id: d.id, ...d.data() }));
+        } catch (_) {}
+
+        try {
+          const iSnap2 = await getDocs(collection(db, "ideas"));
+          iSnap2.forEach(d => {
+            if (!ideaMap.has(d.id)) ideaMap.set(d.id, { id: d.id, ...d.data() });
+          });
+        } catch (_) {}
+
+        if (ideaMap.size > 0) {
+          currentIdeas = Array.from(ideaMap.values());
+          currentIdeas.sort((a, b) => {
+            const dateA = new Date(a.submittedAt || a.createdAt || 0).getTime();
+            const dateB = new Date(b.submittedAt || b.createdAt || 0).getTime();
+            return dateB - dateA;
+          });
+          setLocal('ideas', currentIdeas);
+        }
+      } catch (err) {
+        console.warn("Ideas sync issue:", err);
+      }
+
+      // 5. Fetch Contact Inquiries
+      try {
+        const contactMap = new Map();
+        try {
+          const cSnap1 = await getDocs(collection(db, "contact_messages"));
+          cSnap1.forEach(d => contactMap.set(d.id, { id: d.id, ...d.data() }));
+        } catch (_) {}
+
+        try {
+          const cSnap2 = await getDocs(collection(db, "contacts"));
+          cSnap2.forEach(d => {
+            if (!contactMap.has(d.id)) contactMap.set(d.id, { id: d.id, ...d.data() });
+          });
+        } catch (_) {}
+
+        if (contactMap.size > 0) {
+          currentContacts = Array.from(contactMap.values());
+          currentContacts.sort((a, b) => {
+            const dateA = new Date(a.submittedAt || a.createdAt || 0).getTime();
+            const dateB = new Date(b.submittedAt || b.createdAt || 0).getTime();
+            return dateB - dateA;
+          });
+          setLocal('contacts', currentContacts);
+        }
+      } catch (err) {
+        console.warn("Contacts sync issue:", err);
+      }
+
+      if (statusText) statusText.textContent = 'Firestore: Connected';
+
+      // Attach realtime listeners
+      setupRealtimeListeners(db);
+
+    } catch (err) {
+      console.warn("Live Firebase fetch error in Admin Console:", err);
+      if (statusText) statusText.textContent = 'Firestore: Offline';
+    }
+  }
+
+  // Update UI with fresh data
+  updateAllUIPanels();
+}
+
 function renderDashboardActivity() {
   const appsBox = document.getElementById('dashboard-recent-apps');
   const ideasBox = document.getElementById('dashboard-recent-ideas');
 
-  if (currentApplications.length === 0) {
-    appsBox.innerHTML = '<div class="recent-list-empty">No applications received yet.</div>';
-  } else {
-    appsBox.innerHTML = currentApplications.slice(0, 4).map(app => `
-      <div style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center;">
-        <div>
-          <div style="font-weight: 700; color: #ffffff;">${escapeHtml(app.applicantName)}</div>
-          <div style="font-size: 0.8rem; color: #94a3b8;">${escapeHtml(app.jobTitle)} &bull; ${new Date(app.submittedAt).toLocaleDateString()}</div>
+  if (appsBox) {
+    if (currentApplications.length === 0) {
+      appsBox.innerHTML = '<div class="recent-list-empty">No applications received yet.</div>';
+    } else {
+      appsBox.innerHTML = currentApplications.slice(0, 4).map(app => {
+        const name = app.applicantName || app.name || app.fullName || 'Anonymous Candidate';
+        const role = app.jobTitle || app.title || app.position || 'General Application';
+        const dateStr = formatDateTime(app.submittedAt || app.createdAt);
+        const status = app.status || 'New';
+        return `
+        <div style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-weight: 700; color: #ffffff;">${escapeHtml(name)}</div>
+            <div style="font-size: 0.8rem; color: #94a3b8;">${escapeHtml(role)} &bull; ${dateStr}</div>
+          </div>
+          <span class="badge ${status === 'New' ? 'cyan' : 'emerald'}">${status}</span>
         </div>
-        <span class="badge ${app.status === 'New' ? 'cyan' : 'emerald'}">${app.status}</span>
-      </div>
-    `).join('');
+      `;
+      }).join('');
+    }
   }
 
-  if (currentIdeas.length === 0) {
-    ideasBox.innerHTML = '<div class="recent-list-empty">No SaaS ideas submitted yet.</div>';
-  } else {
-    ideasBox.innerHTML = currentIdeas.slice(0, 4).map(idea => `
-      <div style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center;">
-        <div>
-          <div style="font-weight: 700; color: #ffffff;">${escapeHtml(idea.conceptName)}</div>
-          <div style="font-size: 0.8rem; color: #94a3b8;">by ${escapeHtml(idea.founderName)} &bull; ${new Date(idea.submittedAt).toLocaleDateString()}</div>
+  if (ideasBox) {
+    if (currentIdeas.length === 0) {
+      ideasBox.innerHTML = '<div class="recent-list-empty">No SaaS ideas submitted yet.</div>';
+    } else {
+      ideasBox.innerHTML = currentIdeas.slice(0, 4).map(idea => {
+        const title = idea.conceptName || idea.title || 'Untitled SaaS Concept';
+        const founder = idea.founderName || idea.name || 'Anonymous Founder';
+        const dateStr = formatDateTime(idea.submittedAt || idea.createdAt);
+        const stage = idea.stage || 'Concept';
+        return `
+        <div style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-weight: 700; color: #ffffff;">${escapeHtml(title)}</div>
+            <div style="font-size: 0.8rem; color: #94a3b8;">by ${escapeHtml(founder)} &bull; ${dateStr}</div>
+          </div>
+          <span class="badge amber">${escapeHtml(stage)}</span>
         </div>
-        <span class="badge amber">${idea.stage || 'Concept'}</span>
-      </div>
-    `).join('');
+      `;
+      }).join('');
+    }
   }
 }
 
@@ -603,66 +839,117 @@ window.deleteJob = async (id) => {
 
 function renderApplicationsTable() {
   const tbody = document.getElementById('applications-table-body');
-  if (currentApplications.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: #64748b;">No applications received yet.</td></tr>';
+  if (!tbody) return;
+
+  const filterStatusEl = document.getElementById('filter-app-status');
+  const filterStatus = filterStatusEl ? filterStatusEl.value : 'all';
+
+  const displayedApps = filterStatus === 'all'
+    ? currentApplications
+    : currentApplications.filter(a => (a.status || 'New') === filterStatus);
+
+  if (displayedApps.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #64748b; padding: 24px;">${currentApplications.length === 0 ? 'No applications received yet.' : 'No applications found with status "' + escapeHtml(filterStatus) + '".'}</td></tr>`;
     return;
   }
 
-  tbody.innerHTML = currentApplications.map(app => `
+  tbody.innerHTML = displayedApps.map(app => {
+    const applicantName = app.applicantName || app.name || app.fullName || 'Anonymous Candidate';
+    const jobTitle = app.jobTitle || app.title || app.position || app.role || 'General Application';
+    const email = app.applicantEmail || app.email || 'N/A';
+    const phone = app.applicantPhone || app.phone || app.mobile || 'N/A';
+    const resume = app.resumeUrl || app.resume || '';
+    const status = app.status || 'New';
+    const dateStr = formatDateTime(app.submittedAt || app.createdAt);
+
+    return `
     <tr>
-      <td><strong style="color: #ffffff;">${escapeHtml(app.applicantName)}</strong></td>
-      <td>${escapeHtml(app.jobTitle)}</td>
+      <td><strong style="color: #ffffff;">${escapeHtml(applicantName)}</strong></td>
+      <td>${escapeHtml(jobTitle)}</td>
       <td>
-        <div>${escapeHtml(app.applicantEmail)}</div>
-        <div style="font-size: 0.78rem; color: #94a3b8;">${escapeHtml(app.applicantPhone || 'N/A')}</div>
+        <div>${escapeHtml(email)}</div>
+        <div style="font-size: 0.78rem; color: #94a3b8;">${escapeHtml(phone)}</div>
       </td>
       <td>
-        ${app.resumeUrl ? `<a href="${app.resumeUrl}" target="_blank" style="color: #38bdf8; text-decoration: underline;">View Resume ↗</a>` : 'No file'}
+        ${resume ? `<a href="${escapeHtml(resume)}" target="_blank" style="color: #38bdf8; text-decoration: underline;">View Resume ↗</a>` : '<span style="color: #64748b;">No file</span>'}
       </td>
-      <td style="font-size: 0.8rem; color: #94a3b8;">${new Date(app.submittedAt).toLocaleDateString()}</td>
+      <td style="font-size: 0.8rem; color: #94a3b8;">${dateStr}</td>
       <td>
         <select class="form-select-sm" onchange="window.updateAppStatus('${app.id}', this.value)">
-          <option value="New" ${app.status === 'New' ? 'selected' : ''}>New</option>
-          <option value="Reviewing" ${app.status === 'Reviewing' ? 'selected' : ''}>Reviewing</option>
-          <option value="Shortlisted" ${app.status === 'Shortlisted' ? 'selected' : ''}>Shortlisted</option>
-          <option value="Rejected" ${app.status === 'Rejected' ? 'selected' : ''}>Rejected</option>
+          <option value="New" ${status === 'New' ? 'selected' : ''}>New</option>
+          <option value="Reviewing" ${status === 'Reviewing' ? 'selected' : ''}>Reviewing</option>
+          <option value="Shortlisted" ${status === 'Shortlisted' ? 'selected' : ''}>Shortlisted</option>
+          <option value="Rejected" ${status === 'Rejected' ? 'selected' : ''}>Rejected</option>
         </select>
       </td>
       <td>
         <button class="btn-table-action" onclick="window.viewApplication('${app.id}')">View Note</button>
       </td>
     </tr>
-  `).join('');
+  `;
+  }).join('');
 }
 
-window.updateAppStatus = (id, newStatus) => {
+// Bind Application status filter
+const filterAppStatusSelect = document.getElementById('filter-app-status');
+if (filterAppStatusSelect) {
+  filterAppStatusSelect.addEventListener('change', () => {
+    renderApplicationsTable();
+  });
+}
+
+window.updateAppStatus = async (id, newStatus) => {
   const app = currentApplications.find(a => a.id === id);
   if (app) {
     app.status = newStatus;
     setLocal('applications', currentApplications);
     renderDashboardActivity();
+    renderApplicationsTable();
+
+    if (isFirebaseConfigured()) {
+      try {
+        const { getFirestore, doc, updateDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+        const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+        const fbApp = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+        const db = getFirestore(fbApp);
+        await updateDoc(doc(db, "job_applications", id), { status: newStatus });
+      } catch (e) {
+        console.warn("Could not sync application status update to Firestore:", e);
+      }
+    }
   }
 };
 
 window.viewApplication = (id) => {
   const app = currentApplications.find(a => a.id === id);
   if (!app) return;
+
+  const applicantName = app.applicantName || app.name || app.fullName || 'Anonymous Candidate';
+  const jobTitle = app.jobTitle || app.title || app.position || app.role || 'General Application';
+  const email = app.applicantEmail || app.email || 'N/A';
+  const phone = app.applicantPhone || app.phone || app.mobile || 'Not provided';
+  const portfolio = app.portfolioUrl || app.portfolio || app.link || '';
+  const note = app.notes || app.note || app.coverLetter || 'No note provided.';
+  const resume = app.resumeUrl || app.resume || '';
+
   const body = document.getElementById('view-app-body');
   body.innerHTML = `
     <div style="margin-bottom: 16px;">
-      <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 4px;">${escapeHtml(app.applicantName)}</h4>
-      <div style="color: #38bdf8; font-size: 0.88rem;">Applying for: ${escapeHtml(app.jobTitle)}</div>
+      <h4 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 4px;">${escapeHtml(applicantName)}</h4>
+      <div style="color: #38bdf8; font-size: 0.88rem;">Applying for: ${escapeHtml(jobTitle)}</div>
     </div>
-    <p><strong>Email:</strong> ${escapeHtml(app.applicantEmail)}</p>
-    <p><strong>Phone:</strong> ${escapeHtml(app.applicantPhone || 'Not provided')}</p>
-    <p><strong>Portfolio / Profile:</strong> <a href="${app.portfolioUrl}" target="_blank" style="color: #38bdf8;">${escapeHtml(app.portfolioUrl)}</a></p>
+    <p><strong>Email:</strong> ${email !== 'N/A' ? `<a href="mailto:${escapeHtml(email)}" style="color: #38bdf8;">${escapeHtml(email)}</a>` : 'N/A'}</p>
+    <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
+    <p><strong>Portfolio / Profile:</strong> ${portfolio ? `<a href="${escapeHtml(portfolio)}" target="_blank" style="color: #38bdf8;">${escapeHtml(portfolio)} ↗</a>` : '<span style="color: #94a3b8;">None provided</span>'}</p>
     <p style="margin-top: 14px;"><strong>Applicant Cover Note:</strong></p>
-    <div style="background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin-top: 6px; font-style: italic;">
-      "${escapeHtml(app.notes || 'No note provided.')}"
+    <div style="background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin-top: 6px; font-style: italic; color: #cbd5e1;">
+      "${escapeHtml(note)}"
     </div>
+    ${resume ? `
     <div style="margin-top: 20px;">
-      <a href="${app.resumeUrl || '#'}" target="_blank" class="btn-primary-action" style="display: inline-block; text-decoration: none;">Download / Open Resume Document ↗</a>
+      <a href="${escapeHtml(resume)}" target="_blank" class="btn-primary-action" style="display: inline-block; text-decoration: none;">Download / Open Resume Document ↗</a>
     </div>
+    ` : ''}
   `;
   openModal('modal-view-app');
 };
@@ -687,7 +974,7 @@ function renderIdeasTable() {
       </td>
       <td><span class="badge amber">${idea.stage}</span></td>
       <td style="max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(idea.elevatorPitch || '')}</td>
-      <td style="font-size: 0.8rem; color: #94a3b8;">${new Date(idea.submittedAt).toLocaleDateString()}</td>
+      <td style="font-size: 0.8rem; color: #94a3b8;">${formatDateTime(idea.submittedAt || idea.createdAt)}</td>
       <td>
         <button class="btn-table-action" onclick="window.viewIdea('${idea.id}')">View Pitch</button>
       </td>
@@ -743,7 +1030,7 @@ function renderContactsTable() {
       <td>${escapeHtml(c.email)}</td>
       <td>${escapeHtml(c.subject || 'Inquiry')}</td>
       <td>${escapeHtml(c.message)}</td>
-      <td style="font-size: 0.8rem; color: #94a3b8;">${new Date(c.submittedAt).toLocaleDateString()}</td>
+      <td style="font-size: 0.8rem; color: #94a3b8;">${formatDateTime(c.submittedAt || c.createdAt)}</td>
     </tr>
   `).join('');
 }
@@ -884,6 +1171,24 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+// Bind Manual Sync Button
+const syncBtn = document.getElementById('btn-sync-firebase');
+if (syncBtn) {
+  syncBtn.addEventListener('click', async () => {
+    syncBtn.classList.add('syncing');
+    const label = syncBtn.querySelector('span');
+    if (label) label.textContent = 'Syncing...';
+    try {
+      await loadAllData();
+    } finally {
+      setTimeout(() => {
+        syncBtn.classList.remove('syncing');
+        if (label) label.textContent = 'Sync with Firebase';
+      }, 500);
+    }
+  });
 }
 
 // Bootstrap Console

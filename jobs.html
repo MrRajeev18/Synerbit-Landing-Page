@@ -1024,12 +1024,21 @@
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting Application...';
 
+        const appName = document.getElementById('app-name').value.trim();
+        const appEmail = document.getElementById('app-email').value.trim();
+        const appPhone = document.getElementById('app-phone').value.trim();
+        const appTitle = hiddenJobTitle.value.trim() || 'General Career Application';
+        const appId = hiddenJobId.value.trim() || 'general-role';
+
         const applicationData = {
-          jobId: hiddenJobId.value,
-          jobTitle: hiddenJobTitle.value,
-          applicantName: document.getElementById('app-name').value.trim(),
-          applicantEmail: document.getElementById('app-email').value.trim(),
-          applicantPhone: document.getElementById('app-phone').value.trim(),
+          jobId: appId,
+          jobTitle: appTitle,
+          applicantName: appName,
+          name: appName,
+          applicantEmail: appEmail,
+          email: appEmail,
+          applicantPhone: appPhone,
+          phone: appPhone,
           portfolioUrl: document.getElementById('app-link').value.trim(),
           notes: document.getElementById('app-note').value.trim()
         };

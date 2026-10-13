@@ -135,9 +135,15 @@
             <p class="view-subtitle" id="current-view-desc">High-level ecosystem telemetry and active queues.</p>
           </div>
           <div class="topbar-actions">
+            <button id="btn-sync-firebase" class="btn-sync-action" title="Fetch latest data from Firebase Firestore">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+              </svg>
+              <span>Sync with Firebase</span>
+            </button>
             <span class="system-status-indicator">
-              <span class="status-pulse-dot"></span>
-              <span>Firestore Sync: Active</span>
+              <span class="status-pulse-dot" id="firestore-status-dot"></span>
+              <span id="firestore-sync-status-text">Firestore: Active</span>
             </span>
           </div>
         </header>
