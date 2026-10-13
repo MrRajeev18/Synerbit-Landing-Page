@@ -429,7 +429,7 @@ export function createProductMobileScene(containerId) {
       sCtx.fillRect(0, 0, 1024, 1000);
 
       renderStatusBar(sCtx);
-      renderDynamicIsland(sCtx, 'PulsePM • Sprint #4');
+      renderDynamicIsland(sCtx, 'Habit Pot • Active');
 
       sCtx.fillStyle = '#94a3b8';
       sCtx.font = '600 32px Plus Jakarta Sans, sans-serif';
@@ -438,7 +438,7 @@ export function createProductMobileScene(containerId) {
 
       sCtx.fillStyle = '#ffffff';
       sCtx.font = 'bold 74px Plus Jakarta Sans, sans-serif';
-      sCtx.fillText('PulsePM', 80, 345);
+      sCtx.fillText('Habit Pot', 80, 345);
 
       drawRoundedRect(sCtx, 80, 410, 864, 380, 36, 'rgba(15, 23, 42, 0.85)', 'rgba(56, 189, 248, 0.3)', 3);
 
