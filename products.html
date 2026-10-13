@@ -190,14 +190,14 @@
       }
 
       .p-sheet-controls {
-        max-width: 1280px;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 16px 48px;
+        padding: 16px 24px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 16px;
       }
 
       .p-sheet-heading-wrap {
@@ -226,7 +226,7 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 6px;
+        padding: 5px 6px;
         border-radius: 9999px;
         background: rgba(15, 23, 42, 0.6);
         border: 1px solid rgba(255, 255, 255, 0.09);
@@ -239,7 +239,7 @@
         padding: 8px 18px;
         border-radius: 9999px;
         color: #94a3b8;
-        font-size: 0.84rem;
+        font-size: 0.82rem;
         font-weight: 500;
         cursor: pointer;
         transition: all 0.25s ease;
@@ -250,114 +250,289 @@
       }
 
       .p-filter-btn.active {
-        background: rgba(255, 255, 255, 0.1);
-        color: #ffffff;
+        background: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
         font-weight: 600;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
       }
 
-      /* Product Matrix Showcase Container */
+      /* Product Showcase Container (1200px max-width, matching Careers screenshot) */
       .p-grid-container {
-        max-width: 1360px;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 40px 24px 80px 24px;
+        padding: 36px 24px 80px 24px;
         width: 100%;
       }
 
-      /* Multi-row Deck: Horizontal expanding accordion on desktop, responsive column on mobile */
-      .p-matrix-deck {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
+      /* =========================================
+         SPLIT SHOWCASE: Left & Right Portion Layout
+         ========================================= */
+      .p-split-showcase {
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        gap: 28px;
+        align-items: start;
         width: 100%;
-        align-items: stretch;
-        justify-content: center;
-        perspective: 1200px;
-        transition: all 0.4s ease;
       }
 
-      /* Single card limit when filtered */
-      .p-matrix-deck:has(.p-card:only-child) .p-card,
-      .p-card:only-child {
-        max-width: 580px;
-        margin: 0 auto;
-      }
-
-      /* Base Matrix Card - Self-contained, responsive card */
-      .p-card {
-        position: relative;
-        border-radius: 22px;
-        background: rgba(11, 15, 25, 0.78);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
-        overflow: hidden;
-        padding: 24px 22px;
+      /* Left Portion: Column of Small Product Cards */
+      .p-col-left {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        min-height: 380px;
-        flex: 1 1 0px;
-        min-width: 0;
+        gap: 16px;
+      }
+
+      .p-mini-card {
+        position: relative;
+        border-radius: 18px;
+        background: rgba(15, 23, 42, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
         cursor: pointer;
-        transition: flex 0.45s cubic-bezier(0.22, 1, 0.36, 1), 
-                    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
-                    border-color 0.35s ease, 
-                    box-shadow 0.4s ease, 
-                    background 0.35s ease,
-                    opacity 0.35s ease;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        user-select: none;
       }
 
-      /* Desktop & Tablet Expanding Interaction (>= 860px) */
-      @media (min-width: 860px) {
-        /* When hovering deck, non-hovered/compressed cards adjust down smoothly */
-        .p-matrix-deck:hover .p-card:not(:hover),
-        .p-card.is-compressed {
-          flex: 0.66 1 0px;
-          opacity: 0.72;
-          transform: scale(0.985);
-          background: rgba(9, 13, 22, 0.65);
-        }
-
-        /* Hovered card expands prominently and smoothly */
-        .p-card:hover,
-        .p-card.is-expanded {
-          flex: 1.85 1 0px !important;
-          opacity: 1 !important;
-          transform: translateY(-8px) scale(1.015) !important;
-          z-index: 10;
-          background: rgba(14, 20, 36, 0.95);
-        }
+      .p-mini-card:hover {
+        background: rgba(15, 23, 42, 0.85);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateX(4px);
       }
 
-      .p-card.cyan { border-top: 3px solid #38bdf8; }
-      .p-card.cyan:hover,
-      .p-card.cyan.is-expanded {
-        border-color: rgba(56, 189, 248, 0.55);
-        box-shadow: 0 28px 75px rgba(0, 0, 0, 0.9), 0 0 40px rgba(56, 189, 248, 0.2);
+      .p-mini-card.is-active {
+        background: rgba(15, 23, 42, 0.95);
+        transform: translateX(8px);
       }
 
-      .p-card.emerald { border-top: 3px solid #34d399; }
-      .p-card.emerald:hover,
-      .p-card.emerald.is-expanded {
-        border-color: rgba(52, 211, 153, 0.55);
-        box-shadow: 0 28px 75px rgba(0, 0, 0, 0.9), 0 0 40px rgba(52, 211, 153, 0.2);
+      .p-mini-card.cyan.is-active,
+      .p-mini-card.cyan:hover {
+        border-color: rgba(56, 189, 248, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.15);
       }
 
-      .p-card.amber { border-top: 3px solid #fbbf24; }
-      .p-card.amber:hover,
-      .p-card.amber.is-expanded {
-        border-color: rgba(251, 191, 36, 0.55);
-        box-shadow: 0 28px 75px rgba(0, 0, 0, 0.9), 0 0 40px rgba(251, 191, 36, 0.2);
+      .p-mini-card.emerald.is-active,
+      .p-mini-card.emerald:hover {
+        border-color: rgba(52, 211, 153, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(52, 211, 153, 0.15);
       }
 
-      .p-card.violet { border-top: 3px solid #a855f7; }
-      .p-card.violet:hover,
-      .p-card.violet.is-expanded {
-        border-color: rgba(168, 85, 247, 0.55);
-        box-shadow: 0 28px 75px rgba(0, 0, 0, 0.9), 0 0 40px rgba(168, 85, 247, 0.2);
+      .p-mini-card.amber.is-active,
+      .p-mini-card.amber:hover {
+        border-color: rgba(251, 191, 36, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(251, 191, 36, 0.15);
+      }
+
+      .p-mini-card.violet.is-active,
+      .p-mini-card.violet:hover {
+        border-color: rgba(168, 85, 247, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.15);
+      }
+
+      .p-mini-icon-wrap {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .p-mini-icon-wrap.cyan {
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(14, 165, 233, 0.1) 100%);
+        border: 1px solid rgba(56, 189, 248, 0.35);
+        color: #38bdf8;
+      }
+      .p-mini-icon-wrap.emerald {
+        background: linear-gradient(135deg, rgba(52, 211, 153, 0.25) 0%, rgba(16, 185, 129, 0.1) 100%);
+        border: 1px solid rgba(52, 211, 153, 0.35);
+        color: #34d399;
+      }
+      .p-mini-icon-wrap.amber {
+        background: linear-gradient(135deg, rgba(251, 191, 36, 0.25) 0%, rgba(217, 119, 6, 0.1) 100%);
+        border: 1px solid rgba(251, 191, 36, 0.35);
+        color: #fbbf24;
+      }
+      .p-mini-icon-wrap.violet {
+        background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(124, 58, 237, 0.1) 100%);
+        border: 1px solid rgba(168, 85, 247, 0.35);
+        color: #c084fc;
+      }
+      .p-mini-icon-wrap svg {
+        width: 22px;
+        height: 22px;
+        stroke-width: 1.8;
+      }
+
+      .p-mini-info {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .p-mini-title-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .p-mini-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0;
+        letter-spacing: -0.015em;
+      }
+
+      .p-mini-status-pill {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 2px 7px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .p-mini-status-pill.cyan { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+      .p-mini-status-pill.emerald { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+      .p-mini-status-pill.amber { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+      .p-mini-status-pill.violet { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+      .p-mini-tagline {
+        font-size: 0.78rem;
+        color: #94a3b8;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .p-mini-arrow {
+        color: #64748b;
+        font-size: 0.95rem;
+        transition: transform 0.25s ease, color 0.25s ease;
+      }
+      .p-mini-card:hover .p-mini-arrow,
+      .p-mini-card.is-active .p-mini-arrow {
+        color: #ffffff;
+        transform: translateX(3px);
+      }
+
+      /* Right Portion: Expanded Product Showcase */
+      .p-col-right {
+        position: relative;
+        min-width: 0;
+      }
+
+      .p-expanded-card {
+        position: sticky;
+        top: 140px;
+        background: rgba(15, 23, 42, 0.68);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 22px;
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+        padding: 34px 34px 28px 34px;
+        box-shadow: 0 25px 65px rgba(0, 0, 0, 0.75);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.3s ease;
+      }
+
+      .p-expanded-card.cyan {
+        border-top: 3px solid #38bdf8;
+        border-color: rgba(56, 189, 248, 0.35);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(56, 189, 248, 0.12);
+      }
+      .p-expanded-card.emerald {
+        border-top: 3px solid #34d399;
+        border-color: rgba(52, 211, 153, 0.35);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(52, 211, 153, 0.12);
+      }
+      .p-expanded-card.amber {
+        border-top: 3px solid #fbbf24;
+        border-color: rgba(251, 191, 36, 0.35);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(251, 191, 36, 0.12);
+      }
+      .p-expanded-card.violet {
+        border-top: 3px solid #a855f7;
+        border-color: rgba(168, 85, 247, 0.35);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(168, 85, 247, 0.12);
+      }
+
+      .p-expanded-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .p-expanded-brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .p-expanded-title {
+        font-size: 1.85rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0;
+        letter-spacing: -0.025em;
+        line-height: 1.2;
+      }
+
+      .p-expanded-tagline {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.8rem;
+        color: #94a3b8;
+        margin-top: 4px;
+        letter-spacing: 0.02em;
+      }
+
+      .p-expanded-desc {
+        font-size: 0.95rem;
+        line-height: 1.68;
+        color: #cbd5e1;
+        margin: 0;
+      }
+
+      .p-expanded-points-box {
+        background: rgba(11, 15, 25, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 18px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .p-points-title {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #94a3b8;
+      }
+
+      .p-expanded-actions-footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 20px;
+        margin-top: 4px;
       }
 
       .p-card.rose { border-top: 3px solid #f43f5e; }
@@ -1035,32 +1210,13 @@
         .p-grid-container {
           padding: 24px 20px 60px 20px;
         }
-        .p-matrix-deck {
-          flex-direction: column;
-          gap: 20px;
+        .p-split-showcase {
+          grid-template-columns: 1fr;
+          gap: 24px;
         }
-        .p-card {
-          flex: none;
-          width: 100%;
-          padding: 24px 20px;
-          border-radius: 20px;
-          min-height: auto;
-        }
-        .p-card.is-compressed,
-        .p-matrix-deck:hover .p-card:not(:hover) {
-          flex: none;
-          transform: none;
-          opacity: 1;
-          background: rgba(11, 15, 25, 0.78);
-        }
-        .p-card:hover,
-        .p-card.is-expanded {
-          flex: none !important;
-          transform: translateY(-4px) !important;
-        }
-        .p-points-list {
-          max-height: 250px;
-          opacity: 1;
+        .p-expanded-card {
+          position: static;
+          top: auto;
         }
 
         .p-incubation-card {
@@ -1139,43 +1295,40 @@
         .p-grid-container {
           padding: 18px 14px 48px 14px;
         }
-        .p-matrix-deck {
-          flex-direction: column;
+        .p-split-showcase {
+          grid-template-columns: 1fr;
           gap: 16px;
         }
-        .p-card {
-          flex: none;
-          width: 100%;
-          padding: 22px 18px;
+        .p-mini-card {
+          padding: 14px 16px;
+          border-radius: 14px;
+        }
+        .p-expanded-card {
+          position: static;
+          top: auto;
+          padding: 24px 18px;
           border-radius: 18px;
-          min-height: auto;
+          gap: 16px;
         }
-        .p-card-title {
-          font-size: 1.4rem;
+        .p-expanded-title {
+          font-size: 1.45rem;
         }
-        .p-card-actions {
+        .p-expanded-header {
           flex-direction: column;
-          width: 100%;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        .p-expanded-actions-footer {
+          flex-direction: column;
+          align-items: stretch;
           gap: 10px;
         }
-        .p-card-actions .p-btn-clean,
-        .p-card-actions .p-btn-glass,
-        .p-card-actions .p-btn-disabled,
-        .p-card-actions .p-btn-ghost,
-        .p-card-actions .p-app-btn {
+        .p-expanded-actions-footer .p-btn-clean,
+        .p-expanded-actions-footer .p-btn-glass,
+        .p-expanded-actions-footer .p-btn-disabled,
+        .p-expanded-actions-footer .p-app-btn {
           width: 100%;
           justify-content: center;
-          padding: 12px 18px;
-          font-size: 0.85rem;
-        }
-        .p-product-icon-wrap {
-          width: 44px;
-          height: 44px;
-          border-radius: 12px;
-        }
-        .p-product-icon-wrap svg {
-          width: 22px;
-          height: 22px;
         }
         .p-compact-arrow-btn {
           width: 32px;
@@ -1364,11 +1517,16 @@
           </div>
         </div>
 
-    <!-- Product Showcase Matrix Cards -->
+    <!-- Product Showcase (Split 2-Column Showcase) -->
     <main class="p-grid-container">
-      <div class="p-matrix-deck" id="productsMatrixDeck">
-        <!-- Products rendered dynamically by JavaScript with only Icon, Name, Status, Description, and Action Buttons -->
-      </div> <!-- /.p-matrix-deck -->
+      <div class="p-split-showcase" id="productsSplitShowcase">
+        <div class="p-col-left">
+          <div class="p-left-card-list" id="productsLeftList"></div>
+        </div>
+        <div class="p-col-right">
+          <div class="p-expanded-card" id="productsExpandedCard"></div>
+        </div>
+      </div>
     </main>
 
     <!-- Co-Creation Incubation Banner -->
@@ -1685,220 +1843,244 @@
       }
 
       // =========================================
-      // Render Products Matrix Deck
-      // Strictly max 3 cards per row in CSS grid
+      // Interactive 2-Column Split Showcase
+      // Left: Compact Mini-Cards List
+      // Right: Expanded Sticky Product Showcase
       // =========================================
+      let activeProductId = "pulsepm";
+      let currentFilter = "all";
+
       function renderProductsDeck() {
-        const deck = document.getElementById("productsMatrixDeck");
-        if (!deck) return;
+        const leftList = document.getElementById("productsLeftList");
+        if (!leftList) return;
 
-        deck.innerHTML = PRODUCTS.map(prod => {
+        const visibleProducts = PRODUCTS.filter(p => currentFilter === "all" || p.category === currentFilter);
+
+        // Ensure activeProductId is valid among visible products
+        if (!visibleProducts.some(p => p.id === activeProductId)) {
+          activeProductId = visibleProducts.length > 0 ? visibleProducts[0].id : null;
+        }
+
+        if (visibleProducts.length === 0) {
+          leftList.innerHTML = `<div style="color:#94a3b8; padding:24px; text-align:center; font-size:0.9rem;">No products in this category.</div>`;
+          renderExpandedCard(null);
+          return;
+        }
+
+        leftList.innerHTML = visibleProducts.map(prod => {
           const iconMarkup = ICON_PRESETS[prod.iconKey] || ICON_PRESETS.pulse;
-
-          const pointsMarkup = (prod.points && prod.points.length > 0)
-            ? `<ul class="p-points-list">
-                ${prod.points.map(pt => `
-                  <li class="p-point-item">
-                    <span class="p-point-bullet ${prod.color}">✦</span>
-                    <span>${escapeHtml(pt)}</span>
-                  </li>
-                `).join("")}
-              </ul>`
-            : "";
-
-          // Primary action buttons (Website CTA)
-          const buttonsMarkup = (prod.actionButtons || []).map(btn => {
-            const label = escapeHtml(btn.label);
-            const url = escapeHtml(btn.url || "#");
-            const isExternal = url.startsWith("http");
-            const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
-            if (btn.variant === "disabled") {
-              return `<span class="p-btn-disabled">
-                <span class="p-btn-lock-dot"></span>
-                <span>${label}</span>
-              </span>`;
-            } else if (btn.variant === "primary") {
-              return `<a href="${url}" ${targetAttr} class="p-btn-clean ${prod.color}">
-                <span>${label}</span>
-                <span>→</span>
-              </a>`;
-            } else if (btn.variant === "ghost") {
-              return `<a href="${url}" ${targetAttr} class="p-btn-ghost">
-                <span>${label}</span>
-                <span>↗</span>
-              </a>`;
-            } else {
-              return `<a href="${url}" ${targetAttr} class="p-btn-glass">
-                <span>${label}</span>
-                <span>↗</span>
-              </a>`;
-            }
-          }).join("");
-
-          // Android App button
-          let androidButtonMarkup = "";
-          if (prod.androidStatus && prod.androidStatus !== "None") {
-            const isLiveOrBeta = (prod.androidStatus === "Live" || prod.androidStatus === "Beta") && prod.androidUrl && prod.androidUrl.trim() && prod.androidUrl !== "#";
-            if (isLiveOrBeta) {
-              androidButtonMarkup = `
-                <a href="${escapeHtml(prod.androidUrl)}" target="_blank" rel="noopener noreferrer" class="p-app-btn p-app-btn-android" title="Get ${escapeHtml(prod.name)} on Google Play">
-                  <svg class="p-app-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9997.9993-.9997c.551 0 .9993.4486.9993.9997s-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9997.9993-.9997c.5511 0 .9994.4486.9994.9997s-.4483.9997-.9994.9997m11.4045-6.02l1.996-3.4572c.106-.1837.043-.418-.1407-.524-.1838-.106-.418-.043-.524.1408l-2.0253 3.508c-1.614-.7388-3.444-1.1506-5.4375-1.1506-1.9934 0-3.8234.4118-5.4374 1.1506l-2.0253-3.508c-.106-.1838-.3402-.2468-.524-.1408-.1838.106-.2468.3403-.1408.524l1.996 3.4572C4.1678 10.741 2 13.9143 2 17.625h20c0-3.7107-2.1678-6.884-5.1185-8.3036"/>
-                  </svg>
-                  <span>Google Play</span>
-                </a>
-              `;
-            } else {
-              androidButtonMarkup = `
-                <span class="p-app-btn-disabled" title="Android App: ${escapeHtml(prod.androidStatus)}">
-                  <span class="p-app-lock-dot"></span>
-                  <span>Google Play (${escapeHtml(prod.androidStatus)})</span>
-                </span>
-              `;
-            }
-          }
-
-          // iOS App button
-          let iosButtonMarkup = "";
-          if (prod.iosStatus && prod.iosStatus !== "None") {
-            const isLiveOrBeta = (prod.iosStatus === "Live" || prod.iosStatus === "Beta") && prod.iosUrl && prod.iosUrl.trim() && prod.iosUrl !== "#";
-            if (isLiveOrBeta) {
-              iosButtonMarkup = `
-                <a href="${escapeHtml(prod.iosUrl)}" target="_blank" rel="noopener noreferrer" class="p-app-btn p-app-btn-ios" title="Download ${escapeHtml(prod.name)} on App Store">
-                  <svg class="p-app-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.64 1.35-.56.65-.99 1.71-.86 2.73 1.01.08 2.01-.52 2.58-1.23z"/>
-                  </svg>
-                  <span>App Store</span>
-                </a>
-              `;
-            } else {
-              iosButtonMarkup = `
-                <span class="p-app-btn-disabled" title="iOS App: ${escapeHtml(prod.iosStatus)}">
-                  <span class="p-app-lock-dot"></span>
-                  <span>App Store (${escapeHtml(prod.iosStatus)})</span>
-                </span>
-              `;
-            }
-          }
-
+          const isActive = prod.id === activeProductId;
           return `
-            <article class="p-card card-${prod.id} ${prod.color}" data-category="${prod.category}" data-id="${prod.id}">
-              <span class="p-ghost-watermark">${escapeHtml(prod.name.toUpperCase().slice(0, 5))}</span>
-
-              <div class="p-card-top">
-                <div class="p-product-icon-wrap ${prod.color}">
-                  <div class="p-product-icon-glow ${prod.color}"></div>
-                  ${iconMarkup}
+            <div class="p-mini-card ${prod.color} ${isActive ? 'is-active' : ''}" data-id="${prod.id}" data-category="${prod.category}" role="button" tabindex="0" aria-label="Select ${escapeHtml(prod.name)}">
+              <div class="p-mini-icon-wrap ${prod.color}">
+                ${iconMarkup}
+              </div>
+              <div class="p-mini-info">
+                <div class="p-mini-title-row">
+                  <span class="p-mini-title">${escapeHtml(prod.name)}</span>
+                  <span class="p-mini-status-pill ${prod.color}">${escapeHtml(prod.webStatus || prod.status)}</span>
                 </div>
-                <div class="p-platform-status-group">
-                  <span class="p-plat-pill ${getPlatPillClass(prod.webStatus)}" title="Website: ${escapeHtml(prod.webStatus)}">
-                    <span class="p-plat-dot"></span>
-                    <span class="p-plat-label">Web</span>
-                    <span class="p-plat-val">${escapeHtml(prod.webStatus)}</span>
-                  </span>
-                  ${prod.androidStatus && prod.androidStatus !== 'None' ? `
-                    <span class="p-plat-pill ${getPlatPillClass(prod.androidStatus)}" title="Android App: ${escapeHtml(prod.androidStatus)}">
-                      <span class="p-plat-dot"></span>
-                      <span class="p-plat-label">Android</span>
-                      <span class="p-plat-val">${escapeHtml(prod.androidStatus)}</span>
-                    </span>
-                  ` : ''}
-                  ${prod.iosStatus && prod.iosStatus !== 'None' ? `
-                    <span class="p-plat-pill ${getPlatPillClass(prod.iosStatus)}" title="iOS App: ${escapeHtml(prod.iosStatus)}">
-                      <span class="p-plat-dot"></span>
-                      <span class="p-plat-label">iOS</span>
-                      <span class="p-plat-val">${escapeHtml(prod.iosStatus)}</span>
-                    </span>
-                  ` : ''}
-                  ${prod.websiteUrl && prod.websiteUrl !== '#' ? `
-                    <a href="${prod.websiteUrl}" target="_blank" rel="noopener noreferrer" class="p-compact-arrow-btn" title="Visit ${escapeHtml(prod.name)}" onclick="event.stopPropagation()">
-                      <span>↗</span>
-                    </a>
-                  ` : ''}
-                </div>
+                <p class="p-mini-tagline">${escapeHtml(prod.tagline || prod.description || '')}</p>
               </div>
-
-              <div class="p-card-body">
-                <h3 class="p-card-title">
-                  ${prod.websiteUrl && prod.websiteUrl !== '#' ? `
-                    <a href="${prod.websiteUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${escapeHtml(prod.name)}</a>
-                  ` : escapeHtml(prod.name)}
-                </h3>
-                ${prod.tagline ? `<div class="p-card-tagline">${escapeHtml(prod.tagline)}</div>` : ''}
-                <p class="p-card-desc">${escapeHtml(prod.description)}</p>
-                ${pointsMarkup}
-              </div>
-
-              <div class="p-card-actions">
-                ${buttonsMarkup}
-                ${androidButtonMarkup}
-                ${iosButtonMarkup}
-              </div>
-            </article>
+              <span class="p-mini-arrow">→</span>
+            </div>
           `;
         }).join("");
 
-        initExpandableCards();
+        renderExpandedCard(activeProductId);
+        bindCardInteractions();
       }
 
-      // =========================================
-      // Interactive Expandable Cards Accordion Controller
-      // =========================================
-      let isDeckBound = false;
-      function initExpandableCards() {
-        const deck = document.getElementById("productsMatrixDeck");
-        if (!deck || isDeckBound) return;
-        isDeckBound = true;
+      function renderExpandedCard(prodId) {
+        const expandedContainer = document.getElementById("productsExpandedCard");
+        if (!expandedContainer) return;
 
-        deck.addEventListener("mouseover", (e) => {
-          if (window.innerWidth < 860) return;
-          const card = e.target.closest(".p-card");
-          if (!card) return;
+        if (!prodId) {
+          expandedContainer.innerHTML = `<div style="color:#94a3b8; text-align:center; padding:40px;">No product selected.</div>`;
+          expandedContainer.className = "p-expanded-card";
+          return;
+        }
 
-          const visibleCards = Array.from(deck.querySelectorAll(".p-card")).filter(c => c.style.display !== "none");
-          if (visibleCards.length <= 1) return;
+        const prod = PRODUCTS.find(p => p.id === prodId) || PRODUCTS[0];
+        if (!prod) return;
 
-          visibleCards.forEach(c => {
-            if (c === card) {
-              c.classList.add("is-expanded");
-              c.classList.remove("is-compressed");
-            } else {
-              c.classList.remove("is-expanded");
-              c.classList.add("is-compressed");
-            }
-          });
-        });
+        expandedContainer.className = `p-expanded-card ${prod.color}`;
+        const iconMarkup = ICON_PRESETS[prod.iconKey] || ICON_PRESETS.pulse;
 
-        deck.addEventListener("mouseleave", () => {
-          deck.querySelectorAll(".p-card").forEach(c => {
-            c.classList.remove("is-expanded", "is-compressed");
-          });
-        });
+        const pointsMarkup = (prod.points && prod.points.length > 0)
+          ? `<div class="p-expanded-points-box">
+              <span class="p-points-title">Core Capabilities &amp; Architecture</span>
+              <ul class="p-points-list" style="max-height:none; opacity:1;">
+                ${prod.points.map(pt => `
+                  <li class="p-point-item">
+                    <span class="p-point-bullet ${prod.color}">▷</span>
+                    <span>${escapeHtml(pt)}</span>
+                  </li>
+                `).join("")}
+              </ul>
+            </div>`
+          : "";
 
-        deck.addEventListener("focusin", (e) => {
-          if (window.innerWidth < 860) return;
-          const card = e.target.closest(".p-card");
-          if (!card) return;
-          const visibleCards = Array.from(deck.querySelectorAll(".p-card")).filter(c => c.style.display !== "none");
-          if (visibleCards.length <= 1) return;
-
-          visibleCards.forEach(c => {
-            if (c === card) {
-              c.classList.add("is-expanded");
-              c.classList.remove("is-compressed");
-            } else {
-              c.classList.remove("is-expanded");
-              c.classList.add("is-compressed");
-            }
-          });
-        });
-
-        deck.addEventListener("focusout", (e) => {
-          if (!deck.contains(e.relatedTarget)) {
-            deck.querySelectorAll(".p-card").forEach(c => {
-              c.classList.remove("is-expanded", "is-compressed");
-            });
+        const buttonsMarkup = (prod.actionButtons || []).map(btn => {
+          const label = escapeHtml(btn.label);
+          const url = escapeHtml(btn.url || "#");
+          const isExternal = url.startsWith("http");
+          const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+          if (btn.variant === "disabled") {
+            return `<span class="p-btn-disabled">
+              <span class="p-btn-lock-dot"></span>
+              <span>${label}</span>
+            </span>`;
+          } else if (btn.variant === "primary") {
+            return `<a href="${url}" ${targetAttr} class="p-btn-clean ${prod.color}">
+              <span>${label}</span>
+              <span>→</span>
+            </a>`;
+          } else if (btn.variant === "ghost") {
+            return `<a href="${url}" ${targetAttr} class="p-btn-ghost">
+              <span>${label}</span>
+              <span>↗</span>
+            </a>`;
+          } else {
+            return `<a href="${url}" ${targetAttr} class="p-btn-glass">
+              <span>${label}</span>
+              <span>↗</span>
+            </a>`;
           }
+        }).join("");
+
+        let androidButtonMarkup = "";
+        if (prod.androidStatus && prod.androidStatus !== "None") {
+          const isLiveOrBeta = (prod.androidStatus === "Live" || prod.androidStatus === "Beta") && prod.androidUrl && prod.androidUrl.trim() && prod.androidUrl !== "#";
+          if (isLiveOrBeta) {
+            androidButtonMarkup = `
+              <a href="${escapeHtml(prod.androidUrl)}" target="_blank" rel="noopener noreferrer" class="p-app-btn p-app-btn-android" title="Get ${escapeHtml(prod.name)} on Google Play">
+                <svg class="p-app-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9997.9993-.9997c.551 0 .9993.4486.9993.9997s-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9997.9993-.9997c.5511 0 .9994.4486.9994.9997s-.4483.9997-.9994.9997m11.4045-6.02l1.996-3.4572c.106-.1837.043-.418-.1407-.524-.1838-.106-.418-.043-.524.1408l-2.0253 3.508c-1.614-.7388-3.444-1.1506-5.4375-1.1506-1.9934 0-3.8234.4118-5.4374 1.1506l-2.0253-3.508c-.106-.1838-.3402-.2468-.524-.1408-.1838.106-.2468.3403-.1408.524l1.996 3.4572C4.1678 10.741 2 13.9143 2 17.625h20c0-3.7107-2.1678-6.884-5.1185-8.3036"/>
+                </svg>
+                <span>Google Play</span>
+              </a>
+            `;
+          } else {
+            androidButtonMarkup = `
+              <span class="p-app-btn-disabled" title="Android App: ${escapeHtml(prod.androidStatus)}">
+                <span class="p-app-lock-dot"></span>
+                <span>Google Play (${escapeHtml(prod.androidStatus)})</span>
+              </span>
+            `;
+          }
+        }
+
+        let iosButtonMarkup = "";
+        if (prod.iosStatus && prod.iosStatus !== "None") {
+          const isLiveOrBeta = (prod.iosStatus === "Live" || prod.iosStatus === "Beta") && prod.iosUrl && prod.iosUrl.trim() && prod.iosUrl !== "#";
+          if (isLiveOrBeta) {
+            iosButtonMarkup = `
+              <a href="${escapeHtml(prod.iosUrl)}" target="_blank" rel="noopener noreferrer" class="p-app-btn p-app-btn-ios" title="Download ${escapeHtml(prod.name)} on App Store">
+                <svg class="p-app-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.64 1.35-.56.65-.99 1.71-.86 2.73 1.01.08 2.01-.52 2.58-1.23z"/>
+                </svg>
+                <span>App Store</span>
+              </a>
+            `;
+          } else {
+            iosButtonMarkup = `
+              <span class="p-app-btn-disabled" title="iOS App: ${escapeHtml(prod.iosStatus)}">
+                <span class="p-app-lock-dot"></span>
+                <span>App Store (${escapeHtml(prod.iosStatus)})</span>
+              </span>
+            `;
+          }
+        }
+
+        expandedContainer.innerHTML = `
+          <span class="p-ghost-watermark">${escapeHtml(prod.name.toUpperCase().slice(0, 5))}</span>
+
+          <div class="p-expanded-header">
+            <div class="p-expanded-brand">
+              <div class="p-product-icon-wrap ${prod.color}">
+                <div class="p-product-icon-glow ${prod.color}"></div>
+                ${iconMarkup}
+              </div>
+              <div>
+                <h3 class="p-expanded-title">
+                  ${prod.websiteUrl && prod.websiteUrl !== '#' ? `
+                    <a href="${prod.websiteUrl}" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">${escapeHtml(prod.name)}</a>
+                  ` : escapeHtml(prod.name)}
+                </h3>
+                ${prod.tagline ? `<div class="p-expanded-tagline">${escapeHtml(prod.tagline)}</div>` : ''}
+              </div>
+            </div>
+
+            <div class="p-platform-status-group">
+              <span class="p-plat-pill ${getPlatPillClass(prod.webStatus)}" title="Website: ${escapeHtml(prod.webStatus)}">
+                <span class="p-plat-dot"></span>
+                <span class="p-plat-label">Web</span>
+                <span class="p-plat-val">${escapeHtml(prod.webStatus)}</span>
+              </span>
+              ${prod.androidStatus && prod.androidStatus !== 'None' ? `
+                <span class="p-plat-pill ${getPlatPillClass(prod.androidStatus)}" title="Android App: ${escapeHtml(prod.androidStatus)}">
+                  <span class="p-plat-dot"></span>
+                  <span class="p-plat-label">Android</span>
+                  <span class="p-plat-val">${escapeHtml(prod.androidStatus)}</span>
+                </span>
+              ` : ''}
+              ${prod.iosStatus && prod.iosStatus !== 'None' ? `
+                <span class="p-plat-pill ${getPlatPillClass(prod.iosStatus)}" title="iOS App: ${escapeHtml(prod.iosStatus)}">
+                  <span class="p-plat-dot"></span>
+                  <span class="p-plat-label">iOS</span>
+                  <span class="p-plat-val">${escapeHtml(prod.iosStatus)}</span>
+                </span>
+              ` : ''}
+              ${prod.websiteUrl && prod.websiteUrl !== '#' ? `
+                <a href="${prod.websiteUrl}" target="_blank" rel="noopener noreferrer" class="p-compact-arrow-btn" title="Visit ${escapeHtml(prod.name)}" onclick="event.stopPropagation()">
+                  <span>↗</span>
+                </a>
+              ` : ''}
+            </div>
+          </div>
+
+          <p class="p-expanded-desc">${escapeHtml(prod.description)}</p>
+
+          ${pointsMarkup}
+
+          <div class="p-expanded-actions-footer">
+            <div class="p-card-actions" style="margin-top:0;">
+              ${buttonsMarkup}
+              ${androidButtonMarkup}
+              ${iosButtonMarkup}
+            </div>
+          </div>
+        `;
+      }
+
+      function bindCardInteractions() {
+        const leftCards = document.querySelectorAll("#productsLeftList .p-mini-card");
+        leftCards.forEach(card => {
+          const selectCard = () => {
+            const id = card.getAttribute("data-id");
+            if (!id || id === activeProductId) return;
+            activeProductId = id;
+
+            leftCards.forEach(c => {
+              if (c.getAttribute("data-id") === id) {
+                c.classList.add("is-active");
+              } else {
+                c.classList.remove("is-active");
+              }
+            });
+
+            renderExpandedCard(id);
+          };
+
+          card.addEventListener("mouseenter", selectCard);
+          card.addEventListener("click", selectCard);
+          card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              selectCard();
+            }
+          });
         });
       }
 
@@ -1910,19 +2092,8 @@
         btn.addEventListener("click", () => {
           filterBtns.forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
-
-          const filter = btn.getAttribute("data-filter");
-          const cards = document.querySelectorAll(".p-card");
-
-          cards.forEach(card => {
-            card.classList.remove("is-expanded", "is-compressed");
-            const category = card.getAttribute("data-category");
-            if (filter === "all" || category === filter) {
-              card.style.display = "flex";
-            } else {
-              card.style.display = "none";
-            }
-          });
+          currentFilter = btn.getAttribute("data-filter") || "all";
+          renderProductsDeck();
         });
       });
 
