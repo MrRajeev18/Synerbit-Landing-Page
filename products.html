@@ -265,13 +265,23 @@
         width: 100%;
       }
 
-      /* Multi-row Deck: Strictly max 3 cards per row, additional wrap cleanly */
+      /* Multi-row Deck: Horizontal expanding accordion on desktop, responsive column on mobile */
       .p-matrix-deck {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 24px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
         width: 100%;
         align-items: stretch;
+        justify-content: center;
+        perspective: 1200px;
+        transition: all 0.4s ease;
+      }
+
+      /* Single card limit when filtered */
+      .p-matrix-deck:has(.p-card:only-child) .p-card,
+      .p-card:only-child {
+        max-width: 580px;
+        margin: 0 auto;
       }
 
       /* Base Matrix Card - Self-contained, responsive card */
@@ -284,52 +294,77 @@
         -webkit-backdrop-filter: blur(24px);
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
         overflow: hidden;
-        padding: 28px 24px;
+        padding: 24px 22px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         min-height: 380px;
-        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-                    border-color 0.3s ease, 
-                    box-shadow 0.35s ease,
-                    background 0.3s ease;
+        flex: 1 1 0px;
+        min-width: 0;
+        cursor: pointer;
+        transition: flex 0.45s cubic-bezier(0.22, 1, 0.36, 1), 
+                    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+                    border-color 0.35s ease, 
+                    box-shadow 0.4s ease, 
+                    background 0.35s ease,
+                    opacity 0.35s ease;
       }
 
-      .p-card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(255, 255, 255, 0.22);
-        background: rgba(13, 18, 30, 0.95);
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+      /* Desktop & Tablet Expanding Interaction (>= 860px) */
+      @media (min-width: 860px) {
+        /* When hovering deck, non-hovered/compressed cards adjust down smoothly */
+        .p-matrix-deck:hover .p-card:not(:hover),
+        .p-card.is-compressed {
+          flex: 0.66 1 0px;
+          opacity: 0.72;
+          transform: scale(0.985);
+          background: rgba(9, 13, 22, 0.65);
+        }
+
+        /* Hovered card expands prominently and smoothly */
+        .p-card:hover,
+        .p-card.is-expanded {
+          flex: 1.85 1 0px !important;
+          opacity: 1 !important;
+          transform: translateY(-8px) scale(1.015) !important;
+          z-index: 10;
+          background: rgba(14, 20, 36, 0.95);
+        }
       }
 
       .p-card.cyan { border-top: 3px solid #38bdf8; }
-      .p-card.cyan:hover {
-        border-color: rgba(56, 189, 248, 0.45);
-        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(56, 189, 248, 0.15);
+      .p-card.cyan:hover,
+      .p-card.cyan.is-expanded {
+        border-color: rgba(56, 189, 248, 0.55);
+        box-shadow: 0 28px 75px rgba(0, 0, 0, 0.9), 0 0 40px rgba(56, 189, 248, 0.2);
       }
 
       .p-card.emerald { border-top: 3px solid #34d399; }
-      .p-card.emerald:hover {
-        border-color: rgba(52, 211, 153, 0.45);
-        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(52, 211, 153, 0.15);
+      .p-card.emerald:hover,
+      .p-card.emerald.is-expanded {
+        border-color: rgba(52, 211, 153, 0.55);
+        box-shadow: 0 28px 75px rgba(0, 0, 0, 0.9), 0 0 40px rgba(52, 211, 153, 0.2);
       }
 
       .p-card.amber { border-top: 3px solid #fbbf24; }
-      .p-card.amber:hover {
-        border-color: rgba(251, 191, 36, 0.45);
-        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(251, 191, 36, 0.15);
+      .p-card.amber:hover,
+      .p-card.amber.is-expanded {
+        border-color: rgba(251, 191, 36, 0.55);
+        box-shadow: 0 28px 75px rgba(0, 0, 0, 0.9), 0 0 40px rgba(251, 191, 36, 0.2);
       }
 
       .p-card.violet { border-top: 3px solid #a855f7; }
-      .p-card.violet:hover {
-        border-color: rgba(168, 85, 247, 0.45);
-        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(168, 85, 247, 0.15);
+      .p-card.violet:hover,
+      .p-card.violet.is-expanded {
+        border-color: rgba(168, 85, 247, 0.55);
+        box-shadow: 0 28px 75px rgba(0, 0, 0, 0.9), 0 0 40px rgba(168, 85, 247, 0.2);
       }
 
       .p-card.rose { border-top: 3px solid #f43f5e; }
-      .p-card.rose:hover {
-        border-color: rgba(244, 63, 94, 0.45);
-        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(244, 63, 94, 0.15);
+      .p-card.rose:hover,
+      .p-card.rose.is-expanded {
+        border-color: rgba(244, 63, 94, 0.55);
+        box-shadow: 0 28px 75px rgba(0, 0, 0, 0.9), 0 0 40px rgba(244, 63, 94, 0.2);
       }
 
       /* Subtle Faint Background Watermark */
@@ -448,20 +483,38 @@
       .p-card-body {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        margin-bottom: 24px;
+        gap: 10px;
+        margin-bottom: 20px;
         position: relative;
         z-index: 2;
         flex: 1;
+        min-width: 0;
+        overflow: hidden;
       }
 
       .p-card-title {
-        font-size: 1.65rem;
+        font-size: 1.55rem;
         font-weight: 800;
         color: #ffffff;
         letter-spacing: -0.025em;
         line-height: 1.2;
         margin: 0;
+        min-width: 0;
+        transition: font-size 0.3s ease;
+      }
+
+      .p-card.is-compressed .p-card-title,
+      .p-matrix-deck:hover .p-card:not(:hover) .p-card-title {
+        font-size: 1.32rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .p-card:hover .p-card-title,
+      .p-card.is-expanded .p-card-title {
+        font-size: 1.7rem;
+        white-space: normal;
       }
 
       .p-card-title a {
@@ -476,17 +529,35 @@
 
       .p-card-tagline {
         font-family: var(--font-mono, monospace);
-        font-size: 0.76rem;
+        font-size: 0.74rem;
         color: #94a3b8;
         font-weight: 500;
         letter-spacing: 0.02em;
+        transition: color 0.3s ease;
       }
 
       .p-card-desc {
-        font-size: 0.92rem;
+        font-size: 0.88rem;
         color: #94a3b8;
-        line-height: 1.6;
+        line-height: 1.55;
         margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: color 0.3s ease;
+      }
+
+      .p-card.is-compressed .p-card-desc,
+      .p-matrix-deck:hover .p-card:not(:hover) .p-card-desc {
+        -webkit-line-clamp: 2;
+        color: #64748b;
+      }
+
+      .p-card:hover .p-card-desc,
+      .p-card.is-expanded .p-card-desc {
+        -webkit-line-clamp: unset;
+        color: #cbd5e1;
       }
 
       .p-card-actions {
@@ -497,6 +568,17 @@
         margin-top: auto;
         position: relative;
         z-index: 2;
+        transition: opacity 0.3s ease;
+      }
+
+      .p-card.is-compressed .p-card-actions,
+      .p-matrix-deck:hover .p-card:not(:hover) .p-card-actions {
+        opacity: 0.82;
+      }
+
+      .p-card:hover .p-card-actions,
+      .p-card.is-expanded .p-card-actions {
+        opacity: 1;
       }
 
       /* Multiple Action Buttons Container */
@@ -596,7 +678,19 @@
         margin: 6px 0 2px 0;
         padding: 0;
         list-style: none;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.45s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.35s ease, margin 0.35s ease;
       }
+
+      .p-card:hover .p-points-list,
+      .p-card.is-expanded .p-points-list {
+        max-height: 250px;
+        opacity: 1;
+        margin: 10px 0 4px 0;
+      }
+
       .p-points-list.compact {
         gap: 6px;
         margin: 4px 0 2px 0;
@@ -942,12 +1036,31 @@
           padding: 24px 20px 60px 20px;
         }
         .p-matrix-deck {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          flex-direction: column;
           gap: 20px;
         }
         .p-card {
+          flex: none;
+          width: 100%;
           padding: 24px 20px;
           border-radius: 20px;
+          min-height: auto;
+        }
+        .p-card.is-compressed,
+        .p-matrix-deck:hover .p-card:not(:hover) {
+          flex: none;
+          transform: none;
+          opacity: 1;
+          background: rgba(11, 15, 25, 0.78);
+        }
+        .p-card:hover,
+        .p-card.is-expanded {
+          flex: none !important;
+          transform: translateY(-4px) !important;
+        }
+        .p-points-list {
+          max-height: 250px;
+          opacity: 1;
         }
 
         .p-incubation-card {
@@ -1027,10 +1140,12 @@
           padding: 18px 14px 48px 14px;
         }
         .p-matrix-deck {
-          grid-template-columns: 1fr;
+          flex-direction: column;
           gap: 16px;
         }
         .p-card {
+          flex: none;
+          width: 100%;
           padding: 22px 18px;
           border-radius: 18px;
           min-height: auto;
@@ -1722,6 +1837,69 @@
             </article>
           `;
         }).join("");
+
+        initExpandableCards();
+      }
+
+      // =========================================
+      // Interactive Expandable Cards Accordion Controller
+      // =========================================
+      let isDeckBound = false;
+      function initExpandableCards() {
+        const deck = document.getElementById("productsMatrixDeck");
+        if (!deck || isDeckBound) return;
+        isDeckBound = true;
+
+        deck.addEventListener("mouseover", (e) => {
+          if (window.innerWidth < 860) return;
+          const card = e.target.closest(".p-card");
+          if (!card) return;
+
+          const visibleCards = Array.from(deck.querySelectorAll(".p-card")).filter(c => c.style.display !== "none");
+          if (visibleCards.length <= 1) return;
+
+          visibleCards.forEach(c => {
+            if (c === card) {
+              c.classList.add("is-expanded");
+              c.classList.remove("is-compressed");
+            } else {
+              c.classList.remove("is-expanded");
+              c.classList.add("is-compressed");
+            }
+          });
+        });
+
+        deck.addEventListener("mouseleave", () => {
+          deck.querySelectorAll(".p-card").forEach(c => {
+            c.classList.remove("is-expanded", "is-compressed");
+          });
+        });
+
+        deck.addEventListener("focusin", (e) => {
+          if (window.innerWidth < 860) return;
+          const card = e.target.closest(".p-card");
+          if (!card) return;
+          const visibleCards = Array.from(deck.querySelectorAll(".p-card")).filter(c => c.style.display !== "none");
+          if (visibleCards.length <= 1) return;
+
+          visibleCards.forEach(c => {
+            if (c === card) {
+              c.classList.add("is-expanded");
+              c.classList.remove("is-compressed");
+            } else {
+              c.classList.remove("is-expanded");
+              c.classList.add("is-compressed");
+            }
+          });
+        });
+
+        deck.addEventListener("focusout", (e) => {
+          if (!deck.contains(e.relatedTarget)) {
+            deck.querySelectorAll(".p-card").forEach(c => {
+              c.classList.remove("is-expanded", "is-compressed");
+            });
+          }
+        });
       }
 
       // =========================================
@@ -1737,6 +1915,7 @@
           const cards = document.querySelectorAll(".p-card");
 
           cards.forEach(card => {
+            card.classList.remove("is-expanded", "is-compressed");
             const category = card.getAttribute("data-category");
             if (filter === "all" || category === filter) {
               card.style.display = "flex";
