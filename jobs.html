@@ -459,6 +459,18 @@
         color: #34d399;
       }
 
+      .pill.type.internship {
+        background: rgba(192, 132, 252, 0.12);
+        border-color: rgba(192, 132, 252, 0.35);
+        color: #c084fc;
+      }
+
+      .pill.type.live-project {
+        background: rgba(251, 191, 36, 0.12);
+        border-color: rgba(251, 191, 36, 0.35);
+        color: #fbbf24;
+      }
+
       .job-desc-text {
         font-size: 0.95rem;
         line-height: 1.65;
@@ -771,6 +783,8 @@
               <button type="button" class="p-filter-btn" data-filter="Engineering">Engineering</button>
               <button type="button" class="p-filter-btn" data-filter="Design">Design</button>
               <button type="button" class="p-filter-btn" data-filter="Product">Product</button>
+              <button type="button" class="p-filter-btn" data-filter="Internship">Internships</button>
+              <button type="button" class="p-filter-btn" data-filter="Live Project">Live Projects</button>
             </div>
           </div>
         </div>
@@ -920,10 +934,21 @@
         });
       });
 
+      function getJobTypeClass(type) {
+        if (!type) return '';
+        const t = type.toLowerCase();
+        if (t.includes('intern')) return 'internship';
+        if (t.includes('live') || t.includes('project')) return 'live-project';
+        return '';
+      }
+
       function renderJobsList(filter = 'all') {
         const filtered = filter === 'all'
           ? allJobs
-          : allJobs.filter(j => j.department && j.department.toLowerCase().includes(filter.toLowerCase()));
+          : allJobs.filter(j => 
+              (j.department && j.department.toLowerCase().includes(filter.toLowerCase())) ||
+              (j.type && j.type.toLowerCase().includes(filter.toLowerCase()))
+            );
 
         if (filtered.length === 0) {
           jobsContainer.innerHTML = `
@@ -942,7 +967,7 @@
                 <div class="job-pills-row">
                   <span class="pill dept">${job.department}</span>
                   <span class="pill">${job.location}</span>
-                  <span class="pill type">${job.type || 'Full-Time'}</span>
+                  <span class="pill type ${getJobTypeClass(job.type)}">${job.type || 'Full-Time'}</span>
                   <span class="pill">${job.experience || 'Experienced'}</span>
                 </div>
               </div>

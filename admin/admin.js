@@ -723,6 +723,15 @@ window.deleteProduct = async (id) => {
    JOBS MANAGEMENT (CRUD)
    ========================================================================== */
 
+function getJobTypeBadge(type) {
+  const t = (type || 'Full-Time').toLowerCase();
+  if (t.includes('intern')) return '<span class="badge violet">Internship</span>';
+  if (t.includes('live') || t.includes('project')) return '<span class="badge amber">Live Project</span>';
+  if (t.includes('part')) return '<span class="badge cyan">Part-Time</span>';
+  if (t.includes('contract')) return '<span class="badge amber">Contract</span>';
+  return '<span class="badge emerald">Full-Time</span>';
+}
+
 function renderJobsTable() {
   const tbody = document.getElementById('jobs-table-body');
   if (currentJobs.length === 0) {
@@ -732,7 +741,10 @@ function renderJobsTable() {
 
   tbody.innerHTML = currentJobs.map(j => `
     <tr>
-      <td><strong style="color: #ffffff;">${escapeHtml(j.title)}</strong></td>
+      <td>
+        <strong style="color: #ffffff;">${escapeHtml(j.title)}</strong>
+        <div style="margin-top: 4px;">${getJobTypeBadge(j.type)}</div>
+      </td>
       <td>${escapeHtml(j.department)}</td>
       <td>${escapeHtml(j.location)}</td>
       <td>${escapeHtml(j.experience || 'Experienced')}</td>
