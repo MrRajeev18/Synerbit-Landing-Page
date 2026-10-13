@@ -730,6 +730,88 @@
         flex-shrink: 0;
       }
 
+      /* App Store & Google Play Disabled / Soon Button */
+      .p-app-btn-disabled {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 16px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #64748b;
+        font-size: 0.82rem;
+        font-weight: 500;
+        cursor: default;
+        user-select: none;
+        width: fit-content;
+      }
+      .p-app-lock-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #64748b;
+        display: inline-block;
+      }
+
+      /* Platform Status Group in Card Header */
+      .p-platform-status-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        justify-content: flex-end;
+      }
+
+      .p-plat-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-family: var(--font-mono, monospace);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #cbd5e1;
+        transition: all 0.2s ease;
+      }
+
+      .p-plat-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        display: inline-block;
+        background: #64748b;
+      }
+
+      .p-plat-label {
+        color: #94a3b8;
+        font-weight: 500;
+      }
+
+      .p-plat-pill.emerald .p-plat-dot { background: #10b981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
+      .p-plat-pill.emerald .p-plat-val { color: #34d399; }
+      .p-plat-pill.emerald { border-color: rgba(52, 211, 153, 0.25); background: rgba(52, 211, 153, 0.09); }
+
+      .p-plat-pill.cyan .p-plat-dot { background: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.6); }
+      .p-plat-pill.cyan .p-plat-val { color: #38bdf8; }
+      .p-plat-pill.cyan { border-color: rgba(56, 189, 248, 0.25); background: rgba(56, 189, 248, 0.09); }
+
+      .p-plat-pill.amber .p-plat-dot { background: #f59e0b; box-shadow: 0 0 8px rgba(245, 158, 11, 0.6); }
+      .p-plat-pill.amber .p-plat-val { color: #fbbf24; }
+      .p-plat-pill.amber { border-color: rgba(251, 191, 36, 0.25); background: rgba(251, 191, 36, 0.09); }
+
+      .p-plat-pill.violet .p-plat-dot { background: #a855f7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
+      .p-plat-pill.violet .p-plat-val { color: #c084fc; }
+      .p-plat-pill.violet { border-color: rgba(168, 85, 247, 0.25); background: rgba(168, 85, 247, 0.09); }
+
+      .p-plat-pill.neutral .p-plat-dot { background: #64748b; }
+      .p-plat-pill.neutral .p-plat-val { color: #94a3b8; }
+      .p-plat-pill.neutral { border-color: rgba(255, 255, 255, 0.06); background: rgba(255, 255, 255, 0.03); }
+
       /* Incubation Banner */
       .p-incubation-banner {
         max-width: 1280px;
@@ -1235,8 +1317,11 @@
           id: "prod-pulsepm",
           name: "PulsePM",
           websiteUrl: "https://www.pulsepm.in",
+          webStatus: "Live",
           androidUrl: "https://play.google.com/store/apps/details?id=in.pulsepm.app",
+          androidStatus: "Live",
           iosUrl: "",
+          iosStatus: "Coming Soon",
           iconKey: "pulse",
           color: "cyan",
           status: "Live Production",
@@ -1256,8 +1341,11 @@
           id: "prod-goalsync",
           name: "GoalSync",
           websiteUrl: "#",
+          webStatus: "Beta",
           androidUrl: "",
+          androidStatus: "Coming Soon",
           iosUrl: "",
+          iosStatus: "Coming Soon",
           iconKey: "sync",
           color: "emerald",
           status: "Private Beta",
@@ -1276,8 +1364,11 @@
           id: "prod-busly",
           name: "Busly",
           websiteUrl: "#",
+          webStatus: "In Development",
           androidUrl: "",
+          androidStatus: "Coming Soon",
           iosUrl: "",
+          iosStatus: "Coming Soon",
           iconKey: "fleet",
           color: "amber",
           status: "In Engineering",
@@ -1306,6 +1397,14 @@
           .replace(/'/g, "&#039;");
       }
 
+      function getPlatPillClass(status) {
+        const s = (status || "").toLowerCase();
+        if (s.includes("live") || s.includes("prod")) return "emerald";
+        if (s.includes("beta") || s.includes("alpha")) return "amber";
+        if (s.includes("dev") || s.includes("eng")) return "violet";
+        return "neutral";
+      }
+
       function mapRemoteProduct(rp) {
         // Find existing product or default template for icons / fallback points
         const def = DEFAULT_PRODUCTS.find(p => p.id === rp.id || p.name.toLowerCase() === (rp.name || "").toLowerCase());
@@ -1321,16 +1420,19 @@
 
         const color = rp.statusColor || rp.color || (def ? def.color : "cyan");
         const status = rp.status || (def ? def.status : "Live");
+        const webStatus = rp.webStatus || (status === "Live Production" ? "Live" : (status || "Live"));
         const url = rp.url || rp.websiteUrl || (def ? def.websiteUrl : "#");
         const androidUrl = (rp.androidUrl !== undefined && rp.androidUrl !== null) ? rp.androidUrl : (def ? (def.androidUrl || "") : "");
+        const androidStatus = rp.androidStatus || (androidUrl && androidUrl !== "#" ? "Live" : (def ? def.androidStatus : "Coming Soon"));
         const iosUrl = (rp.iosUrl !== undefined && rp.iosUrl !== null) ? rp.iosUrl : (def ? (def.iosUrl || "") : "");
+        const iosStatus = rp.iosStatus || (iosUrl && iosUrl !== "#" ? "Live" : (def ? def.iosStatus : "Coming Soon"));
 
         let actionButtons = rp.actionButtons;
         if (!actionButtons || actionButtons.length === 0) {
           if (url && url !== "#" && !url.startsWith("javascript:")) {
             actionButtons = [{ label: `Explore ${rp.name}`, url: url, variant: "primary" }];
           } else {
-            actionButtons = [{ label: "Coming Soon", url: "#", variant: "disabled" }];
+            actionButtons = [{ label: `Website (${webStatus})`, url: "#", variant: "disabled" }];
           }
         }
 
@@ -1345,8 +1447,11 @@
           name: rp.name,
           tagline: rp.tagline || (def ? def.tagline : ""),
           websiteUrl: url,
+          webStatus,
           androidUrl,
+          androidStatus,
           iosUrl,
+          iosStatus,
           iconKey,
           color,
           status,
@@ -1379,6 +1484,7 @@
               </ul>`
             : "";
 
+          // Primary action buttons (Website CTA)
           const buttonsMarkup = (prod.actionButtons || []).map(btn => {
             const label = escapeHtml(btn.label);
             const url = escapeHtml(btn.url || "#");
@@ -1407,29 +1513,51 @@
             }
           }).join("");
 
-          // App Store & Google Play download buttons
-          const appButtons = [];
-          if (prod.androidUrl && prod.androidUrl.trim() && prod.androidUrl !== '#') {
-            appButtons.push(`
-              <a href="${escapeHtml(prod.androidUrl)}" target="_blank" rel="noopener noreferrer" class="p-app-btn p-app-btn-android" title="Get ${escapeHtml(prod.name)} on Google Play">
-                <svg class="p-app-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9997.9993-.9997c.551 0 .9993.4486.9993.9997s-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9997.9993-.9997c.5511 0 .9994.4486.9994.9997s-.4483.9997-.9994.9997m11.4045-6.02l1.996-3.4572c.106-.1837.043-.418-.1407-.524-.1838-.106-.418-.043-.524.1408l-2.0253 3.508c-1.614-.7388-3.444-1.1506-5.4375-1.1506-1.9934 0-3.8234.4118-5.4374 1.1506l-2.0253-3.508c-.106-.1838-.3402-.2468-.524-.1408-.1838.106-.2468.3403-.1408.524l1.996 3.4572C4.1678 10.741 2 13.9143 2 17.625h20c0-3.7107-2.1678-6.884-5.1185-8.3036"/>
-                </svg>
-                <span>Google Play</span>
-              </a>
-            `);
+          // Android App button
+          let androidButtonMarkup = "";
+          if (prod.androidStatus && prod.androidStatus !== "None") {
+            const isLiveOrBeta = (prod.androidStatus === "Live" || prod.androidStatus === "Beta") && prod.androidUrl && prod.androidUrl.trim() && prod.androidUrl !== "#";
+            if (isLiveOrBeta) {
+              androidButtonMarkup = `
+                <a href="${escapeHtml(prod.androidUrl)}" target="_blank" rel="noopener noreferrer" class="p-app-btn p-app-btn-android" title="Get ${escapeHtml(prod.name)} on Google Play">
+                  <svg class="p-app-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9997.9993-.9997c.551 0 .9993.4486.9993.9997s-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9997.9993-.9997c.5511 0 .9994.4486.9994.9997s-.4483.9997-.9994.9997m11.4045-6.02l1.996-3.4572c.106-.1837.043-.418-.1407-.524-.1838-.106-.418-.043-.524.1408l-2.0253 3.508c-1.614-.7388-3.444-1.1506-5.4375-1.1506-1.9934 0-3.8234.4118-5.4374 1.1506l-2.0253-3.508c-.106-.1838-.3402-.2468-.524-.1408-.1838.106-.2468.3403-.1408.524l1.996 3.4572C4.1678 10.741 2 13.9143 2 17.625h20c0-3.7107-2.1678-6.884-5.1185-8.3036"/>
+                  </svg>
+                  <span>Google Play</span>
+                </a>
+              `;
+            } else {
+              androidButtonMarkup = `
+                <span class="p-app-btn-disabled" title="Android App: ${escapeHtml(prod.androidStatus)}">
+                  <span class="p-app-lock-dot"></span>
+                  <span>Google Play (${escapeHtml(prod.androidStatus)})</span>
+                </span>
+              `;
+            }
           }
-          if (prod.iosUrl && prod.iosUrl.trim() && prod.iosUrl !== '#') {
-            appButtons.push(`
-              <a href="${escapeHtml(prod.iosUrl)}" target="_blank" rel="noopener noreferrer" class="p-app-btn p-app-btn-ios" title="Download ${escapeHtml(prod.name)} on the App Store">
-                <svg class="p-app-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.64 1.35-.56.65-.99 1.71-.86 2.73 1.01.08 2.01-.52 2.58-1.23z"/>
-                </svg>
-                <span>App Store</span>
-              </a>
-            `);
+
+          // iOS App button
+          let iosButtonMarkup = "";
+          if (prod.iosStatus && prod.iosStatus !== "None") {
+            const isLiveOrBeta = (prod.iosStatus === "Live" || prod.iosStatus === "Beta") && prod.iosUrl && prod.iosUrl.trim() && prod.iosUrl !== "#";
+            if (isLiveOrBeta) {
+              iosButtonMarkup = `
+                <a href="${escapeHtml(prod.iosUrl)}" target="_blank" rel="noopener noreferrer" class="p-app-btn p-app-btn-ios" title="Download ${escapeHtml(prod.name)} on App Store">
+                  <svg class="p-app-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.64 1.35-.56.65-.99 1.71-.86 2.73 1.01.08 2.01-.52 2.58-1.23z"/>
+                  </svg>
+                  <span>App Store</span>
+                </a>
+              `;
+            } else {
+              iosButtonMarkup = `
+                <span class="p-app-btn-disabled" title="iOS App: ${escapeHtml(prod.iosStatus)}">
+                  <span class="p-app-lock-dot"></span>
+                  <span>App Store (${escapeHtml(prod.iosStatus)})</span>
+                </span>
+              `;
+            }
           }
-          const appButtonsMarkup = appButtons.join("");
 
           return `
             <article class="p-card card-${prod.id} ${prod.color}" data-category="${prod.category}" data-id="${prod.id}">
@@ -1440,8 +1568,26 @@
                   <div class="p-product-icon-glow ${prod.color}"></div>
                   ${iconMarkup}
                 </div>
-                <div class="p-card-status-group">
-                  <span class="p-status-pill ${prod.color}">${escapeHtml(prod.status)}</span>
+                <div class="p-platform-status-group">
+                  <span class="p-plat-pill ${getPlatPillClass(prod.webStatus)}" title="Website: ${escapeHtml(prod.webStatus)}">
+                    <span class="p-plat-dot"></span>
+                    <span class="p-plat-label">Web</span>
+                    <span class="p-plat-val">${escapeHtml(prod.webStatus)}</span>
+                  </span>
+                  ${prod.androidStatus && prod.androidStatus !== 'None' ? `
+                    <span class="p-plat-pill ${getPlatPillClass(prod.androidStatus)}" title="Android App: ${escapeHtml(prod.androidStatus)}">
+                      <span class="p-plat-dot"></span>
+                      <span class="p-plat-label">Android</span>
+                      <span class="p-plat-val">${escapeHtml(prod.androidStatus)}</span>
+                    </span>
+                  ` : ''}
+                  ${prod.iosStatus && prod.iosStatus !== 'None' ? `
+                    <span class="p-plat-pill ${getPlatPillClass(prod.iosStatus)}" title="iOS App: ${escapeHtml(prod.iosStatus)}">
+                      <span class="p-plat-dot"></span>
+                      <span class="p-plat-label">iOS</span>
+                      <span class="p-plat-val">${escapeHtml(prod.iosStatus)}</span>
+                    </span>
+                  ` : ''}
                   ${prod.websiteUrl && prod.websiteUrl !== '#' ? `
                     <a href="${prod.websiteUrl}" target="_blank" rel="noopener noreferrer" class="p-compact-arrow-btn" title="Visit ${escapeHtml(prod.name)}" onclick="event.stopPropagation()">
                       <span>↗</span>
@@ -1463,7 +1609,8 @@
 
               <div class="p-card-actions">
                 ${buttonsMarkup}
-                ${appButtonsMarkup}
+                ${androidButtonMarkup}
+                ${iosButtonMarkup}
               </div>
             </article>
           `;

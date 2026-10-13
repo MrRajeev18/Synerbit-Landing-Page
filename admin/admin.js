@@ -347,11 +347,22 @@ function renderProductsTable() {
   }
 
   tbody.innerHTML = currentProducts.map(p => {
+    const webSt = p.webStatus || (p.status === 'Live' ? 'Live' : p.status);
+    const platformItems = [];
+    platformItems.push(`<span style="color: ${webSt === 'Live' ? '#34d399' : '#94a3b8'};">Web: ${escapeHtml(webSt)}</span>`);
+    if (p.androidStatus && p.androidStatus !== 'None') {
+      platformItems.push(`<span style="color: ${p.androidStatus === 'Live' ? '#34d399' : '#94a3b8'};">Android: ${escapeHtml(p.androidStatus)}</span>`);
+    }
+    if (p.iosStatus && p.iosStatus !== 'None') {
+      platformItems.push(`<span style="color: ${p.iosStatus === 'Live' ? '#34d399' : '#94a3b8'};">iOS: ${escapeHtml(p.iosStatus)}</span>`);
+    }
+    const platformsHtml = platformItems.join(' &bull; ');
+
     const links = [];
-    if (p.url && p.url !== '#') links.push(`<a href="${escapeHtml(p.url)}" target="_blank" style="color: #38bdf8; text-decoration: none;">Web</a>`);
-    if (p.androidUrl && p.androidUrl !== '#') links.push(`<a href="${escapeHtml(p.androidUrl)}" target="_blank" style="color: #34d399; text-decoration: none;">Android</a>`);
-    if (p.iosUrl && p.iosUrl !== '#') links.push(`<a href="${escapeHtml(p.iosUrl)}" target="_blank" style="color: #c084fc; text-decoration: none;">iOS</a>`);
-    const linksHtml = links.length ? links.join(' &bull; ') : '<span style="color: #64748b;">None</span>';
+    if (p.url && p.url !== '#') links.push(`<a href="${escapeHtml(p.url)}" target="_blank" style="color: #38bdf8; text-decoration: none;">Web ↗</a>`);
+    if (p.androidUrl && p.androidUrl !== '#') links.push(`<a href="${escapeHtml(p.androidUrl)}" target="_blank" style="color: #34d399; text-decoration: none;">Android ↗</a>`);
+    if (p.iosUrl && p.iosUrl !== '#') links.push(`<a href="${escapeHtml(p.iosUrl)}" target="_blank" style="color: #c084fc; text-decoration: none;">iOS ↗</a>`);
+    const linksHtml = links.length ? links.join(' &bull; ') : '<span style="color: #64748b;">No links</span>';
 
     return `
       <tr>
@@ -361,7 +372,10 @@ function renderProductsTable() {
         </td>
         <td>${escapeHtml(p.category || 'Platform')}</td>
         <td><span class="badge ${p.statusColor || 'cyan'}">${p.status}</span></td>
-        <td>${linksHtml}</td>
+        <td>
+          <div style="font-size: 0.8rem; margin-bottom: 4px;">${platformsHtml}</div>
+          <div style="font-size: 0.75rem;">${linksHtml}</div>
+        </td>
         <td>
           <button class="btn-table-action" onclick="window.editProduct('${p.id}')">Edit</button>
           <button class="btn-table-action delete" onclick="window.deleteProduct('${p.id}')">Delete</button>
@@ -374,6 +388,10 @@ function renderProductsTable() {
 document.getElementById('btn-open-create-product').addEventListener('click', () => {
   document.getElementById('product-form').reset();
   document.getElementById('prod-id').value = '';
+  document.getElementById('prod-web-status').value = 'Live';
+  document.getElementById('prod-android-status').value = 'Coming Soon';
+  document.getElementById('prod-ios-status').value = 'Coming Soon';
+  document.getElementById('prod-url').value = '';
   document.getElementById('prod-android-url').value = '';
   document.getElementById('prod-ios-url').value = '';
   document.getElementById('product-modal-title').textContent = 'Add New Product';
@@ -391,8 +409,11 @@ document.getElementById('product-form').addEventListener('submit', async (e) => 
     category: document.getElementById('prod-category').value.trim(),
     status: document.getElementById('prod-status').value,
     statusColor: document.getElementById('prod-color').value,
+    webStatus: document.getElementById('prod-web-status').value,
     url: document.getElementById('prod-url').value.trim(),
+    androidStatus: document.getElementById('prod-android-status').value,
     androidUrl: document.getElementById('prod-android-url').value.trim(),
+    iosStatus: document.getElementById('prod-ios-status').value,
     iosUrl: document.getElementById('prod-ios-url').value.trim(),
     description: document.getElementById('prod-desc').value.trim(),
     updatedAt: new Date().toISOString()
@@ -432,6 +453,9 @@ window.editProduct = (id) => {
   document.getElementById('prod-category').value = p.category || '';
   document.getElementById('prod-status').value = p.status || 'Live';
   document.getElementById('prod-color').value = p.statusColor || 'cyan';
+  document.getElementById('prod-web-status').value = p.webStatus || (p.status === 'Live' ? 'Live' : (p.status || 'Live'));
+  document.getElementById('prod-android-status').value = p.androidStatus || (p.androidUrl ? 'Live' : 'Coming Soon');
+  document.getElementById('prod-ios-status').value = p.iosStatus || (p.iosUrl ? 'Live' : 'Coming Soon');
   document.getElementById('prod-url').value = (p.url && p.url !== '#') ? p.url : '';
   document.getElementById('prod-android-url').value = (p.androidUrl && p.androidUrl !== '#') ? p.androidUrl : '';
   document.getElementById('prod-ios-url').value = (p.iosUrl && p.iosUrl !== '#') ? p.iosUrl : '';
