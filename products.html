@@ -22,13 +22,25 @@
     <link rel="stylesheet" href="/src/style.css" />
     <style>
       /* Products Page Specific Styles */
+      /* Products Page Specific Styles */
       .products-page-body {
-        background-color: #000000;
+        background-color: #030407;
+        background-image: 
+          radial-gradient(ellipse at 80% 8%, rgba(56, 189, 248, 0.06) 0%, transparent 60%),
+          radial-gradient(ellipse at 20% 30%, rgba(129, 140, 248, 0.04) 0%, transparent 60%),
+          linear-gradient(180deg, #07090f 0%, #030407 100%);
         color: #f1f5f9;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         overflow-x: hidden;
+        padding-top: 72px; /* Clears fixed 72px navbar */
+      }
+
+      .products-main-wrapper {
+        flex: 1;
+        width: 100%;
+        position: relative;
       }
 
       /* Fixed Navigation Bar */
@@ -43,7 +55,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: rgba(6, 7, 12, 0.85);
+        background: rgba(6, 7, 12, 0.92);
         backdrop-filter: blur(24px) saturate(180%);
         -webkit-backdrop-filter: blur(24px) saturate(180%);
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -97,81 +109,6 @@
         background: #38bdf8;
         border-radius: 2px;
         box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
-      }
-
-      /* Sticky Hero Section (Pitch Black Void with Luminous Moon Horizon) */
-      .p-hero-sticky-section {
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        height: 100dvh;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 80px 24px;
-        background: #000000;
-        z-index: 1;
-        overflow: hidden;
-      }
-
-      .p-hero-center-content {
-        max-width: 900px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transform: translateY(-10px);
-        position: relative;
-        z-index: 5;
-      }
-
-      .p-hero-title {
-        font-size: clamp(2.3rem, 4.4vw, 3.8rem);
-        font-weight: 700;
-        letter-spacing: -0.035em;
-        color: #ffffff;
-        line-height: 1.18;
-        max-width: 900px;
-        margin: 0 auto 16px auto;
-      }
-
-      .p-hero-sub {
-        font-size: clamp(1.0rem, 1.25vw, 1.18rem);
-        line-height: 1.65;
-        color: rgba(226, 232, 240, 0.72);
-        max-width: 660px;
-        margin: 0 auto 28px auto;
-      }
-
-      /* Overlapping Sheet Arena */
-      .p-overlap-arena {
-        position: relative;
-        z-index: 20;
-        margin-top: 0;
-        width: 100%;
-      }
-
-      .p-overlap-sheet {
-        position: relative;
-        width: 100%;
-        background: 
-          radial-gradient(ellipse at 80% 15%, rgba(56, 189, 248, 0.05) 0%, transparent 60%),
-          radial-gradient(ellipse at 20% 50%, rgba(129, 140, 248, 0.04) 0%, transparent 60%),
-          linear-gradient(180deg, #07090f 0%, #030407 100%);
-        border-radius: 40px 40px 0 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.09);
-        box-shadow: 0 -25px 70px rgba(0, 0, 0, 0.96);
-        padding: 24px 0 0 0;
-      }
-
-      .sheet-handle {
-        width: 48px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.22);
-        border-radius: 9999px;
-        margin: 0 auto 24px auto;
-        flex-shrink: 0;
       }
 
       /* Sticky Controls Bar fixed on top below 72px header */
@@ -1229,6 +1166,9 @@
 
       /* 3. Mobile Devices (<= 640px) */
       @media (max-width: 640px) {
+        .products-page-body {
+          padding-top: 60px;
+        }
         .p-navbar {
           padding: 0 16px;
           height: 60px;
@@ -1251,34 +1191,6 @@
           font-size: 0.76rem;
         }
 
-        .p-hero-sticky-section {
-          padding: 60px 16px 36px 16px;
-          min-height: 100svh;
-        }
-        .p-hero-title {
-          font-size: clamp(1.75rem, 7.2vw, 2.2rem);
-          line-height: 1.2;
-          margin-bottom: 12px;
-        }
-        .p-hero-sub {
-          font-size: 0.92rem;
-          line-height: 1.55;
-          margin-bottom: 22px;
-          padding: 0 4px;
-        }
-        .creative-pulse-badge {
-          font-size: 0.68rem;
-          padding: 5px 12px;
-          margin-bottom: 16px;
-        }
-        .scroll-down-indicator {
-          font-size: 0.68rem;
-          padding: 7px 15px;
-        }
-
-        .p-overlap-sheet {
-          border-radius: 24px 24px 0 0;
-        }
         .p-sheet-sticky-bar {
           top: 60px;
         }
@@ -1433,72 +1345,8 @@
       </div>
     </header>
 
-    <!-- Sticky Hero Section with Luminous Lightning Half Moon Arc -->
-    <section class="p-hero-sticky-section">
-      <!-- Subtle Luminous White Horizon Edge spanning screen from left to right -->
-      <div class="hero-horizon-edge-wrapper">
-        <svg class="horizon-arc-svg" viewBox="0 0 1440 240" fill="none" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="horizonGlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
-              <stop offset="25%" stop-color="#ffffff" stop-opacity="0.18" />
-              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.55" />
-              <stop offset="75%" stop-color="#ffffff" stop-opacity="0.18" />
-              <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-            </linearGradient>
-            <radialGradient id="horizonCoreBloom" cx="50%" cy="40%" r="50%">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08" />
-              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.02" />
-              <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-            </radialGradient>
-            <filter id="whiteGlow" x="-20%" y="-100%" width="140%" height="300%">
-              <feGaussianBlur stdDeviation="8" result="blur1" />
-              <feGaussianBlur stdDeviation="24" result="blur2" />
-              <feMerge>
-                <feMergeNode in="blur2" />
-                <feMergeNode in="blur1" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-          
-          <!-- Soft, faint ambient glow under curvature -->
-          <ellipse cx="720" cy="110" rx="680" ry="90" fill="url(#horizonCoreBloom)" />
-          
-          <!-- Subtle wide aura line with gentle low intensity -->
-          <path d="M 0 170 Q 720 50 1440 170" stroke="rgba(255, 255, 255, 0.14)" stroke-width="4" stroke-linecap="round" filter="url(#whiteGlow)" />
-          
-          <!-- Clean, refined low-intensity white crest edge -->
-          <path d="M 0 170 Q 720 50 1440 170" stroke="url(#horizonGlowGrad)" stroke-width="1.4" stroke-linecap="round" />
-        </svg>
-      </div>
-
-      <div class="p-hero-center-content">
-        <div class="creative-pulse-badge">
-          <span class="pulse-dot"></span>
-          <span>THE SYNERBIT ECOSYSTEM</span>
-        </div>
-
-        <h1 class="p-hero-title">
-          Software Built for Velocity,<br />
-          <span class="gradient-glow-text">Clarity, and Scale</span>
-        </h1>
-
-        <p class="p-hero-sub">
-          Explore our connected suite of purpose-built SaaS platforms designed to simplify complex workflows for teams, communities, and modern operations.
-        </p>
-
-        <div class="scroll-down-indicator" id="p-scroll-down-btn" style="cursor: pointer;">
-          <span class="scroll-arrow">↓</span>
-          <span>SCROLL TO EXPLORE PRODUCTS</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Overlapping Sheet Arena -->
-    <section class="p-overlap-arena" id="p-overlap-arena">
-      <div class="p-overlap-sheet">
-        <div class="sheet-handle"></div>
+    <!-- Main Products Directory Arena -->
+    <div class="products-main-wrapper">
 
         <!-- Sticky Controls Bar below fixed 72px navbar -->
         <div class="p-sheet-sticky-bar">
@@ -1546,6 +1394,7 @@
         </div>
       </div>
     </section>
+    </div> <!-- /.products-main-wrapper -->
 
     <!-- Global Comprehensive Footer -->
     <footer class="site-footer-arena" id="site-footer">
@@ -2096,28 +1945,6 @@
           renderProductsDeck();
         });
       });
-
-      // Smooth scroll click from hero indicator down into sticky bar below header
-      const scrollBtn = document.getElementById("p-scroll-down-btn");
-      const stickyBar = document.querySelector(".p-sheet-sticky-bar");
-      if (scrollBtn && stickyBar) {
-        scrollBtn.addEventListener("click", () => {
-          const rect = stickyBar.getBoundingClientRect();
-          window.scrollTo({ top: window.scrollY + rect.top - 72, behavior: "smooth" });
-        });
-      }
-
-      // Parallax fade for sticky hero content on scroll (matching homepage experience)
-      const heroContent = document.querySelector(".p-hero-center-content");
-      window.addEventListener("scroll", () => {
-        const scrollY = window.scrollY;
-        const windowH = window.innerHeight;
-        if (heroContent) {
-          const heroFadeProgress = Math.min(Math.max((scrollY - windowH * 0.08) / (windowH * 0.65), 0), 1);
-          heroContent.style.opacity = (1 - heroFadeProgress * 0.95).toString();
-          heroContent.style.transform = `translateY(${scrollY * 0.15 - 10}px) scale(${1 - heroFadeProgress * 0.05})`;
-        }
-      }, { passive: true });
 
       // Initial Render on Page Load
       renderProductsDeck();
