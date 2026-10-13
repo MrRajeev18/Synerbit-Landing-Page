@@ -528,13 +528,14 @@ body.admin-body {
 /* =========================================
    PANEL HEADERS & TABLES
    ========================================= */
+.panel-toolbar,
 .panel-header-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
 }
 
 .panel-section-title {
