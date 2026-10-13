@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Adaptive Navbar Theme Controller
   const navbar = document.querySelector('.navbar');
   const productsSheet = document.querySelector('.products-sheet');
-  const navLinks = document.querySelectorAll('.nav-link-smooth');
+  const navLinks = document.querySelectorAll('.nav-link-smooth[data-stage]');
   const productsNavLink = document.querySelector('.nav-link-smooth-product');
   const ideaNavLink = document.querySelector('.nav-link-smooth-idea');
   const ideaArenaSection = document.querySelector('.idea-overlap-arena');
