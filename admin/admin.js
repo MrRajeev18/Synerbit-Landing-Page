@@ -1032,17 +1032,17 @@ window.viewIdea = (id) => {
 function renderContactsTable() {
   const tbody = document.getElementById('contacts-table-body');
   if (currentContacts.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #64748b;">No contact messages yet.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #64748b; padding: 32px 16px;">No contact messages yet.</td></tr>';
     return;
   }
 
   tbody.innerHTML = currentContacts.map(c => `
     <tr>
       <td><strong style="color: #ffffff;">${escapeHtml(c.name || 'Anonymous')}</strong></td>
-      <td>${escapeHtml(c.email)}</td>
-      <td>${escapeHtml(c.subject || 'Inquiry')}</td>
-      <td>${escapeHtml(c.message)}</td>
-      <td style="font-size: 0.8rem; color: #94a3b8;">${formatDateTime(c.submittedAt || c.createdAt)}</td>
+      <td><a href="mailto:${escapeHtml(c.email)}" style="color: #38bdf8; text-decoration: underline;" title="Reply to ${escapeHtml(c.email)}">${escapeHtml(c.email)}</a></td>
+      <td><span style="font-weight: 600; color: #cbd5e1;">${escapeHtml(c.subject || 'General Inquiry')}</span></td>
+      <td style="max-width: 380px; white-space: pre-wrap; line-height: 1.5; color: #e2e8f0;">${escapeHtml(c.message)}</td>
+      <td style="font-size: 0.8rem; color: #94a3b8; white-space: nowrap;">${formatDateTime(c.submittedAt || c.createdAt)}</td>
     </tr>
   `).join('');
 }

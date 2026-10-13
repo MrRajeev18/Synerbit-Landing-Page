@@ -1,5 +1,6 @@
 import { createBulbScene } from './bulbScene.js';
 import { createProductMobileScene } from './productMobileScene.js';
+import './contactModal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize 3D Glowing Bulb Scene
