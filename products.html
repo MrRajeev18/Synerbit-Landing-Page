@@ -129,41 +129,41 @@
       .p-sheet-controls {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 16px 24px;
+        padding: 12px 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 16px;
+        gap: 12px;
       }
 
       .p-sheet-heading-wrap {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 2px;
       }
 
       .p-sheet-pretitle {
-        font-size: 0.72rem;
+        font-size: 0.65rem;
         font-weight: 600;
-        letter-spacing: 0.16em;
+        letter-spacing: 0.14em;
         color: #38bdf8;
         text-transform: uppercase;
       }
 
       .p-sheet-title {
-        font-size: 1.55rem;
+        font-size: 1.25rem;
         font-weight: 700;
         color: #ffffff;
-        letter-spacing: -0.025em;
+        letter-spacing: -0.02em;
       }
 
       /* Filter Switcher */
       .p-filter-bar {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 5px 6px;
+        gap: 6px;
+        padding: 4px 5px;
         border-radius: 9999px;
         background: rgba(15, 23, 42, 0.6);
         border: 1px solid rgba(255, 255, 255, 0.09);
@@ -173,10 +173,10 @@
       .p-filter-btn {
         background: none;
         border: none;
-        padding: 8px 18px;
+        padding: 6px 14px;
         border-radius: 9999px;
         color: #94a3b8;
-        font-size: 0.82rem;
+        font-size: 0.75rem;
         font-weight: 500;
         cursor: pointer;
         transition: all 0.25s ease;
@@ -191,14 +191,14 @@
         color: #38bdf8;
         font-weight: 600;
         border: 1px solid rgba(56, 189, 248, 0.3);
-        box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
       }
 
       /* Product Showcase Container (1200px max-width, matching Careers screenshot) */
       .p-grid-container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 36px 24px 80px 24px;
+        padding: 22px 20px 60px 20px;
         width: 100%;
       }
 
@@ -207,8 +207,8 @@
          ========================================= */
       .p-split-showcase {
         display: grid;
-        grid-template-columns: 380px 1fr;
-        gap: 28px;
+        grid-template-columns: 320px 1fr;
+        gap: 20px;
         align-items: start;
         width: 100%;
       }
@@ -217,34 +217,34 @@
       .p-col-left {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 10px;
       }
 
       .p-mini-card {
         position: relative;
-        border-radius: 18px;
+        border-radius: 14px;
         background: rgba(15, 23, 42, 0.55);
         border: 1px solid rgba(255, 255, 255, 0.08);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        padding: 18px 20px;
+        padding: 12px 14px;
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 12px;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         user-select: none;
       }
 
       .p-mini-card:hover {
         background: rgba(15, 23, 42, 0.85);
         border-color: rgba(255, 255, 255, 0.2);
-        transform: translateX(4px);
+        transform: translateX(3px);
       }
 
       .p-mini-card.is-active {
         background: rgba(15, 23, 42, 0.95);
-        transform: translateX(8px);
+        transform: translateX(5px);
       }
 
       .p-mini-card.cyan.is-active,
@@ -272,9 +272,9 @@
       }
 
       .p-mini-icon-wrap {
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -301,8 +301,8 @@
         color: #c084fc;
       }
       .p-mini-icon-wrap svg {
-        width: 22px;
-        height: 22px;
+        width: 18px;
+        height: 18px;
         stroke-width: 1.8;
       }
 
@@ -311,18 +311,18 @@
         min-width: 0;
         display: flex;
         flex-direction: column;
-        gap: 3px;
+        gap: 2px;
       }
 
       .p-mini-title-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 8px;
+        gap: 6px;
       }
 
       .p-mini-title {
-        font-size: 1.15rem;
+        font-size: 0.95rem;
         font-weight: 700;
         color: #ffffff;
         margin: 0;
@@ -331,12 +331,12 @@
 
       .p-mini-status-pill {
         font-family: var(--font-mono, monospace);
-        font-size: 0.65rem;
+        font-size: 0.60rem;
         font-weight: 600;
-        padding: 2px 7px;
-        border-radius: 5px;
+        padding: 2px 6px;
+        border-radius: 4px;
         text-transform: uppercase;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.03em;
       }
       .p-mini-status-pill.cyan { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
       .p-mini-status-pill.emerald { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
@@ -344,7 +344,7 @@
       .p-mini-status-pill.violet { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
 
       .p-mini-tagline {
-        font-size: 0.78rem;
+        font-size: 0.70rem;
         color: #94a3b8;
         margin: 0;
         white-space: nowrap;
@@ -354,13 +354,13 @@
 
       .p-mini-arrow {
         color: #64748b;
-        font-size: 0.95rem;
+        font-size: 0.80rem;
         transition: transform 0.25s ease, color 0.25s ease;
       }
       .p-mini-card:hover .p-mini-arrow,
       .p-mini-card.is-active .p-mini-arrow {
         color: #ffffff;
-        transform: translateX(3px);
+        transform: translateX(2px);
       }
 
       /* Right Portion: Expanded Product Showcase */
@@ -371,75 +371,75 @@
 
       .p-expanded-card {
         position: sticky;
-        top: 140px;
+        top: 135px;
         background: rgba(15, 23, 42, 0.68);
         border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 22px;
+        border-radius: 16px;
         backdrop-filter: blur(28px);
         -webkit-backdrop-filter: blur(28px);
-        padding: 34px 34px 28px 34px;
-        box-shadow: 0 25px 65px rgba(0, 0, 0, 0.75);
+        padding: 22px 24px 18px 24px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 14px;
         transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.3s ease;
       }
 
       .p-expanded-card.cyan {
         border-top: 3px solid #38bdf8;
         border-color: rgba(56, 189, 248, 0.35);
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(56, 189, 248, 0.12);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.12);
       }
       .p-expanded-card.emerald {
         border-top: 3px solid #34d399;
         border-color: rgba(52, 211, 153, 0.35);
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(52, 211, 153, 0.12);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(52, 211, 153, 0.12);
       }
       .p-expanded-card.amber {
         border-top: 3px solid #fbbf24;
         border-color: rgba(251, 191, 36, 0.35);
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(251, 191, 36, 0.12);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(251, 191, 36, 0.12);
       }
       .p-expanded-card.violet {
         border-top: 3px solid #a855f7;
         border-color: rgba(168, 85, 247, 0.35);
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(168, 85, 247, 0.12);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168, 85, 247, 0.12);
       }
 
       .p-expanded-header {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        gap: 18px;
+        gap: 14px;
         flex-wrap: wrap;
       }
 
       .p-expanded-brand {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 12px;
       }
 
       .p-expanded-title {
-        font-size: 1.85rem;
+        font-size: 1.35rem;
         font-weight: 800;
         color: #ffffff;
         margin: 0;
-        letter-spacing: -0.025em;
+        letter-spacing: -0.02em;
         line-height: 1.2;
       }
 
       .p-expanded-tagline {
         font-family: var(--font-mono, monospace);
-        font-size: 0.8rem;
+        font-size: 0.72rem;
         color: #94a3b8;
-        margin-top: 4px;
+        margin-top: 2px;
         letter-spacing: 0.02em;
       }
 
       .p-expanded-desc {
-        font-size: 0.95rem;
-        line-height: 1.68;
+        font-size: 0.84rem;
+        line-height: 1.55;
         color: #cbd5e1;
         margin: 0;
       }
@@ -447,18 +447,18 @@
       .p-expanded-points-box {
         background: rgba(11, 15, 25, 0.55);
         border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 14px;
-        padding: 18px 20px;
+        border-radius: 10px;
+        padding: 12px 14px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 6px;
       }
 
       .p-points-title {
         font-family: var(--font-mono, monospace);
-        font-size: 0.72rem;
+        font-size: 0.65rem;
         font-weight: 700;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
         color: #94a3b8;
       }
@@ -468,8 +468,8 @@
         justify-content: flex-end;
         align-items: center;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
-        padding-top: 20px;
-        margin-top: 4px;
+        padding-top: 14px;
+        margin-top: 2px;
       }
 
       .p-card.rose { border-top: 3px solid #f43f5e; }
@@ -485,7 +485,7 @@
         right: -10px;
         bottom: -20px;
         font-family: var(--font-display, 'Space Grotesk', sans-serif);
-        font-size: clamp(5rem, 8vw, 7.5rem);
+        font-size: clamp(4rem, 6vw, 5.5rem);
         font-weight: 900;
         letter-spacing: -0.06em;
         line-height: 1;
@@ -500,9 +500,9 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 48px;
-        height: 48px;
-        border-radius: 14px;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
         position: relative;
         flex-shrink: 0;
       }
@@ -522,8 +522,8 @@
         color: #fbbf24;
       }
       .p-product-icon-wrap svg {
-        width: 24px;
-        height: 24px;
+        width: 19px;
+        height: 19px;
         stroke-width: 1.8;
       }
 
@@ -558,8 +558,8 @@
       }
 
       .p-compact-arrow-btn {
-        width: 34px;
-        height: 34px;
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -567,7 +567,7 @@
         align-items: center;
         justify-content: center;
         color: #94a3b8;
-        font-size: 0.9rem;
+        font-size: 0.78rem;
         text-decoration: none;
         transition: all 0.25s ease;
       }
@@ -706,11 +706,11 @@
       .p-btn-clean {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 11px 22px;
+        gap: 6px;
+        padding: 8px 16px;
         border-radius: 9999px;
         text-decoration: none;
-        font-size: 0.88rem;
+        font-size: 0.78rem;
         font-weight: 600;
         transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         width: fit-content;
@@ -786,8 +786,8 @@
       .p-points-list {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-        margin: 6px 0 2px 0;
+        gap: 6px;
+        margin: 4px 0 2px 0;
         padding: 0;
         list-style: none;
         max-height: 0;
@@ -800,28 +800,28 @@
       .p-card.is-expanded .p-points-list {
         max-height: 250px;
         opacity: 1;
-        margin: 10px 0 4px 0;
+        margin: 8px 0 4px 0;
       }
 
       .p-points-list.compact {
-        gap: 6px;
-        margin: 4px 0 2px 0;
+        gap: 5px;
+        margin: 3px 0 2px 0;
       }
       .p-point-item {
         display: flex;
         align-items: center;
-        gap: 9px;
-        font-size: 0.86rem;
+        gap: 7px;
+        font-size: 0.78rem;
         color: #cbd5e1;
-        line-height: 1.45;
+        line-height: 1.38;
       }
       .p-points-list.compact .p-point-item {
-        font-size: 0.8rem;
+        font-size: 0.74rem;
         color: #94a3b8;
-        line-height: 1.35;
+        line-height: 1.3;
       }
       .p-point-bullet {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
         flex-shrink: 0;
         display: inline-flex;
         align-items: center;
@@ -835,11 +835,11 @@
       .p-btn-glass {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 10px 20px;
+        gap: 6px;
+        padding: 7px 14px;
         border-radius: 9999px;
         text-decoration: none;
-        font-size: 0.86rem;
+        font-size: 0.78rem;
         font-weight: 500;
         color: #f1f5f9;
         background: rgba(255, 255, 255, 0.05);
@@ -858,10 +858,10 @@
       .p-btn-disabled {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 10px 20px;
+        gap: 6px;
+        padding: 7px 14px;
         border-radius: 9999px;
-        font-size: 0.86rem;
+        font-size: 0.78rem;
         font-weight: 500;
         color: #94a3b8;
         background: rgba(255, 255, 255, 0.04);
@@ -871,8 +871,8 @@
         width: fit-content;
       }
       .p-btn-disabled .p-btn-lock-dot {
-        width: 6px;
-        height: 6px;
+        width: 5px;
+        height: 5px;
         border-radius: 50%;
         background: #64748b;
         display: inline-block;
@@ -882,11 +882,11 @@
       .p-btn-ghost {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        padding: 10px 16px;
+        gap: 5px;
+        padding: 7px 12px;
         border-radius: 9999px;
         text-decoration: none;
-        font-size: 0.85rem;
+        font-size: 0.78rem;
         font-weight: 500;
         color: #94a3b8;
         background: transparent;
@@ -902,14 +902,14 @@
       .p-app-btn {
         display: inline-flex;
         align-items: center;
-        gap: 7px;
-        padding: 9px 16px;
+        gap: 6px;
+        padding: 7px 13px;
         border-radius: 9999px;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.14);
         color: #f1f5f9;
         text-decoration: none;
-        font-size: 0.82rem;
+        font-size: 0.74rem;
         font-weight: 600;
         letter-spacing: 0.01em;
         transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -931,8 +931,8 @@
         box-shadow: 0 6px 18px rgba(56, 189, 248, 0.22);
       }
       .p-app-icon {
-        width: 15px;
-        height: 15px;
+        width: 13px;
+        height: 13px;
         flex-shrink: 0;
       }
 
@@ -940,21 +940,21 @@
       .p-app-btn-disabled {
         display: inline-flex;
         align-items: center;
-        gap: 7px;
-        padding: 9px 16px;
+        gap: 6px;
+        padding: 7px 13px;
         border-radius: 9999px;
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.08);
         color: #64748b;
-        font-size: 0.82rem;
+        font-size: 0.74rem;
         font-weight: 500;
         cursor: default;
         user-select: none;
         width: fit-content;
       }
       .p-app-lock-dot {
-        width: 5px;
-        height: 5px;
+        width: 4px;
+        height: 4px;
         border-radius: 50%;
         background: #64748b;
         display: inline-block;
@@ -965,18 +965,18 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 6px;
+        gap: 5px;
         justify-content: flex-end;
       }
 
       .p-plat-pill {
         display: inline-flex;
         align-items: center;
-        gap: 5px;
-        padding: 3px 8px;
-        border-radius: 6px;
+        gap: 4px;
+        padding: 2px 7px;
+        border-radius: 5px;
         font-family: var(--font-mono, monospace);
-        font-size: 0.68rem;
+        font-size: 0.62rem;
         font-weight: 600;
         letter-spacing: 0.02em;
         background: rgba(255, 255, 255, 0.04);
@@ -986,8 +986,8 @@
       }
 
       .p-plat-dot {
-        width: 5px;
-        height: 5px;
+        width: 4px;
+        height: 4px;
         border-radius: 50%;
         display: inline-block;
         background: #64748b;
@@ -1020,15 +1020,15 @@
 
       /* Incubation Banner */
       .p-incubation-banner {
-        max-width: 1280px;
-        margin: 0 auto 90px auto;
-        padding: 0 24px;
+        max-width: 1200px;
+        margin: 0 auto 60px auto;
+        padding: 0 20px;
         width: 100%;
       }
 
       .p-incubation-card {
-        padding: 48px 56px;
-        border-radius: 28px;
+        padding: 28px 36px;
+        border-radius: 20px;
         background: 
           radial-gradient(ellipse at 80% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
           linear-gradient(180deg, rgba(17, 24, 39, 0.6) 0%, rgba(10, 15, 26, 0.8) 100%);
@@ -1036,34 +1036,35 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 32px;
+        gap: 24px;
       }
 
       .p-incubation-left h3 {
-        font-size: 1.7rem;
+        font-size: 1.25rem;
         font-weight: 700;
         letter-spacing: -0.02em;
         color: #ffffff;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
       }
 
       .p-incubation-left p {
-        font-size: 0.95rem;
+        font-size: 0.82rem;
         color: #94a3b8;
-        max-width: 600px;
-        line-height: 1.6;
+        max-width: 580px;
+        line-height: 1.5;
+        margin: 0;
       }
 
       .p-incubation-btn {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 13px 30px;
+        gap: 6px;
+        padding: 9px 18px;
         border-radius: 9999px;
         background: #ffffff;
         color: #030712;
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         text-decoration: none;
         flex-shrink: 0;
         transition: all 0.25s ease;
