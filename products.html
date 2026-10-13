@@ -692,6 +692,44 @@
         background: rgba(56, 189, 248, 0.08);
       }
 
+      /* App Store & Google Play App Download Buttons */
+      .p-app-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 16px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: #f1f5f9;
+        text-decoration: none;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        width: fit-content;
+      }
+      .p-app-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+      .p-app-btn-android:hover {
+        border-color: rgba(52, 211, 153, 0.45);
+        box-shadow: 0 6px 18px rgba(52, 211, 153, 0.22);
+      }
+      .p-app-btn-ios:hover {
+        border-color: rgba(56, 189, 248, 0.45);
+        box-shadow: 0 6px 18px rgba(56, 189, 248, 0.22);
+      }
+      .p-app-icon {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+      }
+
       /* Incubation Banner */
       .p-incubation-banner {
         max-width: 1280px;
@@ -926,7 +964,8 @@
         .p-card-actions .p-btn-clean,
         .p-card-actions .p-btn-glass,
         .p-card-actions .p-btn-disabled,
-        .p-card-actions .p-btn-ghost {
+        .p-card-actions .p-btn-ghost,
+        .p-card-actions .p-app-btn {
           width: 100%;
           justify-content: center;
           padding: 12px 18px;
@@ -1196,6 +1235,8 @@
           id: "prod-pulsepm",
           name: "PulsePM",
           websiteUrl: "https://www.pulsepm.in",
+          androidUrl: "https://play.google.com/store/apps/details?id=in.pulsepm.app",
+          iosUrl: "",
           iconKey: "pulse",
           color: "cyan",
           status: "Live Production",
@@ -1215,6 +1256,8 @@
           id: "prod-goalsync",
           name: "GoalSync",
           websiteUrl: "#",
+          androidUrl: "",
+          iosUrl: "",
           iconKey: "sync",
           color: "emerald",
           status: "Private Beta",
@@ -1233,6 +1276,8 @@
           id: "prod-busly",
           name: "Busly",
           websiteUrl: "#",
+          androidUrl: "",
+          iosUrl: "",
           iconKey: "fleet",
           color: "amber",
           status: "In Engineering",
@@ -1277,6 +1322,8 @@
         const color = rp.statusColor || rp.color || (def ? def.color : "cyan");
         const status = rp.status || (def ? def.status : "Live");
         const url = rp.url || rp.websiteUrl || (def ? def.websiteUrl : "#");
+        const androidUrl = (rp.androidUrl !== undefined && rp.androidUrl !== null) ? rp.androidUrl : (def ? (def.androidUrl || "") : "");
+        const iosUrl = (rp.iosUrl !== undefined && rp.iosUrl !== null) ? rp.iosUrl : (def ? (def.iosUrl || "") : "");
 
         let actionButtons = rp.actionButtons;
         if (!actionButtons || actionButtons.length === 0) {
@@ -1298,6 +1345,8 @@
           name: rp.name,
           tagline: rp.tagline || (def ? def.tagline : ""),
           websiteUrl: url,
+          androidUrl,
+          iosUrl,
           iconKey,
           color,
           status,
@@ -1358,6 +1407,30 @@
             }
           }).join("");
 
+          // App Store & Google Play download buttons
+          const appButtons = [];
+          if (prod.androidUrl && prod.androidUrl.trim() && prod.androidUrl !== '#') {
+            appButtons.push(`
+              <a href="${escapeHtml(prod.androidUrl)}" target="_blank" rel="noopener noreferrer" class="p-app-btn p-app-btn-android" title="Get ${escapeHtml(prod.name)} on Google Play">
+                <svg class="p-app-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9997.9993-.9997c.551 0 .9993.4486.9993.9997s-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9997.9993-.9997c.5511 0 .9994.4486.9994.9997s-.4483.9997-.9994.9997m11.4045-6.02l1.996-3.4572c.106-.1837.043-.418-.1407-.524-.1838-.106-.418-.043-.524.1408l-2.0253 3.508c-1.614-.7388-3.444-1.1506-5.4375-1.1506-1.9934 0-3.8234.4118-5.4374 1.1506l-2.0253-3.508c-.106-.1838-.3402-.2468-.524-.1408-.1838.106-.2468.3403-.1408.524l1.996 3.4572C4.1678 10.741 2 13.9143 2 17.625h20c0-3.7107-2.1678-6.884-5.1185-8.3036"/>
+                </svg>
+                <span>Google Play</span>
+              </a>
+            `);
+          }
+          if (prod.iosUrl && prod.iosUrl.trim() && prod.iosUrl !== '#') {
+            appButtons.push(`
+              <a href="${escapeHtml(prod.iosUrl)}" target="_blank" rel="noopener noreferrer" class="p-app-btn p-app-btn-ios" title="Download ${escapeHtml(prod.name)} on the App Store">
+                <svg class="p-app-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.64 1.35-.56.65-.99 1.71-.86 2.73 1.01.08 2.01-.52 2.58-1.23z"/>
+                </svg>
+                <span>App Store</span>
+              </a>
+            `);
+          }
+          const appButtonsMarkup = appButtons.join("");
+
           return `
             <article class="p-card card-${prod.id} ${prod.color}" data-category="${prod.category}" data-id="${prod.id}">
               <span class="p-ghost-watermark">${escapeHtml(prod.name.toUpperCase().slice(0, 5))}</span>
@@ -1390,6 +1463,7 @@
 
               <div class="p-card-actions">
                 ${buttonsMarkup}
+                ${appButtonsMarkup}
               </div>
             </article>
           `;

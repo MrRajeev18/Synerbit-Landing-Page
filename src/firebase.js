@@ -39,6 +39,8 @@ const DEFAULT_PRODUCTS = [
     status: "Live",
     statusColor: "cyan",
     url: "https://www.pulsepm.in",
+    androidUrl: "https://play.google.com/store/apps/details?id=in.pulsepm.app",
+    iosUrl: "",
     createdAt: new Date("2026-01-01").toISOString(),
     featured: true
   },
@@ -51,6 +53,8 @@ const DEFAULT_PRODUCTS = [
     status: "In Development",
     statusColor: "emerald",
     url: "#",
+    androidUrl: "",
+    iosUrl: "",
     createdAt: new Date("2026-02-15").toISOString(),
     featured: true
   },
@@ -63,6 +67,8 @@ const DEFAULT_PRODUCTS = [
     status: "Private Alpha",
     statusColor: "amber",
     url: "#",
+    androidUrl: "",
+    iosUrl: "",
     createdAt: new Date("2026-03-10").toISOString(),
     featured: true
   }

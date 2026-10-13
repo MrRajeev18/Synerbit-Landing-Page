@@ -346,26 +346,36 @@ function renderProductsTable() {
     return;
   }
 
-  tbody.innerHTML = currentProducts.map(p => `
-    <tr>
-      <td>
-        <strong style="color: #ffffff;">${escapeHtml(p.name)}</strong>
-        <div style="font-size: 0.78rem; color: #94a3b8;">${escapeHtml(p.tagline || '')}</div>
-      </td>
-      <td>${escapeHtml(p.category || 'Platform')}</td>
-      <td><span class="badge ${p.statusColor || 'cyan'}">${p.status}</span></td>
-      <td><a href="${p.url || '#'}" target="_blank" style="color: #38bdf8; text-decoration: none;">${p.url || 'None'}</a></td>
-      <td>
-        <button class="btn-table-action" onclick="window.editProduct('${p.id}')">Edit</button>
-        <button class="btn-table-action delete" onclick="window.deleteProduct('${p.id}')">Delete</button>
-      </td>
-    </tr>
-  `).join('');
+  tbody.innerHTML = currentProducts.map(p => {
+    const links = [];
+    if (p.url && p.url !== '#') links.push(`<a href="${escapeHtml(p.url)}" target="_blank" style="color: #38bdf8; text-decoration: none;">Web</a>`);
+    if (p.androidUrl && p.androidUrl !== '#') links.push(`<a href="${escapeHtml(p.androidUrl)}" target="_blank" style="color: #34d399; text-decoration: none;">Android</a>`);
+    if (p.iosUrl && p.iosUrl !== '#') links.push(`<a href="${escapeHtml(p.iosUrl)}" target="_blank" style="color: #c084fc; text-decoration: none;">iOS</a>`);
+    const linksHtml = links.length ? links.join(' &bull; ') : '<span style="color: #64748b;">None</span>';
+
+    return `
+      <tr>
+        <td>
+          <strong style="color: #ffffff;">${escapeHtml(p.name)}</strong>
+          <div style="font-size: 0.78rem; color: #94a3b8;">${escapeHtml(p.tagline || '')}</div>
+        </td>
+        <td>${escapeHtml(p.category || 'Platform')}</td>
+        <td><span class="badge ${p.statusColor || 'cyan'}">${p.status}</span></td>
+        <td>${linksHtml}</td>
+        <td>
+          <button class="btn-table-action" onclick="window.editProduct('${p.id}')">Edit</button>
+          <button class="btn-table-action delete" onclick="window.deleteProduct('${p.id}')">Delete</button>
+        </td>
+      </tr>
+    `;
+  }).join('');
 }
 
 document.getElementById('btn-open-create-product').addEventListener('click', () => {
   document.getElementById('product-form').reset();
   document.getElementById('prod-id').value = '';
+  document.getElementById('prod-android-url').value = '';
+  document.getElementById('prod-ios-url').value = '';
   document.getElementById('product-modal-title').textContent = 'Add New Product';
   openModal('modal-product');
 });
@@ -382,6 +392,8 @@ document.getElementById('product-form').addEventListener('submit', async (e) => 
     status: document.getElementById('prod-status').value,
     statusColor: document.getElementById('prod-color').value,
     url: document.getElementById('prod-url').value.trim(),
+    androidUrl: document.getElementById('prod-android-url').value.trim(),
+    iosUrl: document.getElementById('prod-ios-url').value.trim(),
     description: document.getElementById('prod-desc').value.trim(),
     updatedAt: new Date().toISOString()
   };
@@ -421,6 +433,8 @@ window.editProduct = (id) => {
   document.getElementById('prod-status').value = p.status || 'Live';
   document.getElementById('prod-color').value = p.statusColor || 'cyan';
   document.getElementById('prod-url').value = p.url || '';
+  document.getElementById('prod-android-url').value = p.androidUrl || '';
+  document.getElementById('prod-ios-url').value = p.iosUrl || '';
   document.getElementById('prod-desc').value = p.description || '';
   document.getElementById('product-modal-title').textContent = 'Edit Product';
   openModal('modal-product');
