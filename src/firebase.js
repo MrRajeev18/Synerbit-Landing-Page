@@ -32,7 +32,7 @@ export const isFirebaseConfigured = () => {
 const DEFAULT_PRODUCTS = [
   {
     id: "prod-pulsepm",
-    name: "Habit Pot",
+    name: "PulsePM",
     tagline: "Agile Project & Sprint Management Reimagined",
     description: "The modern project intelligence platform designed for high-velocity software engineering and product teams.",
     category: "Productivity & Engineering",
