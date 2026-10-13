@@ -105,6 +105,7 @@
           <button class="nav-tab" data-tab="contacts" id="tab-btn-contacts">
             <span class="tab-icon">✉️</span>
             <span>Contact Messages</span>
+            <span class="nav-pill-badge" id="badge-contacts-count">0</span>
           </button>
 
           <div class="nav-section-title" id="section-admin-only">GOVERNANCE</div>
@@ -173,6 +174,11 @@
                 <div class="kpi-label">SaaS Idea Pitches</div>
                 <div class="kpi-value" id="kpi-ideas-count">0</div>
                 <div class="kpi-hint">Founder Submissions</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-label">Contact Messages</div>
+                <div class="kpi-value" id="kpi-contacts-count">0</div>
+                <div class="kpi-hint">Direct User Inquiries</div>
               </div>
             </div>
 
@@ -310,15 +316,22 @@
 
           <!-- 6. CONTACT MESSAGES -->
           <section id="panel-contacts" class="content-panel">
+            <div class="panel-toolbar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div>
+                <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 700; margin: 0;">Direct Inquiry Messages</h3>
+                <p style="color: #94a3b8; font-size: 0.82rem; margin: 4px 0 0 0;">Messages submitted via the site Contact button.</p>
+              </div>
+            </div>
             <div class="table-container">
               <table class="data-table">
                 <thead>
                   <tr>
                     <th>Sender Name</th>
-                    <th>Email</th>
+                    <th>Email Address</th>
                     <th>Subject</th>
                     <th>Message</th>
                     <th>Date</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody id="contacts-table-body">
@@ -582,6 +595,17 @@
         <button class="modal-close-btn" data-close-modal="modal-view-idea">&times;</button>
         <h3 class="modal-header-title">SaaS Concept Overview</h3>
         <div id="view-idea-body" style="line-height: 1.6; color: #cbd5e1; font-size: 0.95rem;">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: VIEW CONTACT MESSAGE DETAILS -->
+    <div class="modal-backdrop" id="modal-view-contact">
+      <div class="modal-window">
+        <button class="modal-close-btn" data-close-modal="modal-view-contact">&times;</button>
+        <h3 class="modal-header-title">Contact Inquiry Details</h3>
+        <div id="view-contact-body" style="line-height: 1.6; color: #cbd5e1; font-size: 0.95rem;">
           <!-- Populated dynamically -->
         </div>
       </div>

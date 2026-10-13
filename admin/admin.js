@@ -349,6 +349,24 @@ function setupRealtimeListeners(db) {
       }, err => console.warn("Live products listener note:", err));
       realtimeUnsubscribes.push(unsubProds);
     } catch (_) {}
+
+    // 5. Contact Messages Listener
+    try {
+      const unsubContacts = onSnapshot(collection(db, "contact_messages"), (snapshot) => {
+        if (!snapshot.empty) {
+          const liveContacts = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+          liveContacts.sort((a, b) => {
+            const dateA = new Date(a.submittedAt || a.createdAt || 0).getTime();
+            const dateB = new Date(b.submittedAt || b.createdAt || 0).getTime();
+            return dateB - dateA;
+          });
+          currentContacts = liveContacts;
+          setLocal('contacts', liveContacts);
+          updateAllUIPanels();
+        }
+      }, err => console.warn("Live contacts listener note:", err));
+      realtimeUnsubscribes.push(unsubContacts);
+    } catch (_) {}
   }).catch(err => console.warn("Could not setup realtime Firestore listeners:", err));
 }
 
@@ -357,16 +375,20 @@ function updateAllUIPanels() {
   const kpiJobs = document.getElementById('kpi-jobs-count');
   const kpiApps = document.getElementById('kpi-apps-count');
   const kpiIdeas = document.getElementById('kpi-ideas-count');
+  const kpiContacts = document.getElementById('kpi-contacts-count');
   const badgeApps = document.getElementById('badge-applications-count');
   const badgeIdeas = document.getElementById('badge-ideas-count');
+  const badgeContacts = document.getElementById('badge-contacts-count');
 
   if (kpiProducts) kpiProducts.textContent = currentProducts.length;
   if (kpiJobs) kpiJobs.textContent = currentJobs.length;
   if (kpiApps) kpiApps.textContent = currentApplications.length;
   if (kpiIdeas) kpiIdeas.textContent = currentIdeas.length;
+  if (kpiContacts) kpiContacts.textContent = currentContacts.length;
 
   if (badgeApps) badgeApps.textContent = currentApplications.length;
   if (badgeIdeas) badgeIdeas.textContent = currentIdeas.length;
+  if (badgeContacts) badgeContacts.textContent = currentContacts.length;
 
   renderDashboardActivity();
   renderProductsTable();
@@ -493,6 +515,12 @@ async function loadAllData() {
             if (!contactMap.has(d.id)) contactMap.set(d.id, { id: d.id, ...d.data() });
           });
         } catch (_) {}
+
+        // Merge local cache so fresh local messages are never dropped
+        const localCachedContacts = getLocal('contacts', []);
+        localCachedContacts.forEach(c => {
+          if (!contactMap.has(c.id)) contactMap.set(c.id, c);
+        });
 
         if (contactMap.size > 0) {
           currentContacts = Array.from(contactMap.values());
@@ -1032,7 +1060,7 @@ window.viewIdea = (id) => {
 function renderContactsTable() {
   const tbody = document.getElementById('contacts-table-body');
   if (currentContacts.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #64748b; padding: 32px 16px;">No contact messages yet.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #64748b; padding: 32px 16px;">No contact messages yet.</td></tr>';
     return;
   }
 
@@ -1041,11 +1069,66 @@ function renderContactsTable() {
       <td><strong style="color: #ffffff;">${escapeHtml(c.name || 'Anonymous')}</strong></td>
       <td><a href="mailto:${escapeHtml(c.email)}" style="color: #38bdf8; text-decoration: underline;" title="Reply to ${escapeHtml(c.email)}">${escapeHtml(c.email)}</a></td>
       <td><span style="font-weight: 600; color: #cbd5e1;">${escapeHtml(c.subject || 'General Inquiry')}</span></td>
-      <td style="max-width: 380px; white-space: pre-wrap; line-height: 1.5; color: #e2e8f0;">${escapeHtml(c.message)}</td>
+      <td style="max-width: 320px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #e2e8f0;" title="${escapeHtml(c.message)}">${escapeHtml(c.message)}</td>
       <td style="font-size: 0.8rem; color: #94a3b8; white-space: nowrap;">${formatDateTime(c.submittedAt || c.createdAt)}</td>
+      <td style="white-space: nowrap;">
+        <button class="btn-table-action" onclick="window.viewContact('${c.id}')">View</button>
+        <a href="mailto:${encodeURIComponent(c.email)}?subject=Re:%20${encodeURIComponent(c.subject || 'Synerbit Inquiry')}" class="btn-table-action" style="text-decoration: none; display: inline-block;">Reply ✉️</a>
+        <button class="btn-table-action" style="color: #f87171;" onclick="window.deleteContact('${c.id}')" title="Delete">✕</button>
+      </td>
     </tr>
   `).join('');
 }
+
+window.viewContact = (id) => {
+  const contact = currentContacts.find(c => c.id === id);
+  if (!contact) return;
+  const body = document.getElementById('view-contact-body');
+  if (body) {
+    body.innerHTML = `
+      <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px;">
+        <h4 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 4px;">${escapeHtml(contact.name || 'Anonymous')}</h4>
+        <div style="color: #38bdf8; font-size: 0.88rem;">
+          <a href="mailto:${escapeHtml(contact.email)}" style="color: #38bdf8; text-decoration: underline;">${escapeHtml(contact.email)}</a>
+          &bull; <span style="color: #94a3b8;">${formatDateTime(contact.submittedAt || contact.createdAt)}</span>
+        </div>
+      </div>
+      
+      <p style="margin-bottom: 8px;"><strong>Subject:</strong> <span style="color: #ffffff;">${escapeHtml(contact.subject || 'General Inquiry')}</span></p>
+      <p style="margin-bottom: 6px;"><strong>Message Content:</strong></p>
+      <div style="background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 14px; line-height: 1.6; color: #e2e8f0; white-space: pre-wrap; font-size: 0.95rem;">${escapeHtml(contact.message)}</div>
+      
+      <div style="margin-top: 24px; display: flex; gap: 10px; justify-content: flex-end;">
+        <button type="button" class="btn-table-action" style="color: #f87171;" onclick="window.deleteContact('${contact.id}'); window.closeModal('modal-view-contact');">Delete Message</button>
+        <a href="mailto:${encodeURIComponent(contact.email)}?subject=Re:%20${encodeURIComponent(contact.subject || 'Synerbit Inquiry')}" class="btn-primary-action" style="display: inline-block; text-decoration: none;">Reply via Email ✉️</a>
+      </div>
+    `;
+    openModal('modal-view-contact');
+  }
+};
+
+window.deleteContact = async (id) => {
+  if (!confirm('Are you sure you want to delete this contact message?')) return;
+  
+  currentContacts = currentContacts.filter(c => c.id !== id);
+  setLocal('contacts', currentContacts);
+  updateAllUIPanels();
+
+  if (isFirebaseConfigured()) {
+    try {
+      const { getFirestore, doc, deleteDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+      const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+      const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      await deleteDoc(doc(db, "contact_messages", id));
+      try {
+        await deleteDoc(doc(db, "contacts", id));
+      } catch (_) {}
+    } catch (err) {
+      console.warn("Delete contact Firestore error:", err);
+    }
+  }
+};
 
 /* ==========================================================================
    TEAM & GRANULAR ROLE-BASED ACCESS (SUPER ADMIN)
@@ -1162,6 +1245,21 @@ function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) modal.classList.remove('active');
 }
+window.closeModal = closeModal;
+
+// Cross-tab synchronization
+window.addEventListener('storage', (e) => {
+  if (e.key === 'synerbit_contacts') {
+    currentContacts = getLocal('contacts', []);
+    updateAllUIPanels();
+  } else if (e.key === 'synerbit_applications') {
+    currentApplications = getLocal('applications', []);
+    updateAllUIPanels();
+  } else if (e.key === 'synerbit_ideas') {
+    currentIdeas = getLocal('ideas', []);
+    updateAllUIPanels();
+  }
+});
 
 document.querySelectorAll('[data-close-modal]').forEach(btn => {
   btn.addEventListener('click', () => {

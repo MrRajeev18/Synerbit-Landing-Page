@@ -164,17 +164,26 @@ function createContactModal() {
   return modalInstance;
 }
 
+let isInitialized = false;
+
 export function initContactModal() {
   const modal = createContactModal();
+  if (isInitialized) return modal;
+  isInitialized = true;
 
-  // Intercept click on any contact triggers
+  // Intercept click on any contact triggers (buttons, footer links, mailto)
   document.addEventListener('click', (e) => {
-    const trigger = e.target.closest('.btn-nav-glass, [data-open-contact], a[href^="mailto:contact@synerbit.in"]');
+    const trigger = e.target.closest(
+      '.btn-nav-glass, [data-open-contact], a[data-open-contact], button[data-open-contact], a[href="#contact"], a[href^="mailto:contact@synerbit.in"], a[href^="mailto:legal@synerbit.in"]'
+    );
     if (trigger) {
       e.preventDefault();
       modal.open();
     }
   });
+
+  window.openContactModal = () => modal.open();
+  return modal;
 }
 
 // Auto-run if loaded as a module
