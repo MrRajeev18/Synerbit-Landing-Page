@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Careers at Synerbit — Build Ecosystem Software</title>
+    <title>Jobs at Synerbit — Build Ecosystem Software</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,6 +28,7 @@
         display: flex;
         flex-direction: column;
         overflow-x: hidden;
+        padding-top: 72px; /* Fixed navbar height offset */
       }
 
       /* Fixed Navigation Bar */
@@ -98,166 +99,15 @@
         box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
       }
 
-      /* Sticky Hero Section (Pitch Black Void with Luminous Moon Horizon) */
-      .p-hero-sticky-section {
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        height: 100dvh;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 80px 24px;
-        background: #000000;
-        z-index: 1;
-        overflow: hidden;
-      }
-
-      .hero-horizon-edge-wrapper {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 220px;
-        pointer-events: none;
-        overflow: hidden;
-        z-index: 2;
-      }
-
-      .horizon-arc-svg {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-
-      .p-hero-center-content {
-        max-width: 900px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transform: translateY(-10px);
-        position: relative;
-        z-index: 5;
-      }
-
-      .creative-pulse-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 16px;
-        border-radius: 9999px;
-        background: rgba(15, 23, 42, 0.7);
-        border: 1px solid rgba(56, 189, 248, 0.3);
-        box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
-        color: #38bdf8;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        margin-bottom: 24px;
-      }
-
-      .pulse-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #38bdf8;
-        box-shadow: 0 0 8px #38bdf8;
-        animation: pulseAnimation 2s infinite;
-      }
-
-      @keyframes pulseAnimation {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.4; transform: scale(0.85); }
-      }
-
-      .p-hero-title {
-        font-size: clamp(2.3rem, 4.4vw, 3.8rem);
-        font-weight: 700;
-        letter-spacing: -0.035em;
-        color: #ffffff;
-        line-height: 1.18;
-        max-width: 900px;
-        margin: 0 auto 16px auto;
-      }
-
-      .gradient-glow-text {
-        background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .p-hero-sub {
-        font-size: clamp(1.0rem, 1.25vw, 1.18rem);
-        line-height: 1.65;
-        color: rgba(226, 232, 240, 0.72);
-        max-width: 660px;
-        margin: 0 auto 28px auto;
-      }
-
-      .scroll-down-indicator {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.75rem;
-        letter-spacing: 0.08em;
-        color: #94a3b8;
-        text-transform: uppercase;
-        padding: 8px 18px;
-        border-radius: 9999px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.25s ease;
-      }
-
-      .scroll-down-indicator:hover {
-        color: #ffffff;
-        border-color: rgba(56, 189, 248, 0.4);
-        background: rgba(56, 189, 248, 0.08);
-      }
-
-      .scroll-arrow {
-        animation: bounceDown 2s infinite;
-      }
-
-      @keyframes bounceDown {
-        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-        40% { transform: translateY(4px); }
-        60% { transform: translateY(2px); }
-      }
-
-      /* Overlapping Sheet Arena */
-      .p-overlap-arena {
-        position: relative;
-        z-index: 20;
-        margin-top: 0;
-        width: 100%;
-      }
-
-      .p-overlap-sheet {
+      /* Main Page Wrapper */
+      .jobs-main-wrapper {
         position: relative;
         width: 100%;
         background: 
-          radial-gradient(ellipse at 80% 15%, rgba(56, 189, 248, 0.05) 0%, transparent 60%),
-          radial-gradient(ellipse at 20% 50%, rgba(129, 140, 248, 0.04) 0%, transparent 60%),
-          linear-gradient(180deg, #07090f 0%, #030407 100%);
-        border-radius: 40px 40px 0 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.09);
-        box-shadow: 0 -25px 70px rgba(0, 0, 0, 0.96);
-        padding: 24px 0 0 0;
-      }
-
-      .sheet-handle {
-        width: 48px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.22);
-        border-radius: 9999px;
-        margin: 0 auto 24px auto;
-        flex-shrink: 0;
+          radial-gradient(ellipse at 80% 10%, rgba(56, 189, 248, 0.04) 0%, transparent 60%),
+          radial-gradient(ellipse at 20% 40%, rgba(129, 140, 248, 0.03) 0%, transparent 60%),
+          linear-gradient(180deg, #05070c 0%, #000000 100%);
+        min-height: calc(100vh - 72px);
       }
 
       /* Sticky Controls Bar fixed on top below 72px header */
@@ -266,66 +116,68 @@
         position: sticky;
         top: 72px;
         z-index: 30;
-        background: rgba(7, 9, 15, 0.92);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        margin-bottom: 40px;
+        background: rgba(5, 7, 12, 0.94);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
       }
 
       .p-sheet-controls {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 16px 24px;
+        padding: 10px 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 16px;
+        gap: 12px;
       }
 
       .p-sheet-heading-wrap {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 2px;
       }
 
       .p-sheet-pretitle {
-        font-size: 0.72rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: #38bdf8;
-        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.65rem;
         font-weight: 600;
+        letter-spacing: 0.14em;
+        color: #38bdf8;
+        text-transform: uppercase;
+        font-family: var(--font-mono, monospace);
       }
 
       .p-sheet-title {
-        font-size: 1.45rem;
+        font-size: 1.25rem;
         font-weight: 700;
         color: #ffffff;
         letter-spacing: -0.02em;
+        margin: 0;
       }
 
-      /* Filter Tabs */
+      /* Filter Switcher */
       .p-filter-bar {
-        display: flex;
-        gap: 8px;
-        background: rgba(15, 23, 42, 0.6);
-        padding: 4px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 5px;
         border-radius: 9999px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        backdrop-filter: blur(16px);
       }
 
       .p-filter-btn {
-        background: transparent;
+        background: none;
         border: none;
-        color: #94a3b8;
-        font-size: 0.8rem;
-        font-weight: 500;
-        padding: 8px 16px;
+        padding: 6px 14px;
         border-radius: 9999px;
+        color: #94a3b8;
+        font-size: 0.75rem;
+        font-weight: 500;
         cursor: pointer;
-        transition: all 0.2s ease;
+        transition: all 0.25s ease;
       }
 
       .p-filter-btn:hover {
@@ -336,196 +188,570 @@
         background: rgba(56, 189, 248, 0.15);
         color: #38bdf8;
         font-weight: 600;
-        box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
       }
 
-      /* Culture & Perks Grid inside Sheet */
-      .jobs-perks-section {
+      /* Showcase Container */
+      .j-grid-container {
         max-width: 1200px;
-        margin: 0 auto 60px;
-        padding: 0 24px;
+        margin: 0 auto;
+        padding: 22px 20px 60px 20px;
+        width: 100%;
       }
 
-      .perks-grid {
+      /* =========================================
+         SPLIT SHOWCASE: Left & Right Portion Layout
+         ========================================= */
+      .j-split-showcase {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: 320px 1fr;
         gap: 20px;
+        align-items: start;
+        width: 100%;
       }
 
-      .perk-card {
-        background: rgba(15, 23, 42, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        border-radius: 16px;
-        padding: 24px;
-        transition: transform 0.3s ease, border-color 0.3s ease;
+      /* Left Portion: Column of Small Job Cards */
+      .j-col-left {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
 
-      .perk-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(56, 189, 248, 0.3);
+      .j-left-card-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
 
-      .perk-icon {
-        font-size: 1.5rem;
-        margin-bottom: 12px;
-        display: inline-block;
+      .j-mini-card {
+        position: relative;
+        border-radius: 14px;
+        background: rgba(15, 23, 42, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 12px 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        user-select: none;
       }
 
-      .perk-title {
-        font-size: 1.05rem;
+      .j-mini-card:hover {
+        background: rgba(15, 23, 42, 0.85);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateX(3px);
+      }
+
+      .j-mini-card.is-active {
+        background: rgba(15, 23, 42, 0.95);
+        transform: translateX(5px);
+      }
+
+      .j-mini-card.cyan.is-active,
+      .j-mini-card.cyan:hover {
+        border-color: rgba(56, 189, 248, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.15);
+      }
+
+      .j-mini-card.violet.is-active,
+      .j-mini-card.violet:hover {
+        border-color: rgba(168, 85, 247, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.15);
+      }
+
+      .j-mini-card.amber.is-active,
+      .j-mini-card.amber:hover {
+        border-color: rgba(251, 191, 36, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(251, 191, 36, 0.15);
+      }
+
+      .j-mini-card.emerald.is-active,
+      .j-mini-card.emerald:hover {
+        border-color: rgba(52, 211, 153, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(52, 211, 153, 0.15);
+      }
+
+      .j-mini-icon-wrap {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .j-mini-icon-wrap.cyan {
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(14, 165, 233, 0.1) 100%);
+        border: 1px solid rgba(56, 189, 248, 0.35);
+        color: #38bdf8;
+      }
+      .j-mini-icon-wrap.violet {
+        background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(124, 58, 237, 0.1) 100%);
+        border: 1px solid rgba(168, 85, 247, 0.35);
+        color: #c084fc;
+      }
+      .j-mini-icon-wrap.amber {
+        background: linear-gradient(135deg, rgba(251, 191, 36, 0.25) 0%, rgba(217, 119, 6, 0.1) 100%);
+        border: 1px solid rgba(251, 191, 36, 0.35);
+        color: #fbbf24;
+      }
+      .j-mini-icon-wrap.emerald {
+        background: linear-gradient(135deg, rgba(52, 211, 153, 0.25) 0%, rgba(16, 185, 129, 0.1) 100%);
+        border: 1px solid rgba(52, 211, 153, 0.35);
+        color: #34d399;
+      }
+      .j-mini-icon-wrap svg {
+        width: 18px;
+        height: 18px;
+        stroke-width: 1.8;
+      }
+
+      .j-mini-info {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .j-mini-title-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+      }
+
+      .j-mini-title {
+        font-size: 0.95rem;
         font-weight: 700;
         color: #ffffff;
-        margin-bottom: 6px;
+        margin: 0;
+        letter-spacing: -0.015em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
-      .perk-text {
-        font-size: 0.88rem;
+      .j-mini-status-pill {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.60rem;
+        font-weight: 600;
+        padding: 2px 6px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        flex-shrink: 0;
+      }
+      .j-mini-status-pill.cyan { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+      .j-mini-status-pill.violet { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+      .j-mini-status-pill.amber { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+      .j-mini-status-pill.emerald { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+
+      .j-mini-tagline {
+        font-size: 0.70rem;
         color: #94a3b8;
-        line-height: 1.6;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
-      /* Job Directory Cards */
-      .jobs-directory-container {
-        max-width: 1200px;
-        margin: 0 auto 100px;
-        padding: 0 24px;
+      .j-mini-arrow {
+        color: #64748b;
+        font-size: 0.80rem;
+        transition: transform 0.25s ease, color 0.25s ease;
+      }
+      .j-mini-card:hover .j-mini-arrow,
+      .j-mini-card.is-active .j-mini-arrow {
+        color: #ffffff;
+        transform: translateX(2px);
       }
 
-      .jobs-list {
+      /* Right Portion: Expanded Job Showcase */
+      .j-col-right {
+        position: relative;
+        min-width: 0;
+      }
+
+      .j-expanded-card {
+        position: sticky;
+        top: 135px;
+        background: rgba(15, 23, 42, 0.68);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+        padding: 22px 24px 18px 24px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 14px;
+        transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
       }
 
-      .job-item-card {
-        background: rgba(15, 23, 42, 0.65);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 18px;
-        padding: 28px;
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-      }
-
-      .job-item-card:hover {
+      .j-expanded-card.cyan {
+        border-top: 3px solid #38bdf8;
         border-color: rgba(56, 189, 248, 0.35);
-        background: rgba(15, 23, 42, 0.85);
-        transform: translateY(-2px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.12);
+      }
+      .j-expanded-card.violet {
+        border-top: 3px solid #a855f7;
+        border-color: rgba(168, 85, 247, 0.35);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168, 85, 247, 0.12);
+      }
+      .j-expanded-card.amber {
+        border-top: 3px solid #fbbf24;
+        border-color: rgba(251, 191, 36, 0.35);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(251, 191, 36, 0.12);
+      }
+      .j-expanded-card.emerald {
+        border-top: 3px solid #34d399;
+        border-color: rgba(52, 211, 153, 0.35);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(52, 211, 153, 0.12);
       }
 
-      .job-header-flex {
+      /* Subtle Faint Background Watermark */
+      .j-ghost-watermark {
+        position: absolute;
+        right: -10px;
+        bottom: -20px;
+        font-family: var(--font-display, 'Space Grotesk', sans-serif);
+        font-size: clamp(4rem, 6vw, 5.5rem);
+        font-weight: 900;
+        letter-spacing: -0.06em;
+        line-height: 1;
+        color: rgba(255, 255, 255, 0.015);
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+      }
+
+      .j-expanded-header {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        gap: 16px;
+        gap: 14px;
         flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
       }
 
-      .job-role-title {
-        font-size: 1.35rem;
-        font-weight: 700;
-        color: #ffffff;
-        margin-bottom: 10px;
-      }
-
-      .job-pills-row {
+      .j-expanded-brand {
         display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
       }
 
-      .pill {
+      .j-icon-wrap {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .j-icon-wrap.cyan {
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.08) 100%);
+        border: 1px solid rgba(56, 189, 248, 0.35);
+        color: #38bdf8;
+      }
+      .j-icon-wrap.violet {
+        background: linear-gradient(135deg, rgba(168, 85, 247, 0.22) 0%, rgba(124, 58, 237, 0.08) 100%);
+        border: 1px solid rgba(168, 85, 247, 0.35);
+        color: #c084fc;
+      }
+      .j-icon-wrap.amber {
+        background: linear-gradient(135deg, rgba(251, 191, 36, 0.22) 0%, rgba(217, 119, 6, 0.08) 100%);
+        border: 1px solid rgba(251, 191, 36, 0.35);
+        color: #fbbf24;
+      }
+      .j-icon-wrap.emerald {
+        background: linear-gradient(135deg, rgba(52, 211, 153, 0.22) 0%, rgba(16, 185, 129, 0.08) 100%);
+        border: 1px solid rgba(52, 211, 153, 0.35);
+        color: #34d399;
+      }
+      .j-icon-wrap svg {
+        width: 19px;
+        height: 19px;
+        stroke-width: 1.8;
+      }
+
+      .j-expanded-title {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+
+      .j-expanded-tagline {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.72rem;
+        color: #94a3b8;
+        margin-top: 2px;
+        letter-spacing: 0.02em;
+      }
+
+      .j-pills-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 5px;
+        justify-content: flex-end;
+      }
+
+      .j-plat-pill {
         display: inline-flex;
         align-items: center;
-        padding: 4px 12px;
-        border-radius: 9999px;
-        font-size: 0.78rem;
-        font-weight: 500;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        gap: 4px;
+        padding: 2px 7px;
+        border-radius: 5px;
+        font-family: var(--font-mono, monospace);
+        font-size: 0.62rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         color: #cbd5e1;
       }
 
-      .pill.dept {
-        background: rgba(56, 189, 248, 0.1);
-        border-color: rgba(56, 189, 248, 0.3);
-        color: #38bdf8;
+      .j-plat-dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        display: inline-block;
       }
 
-      .pill.type {
-        background: rgba(16, 185, 129, 0.1);
-        border-color: rgba(16, 185, 129, 0.3);
-        color: #34d399;
+      .j-plat-pill.cyan .j-plat-dot { background: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.6); }
+      .j-plat-pill.cyan { border-color: rgba(56, 189, 248, 0.25); background: rgba(56, 189, 248, 0.09); color: #38bdf8; }
+
+      .j-plat-pill.violet .j-plat-dot { background: #a855f7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
+      .j-plat-pill.violet { border-color: rgba(168, 85, 247, 0.25); background: rgba(168, 85, 247, 0.09); color: #c084fc; }
+
+      .j-plat-pill.amber .j-plat-dot { background: #f59e0b; box-shadow: 0 0 8px rgba(245, 158, 11, 0.6); }
+      .j-plat-pill.amber { border-color: rgba(251, 191, 36, 0.25); background: rgba(251, 191, 36, 0.09); color: #fbbf24; }
+
+      .j-plat-pill.emerald .j-plat-dot { background: #10b981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
+      .j-plat-pill.emerald { border-color: rgba(52, 211, 153, 0.25); background: rgba(52, 211, 153, 0.09); color: #34d399; }
+
+      .j-expanded-desc {
+        font-size: 0.84rem;
+        line-height: 1.55;
+        color: #cbd5e1;
+        margin: 0;
+        position: relative;
+        z-index: 2;
       }
 
-      .pill.type.internship {
-        background: rgba(192, 132, 252, 0.12);
-        border-color: rgba(192, 132, 252, 0.35);
-        color: #c084fc;
+      .j-expanded-points-box {
+        background: rgba(11, 15, 25, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 10px;
+        padding: 12px 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        position: relative;
+        z-index: 2;
       }
 
-      .pill.type.live-project {
-        background: rgba(251, 191, 36, 0.12);
-        border-color: rgba(251, 191, 36, 0.35);
-        color: #fbbf24;
-      }
-
-      .job-desc-text {
-        font-size: 0.95rem;
-        line-height: 1.65;
+      .j-points-title {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
         color: #94a3b8;
       }
 
-      .job-req-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+      .j-points-list {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 5px;
+        margin: 2px 0 0 0;
+        padding: 0;
+        list-style: none;
       }
 
-      .job-req-list li {
-        font-size: 0.88rem;
-        color: #cbd5e1;
+      .j-point-item {
         display: flex;
-        gap: 10px;
         align-items: flex-start;
+        gap: 7px;
+        font-size: 0.76rem;
+        color: #cbd5e1;
+        line-height: 1.36;
       }
 
-      .job-req-list li::before {
-        content: "▹";
-        color: #38bdf8;
-        font-weight: 700;
+      .j-point-bullet {
+        font-size: 0.65rem;
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        margin-top: 1px;
       }
+      .j-point-bullet.cyan { color: #38bdf8; }
+      .j-point-bullet.violet { color: #c084fc; }
+      .j-point-bullet.amber { color: #fbbf24; }
+      .j-point-bullet.emerald { color: #34d399; }
 
-      .job-action-footer {
+      .j-expanded-actions-footer {
         display: flex;
-        justify-content: flex-end;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        padding-top: 18px;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 14px;
+        margin-top: 2px;
+        position: relative;
+        z-index: 2;
       }
 
-      .btn-apply-job {
-        background: #ffffff;
-        color: #030712;
-        font-weight: 600;
-        font-size: 0.92rem;
-        padding: 10px 24px;
+      .j-btn-clean {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
         border-radius: 9999px;
+        text-decoration: none;
+        font-size: 0.78rem;
+        font-weight: 600;
         border: none;
         cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        width: fit-content;
+      }
+      .j-btn-clean.cyan {
+        background: #0284c7;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+      }
+      .j-btn-clean.cyan:hover {
+        background: #0369a1;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(2, 132, 199, 0.55);
+      }
+
+      .j-btn-clean.violet {
+        background: #7c3aed;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+      }
+      .j-btn-clean.violet:hover {
+        background: #6d28d9;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(124, 58, 237, 0.55);
+      }
+
+      .j-btn-clean.amber {
+        background: #d97706;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 14px rgba(217, 119, 6, 0.4);
+      }
+      .j-btn-clean.amber:hover {
+        background: #b45309;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(217, 119, 6, 0.55);
+      }
+
+      .j-btn-clean.emerald {
+        background: #059669;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4);
+      }
+      .j-btn-clean.emerald:hover {
+        background: #047857;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(5, 150, 105, 0.55);
+      }
+
+      .j-btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 7px 12px;
+        border-radius: 9999px;
+        text-decoration: none;
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: #94a3b8;
+        background: transparent;
+        border: 1px solid transparent;
         transition: all 0.25s ease;
+      }
+      .j-btn-ghost:hover {
+        color: #38bdf8;
+        background: rgba(56, 189, 248, 0.08);
+      }
+
+      /* Incubation / Open Application Banner (Matching products page) */
+      .p-incubation-banner {
+        max-width: 1200px;
+        margin: 0 auto 60px auto;
+        padding: 0 20px;
+        width: 100%;
+      }
+
+      .p-incubation-card {
+        padding: 24px 30px;
+        border-radius: 18px;
+        background: 
+          radial-gradient(ellipse at 80% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+          linear-gradient(180deg, rgba(17, 24, 39, 0.6) 0%, rgba(10, 15, 26, 0.8) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .p-incubation-left h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0 0 6px 0;
+        letter-spacing: -0.015em;
+      }
+
+      .p-incubation-left p {
+        font-size: 0.82rem;
+        color: #94a3b8;
+        line-height: 1.5;
+        margin: 0;
+        max-width: 680px;
+      }
+
+      .p-incubation-btn {
         display: inline-flex;
         align-items: center;
         gap: 8px;
+        padding: 10px 20px;
+        border-radius: 9999px;
+        background: #ffffff;
+        color: #030712;
+        font-size: 0.8rem;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        white-space: nowrap;
       }
 
-      .btn-apply-job:hover {
+      .p-incubation-btn:hover {
         background: #38bdf8;
+        color: #030712;
         transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(56, 189, 248, 0.3);
+        box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35);
       }
 
       /* Modal Styling */
@@ -553,7 +779,7 @@
         width: 100%;
         max-height: 90vh;
         overflow-y: auto;
-        padding: 36px;
+        padding: 32px;
         position: relative;
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
       }
@@ -575,15 +801,15 @@
       }
 
       .form-group {
-        margin-bottom: 20px;
+        margin-bottom: 18px;
       }
 
       .form-label {
         display: block;
-        font-size: 0.82rem;
+        font-size: 0.78rem;
         font-weight: 600;
         color: #cbd5e1;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
         text-transform: uppercase;
         letter-spacing: 0.04em;
       }
@@ -593,9 +819,9 @@
         background: rgba(15, 23, 42, 0.8);
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 10px;
-        padding: 12px 16px;
+        padding: 10px 14px;
         color: #ffffff;
-        font-size: 0.95rem;
+        font-size: 0.90rem;
         font-family: inherit;
         outline: none;
         transition: border-color 0.2s ease;
@@ -608,7 +834,7 @@
       .form-file-box {
         border: 2px dashed rgba(255, 255, 255, 0.15);
         border-radius: 12px;
-        padding: 20px;
+        padding: 18px;
         text-align: center;
         background: rgba(15, 23, 42, 0.4);
         cursor: pointer;
@@ -624,13 +850,13 @@
         background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
         color: #ffffff;
         font-weight: 700;
-        font-size: 1rem;
-        padding: 14px;
-        border-radius: 12px;
+        font-size: 0.95rem;
+        padding: 12px;
+        border-radius: 10px;
         border: none;
         cursor: pointer;
         transition: all 0.3s ease;
-        margin-top: 10px;
+        margin-top: 8px;
       }
 
       .btn-submit-app:hover {
@@ -641,35 +867,51 @@
 
       .toast-success {
         display: none;
-        padding: 16px;
+        padding: 14px;
         background: rgba(16, 185, 129, 0.15);
         border: 1px solid rgba(16, 185, 129, 0.4);
-        border-radius: 12px;
+        border-radius: 10px;
         color: #34d399;
-        margin-bottom: 20px;
-        font-size: 0.95rem;
+        margin-bottom: 18px;
+        font-size: 0.90rem;
         text-align: center;
       }
 
+      /* Responsive layout matching products.html */
+      @media (max-width: 900px) {
+        .j-split-showcase {
+          grid-template-columns: 1fr;
+        }
+        .j-expanded-card {
+          position: relative;
+          top: auto;
+        }
+        .p-incubation-card {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+      }
+
       @media (max-width: 768px) {
+        .jobs-page-body {
+          padding-top: 60px;
+        }
         .p-navbar {
           padding: 0 20px;
-          height: 64px;
+          height: 60px;
         }
         .p-nav-menu {
           display: none;
         }
-        .p-overlap-sheet {
-          border-radius: 24px 24px 0 0;
-        }
         .p-sheet-sticky-bar {
-          top: 64px;
+          top: 60px;
         }
         .p-sheet-controls {
-          padding: 12px 16px;
+          padding: 10px 16px;
         }
         .p-sheet-title {
-          font-size: 1.2rem;
+          font-size: 1.15rem;
         }
       }
     </style>
@@ -688,7 +930,7 @@
         <nav class="p-nav-menu">
           <a href="/" class="p-nav-link">Home</a>
           <a href="/products.html" class="p-nav-link">Products</a>
-          <a href="/jobs.html" class="p-nav-link active">Careers</a>
+          <a href="/jobs.html" class="p-nav-link active">Jobs</a>
           <a href="/submit-idea.html" class="p-nav-link">Submit Idea</a>
           <a href="/#about-stage" class="p-nav-link">About</a>
         </nav>
@@ -699,252 +941,190 @@
       </div>
     </header>
 
-    <!-- Sticky Hero Section with Luminous Lightning Half Moon Arc -->
-    <section class="p-hero-sticky-section">
-      <!-- Subtle Luminous White Horizon Edge spanning screen from left to right -->
-      <div class="hero-horizon-edge-wrapper">
-        <svg class="horizon-arc-svg" viewBox="0 0 1440 240" fill="none" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="horizonGlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
-              <stop offset="25%" stop-color="#ffffff" stop-opacity="0.35" />
-              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.95" />
-              <stop offset="75%" stop-color="#ffffff" stop-opacity="0.35" />
-              <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-            </linearGradient>
+    <!-- Main Jobs Arena with Split Showcase -->
+    <div class="jobs-main-wrapper">
+      <!-- Sticky Controls Bar below fixed 72px navbar -->
+      <header class="p-sheet-sticky-bar">
+        <div class="p-sheet-controls">
+          <div class="p-sheet-heading-wrap">
+            <span class="p-sheet-pretitle">OPPORTUNITIES &amp; ROLES</span>
+            <h1 class="p-sheet-title">Open Jobs &amp; Opportunities</h1>
+          </div>
 
-            <radialGradient id="horizonCoreBloom" cx="50%" cy="100%" r="50%">
-              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25" />
-              <stop offset="60%" stop-color="#38bdf8" stop-opacity="0.06" />
-              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
-            </radialGradient>
-
-            <filter id="whiteGlow" x="-20%" y="-100%" width="140%" height="300%">
-              <feGaussianBlur stdDeviation="6" result="blur1" />
-              <feGaussianBlur stdDeviation="24" result="blur2" />
-              <feMerge>
-                <feMergeNode in="blur2" />
-                <feMergeNode in="blur1" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-
-          <!-- Soft, faint ambient glow under curvature -->
-          <ellipse cx="720" cy="110" rx="680" ry="90" fill="url(#horizonCoreBloom)" />
-
-          <!-- Subtle wide aura line with gentle low intensity -->
-          <path d="M 0 170 Q 720 50 1440 170" stroke="rgba(255, 255, 255, 0.14)" stroke-width="4" stroke-linecap="round" filter="url(#whiteGlow)" />
-
-          <!-- Clean, refined low-intensity white crest edge -->
-          <path d="M 0 170 Q 720 50 1440 170" stroke="url(#horizonGlowGrad)" stroke-width="1.4" stroke-linecap="round" />
-        </svg>
-      </div>
-
-      <div class="p-hero-center-content">
-        <div class="creative-pulse-badge">
-          <span class="pulse-dot"></span>
-          <span>THE SYNERBIT TALENT LAB</span>
+          <!-- Filter Tabs -->
+          <div class="p-filter-bar">
+            <button type="button" class="p-filter-btn active" data-filter="all">All Roles</button>
+            <button type="button" class="p-filter-btn" data-filter="Engineering">Engineering</button>
+            <button type="button" class="p-filter-btn" data-filter="Design">Design</button>
+            <button type="button" class="p-filter-btn" data-filter="Product">Product</button>
+            <button type="button" class="p-filter-btn" data-filter="Internship">Internships</button>
+          </div>
         </div>
+      </header>
 
-        <h1 class="p-hero-title">
-          Build Category-Defining Software,<br />
-          <span class="gradient-glow-text">Co-Own the Ecosystem</span>
-        </h1>
-
-        <p class="p-hero-sub">
-          Join an agile collective of product engineers and designers building next-generation SaaS platforms with deep autonomy, high velocity, and shared upside.
-        </p>
-
-        <div class="scroll-down-indicator" id="p-scroll-down-btn" style="cursor: pointer;">
-          <span class="scroll-arrow">↓</span>
-          <span>SCROLL TO EXPLORE OPENINGS</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Overlapping Sheet Arena -->
-    <section class="p-overlap-arena" id="p-overlap-arena">
-      <div class="p-overlap-sheet">
-        <div class="sheet-handle"></div>
-
-        <!-- Sticky Controls Bar below fixed 72px navbar -->
-        <div class="p-sheet-sticky-bar">
-          <div class="p-sheet-controls">
-            <div class="p-sheet-heading-wrap">
-              <span class="p-sheet-pretitle">CAREERS &amp; CULTURE</span>
-              <h2 class="p-sheet-title">Active Opportunities</h2>
+      <!-- 2-Column Split Showcase -->
+      <main class="j-grid-container">
+        <div class="j-split-showcase" id="jobsSplitShowcase">
+          <!-- Left Column: Compact Job List Cards -->
+          <div class="j-col-left">
+            <div class="j-left-card-list" id="jobsLeftList">
+              <!-- Rendered dynamically -->
             </div>
+          </div>
 
-            <!-- Filter Tabs -->
-            <div class="p-filter-bar">
-              <button type="button" class="p-filter-btn active" data-filter="all">All Roles</button>
-              <button type="button" class="p-filter-btn" data-filter="Engineering">Engineering</button>
-              <button type="button" class="p-filter-btn" data-filter="Design">Design</button>
-              <button type="button" class="p-filter-btn" data-filter="Product">Product</button>
-              <button type="button" class="p-filter-btn" data-filter="Internship">Internships</button>
-              <button type="button" class="p-filter-btn" data-filter="Live Project">Live Projects</button>
+          <!-- Right Column: Sticky Expanded Showcase Card -->
+          <div class="j-col-right">
+            <div class="j-expanded-card cyan" id="jobsExpandedCard">
+              <!-- Rendered dynamically -->
             </div>
           </div>
         </div>
+      </main>
 
-        <!-- Culture & Pillars Section -->
-        <div class="jobs-perks-section">
-          <div class="perks-grid">
-            <div class="perk-card">
-              <span class="perk-icon">⚡</span>
-              <h3 class="perk-title">High-Velocity Autonomy</h3>
-              <p class="perk-text">No bureaucratic layers or unnecessary status meetings. We empower creators to design, ship, and iterate rapidly.</p>
-            </div>
-            <div class="perk-card">
-              <span class="perk-icon">🚀</span>
-              <h3 class="perk-title">Incubation &amp; Co-Ownership</h3>
-              <p class="perk-text">Work across multiple category-defining platforms with upside incentives aligned directly to the products you build.</p>
-            </div>
-            <div class="perk-card">
-              <span class="perk-icon">🌐</span>
-              <h3 class="perk-title">Remote-First Flexibility</h3>
-              <p class="perk-text">Work where you do your best thinking. We prioritize deep focus, clear async documentation, and outcomes over seat time.</p>
-            </div>
+      <!-- Open Application Incubation Banner -->
+      <section class="p-incubation-banner">
+        <div class="p-incubation-card">
+          <div class="p-incubation-left">
+            <h3>Don't See Your Ideal Role?</h3>
+            <p>We are always eager to meet driven engineers, visionary designers, and SaaS builders. Submit an open application and let's build together.</p>
+          </div>
+          <div>
+            <button type="button" class="p-incubation-btn" id="btn-open-general-app">
+              <span>Submit Open Application</span>
+              <span>→</span>
+            </button>
           </div>
         </div>
+      </section>
 
-        <!-- Job Directory Cards -->
-        <main class="jobs-directory-container">
-          <div class="jobs-list" id="jobs-container">
-            <!-- Rendered dynamically from Firebase / Local Store -->
-          </div>
-        </main>
-
-        <!-- Global Comprehensive Footer -->
-        <footer class="site-footer-arena" id="site-footer">
-          <div class="footer-inner-wrapper">
-            <!-- Main 4-Column Grid -->
-            <div class="footer-grid">
-              <!-- Col 1: Brand & Social Media Links -->
-              <div class="footer-col col-brand">
-                <div class="nav-brand footer-brand-header">
-                  <div class="brand-logo-container">
-                    <img src="/logo.png" alt="Synerbit Logo" class="brand-logo-img" />
-                  </div>
-                  <span class="brand-name">Synerbit</span>
+      <!-- Global Comprehensive Footer -->
+      <footer class="site-footer-arena" id="site-footer">
+        <div class="footer-inner-wrapper">
+          <!-- Main 4-Column Grid -->
+          <div class="footer-grid">
+            <!-- Col 1: Brand & Social Media Links -->
+            <div class="footer-col col-brand">
+              <div class="nav-brand footer-brand-header">
+                <div class="brand-logo-container">
+                  <img src="/logo.png" alt="Synerbit Logo" class="brand-logo-img" />
                 </div>
+                <span class="brand-name">Synerbit</span>
+              </div>
 
-                <p class="footer-brand-desc">
-                  Building simple, innovative, and scalable SaaS products that solve real-world problems and empower connected human potential.
-                </p>
+              <p class="footer-brand-desc">
+                Building simple, innovative, and scalable SaaS products that solve real-world problems and empower connected human potential.
+              </p>
 
-                <div class="footer-social-section">
-                  <span class="footer-social-label">OFFICIAL SOCIAL CHANNELS</span>
-                  <div class="footer-social-links">
-                    <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/company/synerbit-opc-private-limited/" target="_blank" rel="noopener noreferrer" class="social-btn social-linkedin" aria-label="Synerbit LinkedIn Company Page" title="LinkedIn">
-                      <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.67 1.67 0 1 0 0-3.34 1.67 1.67 0 0 0 0 3.34m1.39 9.74v-8.37H5.07v8.37z"/>
-                      </svg>
-                    </a>
+              <div class="footer-social-section">
+                <span class="footer-social-label">OFFICIAL SOCIAL CHANNELS</span>
+                <div class="footer-social-links">
+                  <!-- LinkedIn -->
+                  <a href="https://www.linkedin.com/company/synerbit-opc-private-limited/" target="_blank" rel="noopener noreferrer" class="social-btn social-linkedin" aria-label="Synerbit LinkedIn Company Page" title="LinkedIn">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.67 1.67 0 1 0 0-3.34 1.67 1.67 0 0 0 0 3.34m1.39 9.74v-8.37H5.07v8.37z"/>
+                    </svg>
+                  </a>
 
-                    <!-- Twitter / X -->
-                    <a href="https://x.com/SynerbitHQ" target="_blank" rel="noopener noreferrer" class="social-btn social-twitter" aria-label="Synerbit X (Twitter) Page" title="X (Twitter)">
-                      <svg class="social-svg" viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                      </svg>
-                    </a>
+                  <!-- Twitter / X -->
+                  <a href="https://x.com/SynerbitHQ" target="_blank" rel="noopener noreferrer" class="social-btn social-twitter" aria-label="Synerbit X (Twitter) Page" title="X (Twitter)">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
 
-                    <!-- Instagram -->
-                    <a href="https://www.instagram.com/synerbit.in/" target="_blank" rel="noopener noreferrer" class="social-btn social-instagram" aria-label="Synerbit Instagram Official Page" title="Instagram">
-                      <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                      </svg>
-                    </a>
+                  <!-- Instagram -->
+                  <a href="https://www.instagram.com/synerbit.in/" target="_blank" rel="noopener noreferrer" class="social-btn social-instagram" aria-label="Synerbit Instagram Official Page" title="Instagram">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </a>
 
-                    <!-- Facebook -->
-                    <a href="https://www.facebook.com/profile.php?id=61595473585056" target="_blank" rel="noopener noreferrer" class="social-btn social-facebook" aria-label="Synerbit Facebook Page" title="Facebook">
-                      <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
-                      </svg>
-                    </a>
-                  </div>
+                  <!-- Facebook -->
+                  <a href="https://www.facebook.com/profile.php?id=61595473585056" target="_blank" rel="noopener noreferrer" class="social-btn social-facebook" aria-label="Synerbit Facebook Page" title="Facebook">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                    </svg>
+                  </a>
                 </div>
               </div>
-
-              <!-- Col 2: Products -->
-              <div class="footer-col">
-                <h4 class="footer-col-title">PRODUCTS</h4>
-                <ul class="footer-links-list">
-                  <li><a href="https://www.pulsepm.in" target="_blank" rel="noopener noreferrer" class="footer-link footer-link-product">PulsePM <span class="footer-badge-pill cyan">Live ↗</span></a></li>
-                  <li><a href="/products.html" class="footer-link footer-link-product">Habitpot <span class="footer-badge-pill emerald">Soon</span></a></li>
-                  <li><a href="/products.html" class="footer-link footer-link-product">Busly <span class="footer-badge-pill amber">Soon</span></a></li>
-                  <li><a href="/products.html" class="footer-link">Product Ecosystem <span class="footer-badge-pill cyan">Showcase ↗</span></a></li>
-                  <li><a href="mailto:beta@synerbit.com" class="footer-link">Early Beta Access</a></li>
-                </ul>
-              </div>
-
-              <!-- Col 3: Company -->
-              <div class="footer-col">
-                <h4 class="footer-col-title">COMPANY</h4>
-                <ul class="footer-links-list">
-                  <li><a href="/#about-stage" class="footer-link footer-link-stage">About Synerbit</a></li>
-                  <li><a href="/#about-stage" class="footer-link footer-link-stage">Our Vision</a></li>
-                  <li><a href="/#about-stage" class="footer-link footer-link-stage">Our Mission</a></li>
-                  <li><a href="/#about-stage" class="footer-link footer-link-stage">Values &amp; Beliefs</a></li>
-                  <li><a href="/#about-stage" class="footer-link footer-link-stage">Ecosystem Goal</a></li>
-                  <li><a href="/jobs.html" class="footer-link">Careers <span class="footer-badge-pill emerald">Hiring</span></a></li>
-                  <li><a href="/submit-idea.html" class="footer-link">Submit SaaS Idea <span class="footer-badge-pill amber">Incubation</span></a></li>
-                </ul>
-              </div>
-
-              <!-- Col 4: Legal & Policies -->
-              <div class="footer-col">
-                <h4 class="footer-col-title">LEGAL &amp; POLICIES</h4>
-                <ul class="footer-links-list">
-                  <li>
-                    <a href="/privacy.html" class="footer-link-btn" id="footer-privacy-link">
-                      <span>Privacy Policy</span>
-                      <span class="doc-icon">↗</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/terms.html" class="footer-link-btn" id="footer-terms-link">
-                      <span>Terms &amp; Conditions</span>
-                      <span class="doc-icon">↗</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/cookies.html" class="footer-link-btn" id="footer-cookies-link">
-                      <span>Cookie Policy</span>
-                      <span class="doc-icon">↗</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </div>
 
-            <div class="footer-divider"></div>
+            <!-- Col 2: Products -->
+            <div class="footer-col">
+              <h4 class="footer-col-title">PRODUCTS</h4>
+              <ul class="footer-links-list">
+                <li><a href="https://www.pulsepm.in" target="_blank" rel="noopener noreferrer" class="footer-link footer-link-product">PulsePM <span class="footer-badge-pill cyan">Live ↗</span></a></li>
+                <li><a href="/products.html" class="footer-link footer-link-product">Habitpot <span class="footer-badge-pill emerald">Soon</span></a></li>
+                <li><a href="/products.html" class="footer-link footer-link-product">Busly <span class="footer-badge-pill amber">Soon</span></a></li>
+                <li><a href="/products.html" class="footer-link">Product Ecosystem <span class="footer-badge-pill cyan">Showcase ↗</span></a></li>
+                <li><a href="mailto:beta@synerbit.com" class="footer-link">Early Beta Access</a></li>
+              </ul>
+            </div>
 
-            <!-- Bottom Copyright Row -->
-            <div class="footer-bottom-bar">
-              <div class="footer-bottom-left">
-                <span class="status-indicator"></span>
-                <span class="footer-company-legal">Synerbit OPC Private Limited</span>
-                <span class="footer-copyright-sep">•</span>
-                <span class="footer-copyright-year">&copy; 2026 All rights reserved.</span>
-              </div>
+            <!-- Col 3: Company -->
+            <div class="footer-col">
+              <h4 class="footer-col-title">COMPANY</h4>
+              <ul class="footer-links-list">
+                <li><a href="/#about-stage" class="footer-link footer-link-stage">About Synerbit</a></li>
+                <li><a href="/#about-stage" class="footer-link footer-link-stage">Our Vision</a></li>
+                <li><a href="/#about-stage" class="footer-link footer-link-stage">Our Mission</a></li>
+                <li><a href="/#about-stage" class="footer-link footer-link-stage">Values &amp; Beliefs</a></li>
+                <li><a href="/#about-stage" class="footer-link footer-link-stage">Ecosystem Goal</a></li>
+                <li><a href="/jobs.html" class="footer-link">Jobs <span class="footer-badge-pill emerald">Hiring</span></a></li>
+                <li><a href="/submit-idea.html" class="footer-link">Submit SaaS Idea <span class="footer-badge-pill amber">Incubation</span></a></li>
+              </ul>
+            </div>
 
-              <div class="footer-bottom-right">
-                <a href="/privacy.html" class="footer-mini-link">Privacy</a>
-                <span class="footer-dot-sep">·</span>
-                <a href="/terms.html" class="footer-mini-link">Terms</a>
-                <span class="footer-dot-sep">·</span>
-                <a href="/cookies.html" class="footer-mini-link">Cookies</a>
-                <span class="footer-dot-sep">·</span>
-                <a href="#contact" class="footer-mini-link" data-open-contact>Contact</a>
-              </div>
+            <!-- Col 4: Legal & Policies -->
+            <div class="footer-col">
+              <h4 class="footer-col-title">LEGAL &amp; POLICIES</h4>
+              <ul class="footer-links-list">
+                <li>
+                  <a href="/privacy.html" class="footer-link-btn" id="footer-privacy-link">
+                    <span>Privacy Policy</span>
+                    <span class="doc-icon">↗</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/terms.html" class="footer-link-btn" id="footer-terms-link">
+                    <span>Terms &amp; Conditions</span>
+                    <span class="doc-icon">↗</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/cookies.html" class="footer-link-btn" id="footer-cookies-link">
+                    <span>Cookie Policy</span>
+                    <span class="doc-icon">↗</span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
-        </footer>
-      </div> <!-- /.p-overlap-sheet -->
-    </section> <!-- /.p-overlap-arena -->
+
+          <div class="footer-divider"></div>
+
+          <!-- Bottom Copyright Row -->
+          <div class="footer-bottom-bar">
+            <div class="footer-bottom-left">
+              <span class="status-indicator"></span>
+              <span class="footer-company-legal">Synerbit OPC Private Limited</span>
+              <span class="footer-copyright-sep">•</span>
+              <span class="footer-copyright-year">&copy; 2026 All rights reserved.</span>
+            </div>
+
+            <div class="footer-bottom-right">
+              <a href="/privacy.html" class="footer-mini-link">Privacy</a>
+              <span class="footer-dot-sep">·</span>
+              <a href="/terms.html" class="footer-mini-link">Terms</a>
+              <span class="footer-dot-sep">·</span>
+              <a href="/cookies.html" class="footer-mini-link">Cookies</a>
+              <span class="footer-dot-sep">·</span>
+              <a href="#contact" class="footer-mini-link" data-open-contact>Contact</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div> <!-- /.jobs-main-wrapper -->
 
     <!-- Application Modal -->
     <div class="modal-backdrop" id="application-modal">
@@ -1006,12 +1186,13 @@
       </div>
     </div>
 
-    <!-- Script: Load Jobs, Filtering, Parallax, and Application Submission -->
+    <!-- Script: Load Jobs, 2-Column Split Showcase, Filtering, and Application Submission -->
     <script type="module">
       import { getJobs, submitJobApplication } from '/src/firebase.js';
       import '/src/contactModal.js';
 
-      const jobsContainer = document.getElementById('jobs-container');
+      const leftListEl = document.getElementById('jobsLeftList');
+      const expandedCardEl = document.getElementById('jobsExpandedCard');
       const modal = document.getElementById('application-modal');
       const modalTitle = document.getElementById('modal-job-title');
       const hiddenJobId = document.getElementById('app-job-id');
@@ -1023,8 +1204,45 @@
       const successMsg = document.getElementById('app-success-msg');
       const submitBtn = document.getElementById('btn-submit-application');
       const filterBtns = document.querySelectorAll('.p-filter-btn');
+      const btnGeneralApp = document.getElementById('btn-open-general-app');
 
       let allJobs = [];
+      let currentFilter = 'all';
+      let selectedJobId = null;
+
+      // Department meta configurations (color, icons, watermarks)
+      function getDeptMeta(department = '', type = '') {
+        const d = (department || '').toLowerCase();
+        const t = (type || '').toLowerCase();
+
+        if (t.includes('intern') || d.includes('intern')) {
+          return {
+            color: 'emerald',
+            watermark: 'INTERN',
+            iconSvg: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5" /></svg>`
+          };
+        }
+        if (d.includes('design') || d.includes('creative') || d.includes('ui') || d.includes('ux')) {
+          return {
+            color: 'violet',
+            watermark: 'DESIGN',
+            iconSvg: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>`
+          };
+        }
+        if (d.includes('product') || d.includes('growth') || d.includes('operations')) {
+          return {
+            color: 'amber',
+            watermark: 'PRODUCT',
+            iconSvg: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`
+          };
+        }
+        // Default: Engineering
+        return {
+          color: 'cyan',
+          watermark: 'DEV',
+          iconSvg: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`
+        };
+      }
 
       // Update file input preview
       fileInput.addEventListener('change', () => {
@@ -1040,20 +1258,87 @@
         btn.addEventListener('click', () => {
           filterBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          const filter = btn.dataset.filter;
-          renderJobsList(filter);
+          currentFilter = btn.dataset.filter;
+          renderJobsDeck(currentFilter);
         });
       });
 
-      function getJobTypeClass(type) {
-        if (!type) return '';
-        const t = type.toLowerCase();
-        if (t.includes('intern')) return 'internship';
-        if (t.includes('live') || t.includes('project')) return 'live-project';
-        return '';
+      // Render Expanded Right Showcase Card
+      function renderExpandedJobCard(jobId) {
+        const job = allJobs.find(j => j.id === jobId);
+        if (!job || !expandedCardEl) return;
+
+        const meta = getDeptMeta(job.department, job.type);
+
+        expandedCardEl.className = `j-expanded-card ${meta.color}`;
+        expandedCardEl.innerHTML = `
+          <div class="j-ghost-watermark">${meta.watermark}</div>
+
+          <div class="j-expanded-header">
+            <div class="j-expanded-brand">
+              <div class="j-icon-wrap ${meta.color}">
+                ${meta.iconSvg}
+              </div>
+              <div>
+                <h2 class="j-expanded-title">${job.title}</h2>
+                <div class="j-expanded-tagline">${job.department} · ${job.experience || 'Experienced'}</div>
+              </div>
+            </div>
+
+            <div class="j-pills-group">
+              <span class="j-plat-pill ${meta.color}">
+                <span class="j-plat-dot"></span>
+                <span>${job.department}</span>
+              </span>
+              <span class="j-plat-pill">
+                <span class="j-plat-dot"></span>
+                <span>${job.location || 'Remote'}</span>
+              </span>
+              <span class="j-plat-pill">
+                <span class="j-plat-dot"></span>
+                <span>${job.type || 'Full-Time'}</span>
+              </span>
+            </div>
+          </div>
+
+          <p class="j-expanded-desc">${job.description || ''}</p>
+
+          ${job.requirements && job.requirements.length ? `
+            <div class="j-expanded-points-box">
+              <div class="j-points-title">KEY QUALIFICATIONS &amp; RESPONSIBILITIES</div>
+              <ul class="j-points-list">
+                ${job.requirements.map(req => `
+                  <li class="j-point-item">
+                    <span class="j-point-bullet ${meta.color}">▷</span>
+                    <span>${req}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          ` : ''}
+
+          <div class="j-expanded-actions-footer">
+            <button type="button" class="j-btn-clean ${meta.color}" id="btn-apply-expanded">
+              <span>Apply for this Role</span>
+              <span>→</span>
+            </button>
+            <a href="mailto:contact@synerbit.in?subject=Application%20for%20${encodeURIComponent(job.title)}" class="j-btn-ghost">
+              <span>Questions? Email Us ↗</span>
+            </a>
+          </div>
+        `;
+
+        // Wire apply button inside expanded card
+        const applyBtn = document.getElementById('btn-apply-expanded');
+        if (applyBtn) {
+          applyBtn.addEventListener('click', () => {
+            openModal(job.id, job.title);
+          });
+        }
       }
 
-      function renderJobsList(filter = 'all') {
+      // Render the Full Deck (Left Column + Right Column)
+      function renderJobsDeck(filter = 'all') {
         const filtered = filter === 'all'
           ? allJobs
           : allJobs.filter(j => 
@@ -1062,71 +1347,99 @@
             );
 
         if (filtered.length === 0) {
-          jobsContainer.innerHTML = `
-            <div style="text-align: center; padding: 60px; background: rgba(15,23,42,0.4); border-radius: 16px; border: 1px dashed rgba(255,255,255,0.1);">
-              <p style="color: #94a3b8; font-size: 1.05rem;">No open roles found in this category right now. Reach out directly at <a href="mailto:contact@synerbit.in" style="color: #38bdf8;">contact@synerbit.in</a>.</p>
+          leftListEl.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px; background: rgba(15,23,42,0.4); border-radius: 14px; border: 1px dashed rgba(255,255,255,0.1);">
+              <p style="color: #94a3b8; font-size: 0.88rem; margin: 0;">No active openings in this category.</p>
             </div>
           `;
+          if (expandedCardEl) {
+            expandedCardEl.className = 'j-expanded-card cyan';
+            expandedCardEl.innerHTML = `
+              <div style="text-align: center; padding: 60px 20px;">
+                <h3 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 8px;">Explore Open Opportunities</h3>
+                <p style="color: #94a3b8; font-size: 0.85rem; max-width: 440px; margin: 0 auto 20px auto;">
+                  Select another department filter above, or submit an open application below to join our talent network.
+                </p>
+                <button type="button" class="j-btn-clean cyan" id="btn-empty-general-app">
+                  <span>Submit Open Application →</span>
+                </button>
+              </div>
+            `;
+            const emptyBtn = document.getElementById('btn-empty-general-app');
+            if (emptyBtn) {
+              emptyBtn.addEventListener('click', () => openModal('general-role', 'General Application'));
+            }
+          }
           return;
         }
 
-        jobsContainer.innerHTML = filtered.map(job => `
-          <div class="job-item-card" data-job-id="${job.id}">
-            <div class="job-header-flex">
-              <div>
-                <h3 class="job-role-title">${job.title}</h3>
-                <div class="job-pills-row">
-                  <span class="pill dept">${job.department}</span>
-                  <span class="pill">${job.location}</span>
-                  <span class="pill type ${getJobTypeClass(job.type)}">${job.type || 'Full-Time'}</span>
-                  <span class="pill">${job.experience || 'Experienced'}</span>
+        // Check if selectedJobId is in filtered list, else select first
+        if (!selectedJobId || !filtered.some(j => j.id === selectedJobId)) {
+          selectedJobId = filtered[0].id;
+        }
+
+        // Render left column cards
+        leftListEl.innerHTML = filtered.map(job => {
+          const meta = getDeptMeta(job.department, job.type);
+          const isActive = job.id === selectedJobId;
+          return `
+            <div class="j-mini-card ${meta.color} ${isActive ? 'is-active' : ''}" data-job-id="${job.id}">
+              <div class="j-mini-icon-wrap ${meta.color}">
+                ${meta.iconSvg}
+              </div>
+              <div class="j-mini-info">
+                <div class="j-mini-title-row">
+                  <h3 class="j-mini-title">${job.title}</h3>
+                  <span class="j-mini-status-pill ${meta.color}">${job.department}</span>
                 </div>
+                <p class="j-mini-tagline">${job.location || 'Remote'} · ${job.type || 'Full-Time'} · ${job.experience || 'Exp'}</p>
               </div>
+              <span class="j-mini-arrow">→</span>
             </div>
+          `;
+        }).join('');
 
-            <p class="job-desc-text">${job.description}</p>
+        // Render expanded right showcase card
+        renderExpandedJobCard(selectedJobId);
 
-            ${job.requirements && job.requirements.length ? `
-              <div>
-                <div style="font-size: 0.82rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Key Qualifications:</div>
-                <ul class="job-req-list">
-                  ${job.requirements.map(req => `<li>${req}</li>`).join('')}
-                </ul>
-              </div>
-            ` : ''}
+        // Bind interactions on mini cards (mouseenter & click)
+        const miniCards = leftListEl.querySelectorAll('.j-mini-card');
+        miniCards.forEach(card => {
+          const id = card.dataset.jobId;
 
-            <div class="job-action-footer">
-              <button class="btn-apply-job" data-apply-id="${job.id}" data-apply-title="${job.title}">
-                <span>Apply for this Role</span>
-                <span>→</span>
-              </button>
-            </div>
-          </div>
-        `).join('');
+          const activate = () => {
+            if (selectedJobId === id) return;
+            selectedJobId = id;
+            miniCards.forEach(c => c.classList.remove('is-active'));
+            card.classList.add('is-active');
+            renderExpandedJobCard(id);
+          };
 
-        // Bind apply button clicks
-        document.querySelectorAll('.btn-apply-job').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const jobId = btn.dataset.applyId;
-            const title = btn.dataset.applyTitle;
-            openModal(jobId, title);
-          });
+          card.addEventListener('mouseenter', activate);
+          card.addEventListener('click', activate);
         });
       }
 
-      // Load active jobs
+      // Load active jobs from Firebase
       async function loadJobs() {
         try {
           allJobs = await getJobs();
-          renderJobsList('all');
+          renderJobsDeck(currentFilter);
         } catch (err) {
           console.error('Failed to load jobs:', err);
-          jobsContainer.innerHTML = `
-            <div style="text-align: center; padding: 60px; color: #f87171;">
+          leftListEl.innerHTML = `
+            <div style="text-align: center; padding: 40px; color: #f87171;">
               Failed to load positions. Please refresh or email us directly.
             </div>
           `;
         }
+      }
+
+      // General Application Trigger
+      if (btnGeneralApp) {
+        btnGeneralApp.addEventListener('click', () => {
+          openModal('general-role', 'General Application');
+        });
       }
 
       function openModal(jobId, jobTitle) {
@@ -1163,7 +1476,7 @@
         const appName = document.getElementById('app-name').value.trim();
         const appEmail = document.getElementById('app-email').value.trim();
         const appPhone = document.getElementById('app-phone').value.trim();
-        const appTitle = hiddenJobTitle.value.trim() || 'General Career Application';
+        const appTitle = hiddenJobTitle.value.trim() || 'General Job Application';
         const appId = hiddenJobId.value.trim() || 'general-role';
 
         const applicationData = {
@@ -1197,28 +1510,6 @@
           submitBtn.textContent = 'Submit Application';
         }
       });
-
-      // Smooth scroll click from hero indicator down into sticky bar below header
-      const scrollBtn = document.getElementById("p-scroll-down-btn");
-      const stickyBar = document.querySelector(".p-sheet-sticky-bar");
-      if (scrollBtn && stickyBar) {
-        scrollBtn.addEventListener("click", () => {
-          const rect = stickyBar.getBoundingClientRect();
-          window.scrollTo({ top: window.scrollY + rect.top - 72, behavior: "smooth" });
-        });
-      }
-
-      // Parallax fade for sticky hero content on scroll (matching products and homepage experience)
-      const heroContent = document.querySelector(".p-hero-center-content");
-      window.addEventListener("scroll", () => {
-        const scrollY = window.scrollY;
-        const windowH = window.innerHeight;
-        if (heroContent) {
-          const heroFadeProgress = Math.min(Math.max((scrollY - windowH * 0.08) / (windowH * 0.65), 0), 1);
-          heroContent.style.opacity = (1 - heroFadeProgress * 0.95).toString();
-          heroContent.style.transform = `translateY(${scrollY * 0.15 - 10}px) scale(${1 - heroFadeProgress * 0.05})`;
-        }
-      }, { passive: true });
 
       // Initial load
       loadJobs();
