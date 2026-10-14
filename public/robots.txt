@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /assets/admin*
+
+# Sitemap index
+Sitemap: https://www.synerbit.in/sitemap.xml
