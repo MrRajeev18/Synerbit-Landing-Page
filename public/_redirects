@@ -1,0 +1,15 @@
+# Clean URL rewrites for Netlify and Cloudflare Pages
+/products      /products.html     200
+/jobs          /jobs.html         200
+/submit-idea   /submit-idea.html  200
+/terms         /terms.html        200
+/privacy       /privacy.html      200
+/cookies       /cookies.html      200
+
+# Canonical 301 redirects for any legacy links ending in .html
+/products.html    /products       301!
+/jobs.html        /jobs           301!
+/submit-idea.html /submit-idea    301!
+/terms.html       /terms          301!
+/privacy.html     /privacy        301!
+/cookies.html     /cookies        301!

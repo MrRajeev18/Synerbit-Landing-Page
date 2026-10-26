@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="legal-section-block">
           <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 14px;">
             <strong>Entity:</strong> Synerbit OPC Private Limited &bull; <strong>Last Updated:</strong> 6 October 2026<br>
-            <a href="/privacy.html" style="color: #38bdf8; text-decoration: underline; font-weight: 500;">Open Standalone Privacy Policy Page ↗</a>
+            <a href="/privacy" style="color: #38bdf8; text-decoration: underline; font-weight: 500;">Open Standalone Privacy Policy Page ↗</a>
           </p>
           <h4>1. Introduction</h4>
           <p>Synerbit OPC Private Limited ("Synerbit", "we", "us", or "our") respects your privacy and is committed to handling personal information responsibly. This Privacy Policy explains how we collect, use, disclose, retain, and protect information when you visit or interact with the Synerbit corporate website (the "Website").</p>
@@ -451,7 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="legal-section-block">
           <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 14px;">
             <strong>Entity:</strong> Synerbit OPC Private Limited &bull; <strong>Last Updated:</strong> 6 October 2026<br>
-            <a href="/terms.html" style="color: #38bdf8; text-decoration: underline; font-weight: 500;">Open Standalone Terms &amp; Conditions Page ↗</a>
+            <a href="/terms" style="color: #38bdf8; text-decoration: underline; font-weight: 500;">Open Standalone Terms &amp; Conditions Page ↗</a>
           </p>
           <h4>1. Introduction</h4>
           <p>Welcome to the website of Synerbit OPC Private Limited ("Synerbit", "we", "us", or "our"). These Terms &amp; Conditions ("Terms") govern your access to and use of the Synerbit corporate website (the "Website").</p>
@@ -517,7 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="legal-section-block">
           <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 14px;">
             <strong>Entity:</strong> SYNERBIT (OPC) PRIVATE LIMITED &bull; <strong>Last Updated:</strong> 6 October 2026<br>
-            <a href="/cookies.html" style="color: #38bdf8; text-decoration: underline; font-weight: 500;">Open Standalone Cookie Policy Page ↗</a>
+            <a href="/cookies" style="color: #38bdf8; text-decoration: underline; font-weight: 500;">Open Standalone Cookie Policy Page ↗</a>
           </p>
           <h4>1. What Are Cookies?</h4>
           <p>Cookies are small text files placed on your device when you visit a website. They help websites operate, remember information, understand how visitors use the website, and improve website performance and user experience.</p>

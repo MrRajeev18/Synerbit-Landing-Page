@@ -31,7 +31,7 @@
   <meta name="twitter:description" content="Synerbit is a technology company building an integrated ecosystem of software products, high-velocity developer infrastructure, and modern SaaS applications." />
   <meta name="twitter:image" content="https://www.synerbit.in/logo.png" />
 
-  <!-- Structured Data: WebSite & Organization (Schema.org for Google Search) -->
+  <!-- Structured Data: WebSite, Organization & SiteNavigationElement (Schema.org for Google Search & Sitelinks) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -45,6 +45,14 @@
         "description": "A Company Building an Ecosystem of Software",
         "publisher": {
           "@id": "https://www.synerbit.in/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.synerbit.in/?s={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
         },
         "inLanguage": "en-US"
       },
@@ -65,6 +73,48 @@
         "sameAs": [
           "https://github.com/MrRajeev18/Synerbit-Landing-Page",
           "https://www.pulsepm.in"
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://www.synerbit.in/#site-navigation",
+        "name": "Synerbit Main Navigation",
+        "itemListElement": [
+          {
+            "@type": "SiteNavigationElement",
+            "position": 1,
+            "name": "Products",
+            "description": "Explore Synerbit's software ecosystem including PulsePM, Habitpot, and Busly.",
+            "url": "https://www.synerbit.in/products"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 2,
+            "name": "Careers & Open Positions",
+            "description": "Join Synerbit. Explore full-time roles, engineering internships, and career openings.",
+            "url": "https://www.synerbit.in/jobs"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 3,
+            "name": "Submit SaaS Idea",
+            "description": "Pitch your SaaS concept or startup idea for incubation and engineering partnership with Synerbit.",
+            "url": "https://www.synerbit.in/submit-idea"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "About Synerbit",
+            "description": "Learn about Synerbit (OPC) Private Limited and our mission building modern software infrastructure.",
+            "url": "https://www.synerbit.in/#about"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 5,
+            "name": "Contact Us",
+            "description": "Get in touch with Synerbit leadership, enterprise partnerships, or press inquiries.",
+            "url": "https://www.synerbit.in/#contact"
+          }
         ]
       }
     ]
@@ -113,9 +163,9 @@
         <a href="#about-stage" class="nav-link-smooth" data-stage="2">Mission</a>
         <a href="#about-stage" class="nav-link-smooth" data-stage="3">Values</a>
         <a href="#about-stage" class="nav-link-smooth" data-stage="4">Goal</a>
-        <a href="/products.html" class="nav-link-smooth-product">Products</a>
-        <a href="/jobs.html">Jobs</a>
-        <a href="/submit-idea.html">Submit Idea</a>
+        <a href="/products" class="nav-link-smooth-product">Products</a>
+        <a href="/jobs">Jobs</a>
+        <a href="/submit-idea">Submit Idea</a>
       </nav>
 
       <div class="nav-buttons">
@@ -495,7 +545,7 @@
 
             <div class="idea-action-row">
               <a 
-                href="/submit-idea.html"
+                href="/submit-idea"
                 class="idea-cta-btn"
                 id="btn-share-idea"
               >
@@ -571,7 +621,7 @@
               <li><a href="https://www.pulsepm.in" target="_blank" rel="noopener noreferrer" class="footer-link footer-link-product">PulsePM <span class="footer-badge-pill cyan">Live ↗</span></a></li>
               <li><a href="#products-stage" class="footer-link footer-link-product" data-product="1">Habitpot <span class="footer-badge-pill emerald">Soon</span></a></li>
               <li><a href="#products-stage" class="footer-link footer-link-product" data-product="2">Busly <span class="footer-badge-pill amber">Soon</span></a></li>
-              <li><a href="/products.html" class="footer-link">Product Ecosystem <span class="footer-badge-pill cyan">Showcase ↗</span></a></li>
+              <li><a href="/products" class="footer-link">Product Ecosystem <span class="footer-badge-pill cyan">Showcase ↗</span></a></li>
             </ul>
           </div>
 
@@ -584,8 +634,8 @@
               <li><a href="#about-stage" class="footer-link footer-link-stage" data-stage="2">Our Mission</a></li>
               <li><a href="#about-stage" class="footer-link footer-link-stage" data-stage="3">Values &amp; Beliefs</a></li>
               <li><a href="#about-stage" class="footer-link footer-link-stage" data-stage="4">Ecosystem Goal</a></li>
-              <li><a href="/jobs.html" class="footer-link">Jobs <span class="footer-badge-pill emerald">Hiring</span></a></li>
-              <li><a href="/submit-idea.html" class="footer-link">Submit SaaS Idea <span class="footer-badge-pill amber">Incubation</span></a></li>
+              <li><a href="/jobs" class="footer-link">Jobs <span class="footer-badge-pill emerald">Hiring</span></a></li>
+              <li><a href="/submit-idea" class="footer-link">Submit SaaS Idea <span class="footer-badge-pill amber">Incubation</span></a></li>
             </ul>
           </div>
 
@@ -594,19 +644,19 @@
             <h4 class="footer-col-title">LEGAL &amp; POLICIES</h4>
             <ul class="footer-links-list">
               <li>
-                <a href="/privacy.html" class="footer-link-btn" id="footer-privacy-link">
+                <a href="/privacy" class="footer-link-btn" id="footer-privacy-link">
                   <span>Privacy Policy</span>
                   <span class="doc-icon">↗</span>
                 </a>
               </li>
               <li>
-                <a href="/terms.html" class="footer-link-btn" id="footer-terms-link">
+                <a href="/terms" class="footer-link-btn" id="footer-terms-link">
                   <span>Terms &amp; Conditions</span>
                   <span class="doc-icon">↗</span>
                 </a>
               </li>
               <li>
-                <a href="/cookies.html" class="footer-link-btn" id="footer-cookies-link">
+                <a href="/cookies" class="footer-link-btn" id="footer-cookies-link">
                   <span>Cookie Policy</span>
                   <span class="doc-icon">↗</span>
                 </a>
@@ -627,11 +677,11 @@
           </div>
 
           <div class="footer-bottom-right">
-            <a href="/privacy.html" class="footer-mini-link">Privacy</a>
+            <a href="/privacy" class="footer-mini-link">Privacy</a>
             <span class="footer-dot-sep">·</span>
-            <a href="/terms.html" class="footer-mini-link">Terms</a>
+            <a href="/terms" class="footer-mini-link">Terms</a>
             <span class="footer-dot-sep">·</span>
-            <a href="/cookies.html" class="footer-mini-link">Cookies</a>
+            <a href="/cookies" class="footer-mini-link">Cookies</a>
             <span class="footer-dot-sep">·</span>
             <a href="#contact" class="footer-mini-link" data-open-contact>Contact</a>
           </div>

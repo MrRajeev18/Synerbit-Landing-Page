@@ -22,6 +22,42 @@
     <meta name="twitter:description" content="Explore the Synerbit SaaS product ecosystem: PulsePM, Habitpot, and Busly." />
     <meta name="twitter:image" content="https://www.synerbit.in/logo.png" />
 
+    <!-- Structured Data: Products Breadcrumb & CollectionPage for Google Search & Sitelinks -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.synerbit.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Products",
+              "item": "https://www.synerbit.in/products"
+            }
+          ]
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://www.synerbit.in/products#webpage",
+          "url": "https://www.synerbit.in/products",
+          "name": "Products — Synerbit SaaS Ecosystem",
+          "description": "Explore the Synerbit SaaS product ecosystem: PulsePM, Habitpot, and Busly.",
+          "isPartOf": {
+            "@id": "https://www.synerbit.in/#website"
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -1350,9 +1386,9 @@
 
         <nav class="p-nav-menu">
           <a href="/" class="p-nav-link">Home</a>
-          <a href="/products.html" class="p-nav-link active">Products</a>
-          <a href="/jobs.html" class="p-nav-link">Jobs</a>
-          <a href="/submit-idea.html" class="p-nav-link">Submit Idea</a>
+          <a href="/products" class="p-nav-link active">Products</a>
+          <a href="/jobs" class="p-nav-link">Jobs</a>
+          <a href="/submit-idea" class="p-nav-link">Submit Idea</a>
           <a href="/#about-stage" class="p-nav-link">About</a>
         </nav>
       </div>
@@ -1404,7 +1440,7 @@
           </p>
         </div>
         <div>
-          <a href="/submit-idea.html" class="p-incubation-btn">
+          <a href="/submit-idea" class="p-incubation-btn">
             <span>Explore Incubation Lab</span>
             <span>→</span>
           </a>
@@ -1470,9 +1506,9 @@
             <h4 class="footer-col-title">PRODUCTS</h4>
             <ul class="footer-links-list">
               <li><a href="https://www.pulsepm.in" target="_blank" rel="noopener noreferrer" class="footer-link footer-link-product">PulsePM <span class="footer-badge-pill cyan">Live ↗</span></a></li>
-              <li><a href="/products.html" class="footer-link footer-link-product">Habitpot <span class="footer-badge-pill emerald">Soon</span></a></li>
-              <li><a href="/products.html" class="footer-link footer-link-product">Busly <span class="footer-badge-pill amber">Soon</span></a></li>
-              <li><a href="/products.html" class="footer-link">Product Ecosystem <span class="footer-badge-pill cyan">Showcase ↗</span></a></li>
+              <li><a href="/products" class="footer-link footer-link-product">Habitpot <span class="footer-badge-pill emerald">Soon</span></a></li>
+              <li><a href="/products" class="footer-link footer-link-product">Busly <span class="footer-badge-pill amber">Soon</span></a></li>
+              <li><a href="/products" class="footer-link">Product Ecosystem <span class="footer-badge-pill cyan">Showcase ↗</span></a></li>
             </ul>
           </div>
 
@@ -1485,8 +1521,8 @@
               <li><a href="/#about-stage" class="footer-link footer-link-stage">Our Mission</a></li>
               <li><a href="/#about-stage" class="footer-link footer-link-stage">Values &amp; Beliefs</a></li>
               <li><a href="/#about-stage" class="footer-link footer-link-stage">Ecosystem Goal</a></li>
-              <li><a href="/jobs.html" class="footer-link">Jobs <span class="footer-badge-pill emerald">Hiring</span></a></li>
-              <li><a href="/submit-idea.html" class="footer-link">Submit SaaS Idea <span class="footer-badge-pill amber">Incubation</span></a></li>
+              <li><a href="/jobs" class="footer-link">Jobs <span class="footer-badge-pill emerald">Hiring</span></a></li>
+              <li><a href="/submit-idea" class="footer-link">Submit SaaS Idea <span class="footer-badge-pill amber">Incubation</span></a></li>
             </ul>
           </div>
 
@@ -1495,19 +1531,19 @@
             <h4 class="footer-col-title">LEGAL &amp; POLICIES</h4>
             <ul class="footer-links-list">
               <li>
-                <a href="/privacy.html" class="footer-link-btn" id="footer-privacy-link">
+                <a href="/privacy" class="footer-link-btn" id="footer-privacy-link">
                   <span>Privacy Policy</span>
                   <span class="doc-icon">↗</span>
                 </a>
               </li>
               <li>
-                <a href="/terms.html" class="footer-link-btn" id="footer-terms-link">
+                <a href="/terms" class="footer-link-btn" id="footer-terms-link">
                   <span>Terms &amp; Conditions</span>
                   <span class="doc-icon">↗</span>
                 </a>
               </li>
               <li>
-                <a href="/cookies.html" class="footer-link-btn" id="footer-cookies-link">
+                <a href="/cookies" class="footer-link-btn" id="footer-cookies-link">
                   <span>Cookie Policy</span>
                   <span class="doc-icon">↗</span>
                 </a>
@@ -1528,11 +1564,11 @@
           </div>
 
           <div class="footer-bottom-right">
-            <a href="/privacy.html" class="footer-mini-link">Privacy</a>
+            <a href="/privacy" class="footer-mini-link">Privacy</a>
             <span class="footer-dot-sep">·</span>
-            <a href="/terms.html" class="footer-mini-link">Terms</a>
+            <a href="/terms" class="footer-mini-link">Terms</a>
             <span class="footer-dot-sep">·</span>
-            <a href="/cookies.html" class="footer-mini-link">Cookies</a>
+            <a href="/cookies" class="footer-mini-link">Cookies</a>
             <span class="footer-dot-sep">·</span>
             <a href="#contact" class="footer-mini-link" data-open-contact>Contact</a>
           </div>
