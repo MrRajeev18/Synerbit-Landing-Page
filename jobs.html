@@ -1271,7 +1271,7 @@
 
     <!-- Script: Load Jobs, Dynamic Sidebar Filters (Department & Types), Search, and Application Submission -->
     <script type="module">
-      import { getJobs, submitJobApplication } from '/src/firebase.js';
+      import { getJobs, submitJobApplication, subscribeToJobs } from '/src/firebase.js';
       import '/src/contactModal.js';
 
       const deptFilterListEl = document.getElementById('deptFilterList');
@@ -1738,6 +1738,17 @@
 
       // Initial load
       loadJobs();
+
+      // Subscribe to realtime jobs updates from Firebase
+      try {
+        if (typeof subscribeToJobs === 'function') {
+          subscribeToJobs((liveActiveJobs) => {
+            allJobs = liveActiveJobs;
+            renderSidebarFilters();
+            renderJobsList();
+          });
+        }
+      } catch (_) {}
     </script>
   </body>
 </html>
