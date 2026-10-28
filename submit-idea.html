@@ -3,6 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJGWMMQV91"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BJGWMMQV91');
+    </script>
+
     <title>Submit an Idea — Synerbit Incubation Lab</title>
     <meta name="description" content="Have a breakthrough SaaS concept? Submit your idea to Synerbit Incubation Lab for engineering validation, architecture guidance, and incubation support." />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -1268,6 +1279,13 @@
         try {
           const res = await submitIdea(payload);
           if (res.success) {
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'saas_idea_submitted', {
+                concept_name: payload.conceptName,
+                stage: payload.stage,
+                product_type: payload.productType
+              });
+            }
             wizardForm.style.display = 'none';
             stepperHeader.style.display = 'none';
             successFrame.style.display = 'block';

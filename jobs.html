@@ -3,6 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJGWMMQV91"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BJGWMMQV91');
+    </script>
+
     <title>Jobs at Synerbit — Build Ecosystem Software</title>
     <meta name="description" content="Explore open engineering, product, and design roles at Synerbit. Build high-velocity SaaS applications with autonomy and co-ownership." />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -1755,6 +1766,12 @@
         try {
           const res = await submitJobApplication(applicationData, file);
           if (res.success) {
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'job_application_submitted', {
+                job_id: appId,
+                job_title: appTitle
+              });
+            }
             successMsg.style.display = 'block';
             form.reset();
             fileText.textContent = 'Click to choose or drop your resume (PDF/DOCX)';

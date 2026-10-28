@@ -145,6 +145,11 @@ function createContactModal() {
       });
 
       if (res && res.success) {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'contact_inquiry_sent', {
+            subject: subject || 'General Inquiry'
+          });
+        }
         form.style.display = 'none';
         successView.style.display = 'flex';
       } else {
