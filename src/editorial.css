@@ -1638,76 +1638,64 @@ button, input, textarea, select {
 /* ==========================================================================
    Editorial Theme Integration for Secondary Pages
    (products.html, jobs.html, submit-idea.html, privacy/terms/cookies)
+   Harmonized with the Warm Paper (#F2EFE7) & Deep Navy (#101C32) Homepage
    ========================================================================== */
 .products-page-body,
 .jobs-page-body,
 .idea-page-body,
 body.legal-page-body,
 .legal-wrapper {
-  background-color: var(--c-navy-dark) !important;
+  background-color: var(--c-paper) !important;
   background-image: none !important;
-  color: var(--c-paper) !important;
+  color: var(--c-navy) !important;
   font-family: var(--font-body) !important;
-}
-
-/* Unified Secondary Header */
-.p-navbar {
-  background: rgba(10, 18, 32, 0.95) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(242, 239, 231, 0.15) !important;
-}
-
-.p-nav-brand {
-  font-family: var(--font-headline) !important;
-  color: var(--c-white) !important;
-}
-
-.p-nav-brand-name {
-  font-family: var(--font-headline) !important;
-  letter-spacing: -0.02em !important;
-  color: var(--c-white) !important;
-}
-
-.p-nav-link {
-  font-family: var(--font-mono) !important;
-  font-size: 0.8rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  color: rgba(242, 239, 231, 0.7) !important;
-}
-
-.p-nav-link:hover,
-.p-nav-link.active {
-  color: var(--c-orange) !important;
-}
-
-.p-nav-link.active::after {
-  background: var(--c-orange) !important;
-  box-shadow: none !important;
 }
 
 /* Secondary sticky bars and filter controls */
 .p-sheet-sticky-bar,
 .jobs-sticky-bar,
 .jobs-header-wrap {
-  background: rgba(10, 18, 32, 0.96) !important;
-  border-bottom: 1px solid rgba(242, 239, 231, 0.15) !important;
+  background: rgba(242, 239, 231, 0.96) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(16, 28, 50, 0.16) !important;
+  box-shadow: 0 4px 20px rgba(16, 28, 50, 0.04) !important;
 }
 
 .p-sheet-pretitle,
-.jobs-pretitle {
+.jobs-pretitle,
+.idea-pretitle,
+.legal-hero-badge {
   color: var(--c-orange) !important;
   font-family: var(--font-mono) !important;
   letter-spacing: 0.12em !important;
+  background: rgba(255, 96, 56, 0.08) !important;
+  border: 1px solid var(--c-orange) !important;
+  border-radius: 0 !important;
 }
 
 .p-sheet-title,
 .jobs-hero-title,
-.idea-hero-title {
+.idea-hero-title,
+.legal-hero-title {
   font-family: var(--font-headline) !important;
-  color: var(--c-white) !important;
+  color: var(--c-navy) !important;
   letter-spacing: -0.03em !important;
+}
+
+.legal-hero-entity,
+.jobs-hero-desc,
+.p-sheet-desc {
+  color: rgba(16, 28, 50, 0.75) !important;
+  font-family: var(--font-body) !important;
+}
+
+.p-filter-bar,
+.jobs-filter-bar {
+  background: var(--c-white) !important;
+  border: 1px solid rgba(16, 28, 50, 0.16) !important;
+  border-radius: 0 !important;
+  padding: 4px !important;
 }
 
 .p-filter-btn,
@@ -1716,94 +1704,592 @@ body.legal-page-body,
   font-size: 0.78rem !important;
   letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
-  background: rgba(16, 28, 50, 0.8) !important;
-  border: 1px solid rgba(242, 239, 231, 0.18) !important;
-  color: rgba(242, 239, 231, 0.8) !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  color: var(--c-navy) !important;
   border-radius: 0 !important;
 }
 
 .p-filter-btn:hover,
 .jobs-filter-btn:hover {
-  background: var(--c-navy) !important;
-  color: var(--c-white) !important;
-  border-color: var(--c-orange) !important;
+  background: rgba(16, 28, 50, 0.06) !important;
+  color: var(--c-navy) !important;
 }
 
 .p-filter-btn.active,
 .jobs-filter-btn.active {
-  background: var(--c-orange) !important;
-  border-color: var(--c-orange) !important;
+  background: var(--c-navy) !important;
+  border-color: var(--c-navy) !important;
   color: var(--c-white) !important;
 }
 
-/* Secondary Cards and Panels */
+/* Secondary Cards, Decks and Content Panels */
 .p-card,
 .job-card,
 .idea-card,
 .legal-card,
-.legal-modal-card {
-  background: #0D1627 !important;
-  border: 1px solid rgba(242, 239, 231, 0.16) !important;
-  box-shadow: 8px 8px 0px var(--c-navy-dark) !important;
+.legal-section-card,
+.legal-modal-card,
+.p-detail-view,
+.p-detail-card,
+.idea-form-card,
+.application-modal-card {
+  background: var(--c-white) !important;
+  border: 1px solid rgba(16, 28, 50, 0.16) !important;
+  box-shadow: 8px 8px 0px var(--c-navy) !important;
   border-radius: 0 !important;
+  color: var(--c-navy) !important;
 }
 
 .p-card:hover,
-.job-card:hover {
-  border-color: var(--c-orange) !important;
-  transform: translate(-2px, -2px) !important;
-  box-shadow: 10px 10px 0px var(--c-navy-dark) !important;
+.job-card:hover,
+.legal-section-card:hover {
+  border-color: var(--c-navy) !important;
+  transform: translate(-3px, -3px) !important;
+  box-shadow: 12px 12px 0px var(--c-navy) !important;
 }
 
 .p-card-title,
 .job-card-title,
-.legal-card-title {
+.legal-card-title,
+.legal-section-heading,
+.p-detail-title {
   font-family: var(--font-headline) !important;
-  color: var(--c-white) !important;
+  color: var(--c-navy) !important;
 }
 
 .p-card-desc,
 .job-card-desc,
-.legal-card-text {
+.legal-card-text,
+.legal-paragraph,
+.legal-list li {
   font-family: var(--font-body) !important;
-  color: rgba(242, 239, 231, 0.82) !important;
+  color: rgba(16, 28, 50, 0.88) !important;
 }
 
+.legal-section-num {
+  background: var(--c-navy) !important;
+  color: var(--c-white) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-mono) !important;
+}
+
+.legal-subheading {
+  color: var(--c-navy) !important;
+  font-family: var(--font-headline) !important;
+}
+
+.legal-meta-bar {
+  background: var(--c-white) !important;
+  border: 1px solid rgba(16, 28, 50, 0.16) !important;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0px rgba(16, 28, 50, 0.12) !important;
+  color: rgba(16, 28, 50, 0.8) !important;
+  font-family: var(--font-mono) !important;
+}
+
+.legal-meta-item strong {
+  color: var(--c-navy) !important;
+}
+
+.legal-toc-sidebar {
+  border-right: 1px solid rgba(16, 28, 50, 0.12) !important;
+}
+
+.legal-toc-title {
+  font-family: var(--font-mono) !important;
+  color: var(--c-orange) !important;
+  letter-spacing: 0.12em !important;
+}
+
+.legal-toc-link {
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+  color: rgba(16, 28, 50, 0.7) !important;
+  border-radius: 0 !important;
+}
+
+.legal-toc-link:hover {
+  color: var(--c-navy) !important;
+  background: rgba(16, 28, 50, 0.05) !important;
+}
+
+.legal-toc-link.active {
+  color: var(--c-white) !important;
+  background: var(--c-navy) !important;
+  border-left: 3px solid var(--c-orange) !important;
+}
+
+.legal-callout-warning {
+  background: rgba(255, 96, 56, 0.07) !important;
+  border: 1px solid rgba(255, 96, 56, 0.3) !important;
+  border-left: 4px solid var(--c-orange) !important;
+  color: var(--c-navy) !important;
+  border-radius: 0 !important;
+}
+
+.legal-callout-info {
+  background: rgba(199, 216, 244, 0.25) !important;
+  border: 1px solid rgba(16, 28, 50, 0.2) !important;
+  border-left: 4px solid var(--c-navy) !important;
+  color: var(--c-navy) !important;
+  border-radius: 0 !important;
+}
+
+.legal-table {
+  background: var(--c-white) !important;
+  border: 1px solid rgba(16, 28, 50, 0.16) !important;
+  color: var(--c-navy) !important;
+}
+
+.legal-table th {
+  background: var(--c-navy) !important;
+  color: var(--c-white) !important;
+  font-family: var(--font-mono) !important;
+}
+
+.legal-table td {
+  border-bottom: 1px solid rgba(16, 28, 50, 0.1) !important;
+  color: var(--c-navy) !important;
+}
+
+.legal-link,
+.legal-paragraph a {
+  color: var(--c-orange) !important;
+  text-decoration: underline !important;
+}
+
+/* Badges & Chips */
 .p-badge,
-.job-badge {
+.job-badge,
+.idea-badge,
+.status-pill {
   font-family: var(--font-mono) !important;
   font-size: 0.7rem !important;
   letter-spacing: 0.08em !important;
   border-radius: 0 !important;
+  background: var(--c-paper) !important;
+  color: var(--c-navy) !important;
+  border: 1px solid rgba(16, 28, 50, 0.16) !important;
 }
 
-/* Secondary Buttons */
+.p-badge.live,
+.job-badge.active {
+  color: #059669 !important;
+  background: rgba(5, 150, 105, 0.08) !important;
+  border-color: #059669 !important;
+}
+
+.p-badge.dev,
+.p-badge.alpha,
+.job-badge.hiring {
+  color: var(--c-orange) !important;
+  background: rgba(255, 96, 56, 0.08) !important;
+  border-color: var(--c-orange) !important;
+}
+
+/* Secondary Action Buttons */
 .p-btn-action,
 .btn-apply,
-.btn-submit-main {
-  background: var(--c-orange) !important;
-  border: 1px solid var(--c-orange) !important;
+.btn-submit-main,
+.btn-job-apply,
+.btn-idea-submit {
+  background: var(--c-navy) !important;
+  border: 2px solid var(--c-navy) !important;
   color: var(--c-white) !important;
   font-family: var(--font-mono) !important;
   text-transform: uppercase !important;
   letter-spacing: 0.08em !important;
   border-radius: 0 !important;
+  cursor: pointer !important;
+  transition: all var(--transition-fast) !important;
 }
 
 .p-btn-action:hover,
 .btn-apply:hover,
-.btn-submit-main:hover {
-  background: var(--c-orange-hover) !important;
-  transform: translateY(-1px) !important;
+.btn-submit-main:hover,
+.btn-job-apply:hover,
+.btn-idea-submit:hover {
+  background: var(--c-orange) !important;
+  border-color: var(--c-orange) !important;
+  color: var(--c-white) !important;
+  transform: translateY(-2px) !important;
 }
 
-/* Secondary Footers */
-.p-footer,
-.jobs-footer,
-.legal-page-footer {
-  background: #0A1220 !important;
-  border-top: 1px solid rgba(242, 239, 231, 0.15) !important;
-  color: rgba(242, 239, 231, 0.7) !important;
+/* Secondary Inputs & Forms */
+.form-input,
+.form-textarea,
+.search-input,
+.jobs-search-input,
+.filter-select {
+  background: #FFFDF8 !important;
+  border: 1px solid rgba(16, 28, 50, 0.22) !important;
+  color: var(--c-navy) !important;
+  font-family: var(--font-body) !important;
+  border-radius: 0 !important;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.search-input:focus,
+.jobs-search-input:focus {
+  border-color: var(--c-navy) !important;
+  box-shadow: 0 0 0 2px var(--c-navy) !important;
+  background: #ffffff !important;
+}
+
+/* Job Detail & Spec Boxes */
+.job-spec-box,
+.p-metric-box,
+.idea-step-box {
+  background: var(--c-paper-light) !important;
+  border: 1px solid rgba(16, 28, 50, 0.14) !important;
+  color: var(--c-navy) !important;
+  border-radius: 0 !important;
+}
+
+.job-spec-label,
+.p-metric-label {
+  font-family: var(--font-mono) !important;
+  font-size: 0.68rem !important;
+  text-transform: uppercase !important;
+  color: rgba(16, 28, 50, 0.65) !important;
+}
+
+.job-spec-val,
+.p-metric-val {
+  font-family: var(--font-headline) !important;
+  font-weight: 700 !important;
+  color: var(--c-navy) !important;
+}
+
+/* ==========================================================================
+   Comprehensive Page-Specific Editorial Overrides
+   ========================================================================== */
+
+/* 1. Products Page (products.html) */
+.p-split-showcase,
+.products-main-wrapper {
+  background-color: var(--c-paper) !important;
+  background-image: none !important;
+}
+
+.p-mini-card {
+  background: var(--c-white) !important;
+  border: 1px solid rgba(16, 28, 50, 0.16) !important;
+  box-shadow: 4px 4px 0px rgba(16, 28, 50, 0.12) !important;
+  border-radius: 0 !important;
+}
+
+.p-mini-card:hover {
+  background: #ffffff !important;
+  border-color: var(--c-navy) !important;
+  transform: translateX(4px) !important;
+  box-shadow: 6px 6px 0px var(--c-navy) !important;
+}
+
+.p-mini-card.is-active {
+  background: #ffffff !important;
+  border-color: var(--c-navy) !important;
+  box-shadow: 6px 6px 0px var(--c-orange) !important;
+  transform: translateX(6px) !important;
+}
+
+.p-mini-title {
+  color: var(--c-navy) !important;
+  font-family: var(--font-headline) !important;
+}
+
+.p-mini-tagline {
+  color: rgba(16, 28, 50, 0.7) !important;
+  font-family: var(--font-body) !important;
+}
+
+.p-mini-arrow {
+  color: var(--c-orange) !important;
+}
+
+.p-mini-icon-wrap {
+  border-radius: 0 !important;
+  background: var(--c-paper) !important;
+  border: 1px solid rgba(16, 28, 50, 0.16) !important;
+  color: var(--c-navy) !important;
+}
+
+.p-expanded-card {
+  background: var(--c-white) !important;
+  border: 2px solid var(--c-navy) !important;
+  box-shadow: 12px 12px 0px var(--c-navy) !important;
+  border-radius: 0 !important;
+}
+
+.p-expanded-title {
+  color: var(--c-navy) !important;
+  font-family: var(--font-headline) !important;
+}
+
+.p-expanded-tagline {
+  color: var(--c-orange) !important;
   font-family: var(--font-mono) !important;
 }
+
+.p-expanded-desc {
+  color: rgba(16, 28, 50, 0.88) !important;
+  font-family: var(--font-body) !important;
+}
+
+.p-expanded-points-box {
+  background: var(--c-paper-light) !important;
+  border: 1px solid rgba(16, 28, 50, 0.14) !important;
+  border-radius: 0 !important;
+}
+
+.p-points-title {
+  color: var(--c-navy) !important;
+  font-family: var(--font-mono) !important;
+}
+
+.p-point-item,
+.p-point-text {
+  color: rgba(16, 28, 50, 0.85) !important;
+}
+
+.p-launch-btn,
+.p-btn-visit {
+  background: var(--c-navy) !important;
+  color: var(--c-white) !important;
+  border: 1px solid var(--c-navy) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-mono) !important;
+}
+
+.p-launch-btn:hover,
+.p-btn-visit:hover {
+  background: var(--c-orange) !important;
+  border-color: var(--c-orange) !important;
+  color: var(--c-white) !important;
+}
+
+/* 2. Careers & Jobs Page (jobs.html) */
+.jobs-main-wrapper {
+  background-color: var(--c-paper) !important;
+  background-image: none !important;
+}
+
+.j-filter-sidebar {
+  background: var(--c-white) !important;
+  border: 1px solid rgba(16, 28, 50, 0.16) !important;
+  box-shadow: 8px 8px 0px var(--c-navy) !important;
+  border-radius: 0 !important;
+}
+
+.j-filter-top-header {
+  border-bottom: 1px solid rgba(16, 28, 50, 0.14) !important;
+}
+
+.j-filter-main-title {
+  color: var(--c-navy) !important;
+  font-family: var(--font-headline) !important;
+}
+
+.j-filter-reset-btn {
+  color: var(--c-orange) !important;
+  font-family: var(--font-mono) !important;
+}
+
+.j-filter-sec-title {
+  color: var(--c-navy) !important;
+  font-family: var(--font-mono) !important;
+}
+
+.j-filter-item-btn {
+  color: rgba(16, 28, 50, 0.75) !important;
+  border-radius: 0 !important;
+}
+
+.j-filter-item-btn:hover {
+  background: rgba(16, 28, 50, 0.05) !important;
+  color: var(--c-navy) !important;
+}
+
+.j-filter-item-btn.is-active {
+  background: var(--c-navy) !important;
+  border-color: var(--c-navy) !important;
+  color: var(--c-white) !important;
+}
+
+.j-filter-item-btn.is-active .j-filter-count-badge {
+  background: var(--c-orange) !important;
+  color: var(--c-white) !important;
+}
+
+.j-filter-count-badge {
+  background: var(--c-paper) !important;
+  color: var(--c-navy) !important;
+  border: 1px solid rgba(16, 28, 50, 0.14) !important;
+  border-radius: 0 !important;
+}
+
+.j-search-input {
+  background: var(--c-white) !important;
+  border: 1px solid rgba(16, 28, 50, 0.22) !important;
+  color: var(--c-navy) !important;
+  border-radius: 0 !important;
+}
+
+.j-search-input:focus {
+  border-color: var(--c-navy) !important;
+}
+
+.j-results-info,
+.j-results-info strong {
+  color: var(--c-navy) !important;
+}
+
+.j-job-card {
+  background: var(--c-white) !important;
+  border: 1px solid rgba(16, 28, 50, 0.16) !important;
+  box-shadow: 8px 8px 0px var(--c-navy) !important;
+  border-radius: 0 !important;
+}
+
+.j-job-card:hover {
+  border-color: var(--c-navy) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 12px 12px 0px var(--c-navy) !important;
+}
+
+.j-card-title {
+  color: var(--c-navy) !important;
+  font-family: var(--font-headline) !important;
+}
+
+.j-card-dept-pill {
+  background: var(--c-paper) !important;
+  color: var(--c-navy) !important;
+  border: 1px solid rgba(16, 28, 50, 0.16) !important;
+  font-family: var(--font-mono) !important;
+  border-radius: 0 !important;
+}
+
+.j-meta-item {
+  color: rgba(16, 28, 50, 0.75) !important;
+  font-family: var(--font-mono) !important;
+}
+
+.j-card-desc {
+  color: rgba(16, 28, 50, 0.88) !important;
+  font-family: var(--font-body) !important;
+}
+
+.j-reqs-box {
+  background: var(--c-paper-light) !important;
+  border: 1px solid rgba(16, 28, 50, 0.14) !important;
+  border-radius: 0 !important;
+}
+
+.j-reqs-title {
+  color: var(--c-navy) !important;
+  font-family: var(--font-mono) !important;
+}
+
+.j-req-item {
+  color: rgba(16, 28, 50, 0.85) !important;
+}
+
+.j-apply-btn,
+.btn-open-apply-modal {
+  background: var(--c-navy) !important;
+  border: 1px solid var(--c-navy) !important;
+  color: var(--c-white) !important;
+  font-family: var(--font-mono) !important;
+  border-radius: 0 !important;
+}
+
+.j-apply-btn:hover,
+.btn-open-apply-modal:hover {
+  background: var(--c-orange) !important;
+  border-color: var(--c-orange) !important;
+  color: var(--c-white) !important;
+}
+
+/* 3. Submit Idea Page (submit-idea.html) */
+.idea-main-wrapper {
+  background-color: var(--c-paper) !important;
+  background-image: none !important;
+}
+
+.idea-form-card,
+.idea-step-card,
+.idea-intro-card {
+  background: var(--c-white) !important;
+  border: 2px solid var(--c-navy) !important;
+  box-shadow: 12px 12px 0px var(--c-navy) !important;
+  border-radius: 0 !important;
+  color: var(--c-navy) !important;
+}
+
+.idea-label,
+.form-label-custom {
+  color: var(--c-navy) !important;
+  font-family: var(--font-mono) !important;
+}
+
+.idea-input,
+.idea-textarea {
+  background: var(--c-paper-light) !important;
+  border: 1px solid rgba(16, 28, 50, 0.22) !important;
+  color: var(--c-navy) !important;
+  border-radius: 0 !important;
+}
+
+.idea-input:focus,
+.idea-textarea:focus {
+  border-color: var(--c-navy) !important;
+  box-shadow: 0 0 0 2px var(--c-navy) !important;
+  background: #ffffff !important;
+}
+
+.idea-pill-radio {
+  background: var(--c-paper) !important;
+  border: 1px solid rgba(16, 28, 50, 0.18) !important;
+  color: var(--c-navy) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-mono) !important;
+}
+
+.idea-pill-radio.active,
+.idea-pill-radio input:checked + label {
+  background: var(--c-navy) !important;
+  color: var(--c-white) !important;
+}
+
+/* 4. Application Modals (for Jobs & Careers) */
+.modal-backdrop,
+.application-modal-backdrop {
+  background: rgba(16, 28, 50, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.modal-content-card,
+.application-modal-card {
+  background: var(--c-white) !important;
+  border: 2px solid var(--c-navy) !important;
+  box-shadow: 16px 16px 0px var(--c-navy) !important;
+  color: var(--c-navy) !important;
+  border-radius: 0 !important;
+}
+
+.modal-header-title {
+  color: var(--c-navy) !important;
+  font-family: var(--font-headline) !important;
+}
+
+.modal-close-btn {
+  background: var(--c-navy) !important;
+  color: var(--c-white) !important;
+  border-radius: 0 !important;
+}
+
+
 
