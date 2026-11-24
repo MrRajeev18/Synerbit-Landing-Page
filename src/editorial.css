@@ -619,35 +619,43 @@ button, input, textarea, select {
    ========================================================================== */
 .ed-ticker-strip {
   width: 100%;
-  background: var(--c-navy);
-  color: var(--c-paper);
-  border-top: 1px solid var(--c-navy);
-  border-bottom: 1px solid var(--c-navy);
+  background: var(--c-orange);
+  color: var(--c-navy);
+  border-top: 1.5px solid var(--c-navy);
+  border-bottom: 1.5px solid var(--c-navy);
   overflow: hidden;
   padding: 14px 0;
   display: flex;
   user-select: none;
+  position: relative;
+  z-index: 10;
+  transform: rotate(-0.75deg) scaleX(1.02);
+  margin: -6px 0;
+  box-shadow: 0 4px 20px rgba(16, 28, 50, 0.12);
 }
 
 .ed-ticker-track {
   display: flex;
   white-space: nowrap;
-  animation: ticker-slide 32s linear infinite;
+  animation: ticker-slide 28s linear infinite;
 }
 
 .ed-ticker-item {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0 28px;
+  padding: 0 24px;
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
+  color: var(--c-navy);
 }
 
 .ed-ticker-item span.sep {
-  color: var(--c-orange);
+  color: var(--c-navy);
+  font-size: 1.15rem;
   font-weight: bold;
 }
 
