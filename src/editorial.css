@@ -2299,5 +2299,302 @@ body.legal-page-body,
   border-radius: 0 !important;
 }
 
+/* ==========================================================================
+   EDITORIAL BRANDING: UNIFIED HEADER & FOOTER
+   Harmonizes brand identity, typography, buttons, and geometric elements.
+   ========================================================================== */
+
+/* 1. Header & Navigation Branding */
+.navbar {
+  background: rgba(16, 28, 50, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(242, 239, 231, 0.14) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+.navbar.nav-scrolled {
+  background: #101C32 !important;
+  border-bottom: 1px solid rgba(242, 239, 231, 0.22) !important;
+}
+
+.nav-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  text-decoration: none !important;
+}
+
+.brand-logo-container {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 4px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(242, 239, 231, 0.22) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 4px !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.nav-brand:hover .brand-logo-container {
+  border-color: var(--c-orange) !important;
+  background: rgba(255, 96, 56, 0.12) !important;
+  transform: scale(1.04) !important;
+}
+
+.brand-logo-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 2px !important;
+}
+
+.brand-name {
+  font-family: var(--font-headline) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: var(--c-white) !important;
+  letter-spacing: -0.01em !important;
+  text-transform: uppercase !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.nav-brand .brand-name::after {
+  content: 'ECOSYSTEM';
+  font-family: var(--font-mono) !important;
+  font-size: 0.62rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  color: var(--c-orange) !important;
+  background: rgba(255, 96, 56, 0.14) !important;
+  border: 1px solid rgba(255, 96, 56, 0.35) !important;
+  padding: 2px 7px !important;
+  border-radius: 2px !important;
+  vertical-align: middle !important;
+}
+
+@media (max-width: 640px) {
+  .nav-brand .brand-name::after {
+    display: none !important;
+  }
+}
+
+.nav-menu a {
+  font-family: var(--font-mono) !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--c-paper) !important;
+  opacity: 0.85 !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.nav-menu a:hover {
+  color: var(--c-orange) !important;
+  opacity: 1 !important;
+}
+
+.nav-menu a.active {
+  color: var(--c-white) !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+.nav-menu a::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) scaleX(0) !important;
+  width: 100% !important;
+  height: 2px !important;
+  border-radius: 0 !important;
+  background: var(--c-orange) !important;
+  box-shadow: none !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.nav-menu a.active::after,
+.nav-menu a:hover::after {
+  transform: translateX(-50%) scaleX(1) !important;
+}
+
+.btn-nav-glass {
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--c-white) !important;
+  text-decoration: none !important;
+  padding: 9px 20px !important;
+  border-radius: 0 !important;
+  background: var(--c-orange) !important;
+  border: 1.5px solid var(--c-orange) !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.btn-nav-glass:hover {
+  background: var(--c-white) !important;
+  color: var(--c-navy) !important;
+  border-color: var(--c-white) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 2. Footer Branding */
+.site-footer-arena {
+  background: var(--c-navy) !important;
+  border-top: 2px solid rgba(242, 239, 231, 0.16) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 56px 48px 36px 48px !important;
+}
+
+.footer-brand-header .brand-name {
+  color: var(--c-white) !important;
+}
+
+.footer-brand-header .brand-name::after {
+  content: 'OPC PVT LTD';
+  font-family: var(--font-mono) !important;
+  font-size: 0.62rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  color: var(--c-orange) !important;
+  background: rgba(255, 96, 56, 0.14) !important;
+  border: 1px solid rgba(255, 96, 56, 0.35) !important;
+  padding: 2px 7px !important;
+  border-radius: 2px !important;
+  margin-left: 8px !important;
+  vertical-align: middle !important;
+}
+
+.footer-brand-desc {
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.65 !important;
+  color: rgba(242, 239, 231, 0.78) !important;
+}
+
+.footer-social-label {
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.14em !important;
+  font-weight: 600 !important;
+  color: var(--c-orange) !important;
+  text-transform: uppercase !important;
+}
+
+.footer-social-links .social-btn {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 0 !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(242, 239, 231, 0.22) !important;
+  color: var(--c-paper) !important;
+  box-shadow: none !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.footer-social-links .social-btn:hover {
+  background: var(--c-orange) !important;
+  border-color: var(--c-orange) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: none !important;
+}
+
+.footer-col-title {
+  font-family: var(--font-mono) !important;
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  color: var(--c-orange) !important;
+  text-transform: uppercase !important;
+}
+
+.footer-links-list .footer-link,
+.footer-links-list .footer-link-btn {
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem !important;
+  color: rgba(242, 239, 231, 0.8) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.footer-links-list .footer-link:hover,
+.footer-links-list .footer-link-btn:hover {
+  color: var(--c-white) !important;
+  transform: translateX(3px) !important;
+}
+
+.footer-badge-pill {
+  font-family: var(--font-mono) !important;
+  font-size: 0.68rem !important;
+  font-weight: 600 !important;
+  padding: 2px 7px !important;
+  border-radius: 0 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+
+.footer-badge-pill.cyan {
+  background: rgba(215, 243, 106, 0.15) !important;
+  color: var(--c-lime) !important;
+  border: 1px solid rgba(215, 243, 106, 0.4) !important;
+}
+
+.footer-badge-pill.emerald {
+  background: rgba(255, 96, 56, 0.15) !important;
+  color: var(--c-orange) !important;
+  border: 1px solid rgba(255, 96, 56, 0.4) !important;
+}
+
+.footer-badge-pill.amber {
+  background: rgba(199, 216, 244, 0.15) !important;
+  color: var(--c-soft-blue) !important;
+  border: 1px solid rgba(199, 216, 244, 0.4) !important;
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(242, 239, 231, 0.1) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+  color: rgba(242, 239, 231, 0.65) !important;
+}
+
+.footer-bottom-bar .status-indicator {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 0 !important;
+  background: var(--c-lime) !important;
+  box-shadow: 0 0 8px rgba(215, 243, 106, 0.7) !important;
+}
+
+.footer-bottom-bar .footer-company-legal {
+  color: rgba(242, 239, 231, 0.88) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+}
+
+.footer-bottom-bar .footer-mini-link {
+  font-family: var(--font-mono) !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: rgba(242, 239, 231, 0.7) !important;
+  transition: color var(--transition-fast) !important;
+}
+
+.footer-bottom-bar .footer-mini-link:hover {
+  color: var(--c-orange) !important;
+}
+
 
 
