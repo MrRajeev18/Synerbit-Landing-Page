@@ -1,22 +1,25 @@
+@import './editorial.css';
+
 :root {
-  --bg-pitch-black: #000000;
-  --bg-sheet: #05070a;
-  --bg-card: rgba(14, 18, 27, 0.7);
-  --text-white: #ffffff;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-dim: #64748b;
+  --bg-pitch-black: #101C32;
+  --bg-sheet: #0A1220;
+  --bg-card: rgba(16, 28, 50, 0.95);
+  --text-white: #FFFDF8;
+  --text-primary: #F2EFE7;
+  --text-secondary: #C7D8F4;
+  --text-dim: #94A3B8;
   --accent-cyan: #38bdf8;
   --accent-blue: #60a5fa;
-  --accent-amber: #f59e0b;
+  --accent-amber: #FF6038;
   --accent-purple: #818cf8;
 
-  --border-sheet: rgba(255, 255, 255, 0.08);
-  --border-card: rgba(255, 255, 255, 0.06);
+  --border-sheet: rgba(242, 239, 231, 0.12);
+  --border-card: rgba(242, 239, 231, 0.1);
 
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'DM Mono', monospace;
+  --font-serif: 'Playfair Display', serif;
 
   --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
 }
