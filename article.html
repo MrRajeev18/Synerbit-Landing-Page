@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJGWMMQV91"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BJGWMMQV91');
+    </script>
+
+    <title id="meta-page-title">Article — Synerbit</title>
+    <meta id="meta-page-desc" name="description" content="Perspectives on product design, architecture, and engineering craft from Synerbit OPC Private Limited." />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="canonical" id="meta-canonical-url" href="https://www.synerbit.in/article" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Synerbit" />
+    <meta id="og-title" property="og:title" content="Article — Synerbit" />
+    <meta id="og-desc" property="og:description" content="Perspectives on product design, architecture, and engineering craft from Synerbit." />
+    <meta id="og-url" property="og:url" content="https://www.synerbit.in/article" />
+    <meta id="og-image" property="og:image" content="https://www.synerbit.in/logo.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta id="twitter-title" name="twitter:title" content="Article — Synerbit" />
+    <meta id="twitter-desc" name="twitter:description" content="Perspectives on product design, architecture, and engineering craft from Synerbit." />
+    <meta id="twitter-image" name="twitter:image" content="https://www.synerbit.in/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Favicon / App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="stylesheet" href="/src/style.css" />
+
+    <style>
+      .article-reader-body {
+        background-color: var(--c-paper, #F2EFE7);
+        color: var(--c-navy, #101C32);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        font-family: var(--font-body, "DM Sans", sans-serif);
+      }
+
+      .reader-main-wrapper {
+        position: relative;
+        flex: 1;
+        padding-top: 72px; /* nav offset */
+      }
+
+      /* Breadcrumbs & Navigation Header */
+      .reader-top-bar {
+        background: var(--c-white, #FFFDF8);
+        border-bottom: 2px solid var(--c-navy, #101C32);
+        padding: 16px 24px;
+      }
+
+      .reader-top-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .reader-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono, monospace);
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--c-navy, #101C32);
+        text-decoration: none;
+        transition: color 0.2s ease, transform 0.2s ease;
+      }
+
+      .reader-back-btn:hover {
+        color: var(--c-orange, #FF6038);
+        transform: translateX(-3px);
+      }
+
+      .reader-share-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .share-pill-btn {
+        background: transparent;
+        border: 1px solid rgba(16, 28, 50, 0.25);
+        color: var(--c-navy, #101C32);
+        font-family: var(--font-mono, monospace);
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .share-pill-btn:hover {
+        background: var(--c-navy, #101C32);
+        color: var(--c-white, #FFFDF8);
+      }
+
+      /* Article Header Arena */
+      .reader-header {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 64px 24px 32px 24px;
+      }
+
+      .reader-meta-chips {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .reader-category-chip {
+        background: var(--c-navy, #101C32);
+        color: var(--c-white, #FFFDF8);
+        font-family: var(--font-mono, monospace);
+        font-size: 0.74rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 4px 12px;
+      }
+
+      .reader-time-chip {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.76rem;
+        color: #64748B;
+      }
+
+      .reader-headline {
+        font-family: var(--font-headline, "Space Grotesk", sans-serif);
+        font-size: clamp(2.2rem, 5.2vw, 3.8rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        color: var(--c-navy, #101C32);
+        margin: 0 0 24px 0;
+      }
+
+      .reader-lead {
+        font-family: var(--font-body, "DM Sans", sans-serif);
+        font-size: 1.22rem;
+        line-height: 1.6;
+        color: #334155;
+        margin: 0 0 32px 0;
+        border-left: 4px solid var(--c-orange, #FF6038);
+        padding-left: 18px;
+      }
+
+      .reader-author-bar {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 20px 0;
+        border-top: 1px solid rgba(16, 28, 50, 0.15);
+        border-bottom: 1px solid rgba(16, 28, 50, 0.15);
+      }
+
+      .reader-author-avatar {
+        width: 44px;
+        height: 44px;
+        background: var(--c-navy, #101C32);
+        color: var(--c-white, #FFFDF8);
+        border: 2px solid var(--c-navy, #101C32);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-headline, "Space Grotesk", sans-serif);
+        font-weight: 700;
+        font-size: 1rem;
+      }
+
+      .reader-author-name {
+        font-family: var(--font-headline, "Space Grotesk", sans-serif);
+        font-weight: 700;
+        font-size: 0.96rem;
+        color: var(--c-navy, #101C32);
+      }
+
+      .reader-author-role {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.74rem;
+        color: #64748B;
+        margin-top: 2px;
+      }
+
+      /* Cover Image */
+      .reader-cover-wrap {
+        max-width: 900px;
+        margin: 32px auto 0 auto;
+        padding: 0 24px;
+      }
+
+      .reader-cover-img {
+        width: 100%;
+        max-height: 480px;
+        object-fit: cover;
+        border: 2px solid var(--c-navy, #101C32);
+        box-shadow: 6px 6px 0px var(--c-navy, #101C32);
+        display: block;
+      }
+
+      /* Article Body Typography */
+      .reader-article-content {
+        max-width: 900px;
+        margin: 48px auto 80px auto;
+        padding: 0 24px;
+        font-size: 1.12rem;
+        line-height: 1.78;
+        color: #1E293B;
+      }
+
+      .reader-article-content p {
+        margin: 0 0 24px 0;
+      }
+
+      .reader-article-content h2 {
+        font-family: var(--font-headline, "Space Grotesk", sans-serif);
+        font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+        font-weight: 700;
+        line-height: 1.25;
+        letter-spacing: -0.02em;
+        color: var(--c-navy, #101C32);
+        margin: 48px 0 20px 0;
+      }
+
+      .reader-article-content h3 {
+        font-family: var(--font-headline, "Space Grotesk", sans-serif);
+        font-size: 1.35rem;
+        font-weight: 700;
+        line-height: 1.3;
+        color: var(--c-navy, #101C32);
+        margin: 36px 0 16px 0;
+      }
+
+      .reader-article-content blockquote {
+        margin: 36px 0;
+        padding: 24px 28px;
+        background: var(--c-white, #FFFDF8);
+        border: 2px solid var(--c-navy, #101C32);
+        border-left: 6px solid var(--c-orange, #FF6038);
+        box-shadow: 5px 5px 0px rgba(16, 28, 50, 0.08);
+        font-family: var(--font-editorial, "Playfair Display", serif);
+        font-style: italic;
+        font-size: 1.32rem;
+        line-height: 1.55;
+        color: var(--c-navy, #101C32);
+      }
+
+      .reader-article-content ul, .reader-article-content ol {
+        margin: 0 0 24px 24px;
+        padding: 0;
+      }
+
+      .reader-article-content li {
+        margin-bottom: 10px;
+        line-height: 1.65;
+      }
+
+      .reader-article-content strong {
+        font-weight: 700;
+        color: var(--c-navy, #101C32);
+      }
+
+      .reader-article-content a {
+        color: var(--c-orange, #FF6038);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .reader-article-content hr {
+        border: none;
+        border-top: 2px dashed rgba(16, 28, 50, 0.2);
+        margin: 48px 0;
+      }
+
+      /* Next Article / Footer Promo Banner */
+      .reader-next-box {
+        max-width: 900px;
+        margin: 0 auto 80px auto;
+        padding: 0 24px;
+      }
+
+      .reader-next-card {
+        background: var(--c-white, #FFFDF8);
+        border: 2px solid var(--c-navy, #101C32);
+        box-shadow: 8px 8px 0px var(--c-navy, #101C32);
+        padding: 36px 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .reader-next-label {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.76rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--c-orange, #FF6038);
+      }
+
+      .reader-next-title {
+        font-family: var(--font-headline, "Space Grotesk", sans-serif);
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--c-navy, #101C32);
+        margin: 6px 0 0 0;
+      }
+
+      .reader-next-btn {
+        background: var(--c-orange, #FF6038);
+        color: var(--c-white, #FFFDF8);
+        border: 2px solid var(--c-orange, #FF6038);
+        font-family: var(--font-mono, monospace);
+        font-size: 0.84rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 12px 22px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+
+      .reader-next-btn:hover {
+        background: var(--c-navy, #101C32);
+        border-color: var(--c-navy, #101C32);
+      }
+
+      /* Toast Notification */
+      .copy-toast {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: var(--c-navy, #101C32);
+        color: var(--c-white, #FFFDF8);
+        padding: 12px 20px;
+        font-family: var(--font-mono, monospace);
+        font-size: 0.82rem;
+        border: 1px solid var(--c-orange, #FF6038);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+        display: none;
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body class="article-reader-body">
+    <!-- Common Navigation Bar -->
+    <header class="navbar theme-hero" id="main-nav">
+      <a href="/" class="nav-brand" aria-label="Synerbit Homepage">
+        <div class="brand-logo-container">
+          <img src="/logo.png" alt="Synerbit Logo" class="brand-logo-img" />
+        </div>
+        <span class="brand-name">Synerbit</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="/" class="nav-link-item">Home</a>
+        <a href="/#manifesto" class="nav-link-item">Thinking</a>
+        <a href="/products" class="nav-link-item">Products</a>
+        <a href="/#approach" class="nav-link-item">Approach</a>
+        <a href="/articles" class="nav-link-item active">Articles</a>
+        <a href="/jobs" class="nav-link-item">Jobs</a>
+        <a href="/submit-idea" class="nav-link-item">Submit Idea</a>
+      </nav>
+
+      <div class="nav-buttons">
+        <button type="button" class="btn-nav-glass" data-open-contact>Get in Touch</button>
+        <button type="button" class="btn-nav-mobile-toggle" id="btn-nav-mobile" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="reader-main-wrapper">
+      <!-- Breadcrumb Bar -->
+      <div class="reader-top-bar">
+        <div class="reader-top-inner">
+          <a href="/articles" class="reader-back-btn">
+            <span>←</span>
+            <span>All Articles</span>
+          </a>
+          <div class="reader-share-actions">
+            <button type="button" class="share-pill-btn" id="btn-copy-link">
+              <span>📋</span>
+              <span>Copy Link</span>
+            </button>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="share-pill-btn" id="btn-share-x">
+              <span>𝕏</span>
+              <span>Share</span>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="share-pill-btn" id="btn-share-li">
+              <span>in</span>
+              <span>Share</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <article id="article-container">
+        <!-- Header -->
+        <header class="reader-header">
+          <div class="reader-meta-chips">
+            <span class="reader-category-chip" id="art-category">Product Thinking</span>
+            <span class="reader-time-chip" id="art-readtime">4 min read</span>
+            <span class="reader-time-chip">•</span>
+            <span class="reader-time-chip" id="art-date">Mar 2026</span>
+          </div>
+
+          <h1 class="reader-headline" id="art-title">Loading Article...</h1>
+          <p class="reader-lead" id="art-lead"></p>
+
+          <div class="reader-author-bar">
+            <div class="reader-author-avatar" id="art-author-avatar">S</div>
+            <div>
+              <div class="reader-author-name" id="art-author-name">Synerbit Editorial Team</div>
+              <div class="reader-author-role" id="art-author-role">Product &amp; Systems Craft</div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Cover Image -->
+        <div class="reader-cover-wrap" id="art-cover-wrap" style="display: none;">
+          <img src="" alt="" id="art-cover-img" class="reader-cover-img" />
+        </div>
+
+        <!-- Main Body -->
+        <div class="reader-article-content" id="art-content">
+          <p>Retrieving article content directly from the Synerbit backend...</p>
+        </div>
+      </article>
+
+      <!-- Next Article Bar -->
+      <div class="reader-next-box" id="reader-next-box" style="display: none;">
+        <div class="reader-next-card">
+          <div>
+            <div class="reader-next-label">Next Dispatch</div>
+            <div class="reader-next-title" id="reader-next-title">Explore more perspectives</div>
+          </div>
+          <a href="/articles" class="reader-next-btn" id="reader-next-link">
+            <span>Read Next</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Common Global Comprehensive Footer -->
+      <footer class="site-footer-arena" id="site-footer">
+        <div class="footer-inner-wrapper">
+          <div class="footer-grid">
+            <!-- Col 1: Brand & Social -->
+            <div class="footer-col col-brand">
+              <div class="nav-brand footer-brand-header">
+                <div class="brand-logo-container">
+                  <img src="/logo.png" alt="Synerbit Logo" class="brand-logo-img" />
+                </div>
+                <span class="brand-name">Synerbit</span>
+              </div>
+
+              <p class="footer-brand-desc">
+                Synerbit OPC Private Limited — A Company Building an Ecosystem of Software. Developing digital products that solve practical problems across different industries.
+              </p>
+
+              <div class="footer-social-section">
+                <span class="footer-social-label">OFFICIAL SOCIAL CHANNELS</span>
+                <div class="footer-social-links">
+                  <a href="https://www.linkedin.com/company/synerbit-opc-private-limited/" target="_blank" rel="noopener noreferrer" class="social-btn social-linkedin" aria-label="Synerbit LinkedIn" title="LinkedIn">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.67 1.67 0 1 0 0-3.34 1.67 1.67 0 0 0 0 3.34m1.39 9.74v-8.37H5.07v8.37z"/>
+                    </svg>
+                  </a>
+                  <a href="https://x.com/SynerbitHQ" target="_blank" rel="noopener noreferrer" class="social-btn social-twitter" aria-label="Synerbit X" title="X (Twitter)">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.instagram.com/synerbit.in/" target="_blank" rel="noopener noreferrer" class="social-btn social-instagram" aria-label="Synerbit Instagram" title="Instagram">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/profile.php?id=61595473585056" target="_blank" rel="noopener noreferrer" class="social-btn social-facebook" aria-label="Synerbit Facebook" title="Facebook">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Col 2: Products -->
+            <div class="footer-col">
+              <h4 class="footer-col-title">PRODUCTS</h4>
+              <ul class="footer-links-list">
+                <li><a href="https://www.pulsepm.in" target="_blank" rel="noopener noreferrer" class="footer-link footer-link-product">PulsePM <span class="footer-badge-pill cyan">Live ↗</span></a></li>
+                <li><a href="/#product-habitpot" class="footer-link footer-link-product">Habitpot <span class="footer-badge-pill emerald">Soon</span></a></li>
+                <li><a href="/#product-busview" class="footer-link footer-link-product">Busview <span class="footer-badge-pill amber">Soon</span></a></li>
+                <li><a href="/products" class="footer-link">Product Ecosystem <span class="footer-badge-pill cyan">Showcase ↗</span></a></li>
+              </ul>
+            </div>
+
+            <!-- Col 3: Company -->
+            <div class="footer-col">
+              <h4 class="footer-col-title">COMPANY</h4>
+              <ul class="footer-links-list">
+                <li><a href="/#manifesto" class="footer-link">Our Thinking</a></li>
+                <li><a href="/#approach" class="footer-link">Our Approach</a></li>
+                <li><a href="/articles" class="footer-link">Articles &amp; Dispatches <span class="footer-badge-pill cyan">Perspectives</span></a></li>
+                <li><a href="/#about" class="footer-link">About Synerbit</a></li>
+                <li><a href="/jobs" class="footer-link">Careers <span class="footer-badge-pill emerald">Hiring</span></a></li>
+                <li><a href="/submit-idea" class="footer-link">Submit SaaS Idea <span class="footer-badge-pill amber">Incubation</span></a></li>
+              </ul>
+            </div>
+
+            <!-- Col 4: Legal & Policies -->
+            <div class="footer-col">
+              <h4 class="footer-col-title">LEGAL &amp; POLICIES</h4>
+              <ul class="footer-links-list">
+                <li><a href="/privacy" class="footer-link-btn"><span>Privacy Policy</span> <span class="doc-icon">↗</span></a></li>
+                <li><a href="/terms" class="footer-link-btn"><span>Terms &amp; Conditions</span> <span class="doc-icon">↗</span></a></li>
+                <li><a href="/cookies" class="footer-link-btn"><span>Cookie Policy</span> <span class="doc-icon">↗</span></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-divider"></div>
+
+          <!-- Bottom Copyright Row -->
+          <div class="footer-bottom-bar">
+            <div class="footer-bottom-left">
+              <span class="status-indicator"></span>
+              <span class="footer-company-legal">Synerbit OPC Private Limited</span>
+              <span class="footer-copyright-sep">•</span>
+              <span class="footer-copyright-year">&copy; 2026 All rights reserved.</span>
+            </div>
+
+            <div class="footer-bottom-right">
+              <a href="/privacy" class="footer-mini-link">Privacy</a>
+              <span class="footer-dot-sep">·</span>
+              <a href="/terms" class="footer-mini-link">Terms</a>
+              <span class="footer-dot-sep">·</span>
+              <a href="/cookies" class="footer-mini-link">Cookies</a>
+              <span class="footer-dot-sep">·</span>
+              <a href="#contact" class="footer-mini-link" data-open-contact>Contact</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div class="copy-toast" id="copy-toast">Link copied to clipboard!</div>
+
+    <!-- Reader Script -->
+    <script type="module">
+      import { getArticleBySlugOrId, getArticles } from '/src/firebase.js';
+      import '/src/contactModal.js';
+
+      // Mobile Menu Toggle
+      const mobileToggleBtn = document.getElementById('btn-nav-mobile');
+      const navMenu = document.getElementById('nav-menu');
+      if (mobileToggleBtn && navMenu) {
+        mobileToggleBtn.addEventListener('click', () => {
+          const isOpen = navMenu.classList.toggle('active');
+          mobileToggleBtn.classList.toggle('active');
+          mobileToggleBtn.setAttribute('aria-expanded', isOpen);
+        });
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function formatDate(dateStr) {
+        if (!dateStr) return '';
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      }
+
+      function getInitials(name) {
+        if (!name) return 'S';
+        return name.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase();
+      }
+
+      // Convert simple Markdown formatting to clean Semantic HTML
+      function parseMarkdown(md) {
+        if (!md) return '';
+        let html = '';
+        const rawLines = md.split('\n');
+        let inList = false;
+
+        for (let i = 0; i < rawLines.length; i++) {
+          const line = rawLines[i].trim();
+
+          if (!line) {
+            if (inList) {
+              html += '</ul>';
+              inList = false;
+            }
+            continue;
+          }
+
+          if (line.startsWith('### ')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += `<h3>${formatInline(line.substring(4))}</h3>`;
+          } else if (line.startsWith('## ')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += `<h2>${formatInline(line.substring(3))}</h2>`;
+          } else if (line.startsWith('# ')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += `<h2>${formatInline(line.substring(2))}</h2>`;
+          } else if (line.startsWith('> ')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += `<blockquote>${formatInline(line.substring(2))}</blockquote>`;
+          } else if (line.startsWith('- ') || line.startsWith('* ')) {
+            if (!inList) {
+              html += '<ul>';
+              inList = true;
+            }
+            html += `<li>${formatInline(line.substring(2))}</li>`;
+          } else if (line === '---' || line === '***') {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += '<hr />';
+          } else {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += `<p>${formatInline(line)}</p>`;
+          }
+        }
+
+        if (inList) html += '</ul>';
+        return html;
+      }
+
+      function formatInline(text) {
+        return escapeHtml(text)
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*(.*?)\*/g, '<em>$1</em>')
+          .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+      }
+
+      // Read slug or id from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const targetSlug = urlParams.get('slug') || urlParams.get('id');
+
+      async function loadArticle() {
+        let article = null;
+        let allPublished = [];
+
+        try {
+          allPublished = await getArticles();
+        } catch (_) {}
+
+        if (targetSlug) {
+          article = await getArticleBySlugOrId(targetSlug);
+        }
+
+        // Fallback: if no specific slug or not found, show latest article
+        if (!article && allPublished.length > 0) {
+          article = allPublished[0];
+        }
+
+        if (!article) {
+          document.getElementById('art-title').textContent = 'Article Not Found';
+          document.getElementById('art-content').innerHTML = `
+            <div style="text-align: center; padding: 48px 16px;">
+              <p>We couldn't locate the article you are looking for.</p>
+              <a href="/articles" style="display: inline-block; margin-top: 16px; padding: 10px 20px; background: var(--c-navy, #101C32); color: #fff; text-decoration: none; font-family: monospace;">Return to Articles Catalog</a>
+            </div>
+          `;
+          return;
+        }
+
+        // Set Metadata
+        document.title = `${article.title} — Synerbit`;
+        const metaTitle = document.getElementById('meta-page-title');
+        if (metaTitle) metaTitle.textContent = `${article.title} — Synerbit`;
+
+        const metaDesc = document.getElementById('meta-page-desc');
+        if (metaDesc) metaDesc.setAttribute('content', article.excerpt || article.title);
+
+        const ogTitle = document.getElementById('og-title');
+        if (ogTitle) ogTitle.setAttribute('content', article.title);
+
+        const ogDesc = document.getElementById('og-desc');
+        if (ogDesc) ogDesc.setAttribute('content', article.excerpt || article.title);
+
+        // Populate DOM elements
+        document.getElementById('art-title').textContent = article.title;
+        document.getElementById('art-lead').textContent = article.excerpt || '';
+        document.getElementById('art-category').textContent = article.category || 'Product Thinking';
+        document.getElementById('art-readtime').textContent = article.readTime || '4 min read';
+        document.getElementById('art-date').textContent = formatDate(article.publishedAt || article.createdAt);
+
+        document.getElementById('art-author-name').textContent = article.author || 'Synerbit Team';
+        document.getElementById('art-author-role').textContent = article.authorRole || 'Editorial Team';
+        document.getElementById('art-author-avatar').textContent = getInitials(article.author);
+
+        // Cover Image
+        const coverWrap = document.getElementById('art-cover-wrap');
+        const coverImg = document.getElementById('art-cover-img');
+        if (article.coverUrl && coverWrap && coverImg) {
+          coverImg.src = article.coverUrl;
+          coverImg.alt = article.title;
+          coverWrap.style.display = 'block';
+        }
+
+        // Body Content
+        document.getElementById('art-content').innerHTML = parseMarkdown(article.content);
+
+        // Setup Social Share Links
+        const currentUrl = window.location.href;
+        const btnShareX = document.getElementById('btn-share-x');
+        if (btnShareX) {
+          btnShareX.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(currentUrl)}&via=SynerbitHQ`;
+        }
+        const btnShareLi = document.getElementById('btn-share-li');
+        if (btnShareLi) {
+          btnShareLi.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`;
+        }
+
+        // Copy Link Action
+        const btnCopyLink = document.getElementById('btn-copy-link');
+        const toast = document.getElementById('copy-toast');
+        if (btnCopyLink && toast) {
+          btnCopyLink.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(currentUrl);
+              toast.style.display = 'block';
+              setTimeout(() => { toast.style.display = 'none'; }, 2500);
+            } catch (_) {
+              prompt('Copy link:', currentUrl);
+            }
+          });
+        }
+
+        // Next Article Card
+        if (allPublished.length > 1) {
+          const currentIndex = allPublished.findIndex(a => a.id === article.id || a.slug === article.slug);
+          const nextIndex = (currentIndex + 1) % allPublished.length;
+          const nextArt = allPublished[nextIndex];
+          if (nextArt && nextArt.id !== article.id) {
+            document.getElementById('reader-next-title').textContent = nextArt.title;
+            document.getElementById('reader-next-link').href = `/article?slug=${encodeURIComponent(nextArt.slug || nextArt.id)}`;
+            document.getElementById('reader-next-box').style.display = 'block';
+          }
+        }
+      }
+
+      loadArticle();
+    </script>
+  </body>
+</html>

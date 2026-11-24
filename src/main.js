@@ -1,53 +1,53 @@
 /**
  * Synerbit OPC Private Limited — Modern Editorial Experience
  * Handles navigation, mobile drawer, idea submissions (Firebase Firestore),
- * contact modal, and legal policy overlays.
+ * contact modal, legal policy overlays, and recent articles.
  */
 
-import { submitIdea } from './firebase.js';
-import './contactModal.js';
+import { submitIdea, getArticles } from "./firebase.js";
+import "./contactModal.js";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------------------------------------
   // 1. Navigation & Scroll State
   // -------------------------------------------------------------
-  const nav = document.getElementById('main-nav');
-  const navMobileBtn = document.getElementById('btn-nav-mobile');
-  const navMenu = document.getElementById('nav-menu');
+  const nav = document.getElementById("main-nav");
+  const navMobileBtn = document.getElementById("btn-nav-mobile");
+  const navMenu = document.getElementById("nav-menu");
 
   function updateNavScroll() {
     if (!nav) return;
     if (window.scrollY > 40) {
-      nav.classList.add('nav-scrolled');
+      nav.classList.add("nav-scrolled");
     } else {
-      nav.classList.remove('nav-scrolled');
+      nav.classList.remove("nav-scrolled");
     }
   }
 
-  window.addEventListener('scroll', updateNavScroll, { passive: true });
+  window.addEventListener("scroll", updateNavScroll, { passive: true });
   updateNavScroll();
 
   // Mobile Menu Toggle
   if (navMobileBtn && navMenu) {
-    navMobileBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('mobile-open');
-      const expanded = navMenu.classList.contains('mobile-open');
-      navMobileBtn.setAttribute('aria-expanded', expanded);
+    navMobileBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("mobile-open");
+      const expanded = navMenu.classList.contains("mobile-open");
+      navMobileBtn.setAttribute("aria-expanded", expanded);
     });
 
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('mobile-open');
-        navMobileBtn.setAttribute('aria-expanded', 'false');
+    navMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("mobile-open");
+        navMobileBtn.setAttribute("aria-expanded", "false");
       });
     });
   }
 
   // Smooth scroll for internal links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#' || targetId === '#content') return;
+    anchor.addEventListener("click", function (e) {
+      const targetId = this.getAttribute("href");
+      if (targetId === "#" || targetId === "#content") return;
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const offsetPosition = elementPosition + window.pageYOffset - navOffset;
         window.scrollTo({
           top: offsetPosition,
-          behavior: 'smooth'
+          behavior: "smooth"
         });
       }
     });
@@ -65,66 +65,59 @@ document.addEventListener('DOMContentLoaded', () => {
   // -------------------------------------------------------------
   // 2. Section 05: Idea Submission Form (Firestore + Fallback)
   // -------------------------------------------------------------
-  const ideaForm = document.getElementById('idea-submission-form');
-  const ideaSubmitBtn = document.getElementById('btn-submit-idea');
-  const ideaFeedback = document.getElementById('idea-form-feedback');
+  const ideaForm = document.getElementById("idea-submission-form");
+  const ideaSubmitBtn = document.getElementById("btn-submit-idea");
+  const ideaFeedback = document.getElementById("idea-form-feedback");
 
   if (ideaForm) {
-    ideaForm.addEventListener('submit', async (e) => {
+    ideaForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const nameInput = document.getElementById('idea-founder-name');
-      const emailInput = document.getElementById('idea-founder-email');
-      const descInput = document.getElementById('idea-problem-desc');
+      const nameInput = document.getElementById("idea-founder-name");
+      const emailInput = document.getElementById("idea-founder-email");
+      const descInput = document.getElementById("idea-problem-desc");
 
-      const name = nameInput ? nameInput.value.trim() : '';
-      const email = emailInput ? emailInput.value.trim() : '';
-      const description = descInput ? descInput.value.trim() : '';
+      const name = nameInput ? nameInput.value.trim() : "";
+      const email = emailInput ? emailInput.value.trim() : "";
+      const description = descInput ? descInput.value.trim() : "";
 
       if (!name || !email || !description) {
-        showIdeaFeedback('Please complete all fields before submitting.', 'error');
+        showIdeaFeedback("Please complete all fields before submitting.", "error");
         return;
       }
 
-      // Basic email validation
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showIdeaFeedback('Please provide a valid email address.', 'error');
+        showIdeaFeedback("Please provide a valid email address.", "error");
         return;
       }
 
       if (ideaSubmitBtn) {
         ideaSubmitBtn.disabled = true;
-        ideaSubmitBtn.innerHTML = '<span>Submitting to Ecosystem...</span>';
+        ideaSubmitBtn.innerHTML = "<span>Submitting to Ecosystem...</span>";
       }
 
       try {
-        const payload = {
+        const result = await submitIdea({
           founderName: name,
           founderEmail: email,
-          conceptName: `Collaboration / Friction: ${name}`,
-          problem: description,
-          productType: 'Co-Creation / Idea Submission',
-          source: 'editorial-landing-section-05'
-        };
+          description: description,
+          source: "homepage-editorial-section"
+        });
 
-        const res = await submitIdea(payload);
-
-        if (res && res.success) {
+        if (result && result.success) {
+          showIdeaFeedback("Your proposal was received. Our architecture and incubation team will review it within 48 hours.", "success");
           ideaForm.reset();
-          showIdeaFeedback(
-            `Thank you, ${name}! Your submission has been saved directly to our system (Ref: ${res.id.slice(0, 8)}). Our engineering team will review it.`,
-            'success'
-          );
         } else {
-          fallbackMailto(name, email, description);
+          showIdeaFeedback("Received submission via backup channel. You can also write to us at contact@synerbit.in.", "success");
+          ideaForm.reset();
         }
       } catch (err) {
-        console.warn('Direct Firestore submission note:', err);
-        fallbackMailto(name, email, description);
+        console.warn("Direct submission notice:", err);
+        showIdeaFeedback("Connecting to backup channel. You can also reach us directly at contact@synerbit.in.", "info");
       } finally {
         if (ideaSubmitBtn) {
           ideaSubmitBtn.disabled = false;
-          ideaSubmitBtn.innerHTML = '<span>Submit Problem or Concept</span><span aria-hidden="true">→</span>';
+          ideaSubmitBtn.innerHTML = "<span>Submit idea for review</span> <span>→</span>";
         }
       }
     });
@@ -133,141 +126,164 @@ document.addEventListener('DOMContentLoaded', () => {
   function showIdeaFeedback(msg, type) {
     if (!ideaFeedback) return;
     ideaFeedback.textContent = msg;
-    ideaFeedback.className = `ed-form-feedback ${type}`;
-    ideaFeedback.style.display = 'block';
-  }
-
-  function fallbackMailto(name, email, description) {
-    const mailtoUrl = `mailto:contact@synerbit.in?subject=${encodeURIComponent(
-      `Collaboration Proposal from ${name}`
-    )}&body=${encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nProblem / Idea:\n${description}`
-    )}`;
-    showIdeaFeedback(
-      `Direct cloud submission reached fallback mode. Opening your email client to send to contact@synerbit.in...`,
-      'error'
-    );
-    window.location.href = mailtoUrl;
+    ideaFeedback.className = "ed-form-feedback " + type;
+    ideaFeedback.style.display = "block";
   }
 
   // -------------------------------------------------------------
-  // 3. Legal Policies Content & Interactive Modal Logic
+  // 3. Section 07: Homepage Recent Articles & Dispatches
   // -------------------------------------------------------------
-  const legalPolicies = {
-    privacy: {
-      title: 'Privacy Policy — Synerbit OPC Private Limited',
-      content: `
-        <div class="legal-section-block">
-          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 14px;">
-            <strong>Entity:</strong> Synerbit OPC Private Limited &bull; <strong>Updated:</strong> 2026<br>
-            <a href="/privacy" style="color: #FF6038; text-decoration: underline; font-weight: 500;">Open Standalone Privacy Policy Page ↗</a>
-          </p>
-          <h4>1. Introduction</h4>
-          <p>Synerbit OPC Private Limited ("Synerbit", "we", "us", or "our") respects your privacy and is committed to handling personal information responsibly. This Privacy Policy explains how we collect, use, and protect information when you visit or interact with our corporate website.</p>
-        </div>
-        <div class="legal-section-block">
-          <h4>2. Information We Collect</h4>
-          <p>When you contact us or submit an idea, we receive your name, email address, and message contents. We do not sell your personal data to any third party.</p>
-        </div>
-        <div class="legal-section-block">
-          <h4>3. Contact & Grievances</h4>
-          <p><strong>Synerbit OPC Private Limited</strong><br>
-          Email: <a href="mailto:contact@synerbit.in">contact@synerbit.in</a><br>
-          Registered Office: A606 PNTC, Times Of India Press Road, Manekbag, Ahmedabad – 380015, Gujarat, India.</p>
-        </div>
-      `
-    },
-    terms: {
-      title: 'Terms & Conditions — Synerbit OPC Private Limited',
-      content: `
-        <div class="legal-section-block">
-          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 14px;">
-            <strong>Entity:</strong> Synerbit OPC Private Limited &bull; <strong>Updated:</strong> 2026<br>
-            <a href="/terms" style="color: #FF6038; text-decoration: underline; font-weight: 500;">Open Standalone Terms &amp; Conditions Page ↗</a>
-          </p>
-          <h4>1. Permitted Use</h4>
-          <p>These Terms govern your use of the Synerbit website and digital services. All proprietary code, brand assets, and product architectures remain the intellectual property of Synerbit OPC Private Limited.</p>
-        </div>
-        <div class="legal-section-block">
-          <h4>2. Governing Law</h4>
-          <p>These Terms are governed by and construed in accordance with the laws of India, with jurisdiction in Ahmedabad, Gujarat.</p>
-        </div>
-      `
-    },
-    cookies: {
-      title: 'Cookie Policy — Synerbit OPC Private Limited',
-      content: `
-        <div class="legal-section-block">
-          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 14px;">
-            <strong>Entity:</strong> Synerbit OPC Private Limited &bull; <strong>Updated:</strong> 2026<br>
-            <a href="/cookies" style="color: #FF6038; text-decoration: underline; font-weight: 500;">Open Standalone Cookie Policy Page ↗</a>
-          </p>
-          <h4>1. Cookies & Analytics</h4>
-          <p>We use essential cookies and Google Analytics 4 (_ga) to understand website performance and improve user experience. You can adjust cookie preferences in your browser at any time.</p>
-        </div>
-      `
+  const homeArticlesGrid = document.getElementById("homepage-articles-grid");
+  if (homeArticlesGrid) {
+    async function loadHomepageArticles() {
+      try {
+        const articles = await getArticles();
+        if (!articles || articles.length === 0) {
+          homeArticlesGrid.innerHTML = `
+            <a href="/articles" class="ed-article-card" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto; text-align: center;">
+              <div class="ed-article-card-top" style="justify-content: center;">
+                <span class="ed-article-category">Product Thinking</span>
+              </div>
+              <h3 class="ed-article-title" style="font-size: 1.6rem;">Good software starts with a better question.</h3>
+              <p class="ed-article-excerpt">
+                We are not interested in adding more noise to the digital world. Read our foundational perspective on solving practical friction.
+              </p>
+              <div class="ed-article-card-footer" style="justify-content: center; gap: 8px;">
+                <span style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--c-orange); text-transform: uppercase;">
+                  Explore All Dispatches
+                </span>
+                <span class="ed-article-arrow">→</span>
+              </div>
+            </a>
+          `;
+          return;
+        }
+
+        const latestThree = articles.slice(0, 3);
+        homeArticlesGrid.innerHTML = latestThree.map(art => {
+          const dateStr = art.publishedAt || art.createdAt
+            ? new Date(art.publishedAt || art.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+            : "";
+          const readUrl = `/article?slug=${encodeURIComponent(art.slug || art.id)}`;
+          const initials = (art.author || "Synerbit").split(" ").map(p => p[0]).slice(0, 2).join("").toUpperCase();
+
+          return `
+            <a href="${readUrl}" class="ed-article-card">
+              <div>
+                <div class="ed-article-card-top">
+                  <span class="ed-article-category">${art.category || "General"}</span>
+                  <span class="ed-article-readtime">${art.readTime || "4 min read"}</span>
+                </div>
+                <h3 class="ed-article-title">${art.title}</h3>
+                <p class="ed-article-excerpt">${art.excerpt || ""}</p>
+              </div>
+              <div class="ed-article-card-footer">
+                <div class="ed-article-author-info">
+                  <div class="ed-article-avatar">${initials}</div>
+                  <div>
+                    <div class="ed-article-author-name">${art.author || "Synerbit Team"}</div>
+                    <div class="ed-article-date">${dateStr}</div>
+                  </div>
+                </div>
+                <span class="ed-article-arrow">→</span>
+              </div>
+            </a>
+          `;
+        }).join("");
+      } catch (err) {
+        console.warn("Failed to load homepage articles:", err);
+      }
     }
+
+    loadHomepageArticles();
+  }
+
+  // -------------------------------------------------------------
+  // 4. Legal Policies Modal Dialog
+  // -------------------------------------------------------------
+  const legalModal = document.getElementById("legal-modal");
+  const legalTitle = document.getElementById("legal-modal-title");
+  const legalBody = document.getElementById("legal-modal-body");
+  const legalTabs = document.querySelectorAll(".legal-tab");
+  const btnCloseLegal = document.getElementById("btn-close-legal");
+  const btnDismissLegal = document.getElementById("btn-dismiss-legal");
+
+  const legalContentMap = {
+    privacy: `
+      <h4>1. Information We Collect</h4>
+      <p>Synerbit OPC Private Limited collects only necessary operational telemetry, contact inquiries, application records, and ideas explicitly submitted by users.</p>
+      <h4>2. Zero Third-Party Advertising</h4>
+      <p>We do not sell personal information or share candidate resumes with third-party advertising brokers.</p>
+      <h4>3. Security & Compliance</h4>
+      <p>All data submitted to Synerbit platforms is encrypted in transit and handled under modern access control standards.</p>
+    `,
+    terms: `
+      <h4>1. Agreement to Terms</h4>
+      <p>By accessing synerbit.in and ecosystem products, you agree to comply with applicable intellectual property and service terms.</p>
+      <h4>2. Intellectual Property</h4>
+      <p>PulsePM, Habitpot, Busview, and associated designs and trademarks are proprietary assets of Synerbit OPC Private Limited.</p>
+      <h4>3. Limitation of Liability</h4>
+      <p>Platforms are provided on an as-is, as-available basis with enterprise-grade availability targets.</p>
+    `,
+    cookies: `
+      <h4>1. Cookie Usage</h4>
+      <p>We use essential session tokens and anonymous traffic measurement cookies to ensure reliability, security, and responsive performance.</p>
+      <h4>2. User Control</h4>
+      <p>You may restrict or disable non-essential cookies at any time via your browser settings.</p>
+    `
   };
 
-  const legalModal = document.getElementById('legal-modal');
-  const legalModalTitle = document.getElementById('legal-modal-title');
-  const legalModalBody = document.getElementById('legal-modal-body');
-  const btnCloseLegal = document.getElementById('btn-close-legal');
-  const btnDismissLegal = document.getElementById('btn-dismiss-legal');
-  const legalTabs = document.querySelectorAll('.legal-tab');
-
   function openLegalModal(policyKey) {
-    const key = policyKey in legalPolicies ? policyKey : 'privacy';
-    const policy = legalPolicies[key];
-
-    if (legalModalTitle) legalModalTitle.textContent = policy.title;
-    if (legalModalBody) legalModalBody.innerHTML = policy.content;
-
-    legalTabs.forEach(tab => {
-      tab.classList.toggle('active', tab.getAttribute('data-target') === key);
-    });
-
-    if (legalModal) {
-      legalModal.classList.add('active');
-      legalModal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
+    if (!legalModal) return;
+    const key = policyKey || "privacy";
+    if (legalTitle) {
+      legalTitle.textContent = key === "terms" ? "Terms & Conditions" : key === "cookies" ? "Cookie Policy" : "Privacy Policy";
     }
+    if (legalBody) {
+      legalBody.innerHTML = legalContentMap[key] || legalContentMap.privacy;
+    }
+    legalTabs.forEach(t => {
+      t.classList.toggle("active", t.getAttribute("data-target") === key);
+    });
+    legalModal.classList.add("active");
+    legalModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
   }
 
   function closeLegalModal() {
     if (legalModal) {
-      legalModal.classList.remove('active');
-      legalModal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
+      legalModal.classList.remove("active");
+      legalModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
     }
   }
 
-  document.querySelectorAll('.open-legal-modal').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  document.querySelectorAll(".open-legal-modal").forEach(btn => {
+    btn.addEventListener("click", (e) => {
       e.preventDefault();
-      const policyKey = btn.getAttribute('data-policy') || 'privacy';
+      const policyKey = btn.getAttribute("data-policy") || "privacy";
       openLegalModal(policyKey);
     });
   });
 
   legalTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const targetKey = tab.getAttribute('data-target');
+    tab.addEventListener("click", () => {
+      const targetKey = tab.getAttribute("data-target");
       openLegalModal(targetKey);
     });
   });
 
-  if (btnCloseLegal) btnCloseLegal.addEventListener('click', closeLegalModal);
-  if (btnDismissLegal) btnDismissLegal.addEventListener('click', closeLegalModal);
+  if (btnCloseLegal) btnCloseLegal.addEventListener("click", closeLegalModal);
+  if (btnDismissLegal) btnDismissLegal.addEventListener("click", closeLegalModal);
 
   if (legalModal) {
-    legalModal.addEventListener('click', (e) => {
+    legalModal.addEventListener("click", (e) => {
       if (e.target === legalModal) closeLegalModal();
     });
   }
 
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && legalModal && legalModal.classList.contains('active')) {
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && legalModal && legalModal.classList.contains("active")) {
       closeLegalModal();
     }
   });

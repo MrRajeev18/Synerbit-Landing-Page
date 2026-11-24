@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJGWMMQV91"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BJGWMMQV91');
+    </script>
+
+    <title>Articles &amp; Dispatches — Synerbit</title>
+    <meta name="description" content="Read perspectives on product architecture, human-centric software design, engineering craft, and ecosystem thinking from Synerbit OPC Private Limited." />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="canonical" href="https://www.synerbit.in/articles" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Synerbit" />
+    <meta property="og:title" content="Articles &amp; Dispatches — Synerbit" />
+    <meta property="og:description" content="Perspectives on product architecture, human-centric software design, engineering craft, and ecosystem thinking." />
+    <meta property="og:url" content="https://www.synerbit.in/articles" />
+    <meta property="og:image" content="https://www.synerbit.in/logo.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Articles &amp; Dispatches — Synerbit" />
+    <meta name="twitter:description" content="Perspectives on product architecture, human-centric software design, and engineering craft from Synerbit." />
+    <meta name="twitter:image" content="https://www.synerbit.in/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Favicon / App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="stylesheet" href="/src/style.css" />
+
+    <style>
+      .articles-page-body {
+        background-color: var(--c-paper, #F2EFE7);
+        color: var(--c-navy, #101C32);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        font-family: var(--font-body, "DM Sans", sans-serif);
+      }
+
+      .articles-main-wrapper {
+        position: relative;
+        flex: 1;
+        padding-top: 72px; /* nav offset */
+      }
+
+      /* Editorial Hero Header */
+      .art-hero-section {
+        background-color: var(--c-navy, #101C32);
+        color: var(--c-white, #FFFDF8);
+        padding: 80px 24px 64px 24px;
+        position: relative;
+        border-bottom: 2px solid var(--c-navy, #101C32);
+      }
+
+      .art-hero-inner {
+        max-width: 1240px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .art-section-label {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--c-orange, #FF6038);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .art-hero-title {
+        font-family: var(--font-headline, "Space Grotesk", sans-serif);
+        font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        color: var(--c-white, #FFFDF8);
+        margin: 0;
+        max-width: 900px;
+      }
+
+      .art-hero-subtitle {
+        font-family: var(--font-body, "DM Sans", sans-serif);
+        font-size: 1.15rem;
+        color: #94A3B8;
+        max-width: 720px;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .art-hero-subtitle em {
+        font-family: var(--font-editorial, "Playfair Display", serif);
+        font-style: italic;
+        color: var(--c-paper, #F2EFE7);
+      }
+
+      /* Filter & Search Bar */
+      .art-controls-bar {
+        background: var(--c-white, #FFFDF8);
+        border-bottom: 2px solid var(--c-navy, #101C32);
+        padding: 20px 24px;
+        position: sticky;
+        top: 72px;
+        z-index: 40;
+        box-shadow: 0 4px 12px rgba(16, 28, 50, 0.05);
+      }
+
+      .art-controls-inner {
+        max-width: 1240px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .art-category-pills {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .art-pill-btn {
+        background: transparent;
+        border: 1.5px solid rgba(16, 28, 50, 0.2);
+        padding: 7px 16px;
+        font-family: var(--font-mono, monospace);
+        font-size: 0.78rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--c-navy, #101C32);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .art-pill-btn:hover {
+        background: rgba(16, 28, 50, 0.06);
+        border-color: var(--c-navy, #101C32);
+      }
+
+      .art-pill-btn.active {
+        background: var(--c-navy, #101C32);
+        color: var(--c-white, #FFFDF8);
+        border-color: var(--c-navy, #101C32);
+      }
+
+      .art-search-box {
+        position: relative;
+        min-width: 260px;
+        flex: 1;
+        max-width: 360px;
+      }
+
+      .art-search-input {
+        width: 100%;
+        background: var(--c-paper, #F2EFE7);
+        border: 1.5px solid rgba(16, 28, 50, 0.25);
+        padding: 8px 14px 8px 36px;
+        font-family: var(--font-body, "DM Sans", sans-serif);
+        font-size: 0.88rem;
+        color: var(--c-navy, #101C32);
+        outline: none;
+        transition: all 0.2s ease;
+      }
+
+      .art-search-input:focus {
+        border-color: var(--c-orange, #FF6038);
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(255, 96, 56, 0.12);
+      }
+
+      .art-search-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #64748B;
+        pointer-events: none;
+      }
+
+      /* Grid & Editorial Cards */
+      .art-content-arena {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 56px 24px 80px 24px;
+        width: 100%;
+      }
+
+      .art-featured-wrapper {
+        margin-bottom: 48px;
+      }
+
+      .art-card-featured {
+        background: var(--c-white, #FFFDF8);
+        border: 2px solid var(--c-navy, #101C32);
+        box-shadow: 8px 8px 0px var(--c-navy, #101C32);
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        overflow: hidden;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .art-card-featured:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 12px 12px 0px var(--c-navy, #101C32);
+      }
+
+      .art-card-featured-body {
+        padding: 48px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .art-card-featured-img {
+        background: var(--c-navy, #101C32);
+        min-height: 320px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 2px solid var(--c-navy, #101C32);
+      }
+
+      .art-card-featured-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .art-featured-placeholder {
+        padding: 40px;
+        text-align: center;
+        color: #64748B;
+        font-family: var(--font-mono, monospace);
+        font-size: 0.82rem;
+      }
+
+      .art-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 32px;
+      }
+
+      .art-card {
+        background: var(--c-white, #FFFDF8);
+        border: 2px solid var(--c-navy, #101C32);
+        box-shadow: 6px 6px 0px rgba(16, 28, 50, 0.08);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .art-card:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 10px 10px 0px var(--c-navy, #101C32);
+      }
+
+      .art-card-media {
+        height: 200px;
+        background: #0B132B;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 2px solid var(--c-navy, #101C32);
+      }
+
+      .art-card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .art-card:hover .art-card-media img {
+        transform: scale(1.04);
+      }
+
+      .art-card-content {
+        padding: 30px 28px 24px 28px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 14px;
+      }
+
+      .art-card-meta-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .art-category-tag {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--c-navy, #101C32);
+        background: var(--c-paper, #F2EFE7);
+        border: 1px solid rgba(16, 28, 50, 0.2);
+        padding: 4px 10px;
+      }
+
+      .art-read-time {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.74rem;
+        color: #64748B;
+      }
+
+      .art-card-title {
+        font-family: var(--font-headline, "Space Grotesk", sans-serif);
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 1.22;
+        letter-spacing: -0.02em;
+        color: var(--c-navy, #101C32);
+        margin: 0;
+      }
+
+      .art-card-excerpt {
+        font-family: var(--font-body, "DM Sans", sans-serif);
+        font-size: 0.94rem;
+        line-height: 1.55;
+        color: #475569;
+        margin: 0;
+        flex: 1;
+      }
+
+      .art-card-footer {
+        padding: 18px 28px;
+        background: #FAF8F2;
+        border-top: 1px solid rgba(16, 28, 50, 0.12);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .art-author-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .art-author-avatar {
+        width: 32px;
+        height: 32px;
+        background: var(--c-navy, #101C32);
+        color: var(--c-white, #FFFDF8);
+        border: 1px solid var(--c-navy, #101C32);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-headline, "Space Grotesk", sans-serif);
+        font-weight: 700;
+        font-size: 0.8rem;
+      }
+
+      .art-author-name {
+        font-family: var(--font-body, "DM Sans", sans-serif);
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--c-navy, #101C32);
+        line-height: 1.2;
+      }
+
+      .art-publish-date {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.72rem;
+        color: #64748B;
+      }
+
+      .art-read-arrow {
+        color: var(--c-orange, #FF6038);
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: transform 0.2s ease;
+      }
+
+      .art-card:hover .art-read-arrow {
+        transform: translateX(4px);
+      }
+
+      .art-empty-state {
+        grid-column: 1 / -1;
+        background: var(--c-white, #FFFDF8);
+        border: 2px dashed rgba(16, 28, 50, 0.25);
+        padding: 64px 32px;
+        text-align: center;
+      }
+
+      .art-empty-state h3 {
+        font-family: var(--font-headline, "Space Grotesk", sans-serif);
+        font-size: 1.6rem;
+        color: var(--c-navy, #101C32);
+        margin: 0 0 12px 0;
+      }
+
+      .art-empty-state p {
+        font-size: 0.96rem;
+        color: #64748B;
+        max-width: 480px;
+        margin: 0 auto;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 900px) {
+        .art-card-featured {
+          grid-template-columns: 1fr;
+        }
+        .art-card-featured-img {
+          border-left: none;
+          border-top: 2px solid var(--c-navy, #101C32);
+          min-height: 220px;
+        }
+        .art-card-featured-body {
+          padding: 32px 24px;
+        }
+        .art-grid {
+          grid-template-columns: 1fr;
+        }
+        .art-hero-section {
+          padding: 56px 20px 48px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body class="articles-page-body">
+    <!-- Common Navigation Bar -->
+    <header class="navbar theme-hero" id="main-nav">
+      <a href="/" class="nav-brand" aria-label="Synerbit Homepage">
+        <div class="brand-logo-container">
+          <img src="/logo.png" alt="Synerbit Logo" class="brand-logo-img" />
+        </div>
+        <span class="brand-name">Synerbit</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="/" class="nav-link-item">Home</a>
+        <a href="/#manifesto" class="nav-link-item">Thinking</a>
+        <a href="/products" class="nav-link-item">Products</a>
+        <a href="/#approach" class="nav-link-item">Approach</a>
+        <a href="/articles" class="nav-link-item active">Articles</a>
+        <a href="/jobs" class="nav-link-item">Jobs</a>
+        <a href="/submit-idea" class="nav-link-item">Submit Idea</a>
+      </nav>
+
+      <div class="nav-buttons">
+        <button type="button" class="btn-nav-glass" data-open-contact>Get in Touch</button>
+        <button type="button" class="btn-nav-mobile-toggle" id="btn-nav-mobile" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="articles-main-wrapper">
+      <!-- Section 01: Hero Header -->
+      <section class="art-hero-section">
+        <div class="art-hero-inner">
+          <div class="art-section-label">
+            <span>06</span>
+            <span>/</span>
+            <span>ARTICLES &amp; DISPATCHES</span>
+          </div>
+          <h1 class="art-hero-title">Thinking out loud.</h1>
+          <p class="art-hero-subtitle">
+            Perspectives on <em>product architecture</em>, engineering craft, human-centric design, and what it really takes to build an ecosystem of software.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 02: Sticky Controls & Filter Bar -->
+      <div class="art-controls-bar">
+        <div class="art-controls-inner">
+          <div class="art-category-pills" id="category-pills">
+            <button class="art-pill-btn active" data-category="all">All Articles</button>
+            <button class="art-pill-btn" data-category="Product Thinking">Product Thinking</button>
+            <button class="art-pill-btn" data-category="Engineering">Engineering</button>
+            <button class="art-pill-btn" data-category="Design">Design</button>
+            <button class="art-pill-btn" data-category="Company Update">Company Updates</button>
+            <button class="art-pill-btn" data-category="Ecosystem">Ecosystem</button>
+          </div>
+
+          <div class="art-search-box">
+            <svg class="art-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="articles-search-input" class="art-search-input" placeholder="Search by topic, keyword, author..." />
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 03: Articles Arena -->
+      <main class="art-content-arena">
+        <!-- Featured Article Banner (Top Priority) -->
+        <div id="featured-article-container" class="art-featured-wrapper" style="display: none;"></div>
+
+        <!-- Grid of Articles -->
+        <div id="articles-grid" class="art-grid">
+          <!-- Dynamically populated from Firebase -->
+          <div class="art-empty-state">
+            <h3>Loading articles...</h3>
+            <p>Retrieving dispatches directly from the Synerbit editorial publishing backend.</p>
+          </div>
+        </div>
+      </main>
+
+      <!-- Common Global Comprehensive Footer -->
+      <footer class="site-footer-arena" id="site-footer">
+        <div class="footer-inner-wrapper">
+          <div class="footer-grid">
+            <!-- Col 1: Brand & Social -->
+            <div class="footer-col col-brand">
+              <div class="nav-brand footer-brand-header">
+                <div class="brand-logo-container">
+                  <img src="/logo.png" alt="Synerbit Logo" class="brand-logo-img" />
+                </div>
+                <span class="brand-name">Synerbit</span>
+              </div>
+
+              <p class="footer-brand-desc">
+                Synerbit OPC Private Limited — A Company Building an Ecosystem of Software. Developing digital products that solve practical problems across different industries.
+              </p>
+
+              <div class="footer-social-section">
+                <span class="footer-social-label">OFFICIAL SOCIAL CHANNELS</span>
+                <div class="footer-social-links">
+                  <a href="https://www.linkedin.com/company/synerbit-opc-private-limited/" target="_blank" rel="noopener noreferrer" class="social-btn social-linkedin" aria-label="Synerbit LinkedIn" title="LinkedIn">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.67 1.67 0 1 0 0-3.34 1.67 1.67 0 0 0 0 3.34m1.39 9.74v-8.37H5.07v8.37z"/>
+                    </svg>
+                  </a>
+                  <a href="https://x.com/SynerbitHQ" target="_blank" rel="noopener noreferrer" class="social-btn social-twitter" aria-label="Synerbit X" title="X (Twitter)">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.instagram.com/synerbit.in/" target="_blank" rel="noopener noreferrer" class="social-btn social-instagram" aria-label="Synerbit Instagram" title="Instagram">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/profile.php?id=61595473585056" target="_blank" rel="noopener noreferrer" class="social-btn social-facebook" aria-label="Synerbit Facebook" title="Facebook">
+                    <svg class="social-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Col 2: Products -->
+            <div class="footer-col">
+              <h4 class="footer-col-title">PRODUCTS</h4>
+              <ul class="footer-links-list">
+                <li><a href="https://www.pulsepm.in" target="_blank" rel="noopener noreferrer" class="footer-link footer-link-product">PulsePM <span class="footer-badge-pill cyan">Live ↗</span></a></li>
+                <li><a href="/#product-habitpot" class="footer-link footer-link-product">Habitpot <span class="footer-badge-pill emerald">Soon</span></a></li>
+                <li><a href="/#product-busview" class="footer-link footer-link-product">Busview <span class="footer-badge-pill amber">Soon</span></a></li>
+                <li><a href="/products" class="footer-link">Product Ecosystem <span class="footer-badge-pill cyan">Showcase ↗</span></a></li>
+              </ul>
+            </div>
+
+            <!-- Col 3: Company -->
+            <div class="footer-col">
+              <h4 class="footer-col-title">COMPANY</h4>
+              <ul class="footer-links-list">
+                <li><a href="/#manifesto" class="footer-link">Our Thinking</a></li>
+                <li><a href="/#approach" class="footer-link">Our Approach</a></li>
+                <li><a href="/articles" class="footer-link">Articles &amp; Dispatches <span class="footer-badge-pill cyan">Perspectives</span></a></li>
+                <li><a href="/#about" class="footer-link">About Synerbit</a></li>
+                <li><a href="/jobs" class="footer-link">Careers <span class="footer-badge-pill emerald">Hiring</span></a></li>
+                <li><a href="/submit-idea" class="footer-link">Submit SaaS Idea <span class="footer-badge-pill amber">Incubation</span></a></li>
+              </ul>
+            </div>
+
+            <!-- Col 4: Legal & Policies -->
+            <div class="footer-col">
+              <h4 class="footer-col-title">LEGAL &amp; POLICIES</h4>
+              <ul class="footer-links-list">
+                <li><a href="/privacy" class="footer-link-btn"><span>Privacy Policy</span> <span class="doc-icon">↗</span></a></li>
+                <li><a href="/terms" class="footer-link-btn"><span>Terms &amp; Conditions</span> <span class="doc-icon">↗</span></a></li>
+                <li><a href="/cookies" class="footer-link-btn"><span>Cookie Policy</span> <span class="doc-icon">↗</span></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-divider"></div>
+
+          <!-- Bottom Copyright Row -->
+          <div class="footer-bottom-bar">
+            <div class="footer-bottom-left">
+              <span class="status-indicator"></span>
+              <span class="footer-company-legal">Synerbit OPC Private Limited</span>
+              <span class="footer-copyright-sep">•</span>
+              <span class="footer-copyright-year">&copy; 2026 All rights reserved.</span>
+            </div>
+
+            <div class="footer-bottom-right">
+              <a href="/privacy" class="footer-mini-link">Privacy</a>
+              <span class="footer-dot-sep">·</span>
+              <a href="/terms" class="footer-mini-link">Terms</a>
+              <span class="footer-dot-sep">·</span>
+              <a href="/cookies" class="footer-mini-link">Cookies</a>
+              <span class="footer-dot-sep">·</span>
+              <a href="#contact" class="footer-mini-link" data-open-contact>Contact</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Interactive Articles Script -->
+    <script type="module">
+      import { getArticles, subscribeToArticles } from '/src/firebase.js';
+      import '/src/contactModal.js';
+
+      let allArticles = [];
+      let activeCategory = 'all';
+      let searchQuery = '';
+
+      const featuredContainer = document.getElementById('featured-article-container');
+      const articlesGrid = document.getElementById('articles-grid');
+      const searchInput = document.getElementById('articles-search-input');
+      const categoryPills = document.querySelectorAll('.art-pill-btn');
+
+      // Mobile Menu Toggle
+      const mobileToggleBtn = document.getElementById('btn-nav-mobile');
+      const navMenu = document.getElementById('nav-menu');
+      if (mobileToggleBtn && navMenu) {
+        mobileToggleBtn.addEventListener('click', () => {
+          const isOpen = navMenu.classList.toggle('active');
+          mobileToggleBtn.classList.toggle('active');
+          mobileToggleBtn.setAttribute('aria-expanded', isOpen);
+        });
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function formatDate(dateStr) {
+        if (!dateStr) return '';
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      }
+
+      function getInitials(name) {
+        if (!name) return 'S';
+        return name.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase();
+      }
+
+      function renderArticles() {
+        const query = searchQuery.toLowerCase().trim();
+
+        const filtered = allArticles.filter(art => {
+          if (activeCategory !== 'all' && (art.category || '').toLowerCase() !== activeCategory.toLowerCase()) {
+            return false;
+          }
+          if (!query) return true;
+          const title = (art.title || '').toLowerCase();
+          const excerpt = (art.excerpt || '').toLowerCase();
+          const category = (art.category || '').toLowerCase();
+          const author = (art.author || '').toLowerCase();
+          return title.includes(query) || excerpt.includes(query) || category.includes(query) || author.includes(query);
+        });
+
+        if (filtered.length === 0) {
+          featuredContainer.style.display = 'none';
+          articlesGrid.innerHTML = `
+            <div class="art-empty-state">
+              <h3>No articles found</h3>
+              <p>We couldn't find any articles matching your search or category filter. Check back soon for new dispatches.</p>
+            </div>
+          `;
+          return;
+        }
+
+        // When no search or category filter is active, highlight the latest as Featured
+        let featuredArt = null;
+        let standardArticles = filtered;
+
+        if (activeCategory === 'all' && !query && filtered.length > 0) {
+          featuredArt = filtered[0];
+          standardArticles = filtered.slice(1);
+        }
+
+        if (featuredArt) {
+          const dateStr = formatDate(featuredArt.publishedAt || featuredArt.createdAt);
+          const articleUrl = `/article?slug=${encodeURIComponent(featuredArt.slug || featuredArt.id)}`;
+
+          featuredContainer.innerHTML = `
+            <a href="${articleUrl}" class="art-card-featured">
+              <div class="art-card-featured-body">
+                <div>
+                  <div class="art-card-meta-top" style="margin-bottom: 18px;">
+                    <span class="art-category-tag">${escapeHtml(featuredArt.category || 'Product Thinking')}</span>
+                    <span class="art-read-time">${escapeHtml(featuredArt.readTime || '4 min read')}</span>
+                  </div>
+                  <h2 class="art-card-title" style="font-size: clamp(1.8rem, 3.2vw, 2.6rem); margin-bottom: 16px;">
+                    ${escapeHtml(featuredArt.title)}
+                  </h2>
+                  <p class="art-card-excerpt" style="font-size: 1.05rem; line-height: 1.6; color: #475569; margin-bottom: 24px;">
+                    ${escapeHtml(featuredArt.excerpt)}
+                  </p>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(16, 28, 50, 0.12); padding-top: 20px;">
+                  <div class="art-author-info">
+                    <div class="art-author-avatar">${getInitials(featuredArt.author)}</div>
+                    <div>
+                      <div class="art-author-name">${escapeHtml(featuredArt.author || 'Synerbit Team')}</div>
+                      <div class="art-publish-date">${dateStr}</div>
+                    </div>
+                  </div>
+                  <span style="display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono, monospace); font-size: 0.85rem; font-weight: 700; color: var(--c-orange, #FF6038); text-transform: uppercase;">
+                    Read Article <span class="art-read-arrow">→</span>
+                  </span>
+                </div>
+              </div>
+              <div class="art-card-featured-img">
+                ${featuredArt.coverUrl ? `<img src="${escapeHtml(featuredArt.coverUrl)}" alt="${escapeHtml(featuredArt.title)}" />` : `
+                  <div class="art-featured-placeholder">
+                    <div style="font-size: 2.2rem; margin-bottom: 10px;">📰</div>
+                    <div>SYNERBIT EDITORIAL DISPATCH</div>
+                  </div>
+                `}
+              </div>
+            </a>
+          `;
+          featuredContainer.style.display = 'block';
+        } else {
+          featuredContainer.style.display = 'none';
+        }
+
+        if (standardArticles.length === 0 && !featuredArt) {
+          articlesGrid.innerHTML = `
+            <div class="art-empty-state">
+              <h3>No articles found</h3>
+              <p>Try clearing your search query or selecting another category.</p>
+            </div>
+          `;
+          return;
+        }
+
+        articlesGrid.innerHTML = standardArticles.map(art => {
+          const dateStr = formatDate(art.publishedAt || art.createdAt);
+          const articleUrl = `/article?slug=${encodeURIComponent(art.slug || art.id)}`;
+
+          return `
+            <a href="${articleUrl}" class="art-card">
+              ${art.coverUrl ? `
+                <div class="art-card-media">
+                  <img src="${escapeHtml(art.coverUrl)}" alt="${escapeHtml(art.title)}" loading="lazy" />
+                </div>
+              ` : ''}
+              <div class="art-card-content">
+                <div class="art-card-meta-top">
+                  <span class="art-category-tag">${escapeHtml(art.category || 'Product Thinking')}</span>
+                  <span class="art-read-time">${escapeHtml(art.readTime || '3 min read')}</span>
+                </div>
+                <h3 class="art-card-title">${escapeHtml(art.title)}</h3>
+                <p class="art-card-excerpt">${escapeHtml(art.excerpt || '')}</p>
+              </div>
+              <div class="art-card-footer">
+                <div class="art-author-info">
+                  <div class="art-author-avatar">${getInitials(art.author)}</div>
+                  <div>
+                    <div class="art-author-name">${escapeHtml(art.author || 'Synerbit Team')}</div>
+                    <div class="art-publish-date">${dateStr}</div>
+                  </div>
+                </div>
+                <span class="art-read-arrow">→</span>
+              </div>
+            </a>
+          `;
+        }).join('');
+      }
+
+      // Filter Pill Listeners
+      categoryPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          categoryPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          activeCategory = pill.dataset.category || 'all';
+          renderArticles();
+        });
+      });
+
+      // Search Input Listener
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          renderArticles();
+        });
+      }
+
+      // Initial Load & Realtime Subscription
+      async function initArticles() {
+        try {
+          allArticles = await getArticles();
+          renderArticles();
+        } catch (err) {
+          console.warn('Initial articles load issue:', err);
+        }
+
+        try {
+          subscribeToArticles((live) => {
+            allArticles = live;
+            renderArticles();
+          });
+        } catch (_) {}
+      }
+
+      initArticles();
+    </script>
+  </body>
+</html>

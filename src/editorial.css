@@ -2598,3 +2598,157 @@ body.legal-page-body,
 
 
 
+
+
+/* ==========================================================================
+   Section 07: Editorial Articles & Perspectives (Warm White Background)
+   ========================================================================== */
+.ed-articles-section {
+  background: var(--c-white);
+  color: var(--c-navy);
+  padding: 120px 0;
+  border-bottom: 1px solid var(--c-border-dark);
+}
+
+.ed-articles-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.ed-articles-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 56px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.ed-articles-headline {
+  font-family: var(--font-headline);
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--c-navy);
+  margin-top: 12px;
+}
+
+.ed-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 32px;
+}
+
+.ed-article-card {
+  background: var(--c-paper);
+  border: 2px solid var(--c-navy);
+  box-shadow: 6px 6px 0 var(--c-navy);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition-fast);
+}
+
+.ed-article-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0 var(--c-navy);
+}
+
+.ed-article-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.ed-article-category {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-navy);
+  background: var(--c-white);
+  border: 1px solid var(--c-navy);
+  padding: 4px 10px;
+}
+
+.ed-article-readtime {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: #64748B;
+}
+
+.ed-article-title {
+  font-family: var(--font-headline);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--c-navy);
+  margin: 0 0 14px 0;
+}
+
+.ed-article-excerpt {
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: rgba(16, 28, 50, 0.8);
+  margin: 0 0 24px 0;
+  flex: 1;
+}
+
+.ed-article-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--c-border-dark);
+  padding-top: 18px;
+}
+
+.ed-article-author-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ed-article-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--c-navy);
+  color: var(--c-white);
+  border: 1px solid var(--c-navy);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.ed-article-author-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--c-navy);
+  line-height: 1.2;
+}
+
+.ed-article-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #64748B;
+}
+
+.ed-article-arrow {
+  color: var(--c-orange);
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: transform var(--transition-fast);
+}
+
+.ed-article-card:hover .ed-article-arrow {
+  transform: translateX(4px);
+}
