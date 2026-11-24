@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const productIndicators = document.querySelectorAll('.product-indicator');
   const card0 = document.getElementById('product-card-0'); // PulsePM (Left)
   const card1 = document.getElementById('product-card-1'); // GoalSync (Right)
-  const card2 = document.getElementById('product-card-2'); // Busly (Left)
+  const card2 = document.getElementById('product-card-2'); // Busview (Left)
 
   function applyCardStyle(card, opacity, transX) {
     if (!card) return;
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tx1 = 60;
       }
 
-      // Busly (Left) reveals smoothly as phone clears Center and reaches Right
+      // Busview (Left) reveals smoothly as phone clears Center and reaches Right
       if (t > 0.60) {
         const inT = (t - 0.60) / 0.40;
         op2 = inT;
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tx2 = -60;
       }
     } else {
-      // Stage 3: Busly (Phone on Right, Text on Left)
+      // Stage 3: Busview (Phone on Right, Text on Left)
       op2 = 1;
       tx2 = 0;
     }
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update Pill Indicators
     let activeProductIndex = 0;
     if (p >= 0.74) {
-      activeProductIndex = 2; // Busly
+      activeProductIndex = 2; // Busview
     } else if (p >= 0.40) {
       activeProductIndex = 1; // GoalSync
     } else {
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const pScrollableDist = pHeight - windowH;
 
       if (pScrollableDist > 0) {
-        // Products animate over the first section of scroll; the remaining 100vh holds pinned Busly as Footer slides over
+        // Products animate over the first section of scroll; the remaining 100vh holds pinned Busview as Footer slides over
         const pStageDist = Math.max(pScrollableDist - windowH, 1);
         const pProgress = Math.min(Math.max(-pTop / pStageDist, 0), 1);
 

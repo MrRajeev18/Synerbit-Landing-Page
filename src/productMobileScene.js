@@ -608,7 +608,7 @@ export function createProductMobileScene(containerId) {
       renderBottomNav(sCtx, 1, '#10b981');
 
     } else {
-      // BUSLY (Amber & Solar Gold Theme)
+      // BUSVIEW (Amber & Solar Gold Theme)
       const bgGrad = sCtx.createLinearGradient(0, 0, 0, 2048);
       bgGrad.addColorStop(0, '#1a1005');
       bgGrad.addColorStop(0.5, '#221508');
@@ -623,7 +623,7 @@ export function createProductMobileScene(containerId) {
       sCtx.fillRect(0, 0, 1024, 1000);
 
       renderStatusBar(sCtx);
-      renderDynamicIsland(sCtx, 'Busly • Live Route #12');
+      renderDynamicIsland(sCtx, 'Busview • Live Route #12');
 
       sCtx.fillStyle = '#fde68a';
       sCtx.font = '600 32px Plus Jakarta Sans, sans-serif';
@@ -632,7 +632,7 @@ export function createProductMobileScene(containerId) {
 
       sCtx.fillStyle = '#ffffff';
       sCtx.font = 'bold 74px Plus Jakarta Sans, sans-serif';
-      sCtx.fillText('Busly', 80, 345);
+      sCtx.fillText('Busview', 80, 345);
 
       drawRoundedRect(sCtx, 80, 410, 864, 420, 36, 'rgba(34, 21, 8, 0.85)', 'rgba(245, 158, 11, 0.35)', 3);
 
@@ -854,7 +854,7 @@ export function createProductMobileScene(containerId) {
         renderScreenUI(currentProductIndex);
       }
     } else {
-      // Stage 3: Busly (Stationed on the Right side)
+      // Stage 3: Busview (Stationed on the Right side)
       targetPosX = 3.6;
       targetRotY = -0.22;
       targetRotX = 0.06;
