@@ -368,20 +368,31 @@
 
   <body class="legal-page-body">
     <!-- Fixed Navigation Bar -->
-    <header class="legal-navbar">
-      <div class="legal-nav-left">
-        <a href="/" class="legal-nav-brand">
-          <div class="brand-logo-container">
-            <img src="/logo.png" alt="Synerbit Logo" class="brand-logo-img" />
-          </div>
-          <span class="brand-name">Synerbit</span>
-        </a>
-      </div>
-      <div style="display: flex; align-items: center; gap: 12px;">
-        <a href="/products" class="legal-nav-back">Products</a>
-        <a href="/" class="legal-nav-back">
-          <span>← Back to Home</span>
-        </a>
+        <!-- Common Navigation Bar -->
+    <header class="navbar theme-hero" id="main-nav">
+      <a href="/" class="nav-brand" aria-label="Synerbit Homepage">
+        <div class="brand-logo-container">
+          <img src="/logo.png" alt="Synerbit Logo" class="brand-logo-img" />
+        </div>
+        <span class="brand-name">Synerbit</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="/" class="nav-link-item">Home</a>
+        <a href="/#manifesto" class="nav-link-item">Thinking</a>
+        <a href="/products" class="nav-link-item">Products</a>
+        <a href="/#approach" class="nav-link-item">Approach</a>
+        <a href="/jobs" class="nav-link-item">Jobs</a>
+        <a href="/submit-idea" class="nav-link-item">Submit Idea</a>
+      </nav>
+
+      <div class="nav-buttons">
+        <button type="button" class="btn-nav-glass" data-open-contact>Get in Touch</button>
+        <button type="button" class="btn-nav-mobile-toggle" id="btn-nav-mobile" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
@@ -804,6 +815,7 @@
     </main>
 
     <!-- Global Comprehensive Footer -->
+        <!-- Common Global Comprehensive Footer across all pages -->
     <footer class="site-footer-arena" id="site-footer">
       <div class="footer-inner-wrapper">
         <!-- Main 4-Column Grid -->
@@ -818,7 +830,7 @@
             </div>
 
             <p class="footer-brand-desc">
-              Building simple, innovative, and scalable SaaS products that solve real-world problems and empower connected human potential.
+              Synerbit OPC Private Limited — A Company Building an Ecosystem of Software. Developing digital products that solve practical problems across different industries.
             </p>
 
             <div class="footer-social-section">
@@ -860,8 +872,8 @@
             <h4 class="footer-col-title">PRODUCTS</h4>
             <ul class="footer-links-list">
               <li><a href="https://www.pulsepm.in" target="_blank" rel="noopener noreferrer" class="footer-link footer-link-product">PulsePM <span class="footer-badge-pill cyan">Live ↗</span></a></li>
-              <li><a href="/products" class="footer-link footer-link-product">Habitpot <span class="footer-badge-pill emerald">Soon</span></a></li>
-              <li><a href="/products" class="footer-link footer-link-product">Busview <span class="footer-badge-pill amber">Soon</span></a></li>
+              <li><a href="/#product-habitpot" class="footer-link footer-link-product">Habitpot <span class="footer-badge-pill emerald">Soon</span></a></li>
+              <li><a href="/#product-busview" class="footer-link footer-link-product">Busview <span class="footer-badge-pill amber">Soon</span></a></li>
               <li><a href="/products" class="footer-link">Product Ecosystem <span class="footer-badge-pill cyan">Showcase ↗</span></a></li>
             </ul>
           </div>
@@ -870,12 +882,10 @@
           <div class="footer-col">
             <h4 class="footer-col-title">COMPANY</h4>
             <ul class="footer-links-list">
-              <li><a href="/#about-stage" class="footer-link footer-link-stage">About Synerbit</a></li>
-              <li><a href="/#about-stage" class="footer-link footer-link-stage">Our Vision</a></li>
-              <li><a href="/#about-stage" class="footer-link footer-link-stage">Our Mission</a></li>
-              <li><a href="/#about-stage" class="footer-link footer-link-stage">Values &amp; Beliefs</a></li>
-              <li><a href="/#about-stage" class="footer-link footer-link-stage">Ecosystem Goal</a></li>
-              <li><a href="/jobs" class="footer-link">Jobs <span class="footer-badge-pill emerald">Hiring</span></a></li>
+              <li><a href="/#manifesto" class="footer-link">Our Thinking</a></li>
+              <li><a href="/#approach" class="footer-link">Our Approach</a></li>
+              <li><a href="/#about" class="footer-link">About Synerbit</a></li>
+              <li><a href="/jobs" class="footer-link">Careers <span class="footer-badge-pill emerald">Hiring</span></a></li>
               <li><a href="/submit-idea" class="footer-link">Submit SaaS Idea <span class="footer-badge-pill amber">Incubation</span></a></li>
             </ul>
           </div>
