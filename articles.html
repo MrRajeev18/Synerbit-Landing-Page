@@ -50,8 +50,8 @@
 
     <style>
       .articles-page-body {
-        background-color: var(--c-paper, #F2EFE7);
-        color: var(--c-navy, #101C32);
+        background-color: var(--c-paper, #F1EFE7);
+        color: var(--c-navy, #17233B);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -67,11 +67,11 @@
 
       /* Editorial Hero Header */
       .art-hero-section {
-        background-color: var(--c-navy, #101C32);
-        color: var(--c-white, #FFFDF8);
+        background-color: var(--c-navy, #17233B);
+        color: var(--c-text-dark, #F1EFE7);
         padding: 80px 24px 64px 24px;
         position: relative;
-        border-bottom: 2px solid var(--c-navy, #101C32);
+        border-bottom: 2px solid var(--c-navy, #17233B);
       }
 
       .art-hero-inner {
@@ -87,7 +87,7 @@
         font-size: 0.85rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: var(--c-orange, #FF6038);
+        color: var(--c-teal, #00CFA5);
         display: inline-flex;
         align-items: center;
         gap: 8px;
@@ -99,7 +99,7 @@
         font-weight: 700;
         line-height: 1.05;
         letter-spacing: -0.03em;
-        color: var(--c-white, #FFFDF8);
+        color: var(--c-text-dark, #F1EFE7);
         margin: 0;
         max-width: 900px;
       }
@@ -107,7 +107,7 @@
       .art-hero-subtitle {
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 1.15rem;
-        color: #94A3B8;
+        color: var(--c-text-muted-dark, #C0C8D5);
         max-width: 720px;
         line-height: 1.6;
         margin: 0;
@@ -116,18 +116,18 @@
       .art-hero-subtitle em {
         font-family: var(--font-editorial, "Playfair Display", serif);
         font-style: italic;
-        color: var(--c-paper, #F2EFE7);
+        color: var(--c-paper, #F1EFE7);
       }
 
       /* Filter & Search Bar */
       .art-controls-bar {
-        background: var(--c-white, #FFFDF8);
-        border-bottom: 2px solid var(--c-navy, #101C32);
+        background: var(--c-white, #FFFFFF);
+        border-bottom: 2px solid var(--c-navy, #17233B);
         padding: 20px 24px;
         position: sticky;
         top: 72px;
         z-index: 40;
-        box-shadow: 0 4px 12px rgba(16, 28, 50, 0.05);
+        box-shadow: 0 4px 12px rgba(23, 35, 59, 0.05);
       }
 
       .art-controls-inner {
@@ -149,27 +149,27 @@
 
       .art-pill-btn {
         background: transparent;
-        border: 1.5px solid rgba(16, 28, 50, 0.2);
+        border: 1.5px solid rgba(23, 35, 59, 0.2);
         padding: 7px 16px;
         font-family: var(--font-mono, monospace);
         font-size: 0.78rem;
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.06em;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         cursor: pointer;
         transition: all 0.2s ease;
       }
 
       .art-pill-btn:hover {
-        background: rgba(16, 28, 50, 0.06);
-        border-color: var(--c-navy, #101C32);
+        background: rgba(23, 35, 59, 0.06);
+        border-color: var(--c-navy, #17233B);
       }
 
       .art-pill-btn.active {
-        background: var(--c-navy, #101C32);
-        color: var(--c-white, #FFFDF8);
-        border-color: var(--c-navy, #101C32);
+        background: var(--c-navy, #17233B);
+        color: #ffffff;
+        border-color: var(--c-navy, #17233B);
       }
 
       .art-search-box {
@@ -181,20 +181,20 @@
 
       .art-search-input {
         width: 100%;
-        background: var(--c-paper, #F2EFE7);
-        border: 1.5px solid rgba(16, 28, 50, 0.25);
+        background: var(--c-paper, #F1EFE7);
+        border: 1.5px solid rgba(23, 35, 59, 0.25);
         padding: 8px 14px 8px 36px;
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 0.88rem;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         outline: none;
         transition: all 0.2s ease;
       }
 
       .art-search-input:focus {
-        border-color: var(--c-orange, #FF6038);
+        border-color: var(--c-blue, #3438F5);
         background: #ffffff;
-        box-shadow: 0 0 0 3px rgba(255, 96, 56, 0.12);
+        box-shadow: 0 0 0 3px rgba(52, 56, 245, 0.15);
       }
 
       .art-search-icon {
@@ -219,9 +219,9 @@
       }
 
       .art-card-featured {
-        background: var(--c-white, #FFFDF8);
-        border: 2px solid var(--c-navy, #101C32);
-        box-shadow: 8px 8px 0px var(--c-navy, #101C32);
+        background: var(--c-white, #FFFFFF);
+        border: 2px solid var(--c-navy, #17233B);
+        box-shadow: 8px 8px 0px var(--c-navy, #17233B);
         display: grid;
         grid-template-columns: 1.15fr 0.85fr;
         overflow: hidden;
@@ -232,7 +232,7 @@
 
       .art-card-featured:hover {
         transform: translate(-3px, -3px);
-        box-shadow: 12px 12px 0px var(--c-navy, #101C32);
+        box-shadow: 12px 12px 0px var(--c-navy, #17233B);
       }
 
       .art-card-featured-body {
@@ -243,14 +243,14 @@
       }
 
       .art-card-featured-img {
-        background: var(--c-navy, #101C32);
+        background: var(--c-navy, #17233B);
         min-height: 320px;
         position: relative;
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-left: 2px solid var(--c-navy, #101C32);
+        border-left: 2px solid var(--c-navy, #17233B);
       }
 
       .art-card-featured-img img {
@@ -274,9 +274,9 @@
       }
 
       .art-card {
-        background: var(--c-white, #FFFDF8);
-        border: 2px solid var(--c-navy, #101C32);
-        box-shadow: 6px 6px 0px rgba(16, 28, 50, 0.08);
+        background: var(--c-white, #FFFFFF);
+        border: 2px solid var(--c-navy, #17233B);
+        box-shadow: 6px 6px 0px rgba(23, 35, 59, 0.08);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -289,7 +289,7 @@
 
       .art-card:hover {
         transform: translate(-3px, -3px);
-        box-shadow: 10px 10px 0px var(--c-navy, #101C32);
+        box-shadow: 10px 10px 0px var(--c-navy, #17233B);
       }
 
       .art-card-media {
@@ -297,7 +297,7 @@
         background: #0B132B;
         position: relative;
         overflow: hidden;
-        border-bottom: 2px solid var(--c-navy, #101C32);
+        border-bottom: 2px solid var(--c-navy, #17233B);
       }
 
       .art-card-media img {
@@ -332,9 +332,9 @@
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: var(--c-navy, #101C32);
-        background: var(--c-paper, #F2EFE7);
-        border: 1px solid rgba(16, 28, 50, 0.2);
+        color: var(--c-navy, #17233B);
+        background: var(--c-paper, #F1EFE7);
+        border: 1px solid rgba(23, 35, 59, 0.2);
         padding: 4px 10px;
       }
 
@@ -350,7 +350,7 @@
         font-weight: 700;
         line-height: 1.22;
         letter-spacing: -0.02em;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         margin: 0;
       }
 
@@ -358,7 +358,7 @@
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 0.94rem;
         line-height: 1.55;
-        color: #475569;
+        color: var(--c-text-secondary, #465167);
         margin: 0;
         flex: 1;
       }
@@ -366,7 +366,7 @@
       .art-card-footer {
         padding: 18px 28px;
         background: #FAF8F2;
-        border-top: 1px solid rgba(16, 28, 50, 0.12);
+        border-top: 1px solid rgba(23, 35, 59, 0.12);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -381,9 +381,9 @@
       .art-author-avatar {
         width: 32px;
         height: 32px;
-        background: var(--c-navy, #101C32);
-        color: var(--c-white, #FFFDF8);
-        border: 1px solid var(--c-navy, #101C32);
+        background: var(--c-navy, #17233B);
+        color: #ffffff;
+        border: 1px solid var(--c-navy, #17233B);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -396,7 +396,7 @@
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 0.82rem;
         font-weight: 600;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         line-height: 1.2;
       }
 
@@ -407,7 +407,7 @@
       }
 
       .art-read-arrow {
-        color: var(--c-orange, #FF6038);
+        color: var(--c-blue, #3438F5);
         font-weight: 700;
         font-size: 1.1rem;
         transition: transform 0.2s ease;
@@ -419,8 +419,8 @@
 
       .art-empty-state {
         grid-column: 1 / -1;
-        background: var(--c-white, #FFFDF8);
-        border: 2px dashed rgba(16, 28, 50, 0.25);
+        background: var(--c-white, #FFFFFF);
+        border: 2px dashed rgba(23, 35, 59, 0.25);
         padding: 64px 32px;
         text-align: center;
       }
@@ -428,7 +428,7 @@
       .art-empty-state h3 {
         font-family: var(--font-headline, "Space Grotesk", sans-serif);
         font-size: 1.6rem;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         margin: 0 0 12px 0;
       }
 
@@ -446,7 +446,7 @@
         }
         .art-card-featured-img {
           border-left: none;
-          border-top: 2px solid var(--c-navy, #101C32);
+          border-top: 2px solid var(--c-navy, #17233B);
           min-height: 220px;
         }
         .art-card-featured-body {
@@ -756,7 +756,7 @@
                       <div class="art-publish-date">${dateStr}</div>
                     </div>
                   </div>
-                  <span style="display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono, monospace); font-size: 0.85rem; font-weight: 700; color: var(--c-orange, #FF6038); text-transform: uppercase;">
+                  <span style="display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono, monospace); font-size: 0.85rem; font-weight: 700; color: var(--c-blue, #3438F5); text-transform: uppercase;">
                     Read Article <span class="art-read-arrow">→</span>
                   </span>
                 </div>

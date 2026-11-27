@@ -86,8 +86,8 @@
     <link rel="stylesheet" href="/src/style.css" />
     <style>
       .jobs-page-body {
-        background-color: var(--c-paper, #F2EFE7);
-        color: var(--c-navy, #101C32);
+        background-color: var(--c-paper, #F1EFE7);
+        color: var(--c-navy, #17233B);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -104,9 +104,9 @@
 
       /* Sheet Sticky Header */
       .p-sheet-sticky-bar {
-        border-bottom: 2px solid var(--c-navy, #101C32);
+        border-bottom: 2px solid var(--c-navy, #17233B);
         padding: 36px 32px;
-        background: var(--c-paper, #F2EFE7);
+        background: var(--c-paper, #F1EFE7);
         max-width: 1320px;
         margin: 0 auto;
       }
@@ -123,7 +123,7 @@
         font-size: 0.74rem;
         font-weight: 700;
         letter-spacing: 0.16em;
-        color: var(--c-orange, #FF6038);
+        color: var(--c-blue, #3438F5);
         text-transform: uppercase;
       }
 
@@ -132,7 +132,7 @@
         font-size: clamp(2.4rem, 4.5vw, 3.6rem);
         font-weight: 700;
         letter-spacing: -0.03em;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         margin: 6px 0 10px 0;
         line-height: 1.1;
       }
@@ -140,7 +140,7 @@
       .p-sheet-desc {
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 1.05rem;
-        color: #4b5563;
+        color: var(--c-text-secondary, #465167);
         max-width: 680px;
         line-height: 1.6;
       }
@@ -166,10 +166,10 @@
       }
 
       .j-filter-sidebar {
-        background: var(--c-white, #FFFDF8);
-        border: 2px solid var(--c-navy, #101C32);
+        background: var(--c-white, #FFFFFF);
+        border: 2px solid var(--c-navy, #17233B);
         border-radius: 0;
-        box-shadow: 6px 6px 0px rgba(16, 28, 50, 0.08);
+        box-shadow: 6px 6px 0px rgba(23, 35, 59, 0.08);
         padding: 24px;
         display: flex;
         flex-direction: column;
@@ -180,7 +180,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid rgba(16, 28, 50, 0.12);
+        border-bottom: 1px solid rgba(23, 35, 59, 0.12);
         padding-bottom: 14px;
       }
 
@@ -188,7 +188,7 @@
         font-family: var(--font-headline, "Space Grotesk", sans-serif);
         font-size: 0.95rem;
         font-weight: 700;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         text-transform: uppercase;
         letter-spacing: 0.04em;
         display: flex;
@@ -199,7 +199,7 @@
       .j-filter-reset-btn {
         background: transparent;
         border: none;
-        color: var(--c-orange, #FF6038);
+        color: var(--c-blue, #3438F5);
         font-family: var(--font-mono, monospace);
         font-size: 0.72rem;
         font-weight: 600;
@@ -224,7 +224,7 @@
         font-size: 0.72rem;
         font-weight: 700;
         letter-spacing: 0.14em;
-        color: var(--c-orange, #FF6038);
+        color: var(--c-blue, #3438F5);
         text-transform: uppercase;
       }
 
@@ -241,8 +241,8 @@
         padding: 9px 12px;
         border-radius: 0;
         background: var(--c-paper-light, #F9F7F1);
-        border: 1px solid rgba(16, 28, 50, 0.14);
-        color: var(--c-navy, #101C32);
+        border: 1px solid rgba(23, 35, 59, 0.14);
+        color: var(--c-navy, #17233B);
         font-family: var(--font-mono, monospace);
         font-size: 0.78rem;
         text-transform: uppercase;
@@ -255,13 +255,13 @@
 
       .j-filter-item-btn:hover {
         background: #ffffff;
-        border-color: var(--c-navy, #101C32);
+        border-color: var(--c-navy, #17233B);
       }
 
       .j-filter-item-btn.is-active {
-        background: var(--c-navy, #101C32);
-        color: var(--c-white, #FFFDF8);
-        border-color: var(--c-navy, #101C32);
+        background: var(--c-navy, #17233B);
+        color: #ffffff;
+        border-color: var(--c-navy, #17233B);
         font-weight: 600;
       }
 
@@ -275,7 +275,7 @@
         width: 6px;
         height: 6px;
         border-radius: 0;
-        background: var(--c-orange, #FF6038);
+        background: var(--c-blue, #3438F5);
       }
 
       .j-filter-count-badge {
@@ -283,12 +283,12 @@
         font-size: 0.7rem;
         padding: 1px 6px;
         border-radius: 0;
-        background: rgba(16, 28, 50, 0.08);
-        color: var(--c-navy, #101C32);
+        background: rgba(23, 35, 59, 0.08);
+        color: var(--c-navy, #17233B);
       }
 
       .j-filter-item-btn.is-active .j-filter-count-badge {
-        background: var(--c-orange, #FF6038);
+        background: var(--c-blue, #3438F5);
         color: #ffffff;
       }
 
@@ -305,7 +305,7 @@
         justify-content: space-between;
         gap: 16px;
         flex-wrap: wrap;
-        border-bottom: 1px solid rgba(16, 28, 50, 0.12);
+        border-bottom: 1px solid rgba(23, 35, 59, 0.12);
         padding-bottom: 16px;
       }
 
@@ -318,7 +318,7 @@
       }
 
       .j-results-info strong {
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         font-weight: 700;
       }
 
@@ -330,10 +330,10 @@
       .j-search-input {
         width: 100%;
         background: #ffffff;
-        border: 1.5px solid rgba(16, 28, 50, 0.2);
+        border: 1.5px solid rgba(23, 35, 59, 0.2);
         border-radius: 0;
-        padding: 9px 14px 9px 34px;
-        color: var(--c-navy, #101C32);
+        padding: 9px 14px 9px 36px;
+        color: var(--c-navy, #17233B);
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 0.88rem;
         outline: none;
@@ -341,28 +341,32 @@
       }
 
       .j-search-input:focus {
-        border-color: var(--c-orange, #FF6038);
-        box-shadow: 0 0 0 3px rgba(255, 96, 56, 0.12);
+        border-color: var(--c-blue, #3438F5);
+        box-shadow: 0 0 0 3px rgba(52, 56, 245, 0.15);
       }
 
       .j-search-icon {
         position: absolute;
-        left: 11px;
+        left: 12px;
         top: 50%;
         transform: translateY(-50%);
         color: #6b7280;
         pointer-events: none;
-        width: 16px;
-        height: 16px;
-        max-width: 16px;
-        max-height: 16px;
-        flex-shrink: 0;
+        width: 16px !important;
+        height: 16px !important;
+        min-width: 16px !important;
+        min-height: 16px !important;
+        max-width: 16px !important;
+        max-height: 16px !important;
+        display: block !important;
+        flex-shrink: 0 !important;
+        z-index: 2;
       }
 
       /* Job Cards */
       .j-job-card, .j-card {
-        background: var(--c-white, #FFFDF8);
-        border: 2px solid var(--c-navy, #101C32);
+        background: var(--c-white, #FFFFFF);
+        border: 2px solid var(--c-navy, #17233B);
         border-radius: 0;
         box-shadow: 6px 6px 0px rgba(16, 28, 50, 0.08);
         padding: 32px 30px;
@@ -375,7 +379,7 @@
       }
 
       .j-job-card:hover, .j-card:hover {
-        box-shadow: 10px 10px 0px var(--c-navy, #101C32);
+        box-shadow: 10px 10px 0px var(--c-navy, #17233B);
         transform: translate(-2px, -2px);
       }
 
@@ -405,16 +409,16 @@
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        background: rgba(16, 28, 50, 0.06);
-        border: 1px solid rgba(16, 28, 50, 0.16);
-        color: var(--c-navy, #101C32);
+        background: rgba(23, 35, 59, 0.06);
+        border: 1px solid rgba(23, 35, 59, 0.16);
+        color: var(--c-navy, #17233B);
       }
 
       .j-card-role-title {
         font-family: var(--font-headline, "Space Grotesk", sans-serif);
         font-size: 1.4rem;
         font-weight: 700;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         margin: 0 0 4px 0;
         letter-spacing: -0.02em;
         line-height: 1.25;
@@ -423,7 +427,7 @@
       .j-card-meta-line {
         font-family: var(--font-mono, monospace);
         font-size: 0.74rem;
-        color: #4b5563;
+        color: var(--c-text-secondary, #465167);
         display: flex;
         align-items: center;
         gap: 6px;
@@ -447,36 +451,36 @@
         font-weight: 600;
         letter-spacing: 0.04em;
         text-transform: uppercase;
-        background: var(--c-paper, #F2EFE7);
-        border: 1px solid rgba(16, 28, 50, 0.16);
-        color: var(--c-navy, #101C32);
+        background: var(--c-paper, #F1EFE7);
+        border: 1px solid rgba(23, 35, 59, 0.16);
+        color: var(--c-navy, #17233B);
       }
 
       .j-pill.dept {
-        background: rgba(16, 28, 50, 0.06);
-        border-color: rgba(16, 28, 50, 0.2);
-        color: var(--c-navy, #101C32);
+        background: rgba(23, 35, 59, 0.06);
+        border-color: rgba(23, 35, 59, 0.2);
+        color: var(--c-navy, #17233B);
       }
 
       .j-pill.type {
-        background: rgba(255, 96, 56, 0.12);
-        border-color: rgba(255, 96, 56, 0.35);
-        color: var(--c-orange, #FF6038);
+        background: rgba(52, 56, 245, 0.1);
+        border-color: rgba(52, 56, 245, 0.3);
+        color: var(--c-blue, #3438F5);
       }
 
       .j-card-desc {
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 0.92rem;
         line-height: 1.65;
-        color: #374151;
+        color: var(--c-text-secondary, #465167);
         margin: 0;
       }
 
       /* Key Qualifications & Responsibilities Box (Screenshot 2 Fix) */
       .j-card-points-box {
-        background: var(--c-paper, #F2EFE7) !important;
-        border: 1px solid rgba(16, 28, 50, 0.16) !important;
-        border-left: 4px solid var(--c-orange, #FF6038) !important;
+        background: var(--c-paper, #F1EFE7) !important;
+        border: 1px solid rgba(23, 35, 59, 0.14) !important;
+        border-left: 4px solid var(--c-blue, #3438F5) !important;
         border-radius: 0 !important;
         padding: 20px 22px !important;
         display: flex !important;
@@ -490,7 +494,7 @@
         font-weight: 700 !important;
         letter-spacing: 0.14em !important;
         text-transform: uppercase !important;
-        color: var(--c-orange, #FF6038) !important;
+        color: var(--c-blue, #3438F5) !important;
       }
 
       .j-card-points-list {
@@ -508,7 +512,7 @@
         gap: 10px !important;
         font-family: var(--font-body, "DM Sans", sans-serif) !important;
         font-size: 0.9rem !important;
-        color: var(--c-navy, #101C32) !important;
+        color: var(--c-navy, #17233B) !important;
         line-height: 1.55 !important;
       }
 
@@ -516,7 +520,7 @@
         font-size: 0.82rem !important;
         flex-shrink: 0 !important;
         margin-top: 1px !important;
-        color: var(--c-orange, #FF6038) !important;
+        color: var(--c-blue, #3438F5) !important;
         font-weight: 700 !important;
       }
 
@@ -525,7 +529,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-top: 1px solid rgba(16, 28, 50, 0.12);
+        border-top: 1px solid rgba(23, 35, 59, 0.12);
         padding-top: 18px;
         margin-top: 4px;
         flex-wrap: wrap;
@@ -535,7 +539,7 @@
       .j-card-perks-note {
         font-family: var(--font-mono, monospace);
         font-size: 0.76rem;
-        color: #4b5563;
+        color: var(--c-text-secondary, #465167);
         display: flex;
         align-items: center;
         gap: 6px;
@@ -552,8 +556,8 @@
         font-size: 0.78rem;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: var(--c-navy, #101C32);
-        border: 1.5px solid rgba(16, 28, 50, 0.22);
+        color: var(--c-navy, #17233B);
+        border: 1.5px solid rgba(23, 35, 59, 0.22);
         border-radius: 0;
         padding: 10px 18px;
         text-decoration: none;
@@ -561,8 +565,8 @@
       }
 
       .j-btn-ghost:hover {
-        background: rgba(16, 28, 50, 0.06);
-        border-color: var(--c-navy, #101C32);
+        background: rgba(23, 35, 59, 0.06);
+        border-color: var(--c-navy, #17233B);
       }
 
       .j-btn-clean {
@@ -574,21 +578,21 @@
         text-decoration: none !important;
         font-family: var(--font-mono, monospace) !important;
         font-size: 0.82rem !important;
-        font-weight: 600 !important;
+        font-weight: 700 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.08em !important;
-        border: 1.5px solid var(--c-orange, #FF6038) !important;
-        background: var(--c-orange, #FF6038) !important;
-        color: var(--c-white, #FFFDF8) !important;
+        border: 1.5px solid var(--c-teal, #00CFA5) !important;
+        background: var(--c-teal, #00CFA5) !important;
+        color: var(--c-navy, #17233B) !important;
         cursor: pointer !important;
         transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
         width: fit-content !important;
       }
 
       .j-btn-clean:hover {
-        background: var(--c-navy, #101C32) !important;
-        border-color: var(--c-navy, #101C32) !important;
-        color: var(--c-white, #FFFDF8) !important;
+        background: #00B38E !important;
+        border-color: #00B38E !important;
+        color: var(--c-navy, #17233B) !important;
         transform: translateY(-2px) !important;
       }
 
@@ -596,7 +600,7 @@
       .modal-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(16, 28, 50, 0.85);
+        background: rgba(23, 35, 59, 0.85);
         backdrop-filter: blur(12px);
         z-index: 1000;
         display: none;
@@ -610,26 +614,26 @@
       }
 
       .modal-window {
-        background: var(--c-white, #FFFDF8);
-        border: 2px solid var(--c-navy, #101C32);
+        background: var(--c-white, #FFFFFF);
+        border: 2px solid var(--c-navy, #17233B);
         border-radius: 0;
-        box-shadow: 12px 12px 0px var(--c-navy, #101C32);
+        box-shadow: 12px 12px 0px var(--c-navy, #17233B);
         max-width: 620px;
         width: 100%;
         max-height: 90vh;
         overflow-y: auto;
         padding: 36px;
         position: relative;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
       }
 
       .modal-close-btn {
         position: absolute;
         top: 20px;
         right: 20px;
-        background: var(--c-navy, #101C32);
+        background: var(--c-navy, #17233B);
         border: none;
-        color: var(--c-white, #FFFDF8);
+        color: #ffffff;
         font-size: 1.2rem;
         cursor: pointer;
         width: 32px;
@@ -640,7 +644,7 @@
       }
 
       .modal-close-btn:hover {
-        background: var(--c-orange, #FF6038);
+        background: var(--c-blue, #3438F5);
       }
 
       .form-group {
@@ -652,7 +656,7 @@
         font-family: var(--font-mono, monospace);
         font-size: 0.78rem;
         font-weight: 600;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         margin-bottom: 6px;
         text-transform: uppercase;
         letter-spacing: 0.06em;
@@ -661,10 +665,10 @@
       .form-input, .form-textarea, .form-select {
         width: 100%;
         background: var(--c-paper-light, #F9F7F1);
-        border: 1.5px solid rgba(16, 28, 50, 0.22);
+        border: 1.5px solid rgba(23, 35, 59, 0.22);
         border-radius: 0;
         padding: 11px 14px;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         font-size: 0.92rem;
         font-family: var(--font-body, "DM Sans", sans-serif);
         outline: none;
@@ -672,15 +676,15 @@
       }
 
       .form-input:focus, .form-textarea:focus, .form-select:focus {
-        border-color: var(--c-orange, #FF6038);
-        box-shadow: 0 0 0 3px rgba(255, 96, 56, 0.15);
+        border-color: var(--c-blue, #3438F5);
+        box-shadow: 0 0 0 3px rgba(52, 56, 245, 0.15);
         background: #ffffff;
       }
 
       .btn-modal-submit {
-        background: var(--c-orange, #FF6038);
-        border: 1.5px solid var(--c-orange, #FF6038);
-        color: var(--c-white, #FFFDF8);
+        background: var(--c-teal, #00CFA5);
+        border: 1.5px solid var(--c-teal, #00CFA5);
+        color: var(--c-navy, #17233B);
         border-radius: 0;
         font-family: var(--font-mono, monospace);
         font-size: 0.85rem;
@@ -694,8 +698,8 @@
       }
 
       .btn-modal-submit:hover {
-        background: var(--c-navy, #101C32);
-        border-color: var(--c-navy, #101C32);
+        background: #00B38E;
+        border-color: #00B38E;
       }
 
       @media (max-width: 900px) {
@@ -760,7 +764,7 @@
           </div>
 
           <div class="j-search-box">
-            <svg class="j-search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <svg class="j-search-icon" width="16" height="16" style="width: 16px !important; height: 16px !important; min-width: 16px !important; min-height: 16px !important; max-width: 16px !important; max-height: 16px !important;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             <input type="text" id="jobsSearchInput" class="j-search-input" placeholder="Search roles or skills..." />
           </div>
         </div>

@@ -80,8 +80,8 @@
     <link rel="stylesheet" href="/src/style.css" />
     <style>
       .idea-page-body {
-        background-color: var(--c-paper, #F2EFE7);
-        color: var(--c-navy, #101C32);
+        background-color: var(--c-paper, #F1EFE7);
+        color: var(--c-navy, #17233B);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -110,15 +110,15 @@
       .idea-left-panel {
         position: sticky;
         top: 96px;
-        background: var(--c-navy, #101C32);
-        border: 2px solid var(--c-navy, #101C32);
+        background: var(--c-navy, #17233B);
+        border: 2px solid var(--c-navy, #17233B);
         border-radius: 0;
         padding: 38px 32px;
-        box-shadow: 8px 8px 0px rgba(16, 28, 50, 0.12);
+        box-shadow: 8px 8px 0px rgba(23, 35, 59, 0.12);
         display: flex;
         flex-direction: column;
         gap: 26px;
-        color: var(--c-paper, #F2EFE7);
+        color: var(--c-paper, #F1EFE7);
       }
 
       .left-hero-intro {
@@ -133,9 +133,9 @@
         gap: 8px;
         padding: 4px 10px;
         border-radius: 0;
-        background: rgba(255, 96, 56, 0.15);
-        border: 1px solid rgba(255, 96, 56, 0.4);
-        color: var(--c-orange, #FF6038);
+        background: rgba(52, 56, 245, 0.12);
+        border: 1px solid rgba(52, 56, 245, 0.35);
+        color: var(--c-blue, #3438F5);
         font-family: var(--font-mono, monospace);
         font-size: 0.72rem;
         font-weight: 600;
@@ -151,20 +151,20 @@
         letter-spacing: -0.02em;
         line-height: 1.15;
         margin-bottom: 12px;
-        color: var(--c-white, #FFFDF8);
+        color: #ffffff;
       }
 
       .idea-hero-desc {
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 0.92rem;
         line-height: 1.6;
-        color: rgba(242, 239, 231, 0.8);
+        color: rgba(241, 239, 231, 0.8);
       }
 
       /* Step Progress Bar & Indicators in Left Panel */
       .stepper-header {
         margin-bottom: 0;
-        border-top: 1px solid rgba(242, 239, 231, 0.15);
+        border-top: 1px solid rgba(241, 239, 231, 0.15);
         padding-top: 24px;
       }
 
@@ -179,7 +179,7 @@
         font-family: var(--font-mono, monospace);
         font-size: 0.82rem;
         font-weight: 700;
-        color: var(--c-orange, #FF6038);
+        color: var(--c-blue, #3438F5);
         text-transform: uppercase;
         letter-spacing: 0.1em;
       }
@@ -188,13 +188,13 @@
         font-family: var(--font-mono, monospace);
         font-size: 0.78rem;
         font-weight: 500;
-        color: rgba(242, 239, 231, 0.7);
+        color: rgba(241, 239, 231, 0.7);
       }
 
       .stepper-progress-track {
         width: 100%;
         height: 4px;
-        background: rgba(242, 239, 231, 0.15);
+        background: rgba(241, 239, 231, 0.15);
         border-radius: 0;
         overflow: hidden;
         margin-bottom: 22px;
@@ -203,7 +203,7 @@
       .stepper-progress-fill {
         height: 100%;
         width: 33.33%;
-        background: var(--c-orange, #FF6038);
+        background: var(--c-teal, #00CFA5);
         border-radius: 0;
         transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         box-shadow: none;
@@ -221,26 +221,26 @@
         gap: 14px;
         padding: 12px 16px;
         background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(242, 239, 231, 0.12);
+        border: 1px solid rgba(241, 239, 231, 0.12);
         border-radius: 0;
         transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         cursor: default;
       }
 
       .step-pill.active {
-        background: rgba(255, 96, 56, 0.14);
-        border-color: var(--c-orange, #FF6038);
+        background: rgba(52, 56, 245, 0.12);
+        border-color: var(--c-blue, #3438F5);
         box-shadow: none;
       }
 
       .step-pill.completed {
-        background: rgba(215, 243, 106, 0.12);
-        border-color: rgba(215, 243, 106, 0.4);
+        background: rgba(0, 207, 165, 0.12);
+        border-color: rgba(0, 207, 165, 0.4);
         cursor: pointer;
       }
 
       .step-pill.completed:hover {
-        background: rgba(215, 243, 106, 0.18);
+        background: rgba(0, 207, 165, 0.18);
         transform: translateX(2px);
       }
 
@@ -249,7 +249,7 @@
         height: 32px;
         border-radius: 0;
         background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(242, 239, 231, 0.2);
+        border: 1px solid rgba(241, 239, 231, 0.2);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -258,21 +258,21 @@
       }
 
       .step-pill.active .step-pill-indicator {
-        background: var(--c-orange, #FF6038);
-        border-color: var(--c-orange, #FF6038);
+        background: var(--c-blue, #3438F5);
+        border-color: var(--c-blue, #3438F5);
         box-shadow: none;
       }
 
       .step-pill.completed .step-pill-indicator {
-        background: var(--c-lime, #D7F36A);
-        border-color: var(--c-lime, #D7F36A);
+        background: var(--c-teal, #00CFA5);
+        border-color: var(--c-teal, #00CFA5);
       }
 
       .step-pill-num {
         font-family: var(--font-mono, monospace);
         font-size: 0.8rem;
         font-weight: 700;
-        color: rgba(242, 239, 231, 0.6);
+        color: rgba(241, 239, 231, 0.6);
       }
 
       .step-pill.active .step-pill-num {
@@ -283,7 +283,7 @@
         display: none;
         font-size: 0.95rem;
         font-weight: 800;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
       }
 
       .step-pill.completed .step-pill-num {
@@ -304,34 +304,34 @@
         font-family: var(--font-headline, "Space Grotesk", sans-serif);
         font-size: 0.95rem;
         font-weight: 600;
-        color: rgba(242, 239, 231, 0.7);
+        color: rgba(241, 239, 231, 0.7);
         transition: color 0.2s ease;
       }
 
       .step-pill.active .step-pill-label {
-        color: var(--c-white, #FFFDF8);
+        color: #ffffff;
         font-weight: 700;
       }
 
       .step-pill.completed .step-pill-label {
-        color: var(--c-paper, #F2EFE7);
+        color: var(--c-paper, #F1EFE7);
       }
 
       .step-pill-desc {
         font-family: var(--font-mono, monospace);
         font-size: 0.72rem;
-        color: rgba(242, 239, 231, 0.5);
+        color: rgba(241, 239, 231, 0.5);
         line-height: 1.3;
       }
 
       .step-pill.active .step-pill-desc {
-        color: var(--c-orange, #FF6038);
+        color: var(--c-blue, #3438F5);
       }
 
       .step-connector-line {
         width: 2px;
         height: 8px;
-        background: rgba(242, 239, 231, 0.15);
+        background: rgba(241, 239, 231, 0.15);
         margin-left: 31px;
       }
 
@@ -340,7 +340,7 @@
         align-items: flex-start;
         gap: 12px;
         background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(242, 239, 231, 0.15);
+        border: 1px solid rgba(241, 239, 231, 0.15);
         border-radius: 0;
         padding: 16px;
       }
@@ -356,14 +356,14 @@
         font-family: var(--font-headline, "Space Grotesk", sans-serif);
         font-size: 0.85rem;
         font-weight: 600;
-        color: var(--c-white, #FFFDF8);
+        color: #ffffff;
         margin-bottom: 2px;
       }
 
       .trust-card-desc {
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 0.78rem;
-        color: rgba(242, 239, 231, 0.75);
+        color: rgba(241, 239, 231, 0.75);
         line-height: 1.5;
       }
 
@@ -373,14 +373,14 @@
       }
 
       .wizard-card {
-        background: var(--c-white, #FFFDF8);
-        border: 2px solid var(--c-navy, #101C32);
+        background: var(--c-white, #FFFFFF);
+        border: 2px solid var(--c-navy, #17233B);
         border-radius: 0;
         padding: 48px;
-        box-shadow: 8px 8px 0px var(--c-navy, #101C32);
+        box-shadow: 8px 8px 0px var(--c-navy, #17233B);
         position: relative;
         min-height: 520px;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
       }
 
       @media (max-width: 1024px) {
@@ -432,7 +432,7 @@
 
         .wizard-card {
           padding: 24px 18px;
-          box-shadow: 4px 4px 0px var(--c-navy, #101C32);
+          box-shadow: 4px 4px 0px var(--c-navy, #17233B);
         }
 
         .step-pill {
@@ -473,7 +473,7 @@
         font-family: var(--font-headline, "Space Grotesk", sans-serif);
         font-size: 1.65rem;
         font-weight: 700;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         letter-spacing: -0.02em;
         margin-bottom: 6px;
       }
@@ -481,7 +481,7 @@
       .step-subtitle {
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 0.95rem;
-        color: #4b5563;
+        color: var(--c-text-secondary, #465167);
       }
 
       /* Form Fields */
@@ -494,7 +494,7 @@
         font-family: var(--font-mono, monospace);
         font-size: 0.78rem;
         font-weight: 600;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         margin-bottom: 8px;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -503,10 +503,10 @@
       .form-input, .form-textarea {
         width: 100%;
         background: var(--c-paper-light, #F9F7F1);
-        border: 1.5px solid rgba(16, 28, 50, 0.22);
+        border: 1.5px solid rgba(23, 35, 59, 0.22);
         border-radius: 0;
         padding: 13px 18px;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         font-size: 0.95rem;
         font-family: var(--font-body, "DM Sans", sans-serif);
         outline: none;
@@ -514,8 +514,8 @@
       }
 
       .form-input:focus, .form-textarea:focus {
-        border-color: var(--c-orange, #FF6038);
-        box-shadow: 0 0 0 3px rgba(255, 96, 56, 0.15);
+        border-color: var(--c-blue, #3438F5);
+        box-shadow: 0 0 0 3px rgba(52, 56, 245, 0.15);
         background: #ffffff;
       }
 
@@ -525,9 +525,9 @@
 
       /* Terms / Notice Callout Box */
       .terms-notice-box {
-        background: var(--c-paper, #F2EFE7);
-        border: 1px solid rgba(16, 28, 50, 0.18);
-        border-left: 3px solid var(--c-orange, #FF6038);
+        background: var(--c-paper, #F1EFE7);
+        border: 1px solid rgba(23, 35, 59, 0.18);
+        border-left: 3px solid var(--c-blue, #3438F5);
         border-radius: 0;
         padding: 20px;
         margin-top: 28px;
@@ -538,7 +538,7 @@
         font-family: var(--font-mono, monospace);
         font-size: 0.8rem;
         font-weight: 700;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         text-transform: uppercase;
         letter-spacing: 0.08em;
         margin-bottom: 6px;
@@ -547,12 +547,12 @@
       .terms-notice-text {
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 0.85rem;
-        color: #4b5563;
+        color: var(--c-text-secondary, #465167);
         line-height: 1.55;
       }
 
       .terms-notice-text a {
-        color: var(--c-orange, #FF6038);
+        color: var(--c-blue, #3438F5);
         font-weight: 600;
         text-decoration: underline;
       }
@@ -569,14 +569,14 @@
         margin-top: 3px;
         width: 17px;
         height: 17px;
-        accent-color: var(--c-orange, #FF6038);
+        accent-color: var(--c-blue, #3438F5);
         cursor: pointer;
       }
 
       .checkbox-agree-text {
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 0.88rem;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         line-height: 1.5;
       }
 
@@ -587,13 +587,13 @@
         align-items: center;
         margin-top: 32px;
         padding-top: 24px;
-        border-top: 1px solid rgba(16, 28, 50, 0.12);
+        border-top: 1px solid rgba(23, 35, 59, 0.12);
       }
 
       .btn-wizard-back {
         background: transparent;
-        border: 1.5px solid var(--c-navy, #101C32);
-        color: var(--c-navy, #101C32);
+        border: 1.5px solid var(--c-navy, #17233B);
+        color: var(--c-navy, #17233B);
         font-family: var(--font-mono, monospace);
         font-weight: 600;
         font-size: 0.82rem;
@@ -606,21 +606,21 @@
       }
 
       .btn-wizard-back:hover {
-        background: var(--c-navy, #101C32);
-        color: var(--c-white, #FFFDF8);
+        background: var(--c-navy, #17233B);
+        color: #ffffff;
       }
 
       .btn-wizard-next {
-        background: var(--c-orange, #FF6038);
-        color: var(--c-white, #FFFDF8);
+        background: var(--c-teal, #00CFA5);
+        color: var(--c-navy, #17233B);
         font-family: var(--font-mono, monospace);
-        font-weight: 600;
+        font-weight: 700;
         font-size: 0.82rem;
         text-transform: uppercase;
         letter-spacing: 0.08em;
         padding: 13px 28px;
         border-radius: 0;
-        border: 1.5px solid var(--c-orange, #FF6038);
+        border: 1.5px solid var(--c-teal, #00CFA5);
         cursor: pointer;
         transition: all 0.2s ease;
         margin-left: auto;
@@ -630,15 +630,16 @@
       }
 
       .btn-wizard-next:hover {
-        background: var(--c-navy, #101C32);
-        border-color: var(--c-navy, #101C32);
+        background: #00B38E;
+        border-color: #00B38E;
+        color: var(--c-navy, #17233B);
         transform: translateY(-1px);
         box-shadow: none;
       }
 
       .btn-wizard-submit {
-        background: var(--c-orange, #FF6038);
-        color: var(--c-white, #FFFDF8);
+        background: var(--c-teal, #00CFA5);
+        color: var(--c-navy, #17233B);
         font-family: var(--font-mono, monospace);
         font-weight: 700;
         font-size: 0.85rem;
@@ -646,7 +647,7 @@
         letter-spacing: 0.08em;
         padding: 14px 32px;
         border-radius: 0;
-        border: 1.5px solid var(--c-orange, #FF6038);
+        border: 1.5px solid var(--c-teal, #00CFA5);
         cursor: pointer;
         transition: all 0.2s ease;
         margin-left: auto;
@@ -656,8 +657,9 @@
       }
 
       .btn-wizard-submit:hover {
-        background: var(--c-navy, #101C32);
-        border-color: var(--c-navy, #101C32);
+        background: #00B38E;
+        border-color: #00B38E;
+        color: var(--c-navy, #17233B);
         transform: translateY(-1px);
         box-shadow: none;
       }
@@ -673,9 +675,9 @@
         width: 64px;
         height: 64px;
         border-radius: 0;
-        background: rgba(215, 243, 106, 0.25);
-        border: 2px solid var(--c-lime-dark, #C0DE4F);
-        color: var(--c-navy, #101C32);
+        background: rgba(0, 207, 165, 0.15);
+        border: 2px solid var(--c-teal, #00CFA5);
+        color: var(--c-teal, #00CFA5);
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -687,7 +689,7 @@
         font-family: var(--font-headline, "Space Grotesk", sans-serif);
         font-size: 1.85rem;
         font-weight: 700;
-        color: var(--c-navy, #101C32);
+        color: var(--c-navy, #17233B);
         letter-spacing: -0.02em;
         margin-bottom: 10px;
       }
@@ -696,7 +698,7 @@
         font-family: var(--font-body, "DM Sans", sans-serif);
         font-size: 0.95rem;
         line-height: 1.6;
-        color: #4b5563;
+        color: var(--c-text-secondary, #465167);
         max-width: 500px;
         margin: 0 auto 28px;
       }
@@ -705,11 +707,12 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: var(--c-navy, #101C32);
-        color: var(--c-white, #FFFDF8);
+        background: var(--c-teal, #00CFA5);
+        color: var(--c-navy, #17233B);
+        border: 1.5px solid var(--c-teal, #00CFA5);
         font-family: var(--font-mono, monospace);
         font-size: 0.82rem;
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.08em;
         padding: 12px 28px;
@@ -719,7 +722,9 @@
       }
 
       .btn-success-home:hover {
-        background: var(--c-orange, #FF6038);
+        background: #00B38E;
+        border-color: #00B38E;
+        color: var(--c-navy, #17233B);
       }
     </style>
   </head>
