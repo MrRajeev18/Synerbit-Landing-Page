@@ -379,6 +379,83 @@
         display: none;
         z-index: 1000;
       }
+
+      @media (max-width: 768px) {
+        .reader-main-wrapper {
+          padding-top: 64px;
+        }
+        .reader-top-bar {
+          padding: 12px 16px;
+        }
+        .reader-header {
+          padding: 36px 16px 24px 16px;
+        }
+        .reader-headline {
+          font-size: clamp(1.85rem, 6.5vw, 2.75rem);
+          margin-bottom: 16px;
+        }
+        .reader-lead {
+          font-size: 1.05rem;
+          line-height: 1.55;
+          margin-bottom: 24px;
+          padding-left: 14px;
+        }
+        .reader-cover-wrap {
+          padding: 0 16px;
+          margin-top: 20px;
+        }
+        .reader-cover-img {
+          box-shadow: 4px 4px 0px var(--c-navy, #17233B);
+        }
+        .reader-article-content {
+          padding: 0 16px;
+          margin: 32px auto 60px auto;
+          font-size: 1.02rem;
+          line-height: 1.7;
+        }
+        .reader-article-content pre,
+        .reader-article-content table {
+          overflow-x: auto;
+          max-width: 100%;
+          display: block;
+        }
+        .reader-article-content blockquote {
+          margin: 24px 0;
+          padding: 16px 18px;
+          font-size: 1.15rem;
+        }
+        .reader-next-box {
+          padding: 0 16px;
+          margin-bottom: 60px;
+        }
+        .reader-next-card {
+          padding: 24px 18px;
+          box-shadow: 5px 5px 0px var(--c-navy, #17233B);
+          flex-direction: column;
+          align-items: stretch;
+          gap: 16px;
+        }
+        .reader-next-btn {
+          width: 100%;
+          justify-content: center;
+          text-align: center;
+          box-sizing: border-box;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .reader-top-inner {
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+        .reader-back-btn {
+          font-size: 0.74rem;
+        }
+        .share-pill-btn {
+          padding: 5px 8px;
+          font-size: 0.7rem;
+        }
+      }
     </style>
   </head>
   <body class="article-reader-body">

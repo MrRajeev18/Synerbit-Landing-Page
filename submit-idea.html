@@ -419,34 +419,103 @@
 
       @media (max-width: 640px) {
         .idea-split-container {
-          padding: 88px 16px 60px;
+          padding: 76px 14px 48px;
         }
 
         .idea-left-panel {
-          padding: 20px 16px;
+          padding: 18px 14px;
+          gap: 16px;
         }
 
         .idea-hero-title {
-          font-size: 1.75rem;
+          font-size: 1.55rem;
+        }
+
+        .idea-hero-desc {
+          font-size: 0.88rem;
+        }
+
+        .vertical-steps-list {
+          flex-direction: row;
+          gap: 6px;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
         }
 
         .wizard-card {
-          padding: 24px 18px;
+          padding: 22px 16px;
+          min-height: auto;
           box-shadow: 4px 4px 0px var(--c-navy, #17233B);
         }
 
+        .step-heading {
+          margin-bottom: 20px;
+        }
+
+        .step-title {
+          font-size: 1.35rem;
+        }
+
+        .step-subtitle {
+          font-size: 0.88rem;
+        }
+
         .step-pill {
-          padding: 8px 10px;
-          gap: 8px;
+          padding: 8px 8px;
+          gap: 6px;
+          min-width: 0;
         }
 
         .step-pill-indicator {
-          width: 28px;
-          height: 28px;
+          width: 26px;
+          height: 26px;
+        }
+
+        .step-pill-num {
+          font-size: 0.72rem;
         }
 
         .step-pill-label {
-          font-size: 0.78rem;
+          font-size: 0.72rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .form-input, .form-textarea {
+          padding: 11px 14px;
+          font-size: 0.9rem;
+        }
+
+        .terms-notice-box {
+          padding: 14px 12px;
+          margin-top: 20px;
+          margin-bottom: 16px;
+        }
+
+        .terms-notice-text {
+          font-size: 0.8rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .wizard-actions-row {
+          flex-direction: column-reverse;
+          gap: 10px;
+          align-items: stretch;
+          margin-top: 24px;
+          padding-top: 18px;
+        }
+
+        .btn-wizard-back,
+        .btn-wizard-next,
+        .btn-wizard-submit {
+          width: 100% !important;
+          justify-content: center;
+          text-align: center;
+          margin-left: 0 !important;
+          padding: 13px 20px !important;
+          box-sizing: border-box;
         }
       }
 

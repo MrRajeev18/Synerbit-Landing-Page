@@ -1700,6 +1700,348 @@ button, input, textarea, select {
   }
 }
 
+/* Specific Mobile Optimization (Screens <= 640px) */
+@media (max-width: 640px) {
+  /* Hero section mobile */
+  .ed-hero-section {
+    padding-top: calc(var(--header-height) + 16px);
+    padding-bottom: 48px;
+    min-height: auto;
+  }
+
+  .ed-hero-grid {
+    padding: 0 16px;
+    gap: 36px;
+  }
+
+  .ed-label-strip {
+    font-size: 0.68rem;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .ed-hero-title {
+    font-size: clamp(2rem, 7.5vw, 2.75rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  .ed-hero-lead {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .ed-hero-visual {
+    max-width: 290px;
+    margin: 0 auto;
+  }
+
+  .ed-geo-stage {
+    box-shadow: 8px 8px 0px var(--c-navy);
+  }
+
+  .geo-orange-disk {
+    width: 170px;
+    height: 170px;
+  }
+
+  .geo-center-mark {
+    width: 64px;
+    height: 64px;
+  }
+
+  .geo-center-mark svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .geo-orbit-pill {
+    font-size: 0.62rem;
+    padding: 3px 8px;
+    box-shadow: 2px 2px 0 var(--c-navy);
+  }
+
+  /* Ticker mobile */
+  .ed-ticker-strip {
+    padding: 10px 0;
+    margin: 0;
+    transform: none;
+    box-shadow: none;
+    max-width: 100vw;
+  }
+
+  .ed-ticker-item {
+    font-size: 0.8rem;
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  /* Manifesto mobile */
+  .ed-manifesto-section {
+    padding: 56px 0;
+  }
+
+  .ed-manifesto-container {
+    padding: 0 16px;
+  }
+
+  .ed-manifesto-headline {
+    font-size: clamp(1.85rem, 6.5vw, 2.6rem);
+    margin-bottom: 24px;
+  }
+
+  .ed-manifesto-copy {
+    font-size: 1.02rem;
+    line-height: 1.55;
+    margin-bottom: 32px;
+  }
+
+  .ed-editorial-quote-box {
+    padding: 16px 14px;
+    margin: 32px 0;
+    border-left-width: 3px;
+  }
+
+  .ed-editorial-quote {
+    font-size: clamp(1.15rem, 4.5vw, 1.45rem);
+  }
+
+  /* Products mobile */
+  .ed-products-section {
+    padding: 56px 0;
+  }
+
+  .ed-products-container {
+    padding: 0 16px;
+  }
+
+  .ed-products-header {
+    margin-bottom: 40px;
+  }
+
+  .ed-products-headline {
+    font-size: clamp(1.85rem, 6.5vw, 2.6rem);
+  }
+
+  .ed-products-stack {
+    gap: 48px;
+  }
+
+  .ed-product-row {
+    padding-bottom: 48px;
+    gap: 28px;
+  }
+
+  .ed-product-name {
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+  }
+
+  .ed-product-desc {
+    font-size: 0.96rem;
+  }
+
+  .showcase-pulsepm,
+  .showcase-habitpot,
+  .showcase-busview {
+    padding: 18px 14px;
+    box-shadow: 6px 6px 0 var(--c-navy);
+  }
+
+  .showcase-habitpot {
+    box-shadow: 6px 6px 0 var(--c-blue, #3438F5);
+  }
+
+  .showcase-busview {
+    box-shadow: 6px 6px 0 var(--c-teal, #00CFA5);
+  }
+
+  .habit-rings-grid {
+    gap: 8px;
+  }
+
+  .habit-ring-card {
+    padding: 8px 4px;
+  }
+
+  .habit-streak-num {
+    font-size: 1.35rem;
+  }
+
+  .habit-streak-label {
+    font-size: 0.6rem;
+  }
+
+  .habit-week-matrix {
+    padding: 8px 10px;
+    font-size: 0.65rem;
+  }
+
+  .habit-day-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .bus-telemetry-metrics {
+    gap: 8px;
+  }
+
+  .bus-metric-box {
+    padding: 8px 6px;
+    font-size: 0.72rem;
+  }
+
+  /* How We Work mobile */
+  .ed-work-section {
+    padding: 56px 0;
+  }
+
+  .ed-work-container {
+    padding: 0 16px;
+  }
+
+  .ed-work-headline {
+    font-size: clamp(1.85rem, 6.5vw, 2.6rem);
+    margin-bottom: 32px;
+  }
+
+  .ed-step-card {
+    padding: 24px 18px;
+  }
+
+  /* Ideas Form mobile */
+  .ed-ideas-section {
+    padding: 56px 0;
+  }
+
+  .ed-ideas-container {
+    padding: 0 16px;
+  }
+
+  .ed-ideas-headline {
+    font-size: clamp(1.85rem, 6.5vw, 2.6rem);
+  }
+
+  .ed-ideas-lead {
+    font-size: 1rem;
+  }
+
+  .ed-ideas-form-card {
+    padding: 24px 16px;
+    box-shadow: 6px 6px 0 var(--c-navy);
+    border-width: 1.5px;
+  }
+
+  .btn-form-submit {
+    padding: 14px 18px;
+    font-size: 0.82rem;
+  }
+
+  /* About Synerbit mobile */
+  .ed-about-section {
+    padding: 56px 0;
+  }
+
+  .ed-about-container {
+    padding: 0 16px;
+  }
+
+  .ed-about-headline {
+    font-size: clamp(1.85rem, 6.5vw, 2.6rem);
+  }
+
+  .ed-about-desc {
+    font-size: 1rem;
+  }
+
+  .ed-about-editorial-quote {
+    padding-left: 16px;
+    font-size: clamp(1.05rem, 4vw, 1.35rem);
+  }
+
+  .ed-founder-card {
+    padding: 20px 16px;
+    box-shadow: 6px 6px 0 var(--c-navy);
+  }
+
+  /* Articles Preview mobile */
+  .ed-articles-section {
+    padding: 56px 0;
+  }
+
+  .ed-articles-container {
+    padding: 0 16px;
+  }
+
+  .ed-articles-headline {
+    font-size: clamp(1.85rem, 6.5vw, 2.6rem);
+  }
+
+  .ed-articles-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ed-article-card {
+    box-shadow: 5px 5px 0 var(--c-navy);
+  }
+
+  /* Footer mobile */
+  .ed-footer-section {
+    padding: 56px 0 32px 0;
+  }
+
+  .ed-footer-container {
+    padding: 0 16px;
+  }
+
+  .ed-footer-headline {
+    font-size: clamp(2rem, 7.5vw, 3.2rem);
+  }
+
+  .ed-footer-middle {
+    padding: 36px 0;
+    gap: 28px;
+  }
+}
+
+/* Compact Mobile Devices (Screens <= 480px) */
+@media (max-width: 480px) {
+  .ed-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 14px 18px;
+    font-size: 0.85rem;
+  }
+
+  .ed-product-links {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .ed-product-links a,
+  .ed-product-links button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .btn-contact-email {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 /* ==========================================================================
    Editorial Theme Integration for Secondary Pages
    (products.html, jobs.html, submit-idea.html, privacy/terms/cookies)

@@ -711,13 +711,102 @@
           position: static;
         }
         .j-grid-container {
-          padding: 24px 16px 60px 16px;
+          padding: 20px 16px 60px 16px;
         }
         .p-sheet-sticky-bar {
-          padding: 24px 16px;
+          padding: 20px 16px;
         }
         .j-job-card, .j-card {
           padding: 24px 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .p-sheet-controls {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 16px;
+        }
+        .j-search-box {
+          width: 100%;
+          min-width: 0;
+        }
+        .p-sheet-title {
+          font-size: clamp(1.8rem, 6.5vw, 2.5rem);
+        }
+        .j-filter-sidebar {
+          padding: 18px 16px;
+          gap: 16px;
+        }
+        .j-filter-list {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+        .j-filter-item-btn {
+          width: auto;
+          flex: 1 1 auto;
+          min-width: 120px;
+          padding: 8px 12px;
+          font-size: 0.74rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .jobs-main-wrapper {
+          padding-top: 64px;
+        }
+        .p-sheet-sticky-bar {
+          padding: 16px 14px;
+        }
+        .j-grid-container {
+          padding: 16px 14px 48px 14px;
+        }
+        .j-job-card, .j-card {
+          padding: 20px 16px;
+          box-shadow: 4px 4px 0px rgba(23, 35, 59, 0.08);
+        }
+        .j-job-card:hover, .j-card:hover {
+          box-shadow: 6px 6px 0px var(--c-navy, #17233B);
+          transform: none;
+        }
+        .j-card-role-title {
+          font-size: 1.25rem;
+        }
+        .j-card-points-box {
+          padding: 16px 14px !important;
+        }
+        .j-card-point-item {
+          font-size: 0.85rem !important;
+        }
+        .j-card-footer {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 14px;
+        }
+        .j-card-perks-note {
+          font-size: 0.72rem;
+        }
+        .j-card-footer-actions {
+          flex-direction: column;
+          width: 100%;
+          gap: 8px;
+        }
+        .j-btn-clean,
+        .j-btn-ghost {
+          width: 100% !important;
+          justify-content: center;
+          text-align: center;
+          box-sizing: border-box;
+          padding: 12px 20px !important;
+        }
+        .modal-backdrop {
+          padding: 12px;
+        }
+        .modal-window {
+          padding: 24px 18px;
+          max-width: 96vw;
+          box-shadow: 6px 6px 0px var(--c-navy, #17233B);
         }
       }
     </style>
