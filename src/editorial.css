@@ -73,6 +73,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
   background-color: var(--c-paper);
   color: var(--c-navy);
   font-family: var(--font-body);
@@ -1702,9 +1703,17 @@ button, input, textarea, select {
 
 /* Specific Mobile Optimization (Screens <= 640px) */
 @media (max-width: 640px) {
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  section[id], div[id] {
+    scroll-margin-top: 72px;
+  }
+
   /* Hero section mobile */
   .ed-hero-section {
-    padding-top: calc(var(--header-height) + 16px);
+    padding-top: calc(var(--header-height) + 24px);
     padding-bottom: 48px;
     min-height: auto;
   }
@@ -1778,7 +1787,7 @@ button, input, textarea, select {
 
   /* Manifesto mobile */
   .ed-manifesto-section {
-    padding: 56px 0;
+    padding: 72px 0 56px 0;
   }
 
   .ed-manifesto-container {
@@ -1892,7 +1901,7 @@ button, input, textarea, select {
 
   /* How We Work mobile */
   .ed-work-section {
-    padding: 56px 0;
+    padding: 72px 0 56px 0;
   }
 
   .ed-work-container {
@@ -1910,7 +1919,7 @@ button, input, textarea, select {
 
   /* Ideas Form mobile */
   .ed-ideas-section {
-    padding: 56px 0;
+    padding: 72px 0 56px 0;
   }
 
   .ed-ideas-container {
@@ -1938,7 +1947,7 @@ button, input, textarea, select {
 
   /* About Synerbit mobile */
   .ed-about-section {
-    padding: 56px 0;
+    padding: 72px 0 56px 0;
   }
 
   .ed-about-container {
@@ -1965,7 +1974,7 @@ button, input, textarea, select {
 
   /* Articles Preview mobile */
   .ed-articles-section {
-    padding: 56px 0;
+    padding: 72px 0 56px 0;
   }
 
   .ed-articles-container {

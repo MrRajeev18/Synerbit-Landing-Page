@@ -28,20 +28,32 @@ document.addEventListener("DOMContentLoaded", () => {
   updateNavScroll();
 
   // Smooth scroll for internal links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
     anchor.addEventListener("click", function (e) {
-      const targetId = this.getAttribute("href");
+      const href = this.getAttribute("href");
+      const hashIndex = href.indexOf("#");
+      if (hashIndex === -1) return;
+      const targetId = href.substring(hashIndex);
       if (targetId === "#" || targetId === "#content") return;
-      const targetEl = document.querySelector(targetId);
-      if (targetEl) {
-        e.preventDefault();
-        const navOffset = 76;
-        const elementPosition = targetEl.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - navOffset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
+      
+      const isHomepage = window.location.pathname === "/" || window.location.pathname === "/index.html" || window.location.pathname === "";
+      if (isHomepage) {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const navEl = document.getElementById("main-nav");
+          const navHeight = navEl ? navEl.offsetHeight : 64;
+          const navOffset = navHeight + 16;
+          const elementPosition = targetEl.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+          if (history.pushState) {
+            history.pushState(null, null, targetId);
+          }
+        }
       }
     });
   });

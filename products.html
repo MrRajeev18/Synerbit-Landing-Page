@@ -1228,17 +1228,22 @@
         }
       }
 
+      @media (max-width: 900px) {
+        .products-page-body {
+          padding-top: 64px;
+        }
+        .p-sheet-sticky-bar {
+          top: 64px;
+        }
+        .p-sheet-controls {
+          padding: 16px 20px 14px 20px;
+        }
+      }
+
       /* 3. Mobile Devices (<= 640px) */
       @media (max-width: 640px) {
         .products-page-body {
-          padding-top: 60px;
-        }
-        .p-navbar {
-          padding: 0 16px;
-          height: 60px;
-        }
-        .p-nav-left {
-          gap: 12px;
+          padding-top: 64px;
         }
         .brand-name {
           font-size: 1.05rem;
@@ -1247,19 +1252,11 @@
           width: 32px;
           height: 32px;
         }
-        .p-nav-menu {
-          display: none; /* Keep mobile header clean and spacious */
-        }
-        .btn-nav-glass {
-          padding: 7px 13px;
-          font-size: 0.76rem;
-        }
-
         .p-sheet-sticky-bar {
-          top: 60px;
+          top: 64px;
         }
         .p-sheet-controls {
-          padding: 12px 16px;
+          padding: 20px 16px 14px 16px;
         }
         .p-sheet-title {
           font-size: 1.2rem;
@@ -1267,6 +1264,16 @@
         .p-sheet-pretitle {
           font-size: 0.65rem;
         }
+      }
+
+      @media (max-width: 480px) {
+        .products-page-body {
+          padding-top: 60px;
+        }
+        .p-sheet-sticky-bar {
+          top: 60px;
+        }
+      }
 
         .p-grid-container {
           padding: 18px 14px 48px 14px;

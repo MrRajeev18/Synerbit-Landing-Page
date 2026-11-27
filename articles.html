@@ -460,12 +460,21 @@
         }
       }
 
+      @media (max-width: 900px) {
+        .articles-main-wrapper {
+          padding-top: 64px;
+        }
+        .art-controls-bar {
+          top: 64px;
+        }
+      }
+
       @media (max-width: 640px) {
         .articles-main-wrapper {
           padding-top: 64px;
         }
         .art-hero-section {
-          padding: 40px 16px 32px 16px;
+          padding: 48px 16px 36px 16px;
         }
         .art-hero-title {
           font-size: clamp(2rem, 7.5vw, 2.75rem);
@@ -474,7 +483,7 @@
           font-size: 0.98rem;
         }
         .art-controls-bar {
-          padding: 12px 16px;
+          padding: 14px 16px;
           top: 64px;
         }
         .art-controls-inner {
@@ -482,6 +491,16 @@
           align-items: stretch;
           gap: 12px;
         }
+      }
+
+      @media (max-width: 480px) {
+        .articles-main-wrapper {
+          padding-top: 60px;
+        }
+        .art-controls-bar {
+          top: 60px;
+        }
+      }
         .art-category-pills {
           overflow-x: auto;
           flex-wrap: nowrap;
