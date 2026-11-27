@@ -192,27 +192,48 @@ export function initContactModal() {
   // Universal Mobile Navigation Menu Toggle Handler
   const navMobileBtn = document.getElementById('btn-nav-mobile');
   const navMenu = document.getElementById('nav-menu');
-  if (navMobileBtn && navMenu) {
-    navMobileBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      navMenu.classList.toggle('mobile-open');
-      const expanded = navMenu.classList.contains('mobile-open');
-      navMobileBtn.setAttribute('aria-expanded', expanded);
-    });
+  if (navMobileBtn && navMenu && !navMobileBtn._hasMobileNavListener) {
+    navMobileBtn._hasMobileNavListener = true;
 
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+    const toggleMenu = (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const isOpen = navMenu.classList.toggle('mobile-open');
+      navMobileBtn.classList.toggle('is-active', isOpen);
+      navMobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+
+    const closeMenu = () => {
+      if (navMenu.classList.contains('mobile-open')) {
         navMenu.classList.remove('mobile-open');
+        navMobileBtn.classList.remove('is-active');
         navMobileBtn.setAttribute('aria-expanded', 'false');
+      }
+    };
+
+    navMobileBtn.addEventListener('click', toggleMenu);
+
+    navMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMenu();
       });
     });
 
     document.addEventListener('click', (e) => {
-      if (!navMenu.contains(e.target) && !navMobileBtn.contains(e.target) && navMenu.classList.contains('mobile-open')) {
-        navMenu.classList.remove('mobile-open');
-        navMobileBtn.setAttribute('aria-expanded', 'false');
+      if (navMenu.classList.contains('mobile-open')) {
+        if (!navMenu.contains(e.target) && !navMobileBtn.contains(e.target)) {
+          closeMenu();
+        }
       }
     });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) {
+        closeMenu();
+      }
+    }, { passive: true });
   }
 
   return modal;

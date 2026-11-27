@@ -27,22 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", updateNavScroll, { passive: true });
   updateNavScroll();
 
-  // Mobile Menu Toggle
-  if (navMobileBtn && navMenu) {
-    navMobileBtn.addEventListener("click", () => {
-      navMenu.classList.toggle("mobile-open");
-      const expanded = navMenu.classList.contains("mobile-open");
-      navMobileBtn.setAttribute("aria-expanded", expanded);
-    });
-
-    navMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navMenu.classList.remove("mobile-open");
-        navMobileBtn.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
-
   // Smooth scroll for internal links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function (e) {

@@ -729,17 +729,6 @@
       const searchInput = document.getElementById('articles-search-input');
       const categoryPills = document.querySelectorAll('.art-pill-btn');
 
-      // Mobile Menu Toggle
-      const mobileToggleBtn = document.getElementById('btn-nav-mobile');
-      const navMenu = document.getElementById('nav-menu');
-      if (mobileToggleBtn && navMenu) {
-        mobileToggleBtn.addEventListener('click', () => {
-          const isOpen = navMenu.classList.toggle('active');
-          mobileToggleBtn.classList.toggle('active');
-          mobileToggleBtn.setAttribute('aria-expanded', isOpen);
-        });
-      }
-
       function escapeHtml(str) {
         if (!str) return '';
         return String(str)

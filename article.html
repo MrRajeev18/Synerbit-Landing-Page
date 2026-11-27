@@ -671,17 +671,6 @@
       import { getArticleBySlugOrId, getArticles } from '/src/firebase.js';
       import '/src/contactModal.js';
 
-      // Mobile Menu Toggle
-      const mobileToggleBtn = document.getElementById('btn-nav-mobile');
-      const navMenu = document.getElementById('nav-menu');
-      if (mobileToggleBtn && navMenu) {
-        mobileToggleBtn.addEventListener('click', () => {
-          const isOpen = navMenu.classList.toggle('active');
-          mobileToggleBtn.classList.toggle('active');
-          mobileToggleBtn.setAttribute('aria-expanded', isOpen);
-        });
-      }
-
       function escapeHtml(str) {
         if (!str) return '';
         return String(str)

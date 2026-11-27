@@ -60,7 +60,7 @@ body {
   justify-content: space-between;
   padding: 0 48px;
   height: 72px;
-  z-index: 100;
+  z-index: 1000;
   background: rgba(23, 35, 59, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -630,6 +630,10 @@ body {
   align-items: center;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   margin-left: 12px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .btn-nav-mobile-toggle span {
@@ -638,13 +642,38 @@ body {
   height: 2px;
   background: var(--c-white, #FFFFFF);
   border-radius: 0;
-  transition: all 0.2s ease;
+  pointer-events: none;
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, background 0.2s ease;
+}
+
+.btn-nav-mobile-toggle.is-active {
+  border-color: var(--c-teal, #00CFA5);
+  background: rgba(0, 207, 165, 0.1);
+}
+
+.btn-nav-mobile-toggle.is-active span {
+  background: var(--c-teal, #00CFA5);
+}
+
+.btn-nav-mobile-toggle.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.btn-nav-mobile-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.btn-nav-mobile-toggle.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 @media (max-width: 900px) {
   .navbar {
     padding: 0 20px;
     height: 64px;
+    z-index: 10000;
   }
   .nav-menu {
     display: none;
@@ -663,7 +692,7 @@ body {
     padding: 20px 20px 28px 20px;
     border-bottom: 2px solid var(--c-blue, #3438F5);
     gap: 8px;
-    z-index: 999;
+    z-index: 99999;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
     max-height: calc(100vh - 64px);
     overflow-y: auto;
