@@ -211,6 +211,11 @@ body {
   border: 1.5px solid var(--c-teal, #00CFA5);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-nav-glass:hover {
@@ -616,6 +621,13 @@ body {
 }
 
 /* Responsive Navbar & Mobile Drawer */
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
 .btn-nav-mobile-toggle {
   display: none;
   background: rgba(255, 255, 255, 0.04);
@@ -629,7 +641,8 @@ body {
   justify-content: space-around;
   align-items: center;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  margin-left: 12px;
+  margin-left: 0;
+  flex-shrink: 0;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
@@ -674,6 +687,12 @@ body {
     padding: 0 20px;
     height: 64px;
     z-index: 10000;
+  }
+  .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
   }
   .nav-menu {
     display: none;
@@ -734,6 +753,7 @@ body {
 @media (max-width: 480px) {
   .navbar {
     padding: 0 14px;
+    height: 60px;
   }
   .nav-brand {
     gap: 8px;
@@ -743,17 +763,51 @@ body {
     height: 32px;
   }
   .brand-name {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+  }
+  .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
   }
   .btn-nav-glass {
-    padding: 7px 12px !important;
-    font-size: 0.72rem !important;
-    letter-spacing: 0.04em !important;
+    padding: 6px 11px !important;
+    font-size: 0.70rem !important;
+    letter-spacing: 0.03em !important;
+    white-space: nowrap !important;
   }
   .btn-nav-mobile-toggle {
-    margin-left: 6px;
+    margin-left: 0;
     width: 36px;
     height: 36px;
+    padding: 7px;
+    flex-shrink: 0;
+  }
+  .nav-menu.mobile-open {
+    top: 60px;
+    max-height: calc(100vh - 60px);
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar {
+    padding: 0 10px;
+  }
+  .brand-name {
+    font-size: 0.95rem;
+  }
+  .nav-buttons {
+    gap: 6px;
+  }
+  .btn-nav-glass {
+    padding: 5px 8px !important;
+    font-size: 0.65rem !important;
+  }
+  .btn-nav-mobile-toggle {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
   }
 }
 
