@@ -664,10 +664,10 @@ button, input, textarea, select {
    ========================================================================== */
 .ed-ticker-strip {
   width: 100%;
-  background: var(--c-navy, #17233B);
-  color: var(--c-paper, #F1EFE7);
-  border-top: 1.5px solid var(--c-navy, #17233B);
-  border-bottom: 1.5px solid var(--c-navy, #17233B);
+  background: var(--c-teal, #00CFA5);
+  color: var(--c-navy, #17233B);
+  border-top: 2px solid var(--c-navy, #17233B);
+  border-bottom: 2px solid var(--c-navy, #17233B);
   overflow: hidden;
   padding: 14px 0;
   display: flex;
@@ -676,7 +676,7 @@ button, input, textarea, select {
   z-index: 10;
   transform: rotate(-0.75deg) scaleX(1.02);
   margin: -6px 0;
-  box-shadow: 0 6px 24px rgba(23, 35, 59, 0.2);
+  box-shadow: 0 6px 24px rgba(0, 207, 165, 0.25);
 }
 
 .ed-ticker-track {
@@ -695,11 +695,11 @@ button, input, textarea, select {
   display: inline-flex;
   align-items: center;
   gap: 20px;
-  color: var(--c-paper, #F1EFE7);
+  color: var(--c-navy, #17233B);
 }
 
 .ed-ticker-item span.sep {
-  color: var(--c-teal, #00CFA5);
+  color: var(--c-navy, #17233B);
   font-size: 1.15rem;
   font-weight: bold;
 }
