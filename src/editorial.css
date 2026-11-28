@@ -2473,22 +2473,85 @@ body.legal-page-body,
 }
 
 .p-launch-btn,
-.p-btn-visit {
+.p-btn-visit,
+.p-btn-clean {
   background: var(--c-teal, #00CFA5) !important;
   color: var(--c-navy, #17233B) !important;
-  border: 1.5px solid var(--c-teal, #00CFA5) !important;
+  border: 2px solid var(--c-navy, #17233B) !important;
   border-radius: 0 !important;
-  font-family: var(--font-mono) !important;
+  font-family: var(--font-headline) !important;
   font-weight: 700 !important;
+  box-shadow: 4px 4px 0px var(--c-navy, #17233B) !important;
+  text-decoration: none !important;
+  padding: 10px 20px !important;
+  font-size: 0.84rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.2s ease !important;
 }
 
 .p-launch-btn:hover,
-.p-btn-visit:hover {
+.p-btn-visit:hover,
+.p-btn-clean:hover {
   background: var(--c-teal-dark, #00B38E) !important;
-  border-color: var(--c-teal-dark, #00B38E) !important;
+  border-color: var(--c-navy, #17233B) !important;
   color: var(--c-navy, #17233B) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 14px rgba(0, 207, 165, 0.3) !important;
+  transform: translate(-1px, -1px) !important;
+  box-shadow: 6px 6px 0px var(--c-navy, #17233B) !important;
+}
+
+.p-btn-disabled {
+  background: rgba(23, 35, 59, 0.05) !important;
+  color: var(--c-text-secondary, #465167) !important;
+  border: 1.5px dashed rgba(23, 35, 59, 0.3) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-headline) !important;
+  font-weight: 600 !important;
+  font-size: 0.82rem !important;
+  padding: 9px 16px !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.p-app-btn {
+  background: var(--c-white, #FFFFFF) !important;
+  color: var(--c-navy, #17233B) !important;
+  border: 2px solid var(--c-navy, #17233B) !important;
+  box-shadow: 3px 3px 0px var(--c-navy, #17233B) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-headline) !important;
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
+  padding: 9px 16px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.p-app-btn:hover {
+  background: var(--c-navy, #17233B) !important;
+  color: #FFFFFF !important;
+  box-shadow: 5px 5px 0px rgba(23, 35, 59, 0.3) !important;
+  transform: translate(-1px, -1px) !important;
+}
+
+.p-app-btn-disabled {
+  background: rgba(23, 35, 59, 0.04) !important;
+  color: var(--c-text-secondary, #465167) !important;
+  border: 1.5px dashed rgba(23, 35, 59, 0.25) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-headline) !important;
+  font-size: 0.8rem !important;
+  padding: 9px 16px !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
 }
 
 /* 2. Careers & Jobs Page (jobs.html) */
